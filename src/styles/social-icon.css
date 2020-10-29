@@ -1,0 +1,57 @@
+.social-icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icon > a,
+.social-icon > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  width: 100%;
+  height: 100%;
+}
+
+.social-icon a {
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.social-icon a:hover {
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.social-icon svg {
+  fill: var(--theme-social-icon-color);
+  transition: fill 0.3s;
+  width: 100%;
+  height: 100%;
+}
+
+.social-icon.discord {
+  fill: #7289da;
+}
+
+.social-icon.facebook {
+  fill: #1877f2;
+}
+
+.social-icon.instagram {
+  fill: #e4405f;
+}
+
+.social-icon.twitch {
+  fill: #9146ff;
+}
+
+.social-icon.twitter {
+  fill: #1da1f2;
+}
+
+.social-icon.youtube {
+  fill: #ff0000;
+}

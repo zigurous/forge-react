@@ -1,0 +1,43 @@
+.app-footer {
+  position: relative;
+  width: 100%;
+  height: 24vh;
+}
+
+.app-footer--hide-background {
+  background: none !important;
+}
+
+.app-footer--sticky {
+  position: sticky;
+  bottom: 0;
+  z-index: 1020;
+}
+
+.app-footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.app-footer--full-bleed .app-footer__container {
+  max-width: 100%;
+}
+
+.app-footer__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.app-footer .logo {
+  margin-left: -8px;
+  opacity: 0.5;
+}
+
+.app-footer[theme="dark"] .copyright {
+  color: gray;
+}

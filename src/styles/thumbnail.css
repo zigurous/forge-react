@@ -1,0 +1,21 @@
+.thumbnail-image {
+  display: block;
+  object-fit: scale-down;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(16, 16, 16, 0.5), 0 -4px 8px 0 rgba(16, 16, 16, 0.5);
+  transition: transform 0.2s;
+}
+
+.thumbnail-link:hover {
+  border-bottom: none;
+}
+
+.thumbnail-link:hover .thumbnail-image {
+  transform: rotate(1deg) scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .thumbnail-image {
+    width: 100%;
+  }
+}

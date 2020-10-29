@@ -1,10 +1,5 @@
-import React from 'react'
-
-import { ExampleComponent } from '@zigurous/react-components'
-import '@zigurous/react-components/dist/index.css'
-
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
-}
+  return null;
+};
 
-export default App
+export default App;

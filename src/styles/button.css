@@ -1,0 +1,51 @@
+.button-skin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--theme-button-primary-color);
+  border: solid 1px var(--theme-button-primary-color);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.button-skin:hover:not(:disabled),
+.button-skin:focus:not(:disabled),
+.button-skin:active:not(:disabled) {
+  background-color: var(--theme-button-primary-color);
+  color: var(--theme-button-secondary-color);
+}
+
+.button--small {
+  padding: 12px 24px;
+  font-size: 15px;
+  line-height: 1.5em;
+}
+
+.button--small.button--rounded {
+  border-radius: 24px;
+}
+
+.button--medium {
+  padding: 16px 32px;
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+.button--medium.button--rounded {
+  border-radius: 32px;
+}
+
+.button--large {
+  padding: 20px 40px;
+  font-size: 21px;
+  line-height: 1.5em;
+}
+
+.button--large.button--rounded {
+  border-radius: 40px;
+}
+
+.button--circle {
+  border-radius: 50%;
+}
