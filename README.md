@@ -7,24 +7,18 @@
 ## Install
 
 ```bash
-npm install --save @zigurous/react-components
+yarn add @zigurous/react-components
 ```
 
 ## Usage
 
 ```jsx
 import React, { Component } from 'react'
-
-import MyComponent from '@zigurous/react-components'
-import '@zigurous/react-components/dist/index.css'
+import { ExampleComponent } from '@zigurous/react-components'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <ExampleComponent />
   }
 }
 ```
-
-## License
-
-MIT © [adamgraham](https://github.com/adamgraham)
