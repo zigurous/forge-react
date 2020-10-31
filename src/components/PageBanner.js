@@ -12,7 +12,6 @@ const PageBanner = ({
   hideBackground = false,
   reversed = false,
   shadowed = false,
-  textured = false,
   theme,
 }) => {
   const parallax = useParallax();
@@ -23,7 +22,6 @@ const PageBanner = ({
         { [`page-banner--${direction}`]: direction && direction !== 'none' },
         { [`page-banner--${theme}`]: theme },
         { 'page-banner--reversed': reversed },
-        { 'page-banner--textured': textured },
         { 'page-banner--shadowed': shadowed },
         { 'page-banner--hide-background': hideBackground },
         className
@@ -46,7 +44,6 @@ PageBanner.propTypes = {
   hideBackground: PropTypes.bool,
   reversed: PropTypes.bool,
   shadowed: PropTypes.bool,
-  textured: PropTypes.bool,
   theme: PropTypes.string,
 };
 

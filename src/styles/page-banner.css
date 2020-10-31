@@ -72,22 +72,6 @@
 .page-banner--black::before { background-color: var(--black, black); }
 .page-banner--brand-color::before { background-color: var(--brand-color, #0086e5); }
 
-.page-banner--textured.page-banner--light::before,
-.page-banner--textured.page-banner--light-secondary::before,
-.page-banner--textured.page-banner--white::before {
-  /* background-image: url("../../images/patterns/45-degree-fabric-light.png"); */
-}
-
-.page-banner--textured.page-banner--dark::before,
-.page-banner--textured.page-banner--dark-secondary::before,
-.page-banner--textured.page-banner--black::before {
-  /* background-image: url("../../images/patterns/classy-fabric.png"); */
-}
-
-.page-banner--textured.page-banner--brand-color::before {
-  /* background-image: url("../../images/patterns/ag-square.png"); */
-}
-
 .page-banner--shadowed::before {
   box-shadow: 0 8px 16px 0 rgba(16, 16, 16, 0.5), 0 -8px 16px 0 rgba(16, 16, 16, 0.5);
   z-index: 1;
