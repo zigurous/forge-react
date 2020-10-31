@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import SocialIcon from './SocialIcon';
-import socialLinks, { SocialProps } from '../socials';
+import { SocialProps } from '../socials';
 import '../styles/social-nav-links.css';
 
 const SocialNavLinks = ({
@@ -16,10 +16,10 @@ const SocialNavLinks = ({
 }) => (
   <div className={classNames('social-nav-links', className)}>
     <ul className="social-nav-links__list">
-      {Object.values(links).map((link) => (
+      {links.map((link) => (
         <li
           className="social-nav-links__item"
-          key={typeof link === 'string' ? link : socialLinks[link].key}
+          key={typeof link === 'string' ? link : link.key}
           style={{ margin: iconSpacing }}
         >
           <SocialIcon
