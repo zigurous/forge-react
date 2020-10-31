@@ -4,7 +4,7 @@
   height: 24vh;
 }
 
-.app-footer--hide-background {
+.app-footer--transparent {
   background: none !important;
 }
 

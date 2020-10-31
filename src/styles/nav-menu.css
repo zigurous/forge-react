@@ -64,7 +64,7 @@
   pointer-events: all !important;
   border-radius: 50%;
   box-shadow: 0 1px 2px 0 rgba(16, 16, 16, 0.4), 0 -1px 2px 0 rgba(16, 16, 16, 0.4);
-  background-color: var(--brand-color, #0086e5);
+  background-color: var(--blue, #0086e5);
   transition: transform 0.2s;
 }
 

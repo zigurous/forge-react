@@ -12,7 +12,6 @@ const AppHeader = ({
   bordered = false,
   className,
   fullBleed = true,
-  hideBackground = true,
   location,
   logoSize = 'medium',
   logoVariant = 'emblem',
@@ -25,12 +24,13 @@ const AppHeader = ({
   showSocials = true,
   sticky = false,
   theme,
+  transparent = true,
 }) => {
   return (
     <header
       className={classNames(
         'app-header',
-        { 'app-header--hide-background': hideBackground },
+        { 'app-header--transparent': transparent },
         { 'app-header--bordered': bordered },
         { 'app-header--sticky': sticky },
         className
@@ -90,7 +90,6 @@ AppHeader.propTypes = {
   bordered: PropTypes.bool,
   className: PropTypes.string,
   fullBleed: PropTypes.bool,
-  hideBackground: PropTypes.bool,
   location: PropTypes.shape({
     pathname: PropTypes.string,
     search: PropTypes.string,
@@ -113,6 +112,7 @@ AppHeader.propTypes = {
   showSocials: PropTypes.bool,
   sticky: PropTypes.bool,
   theme: PropTypes.string,
+  transparent: PropTypes.bool,
 };
 
 export default AppHeader;

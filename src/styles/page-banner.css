@@ -65,20 +65,21 @@
 }
 
 .page-banner--white::before { background-color: var(--white, white); }
-.page-banner--light::before { background-color: var(--light-color, #e0e0e0); }
-.page-banner--light-secondary::before { background-color: var(--light-secondary-color, #c0c0c0); }
-.page-banner--dark::before { background-color: var(--dark-color, #181818); }
-.page-banner--dark-secondary::before { background-color: var(--dark-secondary-color, #101010); }
 .page-banner--black::before { background-color: var(--black, black); }
-.page-banner--brand-color::before { background-color: var(--brand-color, #0086e5); }
+.page-banner--light::before { background-color: var(--light-2, #e8e8e8); }
+.page-banner--light-1::before { background-color: var(--light-1, #f0f0f0); }
+.page-banner--light-2::before { background-color: var(--light-2, #e8e8e8); }
+.page-banner--light-3::before { background-color: var(--light-3, #e0e0e0); }
+.page-banner--dark::before { background-color: var(--dark-2, #181818); }
+.page-banner--dark-1::before { background-color: var(--dark-1, #101010); }
+.page-banner--dark-2::before { background-color: var(--dark-2, #181818); }
+.page-banner--dark-3::before { background-color: var(--dark-3, #202020); }
+.page-banner--blue::before { background-color: var(--blue, #0086e5); }
+.page-banner--transparent::before { background: none !important; }
 
 .page-banner--shadowed::before {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   z-index: 1;
-}
-
-.page-banner--hide-background::before {
-  background: none !important;
 }
 
 @media (min-width: 576px) {

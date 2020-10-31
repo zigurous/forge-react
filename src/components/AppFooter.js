@@ -7,7 +7,6 @@ import '../styles/app-footer.css';
 const AppFooter = ({
   className,
   fullBleed = false,
-  hideBackground = true,
   logoSize = 'small',
   logoVariant = 'logo',
   onLogoClick = () => {},
@@ -15,11 +14,12 @@ const AppFooter = ({
   showLogo = false,
   sticky = false,
   theme,
+  transparent = true,
 }) => (
   <footer
     className={classNames(
       'app-footer',
-      { 'app-footer--hide-background': hideBackground },
+      { 'app-footer--transparent': transparent },
       { 'app-footer--sticky': sticky },
       className
     )}
@@ -52,7 +52,6 @@ const AppFooter = ({
 AppFooter.propTypes = {
   className: PropTypes.string,
   fullBleed: PropTypes.bool,
-  hideBackground: PropTypes.bool,
   logoSize: PropTypes.oneOf(['small', 'medium', 'large']),
   logoVariant: PropTypes.oneOf(['logo', 'emblem']),
   onLogoClick: PropTypes.func,
@@ -60,6 +59,7 @@ AppFooter.propTypes = {
   showLogo: PropTypes.bool,
   sticky: PropTypes.bool,
   theme: PropTypes.string,
+  transparent: PropTypes.bool,
 };
 
 export default AppFooter;

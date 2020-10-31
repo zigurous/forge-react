@@ -30,9 +30,15 @@ export const logoThemes = {
   undefined: 'primary',
   white: 'primary',
   light: 'primary',
-  dark: 'secondary',
+  'light-1': 'primary',
+  'light-2': 'primary',
+  'light-3': 'primary',
   black: 'secondary',
-  'brand-color': 'mono-white',
+  dark: 'secondary',
+  'dark-1': 'secondary',
+  'dark-2': 'secondary',
+  'dark-3': 'secondary',
+  blue: 'mono-white',
 };
 
 const Logo = ({

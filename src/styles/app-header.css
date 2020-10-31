@@ -5,12 +5,12 @@
   min-height: 96px;
 }
 
-.app-header--hide-background {
+.app-header--transparent {
   background: none !important;
 }
 
 .app-header--bordered {
-  border-bottom: solid 1px var(--brand-color, #0086e5);
+  border-bottom: solid 1px var(--blue, #0086e5);
   /* box-shadow: 0 0 8px 0 rgba(0, 134, 229, 0.5); */
 }
 

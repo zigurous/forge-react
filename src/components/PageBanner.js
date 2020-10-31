@@ -9,10 +9,10 @@ const PageBanner = ({
   children,
   className,
   direction = 'right',
-  hideBackground = false,
   reversed = false,
   shadowed = false,
   theme,
+  transparent = false,
 }) => {
   const parallax = useParallax();
   return (
@@ -21,9 +21,9 @@ const PageBanner = ({
         'page-banner',
         { [`page-banner--${direction}`]: direction && direction !== 'none' },
         { [`page-banner--${theme}`]: theme },
+        { 'page-banner--transparent': transparent },
         { 'page-banner--reversed': reversed },
         { 'page-banner--shadowed': shadowed },
-        { 'page-banner--hide-background': hideBackground },
         className
       )}
       ref={parallax}
@@ -41,10 +41,10 @@ PageBanner.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   direction: PropTypes.oneOf(['none', 'left', 'right']),
-  hideBackground: PropTypes.bool,
   reversed: PropTypes.bool,
   shadowed: PropTypes.bool,
   theme: PropTypes.string,
+  transparent: PropTypes.bool,
 };
 
 export default PageBanner;
