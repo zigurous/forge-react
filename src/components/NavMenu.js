@@ -10,7 +10,7 @@ import '../styles/nav-menu.css';
 const NavMenu = ({
   className,
   location,
-  logoSize = 'medium',
+  logoSize = 'md',
   logoVariant = 'logo',
   NavLink,
   onLogoClick,

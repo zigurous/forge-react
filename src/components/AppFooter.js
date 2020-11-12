@@ -7,7 +7,7 @@ import '../styles/app-footer.css';
 const AppFooter = ({
   className,
   fullBleed = false,
-  logoSize = 'small',
+  logoSize = 'sm',
   logoVariant = 'logo',
   onLogoClick = () => {},
   showCopyright = false,

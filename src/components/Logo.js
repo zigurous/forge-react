@@ -46,7 +46,7 @@ const Logo = ({
   ariaHidden = false,
   className,
   onClick,
-  size = 'medium',
+  size = 'md',
   theme = 'dark',
   variant = 'logo',
 }) => (
@@ -82,7 +82,7 @@ Logo.propTypes = {
   ariaHidden: PropTypes.bool,
   className: PropTypes.string,
   onClick: PropTypes.func,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   theme: PropTypes.oneOf(['dark', 'light', 'mono-black', 'mono-white']),
   variant: PropTypes.oneOf(['logo', 'logomark']),
 };

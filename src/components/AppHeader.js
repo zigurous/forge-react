@@ -13,7 +13,7 @@ const AppHeader = ({
   className,
   fullBleed = true,
   location,
-  logoSize = 'medium',
+  logoSize = 'md',
   logoVariant = 'emblem',
   navigationStyle = 'menu',
   NavLink,
