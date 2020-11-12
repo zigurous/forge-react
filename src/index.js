@@ -3,6 +3,7 @@ export { default as AppHeader } from './components/AppHeader';
 export { default as Button } from './components/Button';
 export { default as ButtonGroup } from './components/ButtonGroup';
 export { default as EmbeddedTwitch } from './components/EmbeddedTwitch';
+export { default as Link } from './components/Link';
 export { default as Logo } from './components/Logo';
 export { default as Modal } from './components/Modal';
 export { default as NavBar } from './components/NavBar';
