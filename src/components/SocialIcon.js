@@ -10,19 +10,30 @@ const SocialIcon = ({
   className,
   disabled = false,
   elementType = 'a',
-  foregroundColor,
+  foregroundColor = 'auto',
   innerPadding = 8,
   link,
   size = 24,
 }) => {
   const social = typeof link === 'string' ? socialLinks[link] : link;
+  const customColor =
+    foregroundColor !== 'auto' && foregroundColor !== 'default';
   const element = {
     type: elementType || 'a',
   };
   return (
     <div
-      className={classNames('social-icon', social.key, className)}
-      style={{ backgroundColor: backgroundColor, fill: foregroundColor }}
+      className={classNames(
+        'social-icon',
+        { 'social-icon--auto': foregroundColor === 'auto' },
+        { 'social-icon--default': foregroundColor === 'default' },
+        social.key,
+        className
+      )}
+      style={{
+        backgroundColor: backgroundColor,
+        fill: customColor ? foregroundColor : undefined,
+      }}
     >
       <element.type
         aria-hidden={ariaHidden}
