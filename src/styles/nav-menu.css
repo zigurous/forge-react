@@ -64,7 +64,7 @@
   pointer-events: all !important;
   border-radius: 50%;
   box-shadow: 0 1px 2px 0 rgba(16, 16, 16, 0.4), 0 -1px 2px 0 rgba(16, 16, 16, 0.4);
-  background-color: var(--blue, #0086e5);
+  background-color: var(--blue, #0099ff);
   transition: transform 0.2s;
 }
 
@@ -140,13 +140,13 @@
 }
 
 .nav-menu__item > a:hover {
-  color: var(--theme-nav-skin-decoration-color, #0086e5);
+  color: var(--theme-nav-skin-decoration-color, #0099ff);
   border: none;
   padding-right: 40px;
 }
 
 .nav-menu__item > a.selected {
-  color: var(--theme-nav-skin-decoration-color, #0086e5);
+  color: var(--theme-nav-skin-decoration-color, #0099ff);
 }
 
 .nav-menu__item > span {
