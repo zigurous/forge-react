@@ -13,6 +13,7 @@ const SocialNavLinks = ({
   iconSize = 32,
   iconSpacing,
   links = [],
+  rounded = false,
 }) => (
   <div className={classNames('social-nav-links', className)}>
     <ul className="social-nav-links__list">
@@ -27,6 +28,7 @@ const SocialNavLinks = ({
             foregroundColor={foregroundColor}
             innerPadding={iconInnerPadding}
             link={link}
+            rounded={rounded}
             size={iconSize}
           />
         </li>
@@ -43,6 +45,7 @@ SocialNavLinks.propTypes = {
   iconSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   iconSpacing: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   links: PropTypes.arrayOf(SocialProps),
+  rounded: PropTypes.bool,
 };
 
 export default SocialNavLinks;

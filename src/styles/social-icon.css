@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.social-icon--rounded {
+  border-radius: 50%;
+}
+
 .social-icon > a,
 .social-icon > span {
   display: flex;

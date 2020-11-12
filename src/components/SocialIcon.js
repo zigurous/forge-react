@@ -13,6 +13,7 @@ const SocialIcon = ({
   foregroundColor = 'auto',
   innerPadding = 8,
   link,
+  rounded = false,
   size = 24,
 }) => {
   const social = typeof link === 'string' ? socialLinks[link] : link;
@@ -25,6 +26,7 @@ const SocialIcon = ({
     <div
       className={classNames(
         'social-icon',
+        { 'social-icon--rounded': rounded },
         { 'social-icon--auto': foregroundColor === 'auto' },
         { 'social-icon--default': foregroundColor === 'default' },
         social.key,
@@ -58,6 +60,7 @@ SocialIcon.propTypes = {
   foregroundColor: PropTypes.string,
   innerPadding: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   link: SocialProps.isRequired,
+  rounded: PropTypes.bool,
   size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
