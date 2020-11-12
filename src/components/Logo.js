@@ -44,13 +44,21 @@ export const logoThemes = {
 const Logo = ({
   altText = 'Logo',
   ariaHidden = false,
+  autoAdjustMargin = false,
   className,
   onClick,
   size = 'md',
   theme = 'dark',
   variant = 'logo',
 }) => (
-  <div className={classNames('logo', size, className)}>
+  <div
+    className={classNames(
+      'logo',
+      { 'logo--adjust-margin': autoAdjustMargin },
+      size,
+      className
+    )}
+  >
     {onClick ? (
       <button
         className="logo-button"
@@ -80,6 +88,7 @@ const Logo = ({
 Logo.propTypes = {
   altText: PropTypes.string,
   ariaHidden: PropTypes.bool,
+  autoAdjustMargin: PropTypes.bool,
   className: PropTypes.string,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
