@@ -118,7 +118,7 @@ const socials = {
   email: {
     key: 'email',
     name: 'Email',
-    color: '#cccccc',
+    color: '#808080',
     url: 'mailto:adam@zigurous.com',
     svg: (
       <svg
