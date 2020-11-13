@@ -52,6 +52,10 @@
   fill: #1877f2;
 }
 
+.social-icon--default.github {
+  fill: #191717;
+}
+
 .social-icon--default.instagram {
   fill: #e4405f;
 }
