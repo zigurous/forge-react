@@ -48,12 +48,14 @@ const Logo = ({
   className,
   onClick,
   size = 'md',
+  shadowed = false,
   theme = 'dark',
   variant = 'logo',
 }) => (
   <div
     className={classNames(
       'logo',
+      { 'logo--shadowed': shadowed },
       { 'logo--adjust-margin': autoAdjustMargin },
       size,
       className
@@ -92,6 +94,7 @@ Logo.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  shadowed: PropTypes.bool,
   theme: PropTypes.oneOf(['dark', 'light', 'mono-black', 'mono-white']),
   variant: PropTypes.oneOf(['logo', 'logomark']),
 };
