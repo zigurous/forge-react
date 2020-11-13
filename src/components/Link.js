@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { SocialProps } from '../socials';
+import '../styles/link.css';
 
 const Link = ({
   children,
@@ -9,11 +10,16 @@ const Link = ({
   external = false,
   href,
   link,
+  noUnderline = false,
   rel,
   target,
 }) => (
   <a
-    className={classNames('link', className)}
+    className={classNames(
+      'link',
+      { 'link--no-underline': noUnderline },
+      className
+    )}
     href={href || (typeof link === 'string' ? link : link.url)}
     rel={rel || (external ? 'noopener noreferrer' : undefined)}
     target={target || (external ? '_blank' : undefined)}
@@ -28,6 +34,7 @@ Link.propTypes = {
   external: PropTypes.bool,
   href: PropTypes.string,
   link: SocialProps,
+  noUnderline: PropTypes.bool,
   rel: PropTypes.string,
   target: PropTypes.string,
 };
