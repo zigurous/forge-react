@@ -13,10 +13,12 @@ const Link = ({
   noUnderline = false,
   rel,
   target,
+  underlined = false,
 }) => (
   <a
     className={classNames(
       'link',
+      { 'link--underlined': underlined },
       { 'link--no-underline': noUnderline },
       className
     )}
@@ -37,6 +39,7 @@ Link.propTypes = {
   noUnderline: PropTypes.bool,
   rel: PropTypes.string,
   target: PropTypes.string,
+  underlined: PropTypes.bool,
 };
 
 export default Link;
