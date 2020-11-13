@@ -57,6 +57,7 @@ const Logo = ({
       'logo',
       { 'logo--shadowed': shadowed },
       { 'logo--adjust-margin': autoAdjustMargin },
+      { logomark: variant === 'logomark' },
       size,
       className
     )}

@@ -18,6 +18,10 @@
 }
 
 .logo-button:hover {
+  transform: scale(1.05);
+}
+
+.logomark .logo-button:hover {
   transform: scale(1.1);
 }
 
