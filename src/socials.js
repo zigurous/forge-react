@@ -34,7 +34,7 @@ const socials = {
     key: 'youtube',
     name: 'YouTube',
     color: '#ff0000',
-    url: 'http://www.youtube.com/user/Zigurous',
+    url: 'https://www.youtube.com/c/Zigurous',
     svg: (
       <svg
         focusable="false"
