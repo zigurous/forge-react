@@ -4,11 +4,11 @@
 .logo.lg { height: 96px; }
 .logo.xl { height: 128px; }
 
-.logo--adjust-margin.xs { margin-left: -8px; }
-.logo--adjust-margin.sm { margin-left: -12px; }
-.logo--adjust-margin.md { margin-left: -16px; }
-.logo--adjust-margin.lg { margin-left: -20px; }
-.logo--adjust-margin.xl { margin-left: -24px; }
+.logo--adjust-margin.xs { margin-left: -4px; }
+.logo--adjust-margin.sm { margin-left: -8px; }
+.logo--adjust-margin.md { margin-left: -12px; }
+.logo--adjust-margin.lg { margin-left: -16px; }
+.logo--adjust-margin.xl { margin-left: -20px; }
 
 .logo-button {
   height: 100%;
