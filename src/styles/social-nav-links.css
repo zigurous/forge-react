@@ -17,7 +17,7 @@
 }
 
 .social-nav-links__item {
-  transition: opacity 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
 }
 
 .social-nav-links__list:hover .social-nav-links__item {
@@ -26,6 +26,7 @@
 
 .social-nav-links__item:hover {
   opacity: 1 !important;
+  transform: scale(1.1);
 }
 
 .page .social-nav-links {
