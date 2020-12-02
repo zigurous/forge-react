@@ -29,6 +29,7 @@
   margin-right: 8px;
   transition: color 0.3s;
   text-decoration: none;
+  font-weight: 500;
   color: var(--theme-nav-skin-color);
 }
 

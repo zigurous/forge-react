@@ -14,7 +14,7 @@ const NavBar = ({ className, NavLink, routes = [] }) => (
             strict={Boolean(route.strict)}
             to={route.path}
           >
-            <b>{route.name}</b>
+            {route.name}
           </NavLink>
         </li>
       ))}
