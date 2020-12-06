@@ -10,16 +10,16 @@ const Link = ({
   external = false,
   href,
   link,
-  noUnderline = false,
   rel,
   target,
+  undecorated = false,
   underlined = false,
 }) => (
   <a
     className={classNames(
       'link',
       { 'link--underlined': underlined },
-      { 'link--no-underline': noUnderline },
+      { 'link--undecorated': undecorated },
       className
     )}
     href={href || (typeof link === 'string' ? link : link.url)}
@@ -36,9 +36,9 @@ Link.propTypes = {
   external: PropTypes.bool,
   href: PropTypes.string,
   link: SocialProps,
-  noUnderline: PropTypes.bool,
   rel: PropTypes.string,
   target: PropTypes.string,
+  undecorated: PropTypes.bool,
   underlined: PropTypes.bool,
 };
 
