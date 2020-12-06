@@ -4,6 +4,7 @@ export { default as Button } from './components/Button';
 export { default as ButtonGroup } from './components/ButtonGroup';
 export { default as ClickableDiv } from './components/ClickableDiv';
 export { default as EmbeddedTwitch } from './components/EmbeddedTwitch';
+export { default as ImageGallery } from './components/ImageGallery';
 export { default as Link } from './components/Link';
 export { default as Logo } from './components/Logo';
 export { default as Modal } from './components/Modal';

@@ -1,0 +1,18 @@
+.image-gallery {
+  position: relative;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.image-gallery__thumbnails {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.image-gallery__thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
