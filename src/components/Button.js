@@ -29,6 +29,8 @@ const Button = ({
   </button>
 );
 
+export const buttonSizes = ['sm', 'small', 'md', 'medium', 'lg', 'large'];
+
 Button.propTypes = {
   children: PropTypes.node,
   circle: PropTypes.bool,
@@ -36,7 +38,7 @@ Button.propTypes = {
   rounded: PropTypes.bool,
   leftIcon: PropTypes.element,
   rightIcon: PropTypes.element,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(buttonSizes),
 };
 
 export default Button;

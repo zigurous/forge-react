@@ -16,32 +16,38 @@
   color: var(--theme-button-secondary-color);
 }
 
+.button--sm,
 .button--small {
   padding: 12px 24px;
   font-size: 15px;
   line-height: 1.5em;
 }
 
+.button--sm.button--rounded,
 .button--small.button--rounded {
   border-radius: 24px;
 }
 
+.button--md,
 .button--medium {
   padding: 16px 32px;
   font-size: 18px;
   line-height: 1.5em;
 }
 
+.button--md.button--rounded,
 .button--medium.button--rounded {
   border-radius: 32px;
 }
 
+.button--lg,
 .button--large {
   padding: 20px 40px;
   font-size: 21px;
   line-height: 1.5em;
 }
 
+.button--lg.button--rounded,
 .button--large.button--rounded {
   border-radius: 40px;
 }

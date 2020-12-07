@@ -26,28 +26,13 @@ const images = {
   },
 };
 
-export const logoThemes = {
-  undefined: 'light',
-  white: 'light',
-  light: 'light',
-  'light-1': 'light',
-  'light-2': 'light',
-  'light-3': 'light',
-  black: 'dark',
-  dark: 'dark',
-  'dark-1': 'dark',
-  'dark-2': 'dark',
-  'dark-3': 'dark',
-  blue: 'mono-white',
-};
-
 const Logo = ({
   altText = 'Logo',
   ariaHidden = false,
   autoAdjustMargin = false,
   className,
   onClick,
-  size = 'md',
+  size = 'medium',
   shadowed = false,
   theme = 'dark',
   variant = 'logo',
@@ -88,13 +73,41 @@ const Logo = ({
   </div>
 );
 
+export const logoSizes = [
+  'xs',
+  'extraSmall',
+  'sm',
+  'small',
+  'md',
+  'medium',
+  'lg',
+  'large',
+  'xl',
+  'extraLarge',
+];
+
+export const logoThemes = {
+  undefined: 'light',
+  white: 'light',
+  light: 'light',
+  'light-1': 'light',
+  'light-2': 'light',
+  'light-3': 'light',
+  black: 'dark',
+  dark: 'dark',
+  'dark-1': 'dark',
+  'dark-2': 'dark',
+  'dark-3': 'dark',
+  blue: 'mono-white',
+};
+
 Logo.propTypes = {
   altText: PropTypes.string,
   ariaHidden: PropTypes.bool,
   autoAdjustMargin: PropTypes.bool,
   className: PropTypes.string,
   onClick: PropTypes.func,
-  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  size: PropTypes.oneOf(logoSizes),
   shadowed: PropTypes.bool,
   theme: PropTypes.oneOf(['dark', 'light', 'mono-black', 'mono-white']),
   variant: PropTypes.oneOf(['logo', 'logomark']),

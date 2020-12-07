@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Logo, { logoThemes } from './Logo';
+import Logo, { logoSizes, logoThemes } from './Logo';
 import NavBar from './NavBar';
 import NavMenu from './NavMenu';
 import SocialNavLinks from './SocialNavLinks';
@@ -13,7 +13,7 @@ const AppHeader = ({
   className,
   fullBleed = true,
   location,
-  logoSize = 'md',
+  logoSize = 'medium',
   logoVariant = 'emblem',
   navigationStyle = 'menu',
   NavLink,
@@ -94,7 +94,7 @@ AppHeader.propTypes = {
     pathname: PropTypes.string,
     search: PropTypes.string,
   }),
-  logoSize: PropTypes.oneOf(['small', 'medium', 'large']),
+  logoSize: PropTypes.oneOf(logoSizes),
   logoVariant: PropTypes.oneOf(['logo', 'emblem']),
   navigationStyle: PropTypes.oneOf(['menu', 'bar']),
   NavLink: PropTypes.elementType,

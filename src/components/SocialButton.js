@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Button from './Button';
+import Button, { buttonSizes } from './Button';
 import SocialIcon from './SocialIcon';
 import socialLinks, { SocialProps } from '../socials';
 import '../styles/social-button.css';
 
 const iconSizes = {
-  small: 15,
-  medium: 18,
-  large: 21,
+  [buttonSizes.sm]: 15,
+  [buttonSizes.small]: 15,
+  [buttonSizes.md]: 18,
+  [buttonSizes.medium]: 18,
+  [buttonSizes.lg]: 21,
+  [buttonSizes.large]: 21,
 };
 
 const SocialButton = ({ className, link, size = 'medium', ...rest }) => {
@@ -46,7 +49,7 @@ const SocialButton = ({ className, link, size = 'medium', ...rest }) => {
 SocialButton.propTypes = {
   className: PropTypes.string,
   link: SocialProps.isRequired,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(buttonSizes),
 };
 
 export default SocialButton;

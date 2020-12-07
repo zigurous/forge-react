@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Logo, { logoThemes } from './Logo';
+import Logo, { logoSizes, logoThemes } from './Logo';
 import '../styles/app-footer.css';
 
 const AppFooter = ({
   className,
   fullBleed = false,
-  logoSize = 'sm',
+  logoSize = 'small',
   logoVariant = 'logo',
   onLogoClick = () => {},
   showCopyright = false,
@@ -52,7 +52,7 @@ const AppFooter = ({
 AppFooter.propTypes = {
   className: PropTypes.string,
   fullBleed: PropTypes.bool,
-  logoSize: PropTypes.oneOf(['small', 'medium', 'large']),
+  logoSize: PropTypes.oneOf(logoSizes),
   logoVariant: PropTypes.oneOf(['logo', 'emblem']),
   onLogoClick: PropTypes.func,
   showCopyright: PropTypes.bool,

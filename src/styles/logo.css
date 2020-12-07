@@ -1,14 +1,52 @@
-.logo.xs { height: 32px; }
-.logo.sm { height: 48px; }
-.logo.md { height: 72px; }
-.logo.lg { height: 96px; }
-.logo.xl { height: 128px; }
+.logo.xs,
+.logo.extraSmall {
+  height: 32px;
+}
 
-.logo--adjust-margin.xs { margin-left: -4px; }
-.logo--adjust-margin.sm { margin-left: -8px; }
-.logo--adjust-margin.md { margin-left: -12px; }
-.logo--adjust-margin.lg { margin-left: -16px; }
-.logo--adjust-margin.xl { margin-left: -20px; }
+.logo.sm,
+.logo.small {
+  height: 48px;
+}
+
+.logo.md,
+.logo.medium {
+  height: 72px;
+}
+
+.logo.lg,
+.logo.large {
+  height: 96px;
+}
+
+.logo.xl,
+.logo.extraLarge {
+  height: 128px;
+}
+
+.logo--adjust-margin.xs,
+.logo--adjust-margin.extraSmall {
+  margin-left: -4px;
+}
+
+.logo--adjust-margin.sm,
+.logo--adjust-margin.small {
+  margin-left: -8px;
+}
+
+.logo--adjust-margin.md,
+.logo--adjust-margin.medium {
+  margin-left: -12px;
+}
+
+.logo--adjust-margin.lg,
+.logo--adjust-margin.large {
+  margin-left: -16px;
+}
+
+.logo--adjust-margin.xl,
+.logo--adjust-margin.extraLarge {
+  margin-left: -20px;
+}
 
 .logo-button {
   height: 100%;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Logo, { logoThemes } from './Logo';
+import Logo, { logoSizes, logoThemes } from './Logo';
 import Modal from './Modal';
 import SocialNavLinks from './SocialNavLinks';
 import socialLinks from '../socials';
@@ -10,7 +10,7 @@ import '../styles/nav-menu.css';
 const NavMenu = ({
   className,
   location,
-  logoSize = 'md',
+  logoSize = 'medium',
   logoVariant = 'logo',
   NavLink,
   onLogoClick,
@@ -111,7 +111,7 @@ NavMenu.propTypes = {
     pathname: PropTypes.string,
     search: PropTypes.string,
   }),
-  logoSize: PropTypes.oneOf(['small', 'medium', 'large']),
+  logoSize: PropTypes.oneOf(logoSizes),
   logoVariant: PropTypes.oneOf(['logo', 'emblem']),
   NavLink: PropTypes.elementType.isRequired,
   onLogoClick: PropTypes.func,

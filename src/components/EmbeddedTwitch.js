@@ -36,7 +36,18 @@ EmbeddedTwitch.propTypes = {
   channel: PropTypes.string,
   className: PropTypes.string,
   muted: PropTypes.bool,
-  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  size: PropTypes.oneOf([
+    'xs',
+    'extraSmall',
+    'sm',
+    'small',
+    'md',
+    'medium',
+    'lg',
+    'large',
+    'xl',
+    'extraLarge',
+  ]),
 };
 
 export default EmbeddedTwitch;
