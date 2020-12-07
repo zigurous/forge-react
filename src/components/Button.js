@@ -7,7 +7,12 @@ const Button = ({
   children,
   circle = false,
   className,
+  external,
+  history,
   leftIcon,
+  link,
+  linkTarget = '_blank',
+  onClick,
   rightIcon,
   rounded = true,
   size = 'medium',
@@ -21,6 +26,15 @@ const Button = ({
       { [`button--${size}`]: size },
       className
     )}
+    onClick={(event) => {
+      if (onClick) {
+        onClick(event);
+      } else if (history && link && !external) {
+        history.push(link);
+      } else if (link && external) {
+        window.open(link, linkTarget);
+      }
+    }}
     {...rest}
   >
     {leftIcon}
@@ -35,9 +49,16 @@ Button.propTypes = {
   children: PropTypes.node,
   circle: PropTypes.bool,
   className: PropTypes.string,
-  rounded: PropTypes.bool,
+  external: PropTypes.bool,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
   leftIcon: PropTypes.element,
+  link: PropTypes.string,
+  linkTarget: PropTypes.string,
+  onClick: PropTypes.func,
   rightIcon: PropTypes.element,
+  rounded: PropTypes.bool,
   size: PropTypes.oneOf(buttonSizes),
 };
 
