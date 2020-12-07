@@ -5,6 +5,14 @@ import classNames from 'classnames';
 import 'react-image-lightbox/style.css';
 import '../styles/image-gallery.css';
 
+const imageSrc = (image) => {
+  if (typeof image === 'string') {
+    return image;
+  } else {
+    return image.src;
+  }
+};
+
 const ImageGallery = ({ className, columns = 4, images = [] }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
@@ -16,8 +24,11 @@ const ImageGallery = ({ className, columns = 4, images = [] }) => {
       >
         {images.map((image, index) => (
           <button
-            className="image-gallery__thumbnail"
-            key={typeof image === 'string' ? image : image.src}
+            className={classNames(
+              'image-gallery__thumbnail',
+              typeof image !== 'string' && image.className
+            )}
+            key={imageSrc(image)}
             onClick={() => {
               setImageIndex(index);
               setIsOpen(true);
@@ -33,9 +44,11 @@ const ImageGallery = ({ className, columns = 4, images = [] }) => {
       </div>
       {isOpen && (
         <Lightbox
-          mainSrc={images[imageIndex]}
-          nextSrc={images[(imageIndex + 1) % images.length]}
-          prevSrc={images[(imageIndex + images.length - 1) % images.length]}
+          mainSrc={imageSrc(images[imageIndex])}
+          nextSrc={imageSrc(images[(imageIndex + 1) % images.length])}
+          prevSrc={imageSrc(
+            images[(imageIndex + images.length - 1) % images.length]
+          )}
           onCloseRequest={() => {
             setIsOpen(false);
           }}
@@ -58,7 +71,8 @@ ImageGallery.propTypes = {
     PropTypes.oneOfType([
       PropTypes.shape({
         alt: PropTypes.string,
-        src: PropTypes.string,
+        className: PropTypes.string,
+        src: PropTypes.string.isRequired,
       }),
       PropTypes.string,
     ])
