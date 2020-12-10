@@ -63,11 +63,11 @@ const EmbeddedVideo = ({
   className,
   frameBorder = '0',
   height,
-  id = 'Player',
+  id = 'video-player',
   scrolling = 'no',
   size,
   src,
-  title = 'Video',
+  title = 'Video Player',
   width,
 }) => {
   const _width = width || (size && sizes[size || 'medium'].width);

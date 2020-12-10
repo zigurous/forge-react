@@ -39,6 +39,7 @@ const SocialIcon = ({
     >
       <element.type
         aria-hidden={ariaHidden}
+        aria-label={social.name}
         disabled={disabled}
         href={elementType === 'a' ? social.url : undefined}
         rel={elementType === 'a' ? 'noopener noreferrer' : undefined}

@@ -24,6 +24,7 @@ const ImageGallery = ({ className, columns = 4, images = [] }) => {
       >
         {images.map((image, index) => (
           <button
+            aria-label="Image Thumbnail"
             className={classNames(
               'image-gallery__thumbnail',
               typeof image !== 'string' && image.className
@@ -37,7 +38,7 @@ const ImageGallery = ({ className, columns = 4, images = [] }) => {
             {typeof image === 'string' ? (
               <img alt="" src={image} />
             ) : (
-              <img alt={image.alt} src={image.src} {...image} />
+              <img alt={image.alt || ''} src={image.src} {...image} />
             )}
           </button>
         ))}

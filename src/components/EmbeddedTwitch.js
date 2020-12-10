@@ -6,7 +6,7 @@ import EmbeddedVideo from './EmbeddedVideo';
 const EmbeddedTwitch = ({
   channel = 'zigurous',
   className,
-  id = 'Twitch Player',
+  id = 'twitch-player',
   muted = true,
   title = 'Twitch',
   ...props

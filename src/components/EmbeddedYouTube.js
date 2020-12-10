@@ -5,7 +5,7 @@ import EmbeddedVideo from './EmbeddedVideo';
 
 const EmbeddedYouTube = ({
   className,
-  id = 'YouTube Player',
+  id = 'youtube-player',
   origin,
   title = 'YouTube',
   videoId,
