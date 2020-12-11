@@ -4,11 +4,28 @@ import classNames from 'classnames';
 import { enterKeyHandler } from '../utils/eventHandlers';
 import '../styles/clickable-div.css';
 
-const ClickableDiv = ({ children, className, onClick, ...props }) => (
+const ClickableDiv = ({
+  children,
+  className,
+  external,
+  history,
+  link,
+  linkTarget = '_blank',
+  onClick,
+  ...props
+}) => (
   <div
     {...props}
     className={classNames('clickable-div', className)}
-    onClick={onClick}
+    onClick={(event) => {
+      if (onClick) {
+        onClick(event);
+      } else if (history && link && !external) {
+        history.push(link);
+      } else if (link && external) {
+        window.open(link, linkTarget);
+      }
+    }}
     onKeyDown={enterKeyHandler(onClick)}
     role="button"
     tabIndex="0"
@@ -20,6 +37,12 @@ const ClickableDiv = ({ children, className, onClick, ...props }) => (
 ClickableDiv.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  external: PropTypes.bool,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
+  link: PropTypes.string,
+  linkTarget: PropTypes.string,
   onClick: PropTypes.func,
 };
 
