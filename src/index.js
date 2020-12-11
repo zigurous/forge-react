@@ -6,6 +6,7 @@ export { default as ClickableDiv } from './components/ClickableDiv';
 export { default as EmbeddedTwitch } from './components/EmbeddedTwitch';
 export { default as EmbeddedVideo } from './components/EmbeddedVideo';
 export { default as EmbeddedYouTube } from './components/EmbeddedYouTube';
+export { default as ImageFadeIn } from './components/ImageFadeIn';
 export { default as ImageGallery } from './components/ImageGallery';
 export { default as Link } from './components/Link';
 export { default as Logo } from './components/Logo';

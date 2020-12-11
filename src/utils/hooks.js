@@ -2,15 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 
 export const useImageLoading = () => {
   const imageRef = useRef();
-  const [loading, setLoading] = useState(true);
+  const [loaded, setLoaded] = useState(false);
 
   const loadComplete = () => {
-    setLoading(false);
+    setLoaded(true);
   };
 
   useEffect(() => {
     const image = imageRef.current;
-    if (image && loading) {
+    if (image && !loaded) {
       if (image.complete) {
         loadComplete();
       } else {
@@ -22,9 +22,9 @@ export const useImageLoading = () => {
         image.removeEventListener('load', loadComplete);
       }
     };
-  }, [imageRef, loading]);
+  }, [imageRef, loaded]);
 
-  return [imageRef, loading];
+  return [imageRef, loaded];
 };
 
 export const useMounted = () => {
