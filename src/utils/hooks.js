@@ -1,22 +1,30 @@
 import { useEffect, useRef, useState } from 'react';
 
-const parallaxEnabled = false;
+export const useImageLoading = () => {
+  const imageRef = useRef();
+  const [loading, setLoading] = useState(true);
 
-export const useParallax = () => {
-  const container = useRef();
+  const loadComplete = () => {
+    setLoading(false);
+  };
 
   useEffect(() => {
-    if (
-      parallaxEnabled &&
-      container.current &&
-      window.chrome &&
-      window.innerWidth >= 1366
-    ) {
-      container.current.classList.add('js-parallax');
+    const image = imageRef.current;
+    if (image && loading) {
+      if (image.complete) {
+        loadComplete();
+      } else {
+        image.addEventListener('load', loadComplete);
+      }
     }
-  }, [container]);
+    return () => {
+      if (image) {
+        image.removeEventListener('load', loadComplete);
+      }
+    };
+  }, [imageRef, loading]);
 
-  return container;
+  return [imageRef, loading];
 };
 
 export const useMounted = () => {
@@ -25,4 +33,16 @@ export const useMounted = () => {
     setMounted(true);
   }, []);
   return mounted;
+};
+
+export const useParallax = () => {
+  const container = useRef();
+
+  useEffect(() => {
+    if (container.current && window.chrome && window.innerWidth >= 1366) {
+      container.current.classList.add('js-parallax');
+    }
+  }, [container]);
+
+  return container;
 };
