@@ -31,16 +31,16 @@
   transition: color 0.3s;
   text-decoration: none;
   font-weight: 500;
-  color: var(--theme-nav-skin-color);
+  color: var(--color-nav-skin);
 }
 
 .nav-bar__item a:hover,
 .nav-bar__item a:active {
   border-bottom: none;
-  color: var(--theme-nav-skin-decoration-color);
+  color: var(--color-nav-skin-decoration);
 }
 
 .nav-bar__item a.selected {
   text-decoration: none;
-  border-bottom: solid 1px var(--theme-nav-skin-decoration-color);
+  border-bottom: solid 1px var(--color-nav-skin-decoration);
 }

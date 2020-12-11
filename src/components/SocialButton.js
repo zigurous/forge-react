@@ -36,9 +36,9 @@ const SocialButton = ({ className, link, size = 'medium', ...rest }) => {
       }}
       size={size}
       style={{
-        '--theme-social-icon-color': social.color,
-        '--theme-button-primary-color': social.color,
-        '--theme-button-secondary-color': 'white',
+        '--color-social-icon': social.color,
+        '--color-button-primary': social.color,
+        '--color-button-secondary': 'white',
       }}
     >
       {social.name}

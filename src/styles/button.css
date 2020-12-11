@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--theme-button-primary-color);
-  border: solid 1px var(--theme-button-primary-color);
+  color: var(--color-button-primary);
+  border: solid 1px var(--color-button-primary);
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
   text-transform: uppercase;
   font-weight: 600;
@@ -12,8 +12,8 @@
 .button-skin:hover:not(:disabled),
 .button-skin:focus:not(:disabled),
 .button-skin:active:not(:disabled) {
-  background-color: var(--theme-button-primary-color);
-  color: var(--theme-button-secondary-color);
+  background-color: var(--color-button-primary);
+  color: var(--color-button-secondary);
 }
 
 .button--sm,

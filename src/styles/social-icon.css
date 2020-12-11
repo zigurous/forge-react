@@ -37,7 +37,7 @@
 }
 
 .social-icon--auto svg {
-  fill: var(--theme-social-icon-color);
+  fill: var(--color-social-icon);
 }
 
 .social-icon--default.discord {

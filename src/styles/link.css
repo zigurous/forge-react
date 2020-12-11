@@ -1,5 +1,5 @@
 .link--underlined {
-  border-bottom: dotted 1px var(--theme-link-color, inherit);
+  border-bottom: dotted 1px var(--color-link, inherit);
 }
 
 .link--undecorated {

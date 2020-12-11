@@ -38,6 +38,6 @@
   opacity: 0.5;
 }
 
-.app-footer[theme="dark"] .copyright {
-  color: gray;
+.app-footer .copyright {
+  color: var(--color-copyright);
 }
