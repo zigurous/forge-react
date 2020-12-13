@@ -24,11 +24,11 @@ export const sizes = {
   },
   md: {
     width: 640,
-    height: 320,
+    height: 360,
   },
   medium: {
     width: 640,
-    height: 320,
+    height: 360,
   },
   lg: {
     width: 960,
@@ -73,15 +73,12 @@ const EmbeddedVideo = ({
   width,
 }) => {
   const [ref, loading] = useLoading();
-  const _width = width || (size && sizes[size || 'medium'].width);
-  const _height = height || (size && sizes[size || 'medium'].height);
+  const _width = width || (size && sizes[size].width);
+  const _height = height || (size && sizes[size].height);
   return (
     <div
       className={classNames('embedded-video', { loading }, size, className)}
-      style={{
-        width: formatSize(_width),
-        height: formatSize(_height),
-      }}
+      style={{ width: formatSize(_width), height: formatSize(_height) }}
     >
       <div
         className={classNames(
@@ -94,13 +91,13 @@ const EmbeddedVideo = ({
         <iframe
           allowFullScreen={allowFullScreen}
           frameBorder={frameBorder}
-          height={_height}
+          height={_height || '100%'}
           id={id}
           ref={ref}
           scrolling={scrolling}
           src={src}
           title={title}
-          width={_width}
+          width={_width || '100%'}
         />
       </div>
       {loading && <LoadingSpinner />}
