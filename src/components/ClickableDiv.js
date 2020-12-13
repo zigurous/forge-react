@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { enterKeyHandler } from '../utils/eventHandlers';
-import '../styles/clickable-div.css';
 
 const ClickableDiv = ({
   children,
@@ -16,7 +15,7 @@ const ClickableDiv = ({
 }) => (
   <div
     {...props}
-    className={classNames('clickable-div', className)}
+    className={classNames(className, 'cursor-pointer')}
     onClick={(event) => {
       if (onClick) {
         onClick(event);
