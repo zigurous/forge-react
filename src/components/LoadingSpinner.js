@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import '../styles/loading-spinner.css';
 
 const LoadingSpinner = ({ className }) => (
-  <div className={classNames('loading-spinner', className)}>
+  <div aria-hidden className={classNames('loading-spinner', className)}>
     <div />
     <div />
     <div />
