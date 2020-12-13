@@ -2,9 +2,10 @@
   "name": "@zigurous/react-components",
   "version": "1.0.0",
   "repository": "https://github.com/zigurous/react-components",
+  "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
-  "source": "src/index.js",
+  "unpkg": "dist/index.umd.js",
   "private": true,
   "engines": {
     "node": ">=10"
