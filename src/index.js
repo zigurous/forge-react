@@ -9,6 +9,7 @@ export { default as EmbeddedYouTube } from './components/EmbeddedYouTube';
 export { default as ImageFadeIn } from './components/ImageFadeIn';
 export { default as ImageGallery } from './components/ImageGallery';
 export { default as Link } from './components/Link';
+export { default as LoadingSpinner } from './components/LoadingSpinner';
 export { default as Logo } from './components/Logo';
 export { default as Modal } from './components/Modal';
 export { default as NavBar } from './components/NavBar';

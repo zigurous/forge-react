@@ -24,6 +24,13 @@
   height: 100%;
 }
 
+.embedded-video .loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .embedded-video.xs,
 .embedded-video.extraSmall {
   /* width: 320px;

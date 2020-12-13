@@ -2,15 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 
 export const useLoading = () => {
   const ref = useRef();
-  const [loaded, setLoaded] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const loadComplete = () => {
-    setLoaded(true);
+    setLoading(false);
   };
 
   useEffect(() => {
     const element = ref.current;
-    if (element && !loaded) {
+    if (element && loading) {
       if (element.complete) {
         loadComplete();
       } else {
@@ -22,9 +22,9 @@ export const useLoading = () => {
         element.removeEventListener('load', loadComplete);
       }
     };
-  }, [ref, loaded]);
+  }, [ref, loading]);
 
-  return [ref, loaded];
+  return [ref, loading];
 };
 
 export const useMounted = () => {

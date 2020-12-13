@@ -4,14 +4,14 @@ import classNames from 'classnames';
 import { useLoading } from '../utils/hooks';
 
 const ImageFadeIn = ({ alt, children, className, src, ...props }) => {
-  const [ref, loaded] = useLoading();
+  const [ref, loading] = useLoading();
   return (
     <img
       {...props}
       alt={alt || ''}
       className={classNames(className, 'transition', 'fade-in', {
-        visible: loaded,
-        hidden: !loaded,
+        loading,
+        visible: !loading,
       })}
       ref={ref}
       src={src}

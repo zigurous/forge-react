@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import LoadingSpinner from './LoadingSpinner';
 import { useLoading } from '../utils/hooks';
 import '../styles/embedded-video.css';
 
@@ -71,17 +72,12 @@ const EmbeddedVideo = ({
   title = 'Video Player',
   width,
 }) => {
-  const [ref, loaded] = useLoading();
+  const [ref, loading] = useLoading();
   const _width = width || (size && sizes[size || 'medium'].width);
   const _height = height || (size && sizes[size || 'medium'].height);
   return (
     <div
-      className={classNames(
-        'embedded-video',
-        { loading: !loaded },
-        size,
-        className
-      )}
+      className={classNames('embedded-video', { loading }, size, className)}
       style={{
         width: formatSize(_width),
         height: formatSize(_height),
@@ -92,7 +88,7 @@ const EmbeddedVideo = ({
           'embedded-video__wrapper',
           'transition',
           'fade-in',
-          { visible: loaded }
+          { visible: !loading }
         )}
       >
         <iframe
@@ -107,6 +103,7 @@ const EmbeddedVideo = ({
           width={_width}
         />
       </div>
+      {loading && <LoadingSpinner />}
     </div>
   );
 };
