@@ -12,6 +12,7 @@ const Link = ({
   link,
   rel,
   target,
+  to,
   undecorated = false,
   underlined = false,
 }) => (
@@ -22,7 +23,7 @@ const Link = ({
       { 'link--undecorated': undecorated },
       className
     )}
-    href={href || (typeof link === 'string' ? link : link.url)}
+    href={href || to || (typeof link === 'string' ? link : link.url)}
     rel={rel || (external ? 'noopener noreferrer' : undefined)}
     target={target || (external ? '_blank' : undefined)}
   >
@@ -38,6 +39,7 @@ Link.propTypes = {
   link: SocialProps,
   rel: PropTypes.string,
   target: PropTypes.string,
+  to: PropTypes.string,
   undecorated: PropTypes.bool,
   underlined: PropTypes.bool,
 };
