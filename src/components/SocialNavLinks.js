@@ -14,9 +14,10 @@ const SocialNavLinks = ({
   iconSpacing,
   links = [],
   rounded = false,
+  wrap = false,
 }) => (
   <div className={classNames('social-nav-links', className)}>
-    <ul className="social-nav-links__list">
+    <ul className={classNames('social-nav-links__list', { 'flex-wrap': wrap })}>
       {links.map((link) => (
         <li
           className="social-nav-links__item"
@@ -46,6 +47,7 @@ SocialNavLinks.propTypes = {
   iconSpacing: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   links: PropTypes.arrayOf(SocialProps),
   rounded: PropTypes.bool,
+  wrap: PropTypes.bool,
 };
 
 export default SocialNavLinks;

@@ -8,7 +8,6 @@
 .social-nav-links__list {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   list-style: none;
   padding-inline-start: 0;
   padding-inline-end: 0;
