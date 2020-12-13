@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { useLoading } from '../utils/hooks';
 import '../styles/embedded-video.css';
 
 export const sizes = {
@@ -70,23 +71,42 @@ const EmbeddedVideo = ({
   title = 'Video Player',
   width,
 }) => {
+  const [ref, loaded] = useLoading();
   const _width = width || (size && sizes[size || 'medium'].width);
   const _height = height || (size && sizes[size || 'medium'].height);
   return (
     <div
-      className={classNames('embedded-video', size, className)}
-      style={{ width: formatSize(_width), height: formatSize(_height) }}
+      className={classNames(
+        'embedded-video',
+        { loading: !loaded },
+        size,
+        className
+      )}
+      style={{
+        width: formatSize(_width),
+        height: formatSize(_height),
+      }}
     >
-      <iframe
-        allowFullScreen={allowFullScreen}
-        frameBorder={frameBorder}
-        height={_height}
-        id={id}
-        scrolling={scrolling}
-        src={src}
-        title={title}
-        width={_width}
-      />
+      <div
+        className={classNames(
+          'embedded-video__wrapper',
+          'transition',
+          'fade-in',
+          { visible: loaded }
+        )}
+      >
+        <iframe
+          allowFullScreen={allowFullScreen}
+          frameBorder={frameBorder}
+          height={_height}
+          id={id}
+          ref={ref}
+          scrolling={scrolling}
+          src={src}
+          title={title}
+          width={_width}
+        />
+      </div>
     </div>
   );
 };

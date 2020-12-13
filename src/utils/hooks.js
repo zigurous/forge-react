@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
-export const useImageLoading = () => {
-  const imageRef = useRef();
+export const useLoading = () => {
+  const ref = useRef();
   const [loaded, setLoaded] = useState(false);
 
   const loadComplete = () => {
@@ -9,22 +9,22 @@ export const useImageLoading = () => {
   };
 
   useEffect(() => {
-    const image = imageRef.current;
-    if (image && !loaded) {
-      if (image.complete) {
+    const element = ref.current;
+    if (element && !loaded) {
+      if (element.complete) {
         loadComplete();
       } else {
-        image.addEventListener('load', loadComplete);
+        element.addEventListener('load', loadComplete);
       }
     }
     return () => {
-      if (image) {
-        image.removeEventListener('load', loadComplete);
+      if (element) {
+        element.removeEventListener('load', loadComplete);
       }
     };
-  }, [imageRef, loaded]);
+  }, [ref, loaded]);
 
-  return [imageRef, loaded];
+  return [ref, loaded];
 };
 
 export const useMounted = () => {

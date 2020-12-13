@@ -6,6 +6,24 @@
   max-width: 100%;
 }
 
+.embedded-video::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.embedded-video__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .embedded-video.xs,
 .embedded-video.extraSmall {
   /* width: 320px;

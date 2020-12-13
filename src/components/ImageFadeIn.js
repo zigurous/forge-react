@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useImageLoading } from '../utils/hooks';
+import { useLoading } from '../utils/hooks';
 
 const ImageFadeIn = ({ alt, children, className, src, ...props }) => {
-  const [imageRef, loaded] = useImageLoading();
+  const [ref, loaded] = useLoading();
   return (
     <img
       {...props}
@@ -13,7 +13,7 @@ const ImageFadeIn = ({ alt, children, className, src, ...props }) => {
         visible: loaded,
         hidden: !loaded,
       })}
-      ref={imageRef}
+      ref={ref}
       src={src}
     >
       {children}
