@@ -56,6 +56,7 @@ const ImageGallery = ({
       </div>
       {isOpen && (
         <Lightbox
+          enableZoom={false}
           mainSrc={imageSrc(images[imageIndex])}
           nextSrc={imageSrc(images[(imageIndex + 1) % images.length])}
           prevSrc={imageSrc(
@@ -70,6 +71,7 @@ const ImageGallery = ({
           onMoveNextRequest={() => {
             setImageIndex((imageIndex + 1) % images.length);
           }}
+          wrapperClassName="image-gallery__lightbox"
         />
       )}
     </div>

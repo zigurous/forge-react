@@ -16,3 +16,37 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+.image-gallery__lightbox .ril__toolbar {
+  height: 10vh;
+  background-color: transparent;
+}
+
+.image-gallery__lightbox .ril__toolbarSide {
+  height: 100%;
+}
+
+.image-gallery__lightbox .ril__toolbarLeftSide {
+  padding-left: 0;
+}
+
+.image-gallery__lightbox .ril__toolbarRightSide {
+  padding-right: 0;
+}
+
+.image-gallery__lightbox .ril__toolbarItem {
+  width: 10vh;
+  height: 100%;
+}
+
+.image-gallery__lightbox .ril__navButtons {
+  width: 10%;
+  height: 100%;
+  padding: 0;
+  background-color: transparent;
+}
+
+.image-gallery__lightbox .ril__builtinButton {
+  width: 100%;
+  height: 100%;
+}
