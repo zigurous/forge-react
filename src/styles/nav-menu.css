@@ -118,6 +118,7 @@
   text-transform: uppercase;
   text-align: right;
   list-style: none;
+  white-space: nowrap;
 }
 
 .nav-menu__item { transition: transform 0.5s, opacity 0.4s; }
