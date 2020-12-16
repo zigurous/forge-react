@@ -7,6 +7,7 @@ import { useLoading } from '../utils/hooks';
 const ImageFadeIn = ({
   alt,
   className,
+  loadingSpinnerProps = {},
   showLoadingSpinner = false,
   src,
   ...props
@@ -24,7 +25,9 @@ const ImageFadeIn = ({
         ref={ref}
         src={src}
       />
-      {showLoadingSpinner && loading && <LoadingSpinner />}
+      {showLoadingSpinner && loading && (
+        <LoadingSpinner {...loadingSpinnerProps} loading={loading} />
+      )}
     </React.Fragment>
   );
 };
@@ -32,6 +35,7 @@ const ImageFadeIn = ({
 ImageFadeIn.propTypes = {
   alt: PropTypes.string,
   className: PropTypes.string,
+  loadingSpinnerProps: PropTypes.object,
   showLoadingSpinner: PropTypes.bool,
   src: PropTypes.string.isRequired,
 };
