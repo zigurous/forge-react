@@ -21,5 +21,10 @@ export { default as socialLinks } from './socials';
 export { default as SocialNavLinks } from './components/SocialNavLinks';
 export { default as Thumbnail } from './components/Thumbnail';
 export { enterKeyHandler } from './utils/eventHandlers';
-export { useLoading, useMounted, useParallax } from './utils/hooks';
+export {
+  useFullscreenMenu,
+  useLoading,
+  useMounted,
+  useParallax,
+} from './utils/hooks';
 export { fadeIn, withTransition } from './utils/transitions';

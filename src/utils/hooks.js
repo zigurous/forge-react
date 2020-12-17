@@ -1,5 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 
+export const useFullscreenMenu = (initialState = false) => {
+  const [fullscreen, setFullscreen] = useState(Boolean(initialState));
+
+  useEffect(() => {
+    const body = document.querySelector('body');
+    if (body) {
+      if (fullscreen) {
+        body.classList.add('fullscreen-menu-open');
+      } else {
+        body.classList.remove('fullscreen-menu-open');
+      }
+    }
+  }, [fullscreen]);
+
+  return [fullscreen, setFullscreen];
+};
+
 export const useLoading = () => {
   const ref = useRef();
   const [loading, setLoading] = useState(true);
@@ -29,9 +46,11 @@ export const useLoading = () => {
 
 export const useMounted = () => {
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
     setMounted(true);
   }, []);
+
   return mounted;
 };
 
