@@ -24,6 +24,7 @@ export { enterKeyHandler } from './utils/eventHandlers';
 export {
   useFullscreenMenu,
   useLoading,
+  useMediaQuery,
   useMounted,
   useParallax,
 } from './utils/hooks';
