@@ -26,6 +26,7 @@ export {
   useMediaQuery,
   useMounted,
   useParallax,
+  useThemedFavicon,
 } from './hooks';
 export { enterKeyHandler } from './utils/eventHandlers';
 export { fadeIn, withTransition } from './utils/transitions';
