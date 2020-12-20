@@ -20,12 +20,12 @@ export { default as SocialIcon } from './components/SocialIcon';
 export { default as socialLinks } from './socials';
 export { default as SocialNavLinks } from './components/SocialNavLinks';
 export { default as Thumbnail } from './components/Thumbnail';
-export { enterKeyHandler } from './utils/eventHandlers';
 export {
   useFullscreenMenu,
   useLoading,
   useMediaQuery,
   useMounted,
   useParallax,
-} from './utils/hooks';
+} from './hooks';
+export { enterKeyHandler } from './utils/eventHandlers';
 export { fadeIn, withTransition } from './utils/transitions';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useMounted } from './hooks';
+import { useMounted } from '../hooks';
 
 const transitionTriggers = {
   'fade-in': 'visible',

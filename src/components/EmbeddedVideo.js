@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import LoadingSpinner from './LoadingSpinner';
-import { useLoading } from '../utils/hooks';
+import { useLoading } from '../hooks';
 import '../styles/embedded-video.css';
 
 export const sizes = {

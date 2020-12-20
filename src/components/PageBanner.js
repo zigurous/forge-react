@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useParallax } from '../utils/hooks';
+import { useParallax } from '../hooks';
 import '../styles/page-banner.css';
 
 const PageBanner = ({
