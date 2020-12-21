@@ -8,9 +8,11 @@ const EmbeddedTwitch = ({
   className,
   id = 'twitch-player',
   muted = true,
+  secure = true,
   title = 'Twitch',
   ...props
 }) => {
+  const protocol = secure ? 'https' : 'http';
   const parents = ['zigurous.com', 'www.zigurous.com'];
   if (process.env.NODE_ENV === 'development') {
     parents.push('localhost');
@@ -19,7 +21,7 @@ const EmbeddedTwitch = ({
     <EmbeddedVideo
       className={classNames('twitch', className)}
       id={id}
-      src={`https://player.twitch.tv/?channel=${channel}&parent=${parents.join(
+      src={`${protocol}://player.twitch.tv/?channel=${channel}&parent=${parents.join(
         '&parent='
       )}&muted=${muted}`}
       title={title}
@@ -33,6 +35,7 @@ EmbeddedTwitch.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
   muted: PropTypes.bool,
+  secure: PropTypes.bool,
   title: PropTypes.string,
 };
 

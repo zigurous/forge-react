@@ -14,6 +14,7 @@ const EmbeddedYouTube = ({
   id = 'youtube-player',
   muted = false,
   origin,
+  secure = true,
   startTime,
   title = 'YouTube',
   videoId,
@@ -29,11 +30,12 @@ const EmbeddedYouTube = ({
   if (autoplay) query += '&autoplay=1';
   if (muted) query += '&mute=1';
   if (startTime) query += `&start=${startTime}`;
+  const protocol = secure ? 'https' : 'http';
   return (
     <EmbeddedVideo
       className={classNames('youtube', className)}
       id={id}
-      src={`http://www.youtube.com/embed/${videoId}?${query}`}
+      src={`${protocol}://www.youtube.com/embed/${videoId}?${query}`}
       title={title}
       {...props}
     />
@@ -51,6 +53,7 @@ EmbeddedYouTube.propTypes = {
   id: PropTypes.string,
   muted: PropTypes.bool,
   origin: PropTypes.string.isRequired,
+  secure: PropTypes.bool,
   startTime: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
   title: PropTypes.string,
   videoId: PropTypes.string.isRequired,
