@@ -26,8 +26,9 @@ const useThemedFavicon = () => {
   }
 
   if (source) {
+    const url = new URL(source.href);
     favicon.setAttribute('type', source.type);
-    favicon.setAttribute('href', source.href);
+    favicon.setAttribute('href', url.pathname);
   }
 
   return favicon;
