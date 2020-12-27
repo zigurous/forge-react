@@ -32,12 +32,3 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
-
-.app-footer .logo {
-  margin-left: -8px;
-  opacity: 0.5;
-}
-
-.app-footer .copyright {
-  color: var(--color-copyright);
-}

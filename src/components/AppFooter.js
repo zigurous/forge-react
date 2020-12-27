@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Logo, { logoSizes, logoThemes } from './Logo';
 import '../styles/app-footer.css';
 
 const AppFooter = ({
+  children,
   className,
+  ContentLeft,
+  ContentRight,
   fullBleed = false,
-  logoSize = 'small',
-  logoVariant = 'logo',
-  onLogoClick = () => {},
-  showCopyright = false,
-  showLogo = false,
   sticky = false,
   theme,
   transparent = true,
@@ -32,31 +29,22 @@ const AppFooter = ({
       })}
     >
       <div className="app-footer__content left">
-        {showLogo && (
-          <Logo
-            onClick={onLogoClick}
-            size={logoSize}
-            theme={logoThemes[theme] || 'primary'}
-            variant={logoVariant}
-          />
-        )}
-        {showCopyright && (
-          <div className="copyright body-xs">Copyright © 2020 Adam Graham</div>
-        )}
+        {ContentLeft && <ContentLeft />}
       </div>
-      <div className="app-footer__content right" />
+      <div className="app-footer__content right">
+        {ContentRight && <ContentRight />}
+      </div>
     </div>
+    {children}
   </footer>
 );
 
 AppFooter.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
+  ContentLeft: PropTypes.elementType,
+  ContentRight: PropTypes.elementType,
   fullBleed: PropTypes.bool,
-  logoSize: PropTypes.oneOf(logoSizes),
-  logoVariant: PropTypes.oneOf(['logo', 'emblem']),
-  onLogoClick: PropTypes.func,
-  showCopyright: PropTypes.bool,
-  showLogo: PropTypes.bool,
   sticky: PropTypes.bool,
   theme: PropTypes.string,
   transparent: PropTypes.bool,
