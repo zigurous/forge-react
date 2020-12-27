@@ -37,7 +37,7 @@
 }
 
 .social-icon--auto svg {
-  fill: var(--color-social-icon);
+  fill: var(--color-social-icon, inherit);
 }
 
 .social-icon--default.discord {
@@ -70,4 +70,12 @@
 
 .social-icon--default.youtube {
   fill: #ff0000;
+}
+
+[theme="light"] .social-icon--default.github {
+  fill: #191717;
+}
+
+[theme="dark"] .social-icon--default.github {
+  fill: #fff;
 }

@@ -10,7 +10,7 @@ const SocialIcon = ({
   className,
   disabled = false,
   elementType = 'a',
-  foregroundColor = 'auto',
+  foregroundColor = 'default',
   innerPadding = 8,
   link,
   rounded = false,
@@ -27,8 +27,8 @@ const SocialIcon = ({
       className={classNames(
         'social-icon',
         { 'social-icon--rounded': rounded },
-        { 'social-icon--auto': foregroundColor === 'auto' },
         { 'social-icon--default': foregroundColor === 'default' },
+        { 'social-icon--auto': foregroundColor === 'auto' },
         social.key,
         className
       )}
