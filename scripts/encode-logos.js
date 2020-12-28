@@ -2,12 +2,12 @@ const Svg2Js = require('svg2js');
 const clipboardy = require('clipboardy');
 const encode = require('./svg-url-encoder');
 
+const variants = ['wordmark', 'lettermark'];
+const themes = ['dark', 'light'];
+
 async function encodeLogos() {
   return new Promise((resolve, reject) => {
-    const variants = ['logo', 'logomark'];
-    const themes = ['dark', 'light', 'mono-black', 'mono-white'];
-    const logos = { logo: {}, logomark: {} };
-
+    const logos = { wordmark: {}, lettermark: {} };
     let count = 0;
     variants.forEach((variant) => {
       themes.forEach((theme) => {
