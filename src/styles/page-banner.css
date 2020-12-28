@@ -1,8 +1,6 @@
 .page-banner {
   position: relative;
   width: 100%;
-  padding-top: 2em;
-  padding-bottom: 2em;
   z-index: 0;
 }
 
@@ -16,16 +14,9 @@
   z-index: 5;
 }
 
-.page-banner__container > section,
-.page-banner__container > div {
-  max-width: 100%;
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
-
 .page-banner::before {
   content: "";
-  background-color: var(--color-page-banner, inherit);
+  background-color: inherit;
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -40,32 +31,9 @@
   z-index: -1;
 }
 
-.page-banner.js-parallax {
-  transform-style: preserve-3d;
-}
-
-.page-banner.js-parallax .page-banner__container {
-  transform-origin: 50% 50%;
-  transform: translateZ(2px) scale(0.8);
-}
-
-.page-banner--left,
-.page-banner--right {
-  z-index: 1;
-}
-
-.page-banner--left::before {
-  transform: translate3d(-50%, 0, 0) skew(0, -1deg);
-  box-shadow: 0 0 1px transparent;
-}
-
-.page-banner--right::before {
-  transform: translate3d(-50%, 0, 0) skew(0, 1deg);
-  box-shadow: 0 0 1px transparent;
-}
-
-.page-banner--transparent::before {
-  background: none !important;
+.page-banner--header {
+  margin-top: -160px;
+  margin-bottom: 40px;
 }
 
 .page-banner--shadowed::before {
@@ -73,26 +41,41 @@
   z-index: 1;
 }
 
-@media (min-width: 576px) {
-  .page-banner {
-    padding-top: 4em;
-    padding-bottom: 4em;
-  }
+.page-banner--transparent::before {
+  background: none !important;
 }
 
-@media (min-width: 768px) {
-  .page-banner {
-    padding-top: 6em;
-    padding-bottom: 6em;
-  }
+.page-banner--xs,
+.page-banner--extraSmall {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.page-banner--sm,
+.page-banner--small {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.page-banner--md,
+.page-banner--medium {
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.page-banner--lg,
+.page-banner--large {
+  padding-top: 6em;
+  padding-bottom: 6em;
+}
+
+.page-banner--xl,
+.page-banner--extraLarge {
+  padding-top: 8em;
+  padding-bottom: 8em;
 }
 
 @media (min-width: 1200px) {
-  .page-banner {
-    padding-top: 8em;
-    padding-bottom: 8em;
-  }
-
   .page-banner__container {
     flex-direction: row;
     align-items: center;
@@ -100,13 +83,5 @@
 
   .page-banner--reversed .page-banner__container {
     flex-direction: row-reverse;
-  }
-
-  .page-banner__container > section,
-  .page-banner__container > div {
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 32px;
-    padding-right: 32px;
   }
 }

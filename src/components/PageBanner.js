@@ -1,33 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useParallax } from '../hooks';
 import '../styles/page-banner.css';
 
 const PageBanner = ({
   backgroundColor,
   children,
   className,
-  direction = 'right',
+  header = false,
   reversed = false,
   shadowed = false,
+  size = 'medium',
   theme,
   transparent = false,
 }) => {
-  const parallax = useParallax();
   return (
     <div
       className={classNames(
         'page-banner',
-        { [`page-banner--${direction}`]: direction && direction !== 'none' },
-        { [`page-banner--${theme}`]: theme },
-        { 'page-banner--transparent': transparent },
+        { [`page-banner--${size}`]: size },
+        { 'page-banner--header': header },
         { 'page-banner--reversed': reversed },
         { 'page-banner--shadowed': shadowed },
+        { 'page-banner--transparent': transparent },
         className
       )}
-      ref={parallax}
       style={{ backgroundColor: backgroundColor }}
+      theme={theme}
     >
       <div className="page-banner__container" theme={theme}>
         {children}
@@ -36,13 +35,27 @@ const PageBanner = ({
   );
 };
 
+export const pageBannerSizes = [
+  'xs',
+  'extraSmall',
+  'sm',
+  'small',
+  'md',
+  'medium',
+  'lg',
+  'large',
+  'xl',
+  'extraLarge',
+];
+
 PageBanner.propTypes = {
   backgroundColor: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
-  direction: PropTypes.oneOf(['none', 'left', 'right']),
+  header: PropTypes.bool,
   reversed: PropTypes.bool,
   shadowed: PropTypes.bool,
+  size: PropTypes.oneOf(pageBannerSizes),
   theme: PropTypes.string,
   transparent: PropTypes.bool,
 };
