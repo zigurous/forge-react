@@ -14,19 +14,14 @@ const imageSrc = (image) => {
   }
 };
 
-const ImageGallery = ({
-  className,
-  columns = 4,
-  fadeIn = true,
-  images = [],
-}) => {
+const ImageGallery = ({ className, columns, fadeIn = true, images = [] }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   return (
     <div className={classNames('image-gallery', className)}>
       <div
         className="image-gallery__thumbnails"
-        style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
+        style={{ gridTemplateColumns: `repeat(${columns || 'auto-fit'}, 1fr)` }}
       >
         {images.map((image, index) => {
           const isObject = typeof image !== 'string';

@@ -6,7 +6,7 @@
 
 .image-gallery__thumbnails {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, 1fr);
   column-gap: 16px;
   row-gap: 16px;
 }
@@ -14,8 +14,10 @@
 .image-gallery__thumbnail {
   position: relative;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+}
+
+.image-gallery__thumbnail img {
+  max-width: 100%;
 }
 
 .image-gallery__lightbox .ril__toolbar {
