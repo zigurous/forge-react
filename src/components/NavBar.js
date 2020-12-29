@@ -14,7 +14,12 @@ const NavBar = ({ className, NavLink, routes = [] }) => (
             strict={Boolean(route.strict)}
             to={route.path}
           >
-            {route.name}
+            {route.icon && (
+              <i aria-hidden className="material-icons margin-right-md">
+                {route.icon}
+              </i>
+            )}
+            <b>{route.name}</b>
           </NavLink>
         </li>
       ))}
