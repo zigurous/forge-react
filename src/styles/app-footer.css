@@ -1,7 +1,9 @@
 .app-footer {
   position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
-  height: 24vh;
+  min-height: 40px;
 }
 
 .app-footer--transparent {
@@ -24,11 +26,4 @@
 
 .app-footer--full-bleed .app-footer__container {
   max-width: 100%;
-}
-
-.app-footer__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
 }

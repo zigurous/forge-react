@@ -6,12 +6,10 @@ import '../styles/app-footer.css';
 const AppFooter = ({
   children,
   className,
-  ContentLeft,
-  ContentRight,
   fullBleed = false,
   sticky = false,
   theme,
-  transparent = true,
+  transparent = false,
 }) => (
   <footer
     className={classNames(
@@ -28,22 +26,14 @@ const AppFooter = ({
         'container-fluid': fullBleed,
       })}
     >
-      <div className="app-footer__content left">
-        {ContentLeft && <ContentLeft />}
-      </div>
-      <div className="app-footer__content right">
-        {ContentRight && <ContentRight />}
-      </div>
+      {children}
     </div>
-    {children}
   </footer>
 );
 
 AppFooter.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  ContentLeft: PropTypes.elementType,
-  ContentRight: PropTypes.elementType,
   fullBleed: PropTypes.bool,
   sticky: PropTypes.bool,
   theme: PropTypes.string,

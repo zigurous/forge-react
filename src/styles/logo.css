@@ -50,17 +50,8 @@
 
 .logo-button {
   height: 100%;
-  transition: transform 0.2s;
   pointer-events: all !important;
   cursor: pointer;
-}
-
-.logo-button:hover {
-  transform: scale(1.05);
-}
-
-.logomark .logo-button:hover {
-  transform: scale(1.1);
 }
 
 .logo-button:focus-visible {

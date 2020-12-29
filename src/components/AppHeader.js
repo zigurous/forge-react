@@ -1,30 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Logo, { logoSizes, logoThemes } from './Logo';
+import Logo, { logoSizes, logoVariants } from './Logo';
 import NavBar from './NavBar';
 import NavMenu from './NavMenu';
 import SocialNavLinks from './SocialNavLinks';
-import socialLinks from '../socials';
+import { SocialProps } from '../socials';
 import '../styles/app-header.css';
 
 const AppHeader = ({
   bordered = false,
   className,
-  fullBleed = true,
+  fullBleed = false,
   location,
-  logoSize = 'medium',
-  logoVariant = 'emblem',
-  navigationStyle = 'menu',
+  logoSize = 'small',
+  logoVariant = logoVariants[0],
+  navigationStyle = 'bar',
   NavLink,
   onLogoClick = () => {},
   routes = [],
   showLogo = true,
   showNavigation = true,
   showSocials = true,
+  socialLinks = [],
   sticky = false,
   theme,
-  transparent = true,
+  transparent = false,
 }) => {
   return (
     <header
@@ -49,7 +50,7 @@ const AppHeader = ({
               <Logo
                 onClick={onLogoClick}
                 size={logoSize}
-                theme={logoThemes[theme] || 'primary'}
+                theme={theme}
                 variant={logoVariant}
               />
             )}
@@ -95,7 +96,7 @@ AppHeader.propTypes = {
     search: PropTypes.string,
   }),
   logoSize: PropTypes.oneOf(logoSizes),
-  logoVariant: PropTypes.oneOf(['logo', 'emblem']),
+  logoVariant: PropTypes.oneOf(logoVariants),
   navigationStyle: PropTypes.oneOf(['menu', 'bar']),
   NavLink: PropTypes.elementType,
   onLogoClick: PropTypes.func,
@@ -110,6 +111,7 @@ AppHeader.propTypes = {
   showLogo: PropTypes.bool,
   showNavigation: PropTypes.bool,
   showSocials: PropTypes.bool,
+  socialLinks: PropTypes.arrayOf(SocialProps),
   sticky: PropTypes.bool,
   theme: PropTypes.string,
   transparent: PropTypes.bool,
