@@ -28,14 +28,16 @@ const SocialButton = ({
       {...rest}
       className={classNames('social-button', social.key, className)}
       leftIcon={
-        <SocialIcon
-          ariaHidden
-          className="margin-right-md"
-          elementType="span"
-          innerPadding={0}
-          link={link}
-          size={iconSizes[size]}
-        />
+        social.svg && (
+          <SocialIcon
+            ariaHidden
+            className="margin-right-md"
+            elementType="span"
+            innerPadding={0}
+            link={link}
+            size={iconSizes[size]}
+          />
+        )
       }
       onClick={() => {
         window.open(social.url, '_blank');
