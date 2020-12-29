@@ -7,12 +7,12 @@ import socialLinks, { SocialProps } from '../socials';
 import '../styles/social-button.css';
 
 const iconSizes = {
-  [buttonSizes.sm]: 15,
-  [buttonSizes.small]: 15,
-  [buttonSizes.md]: 18,
-  [buttonSizes.medium]: 18,
-  [buttonSizes.lg]: 21,
-  [buttonSizes.large]: 21,
+  sm: 16,
+  small: 16,
+  md: 20,
+  medium: 20,
+  lg: 24,
+  large: 24,
 };
 
 const SocialButton = ({ className, link, size = 'medium', ...rest }) => {
