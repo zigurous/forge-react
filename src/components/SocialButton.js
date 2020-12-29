@@ -15,7 +15,13 @@ const iconSizes = {
   large: 24,
 };
 
-const SocialButton = ({ className, link, size = 'medium', ...rest }) => {
+const SocialButton = ({
+  children,
+  className,
+  link,
+  size = 'medium',
+  ...rest
+}) => {
   const social = typeof link === 'string' ? socialLinks[link] : link;
   return (
     <Button
@@ -41,12 +47,13 @@ const SocialButton = ({ className, link, size = 'medium', ...rest }) => {
         '--color-button-secondary': 'white',
       }}
     >
-      {social.name}
+      {children || social.name}
     </Button>
   );
 };
 
 SocialButton.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
   link: SocialProps.isRequired,
   size: PropTypes.oneOf(buttonSizes),
