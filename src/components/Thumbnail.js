@@ -4,48 +4,59 @@ import classNames from 'classnames';
 import '../styles/thumbnail.css';
 
 const Thumbnail = ({
-  altText = '',
-  ariaHidden = false,
+  ariaLabel,
+  backgroundImage,
+  beveled,
+  bevelBottomColor = 'rgba(0, 0, 0, 0.5)',
+  bevelTopColor = 'rgba(255, 255, 255, 0.5)',
   className,
+  foregroundImage,
+  height = 256,
   href,
   rel,
-  src,
   target,
 }) => (
-  <div className="thumbnail">
-    {href ? (
-      <a
-        className={classNames('thumbnail-link', className)}
-        href={href}
-        rel={rel}
-        target={target}
-      >
-        <img
-          alt={altText}
-          aria-hidden={ariaHidden}
-          className="thumbnail-image"
-          src={src}
-        />
-      </a>
-    ) : (
+  <a
+    aria-label={ariaLabel}
+    className={classNames(
+      'thumbnail',
+      { 'thumbnail--bevel': beveled },
+      className
+    )}
+    href={href}
+    rel={rel}
+    target={target}
+    style={{
+      backgroundImage: `url(${backgroundImage})`,
+      borderBottomColor: beveled && bevelBottomColor,
+      borderTopColor: beveled && bevelTopColor,
+      height: height,
+    }}
+  >
+    {foregroundImage && (
       <img
-        alt={altText}
-        aria-hidden={ariaHidden}
-        className={classNames('thumbnail-image', className)}
-        src={src}
+        {...foregroundImage}
+        alt={foregroundImage.alt || ''}
+        src={foregroundImage.src}
       />
     )}
-  </div>
+  </a>
 );
 
 Thumbnail.propTypes = {
-  altText: PropTypes.string,
-  ariaHidden: PropTypes.bool,
+  ariaLabel: PropTypes.string,
+  backgroundImage: PropTypes.string,
+  beveled: PropTypes.bool,
+  bevelBottomColor: PropTypes.string,
+  bevelTopColor: PropTypes.string,
   className: PropTypes.string,
+  foregroundImage: PropTypes.shape({
+    alt: PropTypes.string,
+    src: PropTypes.string.isRequired,
+  }),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   href: PropTypes.string,
   rel: PropTypes.string,
-  src: PropTypes.string.isRequired,
   target: PropTypes.string,
 };
 
