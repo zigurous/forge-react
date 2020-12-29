@@ -6,15 +6,6 @@ import SocialIcon from './SocialIcon';
 import socialLinks, { SocialProps } from '../socials';
 import '../styles/social-button.css';
 
-const iconSizes = {
-  sm: 16,
-  small: 16,
-  md: 20,
-  medium: 20,
-  lg: 24,
-  large: 24,
-};
-
 const SocialButton = ({
   children,
   className,
@@ -31,11 +22,10 @@ const SocialButton = ({
         social.svg && (
           <SocialIcon
             ariaHidden
-            className="margin-right-md"
-            elementType="span"
+            elementType="i"
             innerPadding={0}
             link={link}
-            size={iconSizes[size]}
+            size="100%"
           />
         )
       }

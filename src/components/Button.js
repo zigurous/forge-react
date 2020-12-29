@@ -37,9 +37,9 @@ const Button = ({
     }}
     {...rest}
   >
-    {leftIcon}
+    {leftIcon && <span className="icon margin-right-md">{leftIcon}</span>}
     {children}
-    {rightIcon}
+    {rightIcon && <span className="icon margin-left-md">{rightIcon}</span>}
   </button>
 );
 

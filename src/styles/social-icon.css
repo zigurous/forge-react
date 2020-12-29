@@ -1,8 +1,10 @@
 .social-icon {
   position: relative;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .social-icon--rounded {
@@ -10,6 +12,7 @@
 }
 
 .social-icon > a,
+.social-icon > i,
 .social-icon > span {
   display: flex;
   justify-content: center;
