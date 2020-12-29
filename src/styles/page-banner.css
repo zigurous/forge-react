@@ -4,16 +4,6 @@
   z-index: 0;
 }
 
-.page-banner__container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  background-color: transparent !important;
-  z-index: 5;
-}
-
 .page-banner::before {
   content: "";
   background-color: inherit;
@@ -73,15 +63,4 @@
 .page-banner--extraLarge {
   padding-top: 8em;
   padding-bottom: 8em;
-}
-
-@media (min-width: 1200px) {
-  .page-banner__container {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .page-banner--reversed .page-banner__container {
-    flex-direction: row-reverse;
-  }
 }

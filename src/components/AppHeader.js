@@ -40,7 +40,7 @@ const AppHeader = ({
     >
       {navigationStyle === 'bar' && (
         <div
-          className={classNames('app-header__container', {
+          className={classNames({
             container: !fullBleed,
             'container-fluid': fullBleed,
           })}

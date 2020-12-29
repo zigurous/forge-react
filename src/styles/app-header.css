@@ -20,16 +20,16 @@
   z-index: 1020;
 }
 
-.app-header__container {
+.app-header > .container,
+.app-header > .container-fluid {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 100%;
   margin: 0 auto;
 }
 
-.app-header__container--full-bleed {
+.app-header > .container-fluid {
   max-width: 100%;
 }
 

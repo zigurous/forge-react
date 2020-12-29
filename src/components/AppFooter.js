@@ -21,7 +21,7 @@ const AppFooter = ({
     theme={theme}
   >
     <div
-      className={classNames('app-footer__container', {
+      className={classNames({
         container: !fullBleed,
         'container-fluid': fullBleed,
       })}

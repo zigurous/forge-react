@@ -16,7 +16,8 @@
   z-index: 1020;
 }
 
-.app-footer__container {
+.app-footer > .container,
+.app-footer > .container-fluid {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -24,6 +25,6 @@
   margin: 0 auto;
 }
 
-.app-footer--full-bleed .app-footer__container {
+.app-footer > .container-fluid {
   max-width: 100%;
 }

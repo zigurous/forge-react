@@ -8,7 +8,6 @@ const PageBanner = ({
   children,
   className,
   header = false,
-  reversed = false,
   shadowed = false,
   size = 'medium',
   theme,
@@ -20,7 +19,6 @@ const PageBanner = ({
         'page-banner',
         { [`page-banner--${size}`]: size },
         { 'page-banner--header': header },
-        { 'page-banner--reversed': reversed },
         { 'page-banner--shadowed': shadowed },
         { 'page-banner--transparent': transparent },
         className
@@ -28,9 +26,7 @@ const PageBanner = ({
       style={{ backgroundColor: backgroundColor }}
       theme={theme}
     >
-      <div className="page-banner__container" theme={theme}>
-        {children}
-      </div>
+      {children}
     </div>
   );
 };
@@ -53,7 +49,6 @@ PageBanner.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   header: PropTypes.bool,
-  reversed: PropTypes.bool,
   shadowed: PropTypes.bool,
   size: PropTypes.oneOf(pageBannerSizes),
   theme: PropTypes.string,
