@@ -17,6 +17,17 @@
   color: var(--color-button-secondary);
 }
 
+.button-skin > .icon > svg {
+  fill: var(--color-button-primary);
+  transition: fill 0.3s;
+}
+
+.button-skin:hover:not(:disabled) > .icon > svg,
+.button-skin:focus:not(:disabled) > .icon > svg,
+.button-skin:active:not(:disabled) > .icon > svg {
+  fill: var(--color-button-secondary);
+}
+
 .button--sm,
 .button--small {
   padding: 8px 16px;
