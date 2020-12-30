@@ -19,7 +19,7 @@ const NavBar = ({ className, NavLink, routes = [] }) => (
                 {route.icon}
               </i>
             )}
-            <b>{route.name}</b>
+            {route.name}
           </NavLink>
         </li>
       ))}
