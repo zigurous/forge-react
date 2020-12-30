@@ -12,6 +12,7 @@ const Thumbnail = ({
   ElementType = 'a',
   foregroundImage,
   height = 256,
+  rounded = true,
   style,
   ...props
 }) => (
@@ -19,6 +20,7 @@ const Thumbnail = ({
     {...props}
     className={classNames(
       'thumbnail',
+      { 'thumbnail--rounded': rounded },
       { 'thumbnail--bevel': beveled },
       className
     )}
@@ -52,6 +54,7 @@ Thumbnail.propTypes = {
     src: PropTypes.string.isRequired,
   }),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  rounded: PropTypes.bool,
   style: PropTypes.object,
 };
 
