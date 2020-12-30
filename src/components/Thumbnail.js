@@ -4,29 +4,24 @@ import classNames from 'classnames';
 import '../styles/thumbnail.css';
 
 const Thumbnail = ({
-  ariaLabel,
   backgroundImage,
-  beveled,
+  beveled = false,
   bevelBottomColor = 'rgba(0, 0, 0, 0.5)',
   bevelTopColor = 'rgba(255, 255, 255, 0.5)',
   className,
+  ElementType = 'a',
   foregroundImage,
   height = 256,
-  href,
-  rel,
   style,
-  target,
+  ...props
 }) => (
-  <a
-    aria-label={ariaLabel}
+  <ElementType
+    {...props}
     className={classNames(
       'thumbnail',
       { 'thumbnail--bevel': beveled },
       className
     )}
-    href={href}
-    rel={rel}
-    target={target}
     style={{
       ...style,
       backgroundImage: `url(${backgroundImage})`,
@@ -42,25 +37,22 @@ const Thumbnail = ({
         src={foregroundImage.src}
       />
     )}
-  </a>
+  </ElementType>
 );
 
 Thumbnail.propTypes = {
-  ariaLabel: PropTypes.string,
   backgroundImage: PropTypes.string,
   beveled: PropTypes.bool,
   bevelBottomColor: PropTypes.string,
   bevelTopColor: PropTypes.string,
   className: PropTypes.string,
+  ElementType: PropTypes.elementType,
   foregroundImage: PropTypes.shape({
     alt: PropTypes.string,
     src: PropTypes.string.isRequired,
   }),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  href: PropTypes.string,
-  rel: PropTypes.string,
   style: PropTypes.object,
-  target: PropTypes.string,
 };
 
 export default Thumbnail;

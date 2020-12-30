@@ -22,7 +22,7 @@ const SocialButton = ({
         social.svg && (
           <SocialIcon
             ariaHidden
-            elementType="i"
+            ElementType="i"
             innerPadding={0}
             link={link}
             size="100%"

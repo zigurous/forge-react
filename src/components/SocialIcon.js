@@ -9,19 +9,18 @@ const SocialIcon = ({
   backgroundColor,
   className,
   disabled = false,
-  elementType = 'a',
+  ElementType = 'a',
   foregroundColor = 'default',
   innerPadding = 8,
   link,
+  rel = 'noopener noreferrer',
   rounded = false,
   size = 24,
+  target = '_blank',
 }) => {
   const social = typeof link === 'string' ? socialLinks[link] : link;
   const customColor =
     foregroundColor !== 'auto' && foregroundColor !== 'default';
-  const element = {
-    type: elementType || 'a',
-  };
   return (
     <div
       className={classNames(
@@ -37,17 +36,17 @@ const SocialIcon = ({
         fill: customColor ? foregroundColor : undefined,
       }}
     >
-      <element.type
+      <ElementType
         aria-hidden={ariaHidden}
         aria-label={social.name}
         disabled={disabled}
-        href={elementType === 'a' ? social.url : undefined}
-        rel={elementType === 'a' ? 'noopener noreferrer' : undefined}
-        target={elementType === 'a' ? '_blank' : undefined}
+        href={ElementType === 'a' ? social.url : undefined}
+        rel={ElementType === 'a' ? rel : undefined}
+        target={ElementType === 'a' ? target : undefined}
         style={{ width: size, height: size, padding: innerPadding }}
       >
         {social.svg}
-      </element.type>
+      </ElementType>
     </div>
   );
 };
@@ -57,12 +56,14 @@ SocialIcon.propTypes = {
   backgroundColor: PropTypes.string,
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  elementType: PropTypes.elementType,
+  ElementType: PropTypes.elementType,
   foregroundColor: PropTypes.string,
   innerPadding: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   link: SocialProps.isRequired,
+  rel: PropTypes.string,
   rounded: PropTypes.bool,
   size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  target: PropTypes.string,
 };
 
 export default SocialIcon;
