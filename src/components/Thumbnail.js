@@ -14,6 +14,7 @@ const Thumbnail = ({
   height = 256,
   href,
   rel,
+  style,
   target,
 }) => (
   <a
@@ -27,6 +28,7 @@ const Thumbnail = ({
     rel={rel}
     target={target}
     style={{
+      ...style,
       backgroundImage: `url(${backgroundImage})`,
       borderBottomColor: beveled && bevelBottomColor,
       borderTopColor: beveled && bevelTopColor,
@@ -57,6 +59,7 @@ Thumbnail.propTypes = {
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   href: PropTypes.string,
   rel: PropTypes.string,
+  style: PropTypes.object,
   target: PropTypes.string,
 };
 
