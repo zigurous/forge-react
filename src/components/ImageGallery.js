@@ -14,7 +14,7 @@ const imageSrc = (image) => {
   }
 };
 
-const ImageGallery = ({ className, columns, fadeIn = true, images = [] }) => {
+const ImageGallery = ({ className, columns, fadeIn = false, images = [] }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   return (
