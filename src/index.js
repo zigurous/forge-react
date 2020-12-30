@@ -1,5 +1,6 @@
 export { default as AppFooter } from './components/AppFooter';
 export { default as AppHeader } from './components/AppHeader';
+export { default as AppStoreBadge } from './components/AppStoreBadge';
 export { default as Button } from './components/Button';
 export { default as ButtonGroup } from './components/ButtonGroup';
 export { default as ClickableDiv } from './components/ClickableDiv';

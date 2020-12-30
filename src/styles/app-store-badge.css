@@ -1,0 +1,9 @@
+.app-store-badge {
+  display: inline-block;
+  border: none !important;
+}
+
+.app-store-badge > img {
+  width: 100%;
+  height: 100%;
+}
