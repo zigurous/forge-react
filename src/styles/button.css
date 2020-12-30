@@ -1,12 +1,13 @@
 .button-skin {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   color: var(--color-button-primary);
   border: solid 1px var(--color-button-primary);
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-  text-transform: uppercase;
   font-weight: 600;
+  text-transform: uppercase;
+  vertical-align: middle;
   white-space: nowrap;
 }
 
@@ -15,6 +16,12 @@
 .button-skin:active:not(:disabled) {
   background-color: var(--color-button-primary);
   color: var(--color-button-secondary);
+}
+
+.button-skin > .icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-skin > .icon > svg {
