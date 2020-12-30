@@ -10,6 +10,7 @@ const NavBar = ({ className, NavLink, routes = [] }) => (
         <li className="nav-bar__item" key={route.path}>
           <NavLink
             activeClassName="selected"
+            aria-label={route.name}
             exact={Boolean(route.exact)}
             strict={Boolean(route.strict)}
             to={route.path}
