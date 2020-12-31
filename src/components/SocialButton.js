@@ -10,6 +10,8 @@ const SocialButton = ({
   children,
   className,
   link,
+  primaryColor,
+  secondaryColor = 'white',
   size = 'medium',
   url,
   ...props
@@ -24,6 +26,7 @@ const SocialButton = ({
           <SocialIcon
             aria-hidden
             ElementType="i"
+            foregroundColor={primaryColor}
             icon={social.icon}
             iconName={social.key}
             innerPadding={0}
@@ -36,9 +39,9 @@ const SocialButton = ({
       }}
       size={size}
       style={{
-        '--color-social-icon': social.color,
-        '--color-button-primary': social.color,
-        '--color-button-secondary': 'white',
+        '--color-social-icon': primaryColor || social.color,
+        '--color-button-primary': primaryColor || social.color,
+        '--color-button-secondary': secondaryColor,
       }}
     >
       {children || social.name}
@@ -50,6 +53,8 @@ SocialButton.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   link: SocialLinkProps.isRequired,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
   size: PropTypes.oneOf(buttonSizes),
   url: PropTypes.string,
 };
