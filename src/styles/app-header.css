@@ -39,3 +39,9 @@
   align-items: center;
   height: 100%;
 }
+
+@media (max-width: 1199px) {
+  .app-header__content.right {
+    display: none;
+  }
+}
