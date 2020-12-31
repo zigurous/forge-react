@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import '../styles/button.css';
 
 const Button = ({
+  borderless = false,
   children,
   circle = false,
   className,
@@ -21,6 +22,7 @@ const Button = ({
   <button
     className={classNames(
       'button-skin',
+      { 'button--borderless': borderless },
       { 'button--rounded': rounded && !circle },
       { 'button--circle': circle },
       { [`button--${size}`]: size },
@@ -50,6 +52,7 @@ const Button = ({
 export const buttonSizes = ['sm', 'small', 'md', 'medium', 'lg', 'large'];
 
 Button.propTypes = {
+  borderless: PropTypes.bool,
   children: PropTypes.node,
   circle: PropTypes.bool,
   className: PropTypes.string,
