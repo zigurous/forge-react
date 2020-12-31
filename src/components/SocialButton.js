@@ -11,6 +11,7 @@ const SocialButton = ({
   className,
   link,
   size = 'medium',
+  url,
   ...props
 }) => {
   const social = typeof link === 'string' ? socialLinks[link] : link;
@@ -31,7 +32,7 @@ const SocialButton = ({
         )
       }
       onClick={() => {
-        window.open(social.url, '_blank');
+        window.open(url || social.url, '_blank');
       }}
       size={size}
       style={{
@@ -50,6 +51,7 @@ SocialButton.propTypes = {
   className: PropTypes.string,
   link: SocialLinkProps.isRequired,
   size: PropTypes.oneOf(buttonSizes),
+  url: PropTypes.string,
 };
 
 export default SocialButton;
