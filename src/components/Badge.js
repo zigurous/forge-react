@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import '../styles/badge.css';
 
 const Badge = ({ children, className, type = 'filled' }) => (
-  <span className={classNames('badge', type, className)}>{children}</span>
+  <div className={classNames('badge', type, className)}>{children}</div>
 );
 
 Badge.propTypes = {
