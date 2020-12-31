@@ -37,9 +37,13 @@ const Button = ({
     }}
     {...rest}
   >
-    {leftIcon && <span className="icon margin-right-md">{leftIcon}</span>}
+    {leftIcon && (
+      <span className="icon-wrapper margin-right-md">{leftIcon}</span>
+    )}
     {children}
-    {rightIcon && <span className="icon margin-left-md">{rightIcon}</span>}
+    {rightIcon && (
+      <span className="icon-wrapper margin-left-md">{rightIcon}</span>
+    )}
   </button>
 );
 

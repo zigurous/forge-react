@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button, { buttonSizes } from './Button';
 import SocialIcon from './SocialIcon';
-import socialLinks, { SocialProps } from '../socials';
+import socialLinks, { SocialLinkProps } from '../socialLinks';
 import '../styles/social-button.css';
 
 const SocialButton = ({
@@ -11,20 +11,21 @@ const SocialButton = ({
   className,
   link,
   size = 'medium',
-  ...rest
+  ...props
 }) => {
   const social = typeof link === 'string' ? socialLinks[link] : link;
   return (
     <Button
-      {...rest}
+      {...props}
       className={classNames('social-button', social.key, className)}
       leftIcon={
-        social.svg && (
+        social.icon && (
           <SocialIcon
-            ariaHidden
+            aria-hidden
             ElementType="i"
+            icon={social.icon}
+            iconName={social.key}
             innerPadding={0}
-            link={link}
             size="100%"
           />
         )
@@ -47,7 +48,7 @@ const SocialButton = ({
 SocialButton.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  link: SocialProps.isRequired,
+  link: SocialLinkProps.isRequired,
   size: PropTypes.oneOf(buttonSizes),
 };
 

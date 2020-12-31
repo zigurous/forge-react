@@ -5,7 +5,7 @@ import Logo, { logoSizes, logoVariants } from './Logo';
 import NavBar from './NavBar';
 import NavMenu from './NavMenu';
 import SocialNavLinks from './SocialNavLinks';
-import { SocialProps } from '../socials';
+import { SocialLinkProps } from '../socialLinks';
 import '../styles/app-header.css';
 
 const AppHeader = ({
@@ -111,7 +111,7 @@ AppHeader.propTypes = {
   showLogo: PropTypes.bool,
   showNavigation: PropTypes.bool,
   showSocials: PropTypes.bool,
-  socialLinks: PropTypes.arrayOf(SocialProps),
+  socialLinks: PropTypes.arrayOf(SocialLinkProps),
   sticky: PropTypes.bool,
   theme: PropTypes.string,
   transparent: PropTypes.bool,

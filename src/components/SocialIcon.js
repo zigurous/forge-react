@@ -1,69 +1,61 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import socialLinks, { SocialProps } from '../socials';
+import icons from '../icons';
 import '../styles/social-icon.css';
 
 const SocialIcon = ({
-  ariaHidden = false,
+  altText,
   backgroundColor,
   className,
-  disabled = false,
-  ElementType = 'a',
+  ElementType = 'i',
   foregroundColor = 'default',
+  icon,
+  iconName,
   innerPadding = 8,
-  link,
-  rel = 'noopener noreferrer',
   rounded = false,
   size = 24,
-  target = '_blank',
+  ...props
 }) => {
-  const social = typeof link === 'string' ? socialLinks[link] : link;
-  const customColor =
-    foregroundColor !== 'auto' && foregroundColor !== 'default';
   return (
-    <div
+    <ElementType
+      {...props}
       className={classNames(
+        'icon',
         'social-icon',
         { 'social-icon--rounded': rounded },
         { 'social-icon--default': foregroundColor === 'default' },
         { 'social-icon--auto': foregroundColor === 'auto' },
-        social.key,
+        iconName,
         className
       )}
       style={{
         backgroundColor: backgroundColor,
-        fill: customColor ? foregroundColor : undefined,
+        fill:
+          foregroundColor !== 'auto' && foregroundColor !== 'default'
+            ? foregroundColor
+            : undefined,
+        width: size,
+        height: size,
+        padding: innerPadding,
       }}
     >
-      <ElementType
-        aria-hidden={ariaHidden}
-        aria-label={social.name}
-        disabled={disabled}
-        href={ElementType === 'a' ? social.url : undefined}
-        rel={ElementType === 'a' ? rel : undefined}
-        target={ElementType === 'a' ? target : undefined}
-        style={{ width: size, height: size, padding: innerPadding }}
-      >
-        {social.svg}
-      </ElementType>
-    </div>
+      {icon || icons[iconName]}
+    </ElementType>
   );
 };
 
 SocialIcon.propTypes = {
-  ariaHidden: PropTypes.bool,
+  altText: PropTypes.string,
   backgroundColor: PropTypes.string,
   className: PropTypes.string,
-  disabled: PropTypes.bool,
   ElementType: PropTypes.elementType,
   foregroundColor: PropTypes.string,
+  icon: PropTypes.element,
+  iconName: PropTypes.oneOf(Object.keys(icons)),
   innerPadding: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  link: SocialProps.isRequired,
-  rel: PropTypes.string,
   rounded: PropTypes.bool,
   size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  target: PropTypes.string,
 };
 
 export default SocialIcon;

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Logo, { logoSizes, logoVariants } from './Logo';
 import Modal from './Modal';
 import SocialNavLinks from './SocialNavLinks';
-import socialLinks from '../socials';
+import socialLinks from '../socialLinks';
 import '../styles/nav-menu.css';
 
 const NavMenu = ({

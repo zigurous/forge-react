@@ -19,9 +19,10 @@ export { default as NavMenu } from './components/NavMenu';
 export { default as PageBanner } from './components/PageBanner';
 export { default as SocialButton } from './components/SocialButton';
 export { default as SocialIcon } from './components/SocialIcon';
-export { default as socialLinks } from './socials';
+export { default as socialLinks, SocialLinkProps } from './socialLinks';
 export { default as SocialNavLinks } from './components/SocialNavLinks';
 export { default as Thumbnail } from './components/Thumbnail';
+export { default as icons } from './icons';
 export {
   useFullscreenMenu,
   useLoading,

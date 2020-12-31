@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { SocialProps } from '../socials';
+import { SocialLinkProps } from '../socialLinks';
 import '../styles/link.css';
 
 const Link = ({
@@ -15,8 +15,10 @@ const Link = ({
   to,
   undecorated = false,
   underlined = false,
+  ...props
 }) => (
   <a
+    {...props}
     className={classNames(
       'link',
       { 'link--underlined': underlined },
@@ -36,7 +38,7 @@ Link.propTypes = {
   className: PropTypes.string,
   external: PropTypes.bool,
   href: PropTypes.string,
-  link: SocialProps,
+  link: SocialLinkProps,
   rel: PropTypes.string,
   target: PropTypes.string,
   to: PropTypes.string,
