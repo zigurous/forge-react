@@ -4,55 +4,39 @@ import classNames from 'classnames';
 import '../styles/thumbnail.css';
 
 const Thumbnail = ({
-  backgroundImage,
-  beveled = false,
-  bevelBottomColor = 'rgba(0, 0, 0, 0.5)',
-  bevelTopColor = 'rgba(255, 255, 255, 0.5)',
+  children,
   className,
   ElementType = 'a',
-  foregroundImage,
-  height = 256,
+  height = 'auto',
+  image,
+  imageProps = {},
   rounded = true,
   style,
   ...props
 }) => (
   <ElementType
     {...props}
-    className={classNames(
-      'thumbnail',
-      { 'thumbnail--rounded': rounded },
-      { 'thumbnail--bevel': beveled },
-      className
-    )}
-    style={{
-      ...style,
-      backgroundImage: `url(${backgroundImage})`,
-      borderBottomColor: beveled && bevelBottomColor,
-      borderTopColor: beveled && bevelTopColor,
-      height: height,
-    }}
+    className={classNames('thumbnail', { rounded }, className)}
   >
-    {foregroundImage && (
+    {image && (
       <img
-        {...foregroundImage}
-        alt={foregroundImage.alt || ''}
-        src={foregroundImage.src}
+        {...imageProps}
+        alt={imageProps.alt || ''}
+        className={classNames('thumbnail__image', imageProps.className)}
+        height={imageProps.height || height}
+        src={image}
       />
     )}
+    {children}
   </ElementType>
 );
 
 Thumbnail.propTypes = {
-  backgroundImage: PropTypes.string,
-  beveled: PropTypes.bool,
-  bevelBottomColor: PropTypes.string,
-  bevelTopColor: PropTypes.string,
   className: PropTypes.string,
+  children: PropTypes.node,
   ElementType: PropTypes.elementType,
-  foregroundImage: PropTypes.shape({
-    alt: PropTypes.string,
-    src: PropTypes.string.isRequired,
-  }),
+  image: PropTypes.string,
+  imageProps: PropTypes.object,
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   rounded: PropTypes.bool,
   style: PropTypes.object,
