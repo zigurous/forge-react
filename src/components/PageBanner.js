@@ -7,7 +7,6 @@ const PageBanner = ({
   backgroundColor,
   children,
   className,
-  header = false,
   shadowed = false,
   size = 'medium',
   theme,
@@ -18,7 +17,6 @@ const PageBanner = ({
       className={classNames(
         'page-banner',
         { [`page-banner--${size}`]: size },
-        { 'page-banner--header': header },
         { 'page-banner--shadowed': shadowed },
         { 'page-banner--transparent': transparent },
         className
@@ -48,7 +46,6 @@ PageBanner.propTypes = {
   backgroundColor: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
-  header: PropTypes.bool,
   shadowed: PropTypes.bool,
   size: PropTypes.oneOf(pageBannerSizes),
   theme: PropTypes.string,
