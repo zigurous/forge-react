@@ -55,7 +55,7 @@ const socialLinks = {
     key: 'instagram',
     name: 'Instagram',
     color: '#e4405f',
-    url: 'http://instagram.com/zigurous/',
+    url: 'https://www.instagram.com/zigurous/',
     icon: instagram,
   },
   facebook: {
