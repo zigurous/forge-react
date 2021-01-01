@@ -1,0 +1,16 @@
+.input-wrapper {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.input-wrapper > .icon {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  pointer-events: none;
+}
+
+.input-wrapper > .icon + input {
+  padding-left: 32px;
+}
