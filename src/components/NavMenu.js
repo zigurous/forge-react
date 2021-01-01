@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Logo, { logoSizes, logoVariants } from './Logo';
 import Modal from './Modal';
 import SocialNavLinks from './SocialNavLinks';
-import socialLinks from '../socialLinks';
+import { SocialLinkProps } from '../socialLinks';
 import '../styles/nav-menu.css';
 
 const NavMenu = ({
@@ -17,6 +17,7 @@ const NavMenu = ({
   routes = [],
   showLogo = false,
   showSocials = true,
+  socialLinks = [],
   theme = 'light',
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,7 +82,7 @@ const NavMenu = ({
                     strict={Boolean(route.strict)}
                     to={route.path}
                   >
-                    <b>{route.name}</b>
+                    {route.name}
                   </NavLink>
                   <span className="margin-left-md font-xs gray">
                     0{index + 1}.
@@ -125,6 +126,7 @@ NavMenu.propTypes = {
   ),
   showLogo: PropTypes.bool,
   showSocials: PropTypes.bool,
+  socialLinks: PropTypes.arrayOf(SocialLinkProps),
   theme: PropTypes.string,
 };
 

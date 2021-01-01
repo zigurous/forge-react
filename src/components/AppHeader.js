@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 import NavMenu from './NavMenu';
 import SocialNavLinks from './SocialNavLinks';
 import { SocialLinkProps } from '../socialLinks';
+import { useMediaQuery } from '../hooks';
 import '../styles/app-header.css';
 
 const AppHeader = ({
@@ -27,6 +28,7 @@ const AppHeader = ({
   theme,
   transparent = false,
 }) => {
+  const mobile = useMediaQuery('(max-width: 991px)');
   return (
     <header
       className={classNames(
@@ -54,7 +56,7 @@ const AppHeader = ({
                 variant={logoVariant}
               />
             )}
-            {showNavigation && (
+            {showNavigation && !mobile && (
               <NavBar location={location} NavLink={NavLink} routes={routes} />
             )}
           </div>
@@ -69,7 +71,7 @@ const AppHeader = ({
           </div>
         </div>
       )}
-      {showNavigation && navigationStyle === 'menu' && (
+      {showNavigation && (navigationStyle === 'menu' || mobile) && (
         <NavMenu
           fullBleed={fullBleed}
           location={location}
@@ -78,8 +80,9 @@ const AppHeader = ({
           NavLink={NavLink}
           onLogoClick={onLogoClick}
           routes={routes}
-          showLogo={showLogo}
+          showLogo={showLogo && navigationStyle === 'menu'}
           showSocials={showSocials}
+          socialLinks={socialLinks}
           theme={theme}
         />
       )}
