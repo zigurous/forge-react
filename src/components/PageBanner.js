@@ -9,6 +9,7 @@ const PageBanner = ({
   className,
   shadowed = false,
   size = 'medium',
+  style,
   theme,
   transparent = false,
 }) => {
@@ -21,7 +22,7 @@ const PageBanner = ({
         { 'page-banner--transparent': transparent },
         className
       )}
-      style={{ backgroundColor: backgroundColor }}
+      style={{ backgroundColor: backgroundColor, ...style }}
       theme={theme}
     >
       {children}
@@ -48,6 +49,7 @@ PageBanner.propTypes = {
   className: PropTypes.string,
   shadowed: PropTypes.bool,
   size: PropTypes.oneOf(pageBannerSizes),
+  style: PropTypes.object,
   theme: PropTypes.string,
   transparent: PropTypes.bool,
 };

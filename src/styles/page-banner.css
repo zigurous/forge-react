@@ -6,7 +6,7 @@
 
 .page-banner::before {
   content: "";
-  background-color: inherit;
+  background: inherit;
   pointer-events: none;
   position: absolute;
   top: 0;
