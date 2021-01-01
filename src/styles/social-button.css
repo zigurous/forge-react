@@ -4,6 +4,19 @@
   fill: var(--color-button-secondary);
 }
 
+.social-button.paypal path {
+  transition: fill 0.1s;
+}
+
+.social-button.paypal:hover:not(:disabled) path:nth-child(1),
+.social-button.paypal:focus:not(:disabled) path:nth-child(1),
+.social-button.paypal:active:not(:disabled) path:nth-child(1),
+.social-button.paypal:hover:not(:disabled) path:nth-child(4),
+.social-button.paypal:focus:not(:disabled) path:nth-child(4),
+.social-button.paypal:active:not(:disabled) path:nth-child(4) {
+  fill: #fff;
+}
+
 .social-button.paypal:hover:not(:disabled) path:nth-child(2),
 .social-button.paypal:focus:not(:disabled) path:nth-child(2),
 .social-button.paypal:active:not(:disabled) path:nth-child(2) {
@@ -14,13 +27,4 @@
 .social-button.paypal:focus:not(:disabled) path:nth-child(3),
 .social-button.paypal:active:not(:disabled) path:nth-child(3) {
   fill: #e6eff6;
-}
-
-.social-button.paypal:hover:not(:disabled) path:nth-child(1),
-.social-button.paypal:focus:not(:disabled) path:nth-child(1),
-.social-button.paypal:active:not(:disabled) path:nth-child(1),
-.social-button.paypal:hover:not(:disabled) path:nth-child(4),
-.social-button.paypal:focus:not(:disabled) path:nth-child(4),
-.social-button.paypal:active:not(:disabled) path:nth-child(4) {
-  fill: #fff;
 }
