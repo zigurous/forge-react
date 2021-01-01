@@ -24,9 +24,20 @@
   align-items: center;
 }
 
+.btn > .icon-wrapper > .icon {
+  color: var(--color-button-primary);
+  transition: color 0.2s;
+}
+
 .btn > .icon-wrapper > svg {
   fill: var(--color-button-primary);
   transition: fill 0.2s;
+}
+
+.btn:hover:not(:disabled) > .icon-wrapper > .icon,
+.btn:focus:not(:disabled) > .icon-wrapper > .icon,
+.btn:active:not(:disabled) > .icon-wrapper > .icon {
+  color: var(--color-button-secondary);
 }
 
 .btn:hover:not(:disabled) > .icon-wrapper > svg,
@@ -49,13 +60,8 @@
 
 .btn--sm > .icon-wrapper,
 .btn--small > .icon-wrapper {
-  width: 16px;
-  height: 16px;
-}
-
-.btn--sm > .icon-wrapper > i,
-.btn--small > .icon-wrapper > i {
-  font-size: 16px;
+  max-width: 18px;
+  max-height: 18px;
 }
 
 .btn--md,
@@ -72,13 +78,8 @@
 
 .btn--md > .icon-wrapper,
 .btn--medium > .icon-wrapper {
-  width: 20px;
-  height: 20px;
-}
-
-.btn--md > .icon-wrapper > i,
-.btn--medium > .icon-wrapper > i {
-  font-size: 20px;
+  max-width: 21px;
+  max-height: 21px;
 }
 
 .btn--lg,
@@ -95,13 +96,8 @@
 
 .btn--lg > .icon-wrapper,
 .btn--large > .icon-wrapper {
-  width: 24px;
-  height: 24px;
-}
-
-.btn--lg > .icon-wrapper > i,
-.btn--large > .icon-wrapper > i {
-  font-size: 24px;
+  max-width: 24px;
+  max-height: 24px;
 }
 
 .btn--circle {

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Icon from './Icon';
 import '../styles/nav-bar.css';
 
-const NavBar = ({ className, NavLink, routes = [] }) => (
+const NavBar = ({ className, NavLink, routes = [], theme }) => (
   <nav className={classNames('nav-bar', className)}>
     <ul className="nav-bar__list">
       {routes.map((route) => (
@@ -16,9 +17,12 @@ const NavBar = ({ className, NavLink, routes = [] }) => (
             to={route.path}
           >
             {route.icon && (
-              <i aria-hidden className="material-icons margin-right-md">
-                {route.icon}
-              </i>
+              <Icon
+                className="margin-right-md"
+                name={route.icon}
+                size="small"
+                theme={theme === 'dark' ? 'light' : 'dark'}
+              />
             )}
             {route.name}
           </NavLink>
@@ -39,6 +43,7 @@ NavBar.propTypes = {
       component: PropTypes.elementType,
     })
   ),
+  theme: PropTypes.string,
 };
 
 export default NavBar;

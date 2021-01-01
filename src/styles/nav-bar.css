@@ -38,12 +38,18 @@
   padding-top: 12px;
   border-bottom: solid 4px transparent;
   text-decoration: none;
+}
+
+.nav-bar__item a,
+.nav-bar__item a > .icon {
   color: var(--color-nav-skin);
-  transition: none;
+  /* transition: color 0.2s; */
 }
 
 .nav-bar__item a:hover,
-.nav-bar__item a:active {
+.nav-bar__item a:active,
+.nav-bar__item a:hover > .icon,
+.nav-bar__item a:active > .icon {
   border-color: transparent;
   color: var(--color-nav-skin-decoration);
 }
@@ -51,8 +57,4 @@
 .nav-bar__item a.selected {
   border-color: var(--color-nav-skin-decoration);
   text-decoration: none;
-}
-
-.nav-bar__item .material-icons {
-  font-size: 20px;
 }

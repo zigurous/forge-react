@@ -57,7 +57,12 @@ const AppHeader = ({
               />
             )}
             {showNavigation && !mobile && (
-              <NavBar location={location} NavLink={NavLink} routes={routes} />
+              <NavBar
+                location={location}
+                NavLink={NavLink}
+                routes={routes}
+                theme={theme}
+              />
             )}
           </div>
           <div className="app-header__content right">

@@ -56,7 +56,7 @@ const NavMenu = ({
           </div>
           <div className="nav-menu__button-wrapper">
             <button
-              className="nav-menu__button"
+              className="nav-menu__button box-shadow-1"
               onClick={() => {
                 setIsOpen(!isOpen);
               }}
