@@ -35,3 +35,5 @@ export {
 } from './hooks';
 export { enterKeyHandler } from './utils/eventHandlers';
 export { fadeIn, withTransition } from './utils/transitions';
+export { default as debounce } from './utils/debounce';
+export { default as throttle } from './utils/throttle';
