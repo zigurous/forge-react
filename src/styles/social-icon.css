@@ -50,6 +50,10 @@
   fill: #e4405f;
 }
 
+.social-icon--default.paypal {
+  fill: #00457c;
+}
+
 .social-icon--default.twitch {
   fill: #9146ff;
 }
