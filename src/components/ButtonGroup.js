@@ -6,8 +6,8 @@ import '../styles/button-group.css';
 const ButtonGroup = ({ children, className, layout = 'row' }) => (
   <div
     className={classNames(
-      'button-group',
-      { [`button-group--${layout}`]: layout },
+      'btn-group',
+      { [`btn-group--${layout}`]: layout },
       className
     )}
   >

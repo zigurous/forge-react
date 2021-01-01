@@ -21,11 +21,11 @@ const Button = ({
 }) => (
   <button
     className={classNames(
-      'button-skin',
-      { 'button--borderless': borderless },
-      { 'button--rounded': rounded && !circle },
-      { 'button--circle': circle },
-      { [`button--${size}`]: size },
+      'btn',
+      { 'btn--borderless': borderless },
+      { 'btn--rounded': rounded && !circle },
+      { 'btn--circle': circle },
+      { [`btn--${size}`]: size },
       className
     )}
     onClick={(event) => {

@@ -1,4 +1,4 @@
-.button-skin {
+.btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -11,103 +11,103 @@
   white-space: nowrap;
 }
 
-.button-skin:hover:not(:disabled),
-.button-skin:focus:not(:disabled),
-.button-skin:active:not(:disabled) {
+.btn:hover:not(:disabled),
+.btn:focus:not(:disabled),
+.btn:active:not(:disabled) {
   background-color: var(--color-button-primary);
   color: var(--color-button-secondary);
 }
 
-.button-skin > .icon-wrapper {
+.btn > .icon-wrapper {
   display: inline-flex;
   justify-content: center;
   align-items: center;
 }
 
-.button-skin > .icon-wrapper > svg {
+.btn > .icon-wrapper > svg {
   fill: var(--color-button-primary);
   transition: fill 0.2s;
 }
 
-.button-skin:hover:not(:disabled) > .icon-wrapper > svg,
-.button-skin:focus:not(:disabled) > .icon-wrapper > svg,
-.button-skin:active:not(:disabled) > .icon-wrapper > svg {
+.btn:hover:not(:disabled) > .icon-wrapper > svg,
+.btn:focus:not(:disabled) > .icon-wrapper > svg,
+.btn:active:not(:disabled) > .icon-wrapper > svg {
   fill: var(--color-button-secondary);
 }
 
-.button--sm,
-.button--small {
+.btn--sm,
+.btn--small {
   padding: 8px 16px;
   font-size: 0.75rem;
   line-height: 1.5em;
 }
 
-.button--sm.button--rounded,
-.button--small.button--rounded {
+.btn--sm.btn--rounded,
+.btn--small.btn--rounded {
   border-radius: 24px;
 }
 
-.button--sm > .icon-wrapper,
-.button--small > .icon-wrapper {
+.btn--sm > .icon-wrapper,
+.btn--small > .icon-wrapper {
   width: 16px;
   height: 16px;
 }
 
-.button--sm > .icon-wrapper > i,
-.button--small > .icon-wrapper > i {
+.btn--sm > .icon-wrapper > i,
+.btn--small > .icon-wrapper > i {
   font-size: 16px;
 }
 
-.button--md,
-.button--medium {
+.btn--md,
+.btn--medium {
   padding: 12px 24px;
   font-size: 1.0rem;
   line-height: 1.5em;
 }
 
-.button--md.button--rounded,
-.button--medium.button--rounded {
+.btn--md.btn--rounded,
+.btn--medium.btn--rounded {
   border-radius: 32px;
 }
 
-.button--md > .icon-wrapper,
-.button--medium > .icon-wrapper {
+.btn--md > .icon-wrapper,
+.btn--medium > .icon-wrapper {
   width: 20px;
   height: 20px;
 }
 
-.button--md > .icon-wrapper > i,
-.button--medium > .icon-wrapper > i {
+.btn--md > .icon-wrapper > i,
+.btn--medium > .icon-wrapper > i {
   font-size: 20px;
 }
 
-.button--lg,
-.button--large {
+.btn--lg,
+.btn--large {
   padding: 16px 32px;
   font-size: 1.25rem;
   line-height: 1.5em;
 }
 
-.button--lg.button--rounded,
-.button--large.button--rounded {
+.btn--lg.btn--rounded,
+.btn--large.btn--rounded {
   border-radius: 40px;
 }
 
-.button--lg > .icon-wrapper,
-.button--large > .icon-wrapper {
+.btn--lg > .icon-wrapper,
+.btn--large > .icon-wrapper {
   width: 24px;
   height: 24px;
 }
 
-.button--lg > .icon-wrapper > i,
-.button--large > .icon-wrapper > i {
+.btn--lg > .icon-wrapper > i,
+.btn--large > .icon-wrapper > i {
   font-size: 24px;
 }
 
-.button--circle {
+.btn--circle {
   border-radius: 50%;
 }
 
-.button--borderless {
+.btn--borderless {
   border: none !important;
 }
