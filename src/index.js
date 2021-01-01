@@ -24,6 +24,7 @@ export { default as SocialNavLinks } from './components/SocialNavLinks';
 export { default as Thumbnail } from './components/Thumbnail';
 export { default as icons } from './icons';
 export {
+  useDocumentTitle,
   useFullscreenMenu,
   useLoading,
   useMediaQuery,
