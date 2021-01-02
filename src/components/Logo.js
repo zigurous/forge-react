@@ -1,12 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import images from '../svg/logo';
+import svgs from '../svg/logo';
 import '../styles/logo.css';
+
+const renderLogo = (image, variant) => {
+  if (image) {
+    return <img alt="Logo" src={image} />;
+  } else {
+    return svgs[variant];
+  }
+};
 
 const Logo = ({
   className,
   fill,
+  image,
   onClick,
   size = 'medium',
   theme,
@@ -18,16 +27,15 @@ const Logo = ({
   >
     {onClick ? (
       <button
-        className="logo-button"
         onClick={(event) => {
           event.target.blur();
           onClick();
         }}
       >
-        {images[variant]}
+        {renderLogo(image, variant)}
       </button>
     ) : (
-      images[variant]
+      renderLogo(image, variant)
     )}
   </div>
 );
@@ -58,6 +66,7 @@ Logo.variant = Object.freeze({
 Logo.propTypes = {
   className: PropTypes.string,
   fill: PropTypes.string,
+  image: PropTypes.string,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(Object.values(Logo.size)),
   theme: PropTypes.oneOf(Object.values(Logo.theme)),

@@ -44,17 +44,21 @@
   fill: inherit;
 }
 
-.logo-button {
+.logo img {
+  height: 100%;
+}
+
+.logo button {
   height: 100%;
   pointer-events: all !important;
   cursor: pointer;
   transition: opacity 0.2s;
 }
 
-.logo-button:hover {
+.logo button:hover {
   opacity: 0.8;
 }
 
-.logo-button:focus-visible {
+.logo button:focus-visible {
   outline-offset: -16px;
 }
