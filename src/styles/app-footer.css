@@ -24,7 +24,7 @@
 .app-footer > .container-fluid {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   height: 100%;
   margin: 0 auto;
 }

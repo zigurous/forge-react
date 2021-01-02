@@ -9,7 +9,7 @@ import {
   twitch,
   twitter,
   youtube,
-} from './icons';
+} from './svg/icons';
 
 export const SocialLinkProps = PropTypes.oneOfType([
   PropTypes.string,

@@ -25,7 +25,6 @@ export { default as SocialIcon } from './components/SocialIcon';
 export { default as socialLinks, SocialLinkProps } from './socialLinks';
 export { default as SocialNavLinks } from './components/SocialNavLinks';
 export { default as Thumbnail } from './components/Thumbnail';
-export { default as icons } from './icons';
 export {
   useDocumentTitle,
   useFullscreenMenu,
@@ -35,6 +34,7 @@ export {
   useParallax,
   useThemedFavicon,
 } from './hooks';
+export { icons, logo } from './svg';
 export { enterKeyHandler } from './utils/eventHandlers';
 export { fadeIn, withTransition } from './utils/transitions';
 export { default as debounce } from './utils/debounce';

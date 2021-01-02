@@ -52,7 +52,6 @@ const AppHeader = ({
               <Logo
                 onClick={onLogoClick}
                 size={logoSize}
-                theme={theme}
                 variant={logoVariant}
               />
             )}

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import icons from '../icons';
+import icons from '../svg/icons';
 import '../styles/social-icon.css';
 
 const SocialIcon = ({
