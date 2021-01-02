@@ -1,9 +1,13 @@
+:root {
+  --footer-height: 64px;
+}
+
 .app-footer {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: var(--footer-height, 40px);
+  min-height: var(--footer-height, 64px);
 }
 
 .app-footer--transparent {

@@ -1,3 +1,7 @@
+:root {
+  --header-height: 72px;
+}
+
 .app-header {
   position: relative;
   display: flex;
