@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Logo, { logoSizes, logoVariants } from './Logo';
+import Logo from './Logo';
 import NavBar from './NavBar';
 import NavMenu from './NavMenu';
 import SocialNavLinks from './SocialNavLinks';
@@ -14,8 +14,8 @@ const AppHeader = ({
   className,
   fullBleed = false,
   location,
-  logoSize = 'small',
-  logoVariant = logoVariants[0],
+  logoSize = Logo.size.small,
+  logoVariant = Logo.variant.wordmark,
   navigationStyle = 'bar',
   NavLink,
   onLogoClick = () => {},
@@ -94,6 +94,11 @@ const AppHeader = ({
   );
 };
 
+AppHeader.navigationStyle = Object.freeze({
+  menu: 'menu',
+  bar: 'bar',
+});
+
 AppHeader.propTypes = {
   bordered: PropTypes.bool,
   className: PropTypes.string,
@@ -102,9 +107,9 @@ AppHeader.propTypes = {
     pathname: PropTypes.string,
     search: PropTypes.string,
   }),
-  logoSize: PropTypes.oneOf(logoSizes),
-  logoVariant: PropTypes.oneOf(logoVariants),
-  navigationStyle: PropTypes.oneOf(['menu', 'bar']),
+  logoSize: PropTypes.oneOf(Object.values(Logo.size)),
+  logoVariant: PropTypes.oneOf(Object.values(Logo.variant)),
+  navigationStyle: PropTypes.oneOf(Object.values(AppHeader.navigationStyle)),
   NavLink: PropTypes.elementType,
   onLogoClick: PropTypes.func,
   routes: PropTypes.arrayOf(

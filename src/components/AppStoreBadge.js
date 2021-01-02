@@ -55,12 +55,17 @@ const AppStoreBadge = ({
   );
 };
 
+AppStoreBadge.platform = Object.freeze({
+  ios: 'ios',
+  android: 'android',
+});
+
 AppStoreBadge.propTypes = {
   alt: PropTypes.string,
   className: PropTypes.string,
   defaultLocale: PropTypes.string,
   locale: PropTypes.string,
-  platform: PropTypes.oneOf(['ios', 'android']).isRequired,
+  platform: PropTypes.oneOf(Object.values(AppStoreBadge.platform)).isRequired,
   width: PropTypes.number,
   height: PropTypes.number,
   target: PropTypes.string,

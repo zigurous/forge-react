@@ -17,19 +17,19 @@ const LoadingSpinner = ({ className, loading = true, size = 'medium' }) => (
   </div>
 );
 
-export const loadingSpinnerSizes = [
-  'sm',
-  'small',
-  'md',
-  'medium',
-  'lg',
-  'large',
-];
+LoadingSpinner.size = Object.freeze({
+  sm: 'sm',
+  small: 'small',
+  md: 'md',
+  medium: 'medium',
+  lg: 'lg',
+  large: 'large',
+});
 
 LoadingSpinner.propTypes = {
   className: PropTypes.string,
   loading: PropTypes.bool,
-  size: PropTypes.oneOf(loadingSpinnerSizes),
+  size: PropTypes.oneOf(Object.values(LoadingSpinner.size)),
 };
 
 export default LoadingSpinner;

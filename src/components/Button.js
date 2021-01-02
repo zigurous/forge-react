@@ -53,7 +53,14 @@ const Button = ({
   </button>
 );
 
-export const buttonSizes = ['sm', 'small', 'md', 'medium', 'lg', 'large'];
+Button.size = Object.freeze({
+  sm: 'sm',
+  small: 'small',
+  md: 'md',
+  medium: 'medium',
+  lg: 'lg',
+  large: 'large',
+});
 
 Button.propTypes = {
   borderless: PropTypes.bool,
@@ -70,7 +77,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   rightIcon: PropTypes.element,
   rounded: PropTypes.bool,
-  size: PropTypes.oneOf(buttonSizes),
+  size: PropTypes.oneOf(Object.values(Button.size)),
 };
 
 export default Button;

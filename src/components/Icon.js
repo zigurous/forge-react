@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import '../styles/icon.css';
 
-const sizes = {
+const sizes = Object.freeze({
   sm: 'md-18',
   small: 'md-18',
   md: 'md-24',
@@ -12,7 +12,7 @@ const sizes = {
   large: 'md-36',
   xl: 'md-48',
   extraLarge: 'md-48',
-};
+});
 
 const Icon = ({
   ariaHidden = true,
@@ -40,14 +40,21 @@ const Icon = ({
   </i>
 );
 
+Icon.size = sizes;
+
+Icon.theme = Object.freeze({
+  dark: 'dark',
+  light: 'light',
+});
+
 Icon.propTypes = {
   ariaHidden: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   inactive: PropTypes.bool,
   name: PropTypes.string,
-  size: PropTypes.oneOf(Object.keys(sizes)),
-  theme: PropTypes.oneOf(['dark', 'light']),
+  size: PropTypes.oneOf(Object.keys(Icon.size)),
+  theme: PropTypes.oneOf(Object.values(Icon.theme)),
 };
 
 export default Icon;

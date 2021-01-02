@@ -15,10 +15,15 @@ const ButtonGroup = ({ children, className, layout = 'row' }) => (
   </div>
 );
 
+ButtonGroup.layout = Object.freeze({
+  row: 'row',
+  column: 'column',
+});
+
 ButtonGroup.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  layout: PropTypes.oneOf(['row', 'column']),
+  layout: PropTypes.oneOf(Object.values(ButtonGroup.layout)),
 };
 
 export default ButtonGroup;

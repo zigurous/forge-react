@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Button, { buttonSizes } from './Button';
+import Button from './Button';
 import SocialIcon from './SocialIcon';
 import socialLinks, { SocialLinkProps } from '../socialLinks';
 import '../styles/social-button.css';
@@ -12,7 +12,7 @@ const SocialButton = ({
   link,
   primaryColor,
   secondaryColor = 'white',
-  size = 'medium',
+  size = Button.size.medium,
   url,
   ...props
 }) => {
@@ -55,7 +55,7 @@ SocialButton.propTypes = {
   link: SocialLinkProps.isRequired,
   primaryColor: PropTypes.string,
   secondaryColor: PropTypes.string,
-  size: PropTypes.oneOf(buttonSizes),
+  size: PropTypes.oneOf(Object.values(Button.size)),
   url: PropTypes.string,
 };
 

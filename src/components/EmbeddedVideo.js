@@ -5,7 +5,7 @@ import LoadingSpinner from './LoadingSpinner';
 import { useLoading } from '../hooks';
 import '../styles/embedded-video.css';
 
-export const sizes = {
+const sizes = Object.freeze({
   xs: {
     width: 320,
     height: 180,
@@ -46,7 +46,7 @@ export const sizes = {
     width: 1280,
     height: 720,
   },
-};
+});
 
 const formatSize = (size) => {
   if (typeof size === 'string') {
@@ -105,6 +105,7 @@ const EmbeddedVideo = ({
   );
 };
 
+EmbeddedVideo.size = sizes;
 EmbeddedVideo.propTypes = {
   allowFullScreen: PropTypes.bool,
   className: PropTypes.string,
@@ -112,7 +113,7 @@ EmbeddedVideo.propTypes = {
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.string,
   scrolling: PropTypes.string,
-  size: PropTypes.oneOf([Object.keys(sizes)]),
+  size: PropTypes.oneOf(Object.keys(EmbeddedVideo.size)),
   src: PropTypes.string.isRequired,
   title: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

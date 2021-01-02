@@ -32,29 +32,36 @@ const Logo = ({
   </div>
 );
 
-export const logoSizes = [
-  'xs',
-  'extraSmall',
-  'sm',
-  'small',
-  'md',
-  'medium',
-  'lg',
-  'large',
-  'xl',
-  'extraLarge',
-];
+Logo.size = Object.freeze({
+  xs: 'xs',
+  extraSmall: 'extraSmall',
+  sm: 'sm',
+  small: 'small',
+  md: 'md',
+  medium: 'medium',
+  lg: 'lg',
+  large: 'large',
+  xl: 'xl',
+  extraLarge: 'extraLarge',
+});
 
-export const logoThemes = ['dark', 'light'];
-export const logoVariants = ['wordmark', 'lettermark'];
+Logo.theme = Object.freeze({
+  dark: 'dark',
+  light: 'light',
+});
+
+Logo.variant = Object.freeze({
+  wordmark: 'wordmark',
+  lettermark: 'lettermark',
+});
 
 Logo.propTypes = {
   className: PropTypes.string,
   fill: PropTypes.string,
   onClick: PropTypes.func,
-  size: PropTypes.oneOf(logoSizes),
-  theme: PropTypes.oneOf(logoThemes),
-  variant: PropTypes.oneOf(logoVariants),
+  size: PropTypes.oneOf(Object.values(Logo.size)),
+  theme: PropTypes.oneOf(Object.values(Logo.theme)),
+  variant: PropTypes.oneOf(Object.values(Logo.variant)),
 };
 
 export default Logo;

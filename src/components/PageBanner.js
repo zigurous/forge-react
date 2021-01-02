@@ -30,25 +30,25 @@ const PageBanner = ({
   );
 };
 
-export const pageBannerSizes = [
-  'xs',
-  'extraSmall',
-  'sm',
-  'small',
-  'md',
-  'medium',
-  'lg',
-  'large',
-  'xl',
-  'extraLarge',
-];
+PageBanner.size = Object.freeze({
+  xs: 'xs',
+  extraSmall: 'extraSmall',
+  sm: 'sm',
+  small: 'small',
+  md: 'md',
+  medium: 'medium',
+  lg: 'lg',
+  large: 'large',
+  xl: 'xl',
+  extraLarge: 'extraLarge',
+});
 
 PageBanner.propTypes = {
   backgroundColor: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
   shadowed: PropTypes.bool,
-  size: PropTypes.oneOf(pageBannerSizes),
+  size: PropTypes.oneOf(Object.values(PageBanner.size)),
   style: PropTypes.object,
   theme: PropTypes.string,
   transparent: PropTypes.bool,
