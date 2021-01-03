@@ -16,15 +16,23 @@ const NavBar = ({ className, NavLink, routes = [], theme }) => (
             strict={Boolean(route.strict)}
             to={route.path}
           >
-            {route.icon && (
+            {route.leftIcon && (
               <Icon
                 className="margin-right-md"
-                name={route.icon}
+                name={route.leftIcon}
                 size="small"
                 theme={theme === 'dark' ? 'light' : 'dark'}
               />
             )}
             {route.name}
+            {route.rightIcon && (
+              <Icon
+                className="margin-left-md"
+                name={route.rightIcon}
+                size="small"
+                theme={theme === 'dark' ? 'light' : 'dark'}
+              />
+            )}
           </NavLink>
         </li>
       ))}
@@ -41,6 +49,8 @@ NavBar.propTypes = {
       exact: PropTypes.bool,
       strict: PropTypes.bool,
       component: PropTypes.elementType,
+      leftIcon: PropTypes.string,
+      rightIcon: PropTypes.string,
     })
   ),
   theme: PropTypes.string,
