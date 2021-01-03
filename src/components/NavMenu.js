@@ -16,7 +16,7 @@ const NavMenu = ({
   onLogoClick,
   routes = [],
   showLogo = false,
-  showSocials = true,
+  showSocialLinks = true,
   socialLinks = [],
   theme = 'light',
 }) => {
@@ -91,7 +91,7 @@ const NavMenu = ({
               ))}
             </ul>
           </div>
-          {showSocials && (
+          {showSocialLinks && (
             <div className="nav-menu__social-wrapper">
               <SocialNavLinks
                 iconInnerPadding={10}
@@ -125,7 +125,7 @@ NavMenu.propTypes = {
     })
   ),
   showLogo: PropTypes.bool,
-  showSocials: PropTypes.bool,
+  showSocialLinks: PropTypes.bool,
   socialLinks: PropTypes.arrayOf(SocialLinkProps),
   theme: PropTypes.string,
 };

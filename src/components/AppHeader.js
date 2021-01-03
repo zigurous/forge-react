@@ -22,7 +22,7 @@ const AppHeader = ({
   routes = [],
   showLogo = true,
   showNavigation = true,
-  showSocials = true,
+  showSocialLinks = true,
   socialLinks = [],
   sticky = false,
   theme,
@@ -65,7 +65,7 @@ const AppHeader = ({
             )}
           </div>
           <div className="app-header__content right">
-            {showSocials && (
+            {showSocialLinks && (
               <SocialNavLinks
                 iconInnerPadding={10}
                 iconSize={20}
@@ -85,7 +85,7 @@ const AppHeader = ({
           onLogoClick={onLogoClick}
           routes={routes}
           showLogo={showLogo && navigationStyle === 'menu'}
-          showSocials={showSocials}
+          showSocialLinks={showSocialLinks}
           socialLinks={socialLinks}
           theme={theme}
         />
@@ -122,7 +122,7 @@ AppHeader.propTypes = {
   ),
   showLogo: PropTypes.bool,
   showNavigation: PropTypes.bool,
-  showSocials: PropTypes.bool,
+  showSocialLinks: PropTypes.bool,
   socialLinks: PropTypes.arrayOf(SocialLinkProps),
   sticky: PropTypes.bool,
   theme: PropTypes.string,
