@@ -1,8 +1,14 @@
 .link--underlined {
-  border-bottom: dotted 1px var(--color-link, inherit);
+  border-bottom: solid 1px var(--color-link, inherit);
+  text-decoration: none;
 }
 
 .link--undecorated {
-  border: none !important;
-  text-decoration: none !important;
+  border-bottom: solid 1px transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+.link--undecorated:visited {
+  color: inherit;
 }
