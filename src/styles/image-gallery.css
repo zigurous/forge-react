@@ -6,7 +6,6 @@
 
 .image-gallery__thumbnails {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 1fr);
   column-gap: 16px;
   row-gap: 16px;
 }

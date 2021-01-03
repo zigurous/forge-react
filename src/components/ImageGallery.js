@@ -14,14 +14,33 @@ const imageSrc = (image) => {
   }
 };
 
-const ImageGallery = ({ className, columns, fadeIn = false, images = [] }) => {
+const px = (number) => {
+  return number ? `${number}px` : undefined;
+};
+
+const gridTemplate = (columns, minWidth, maxWidth) => {
+  return `repeat(${columns || 'auto-fit'}, minmax(${px(minWidth) || 0}, ${
+    px(maxWidth) || '1fr'
+  }))`;
+};
+
+const ImageGallery = ({
+  className,
+  columns,
+  fadeIn = false,
+  images = [],
+  maxWidth,
+  minWidth,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   return (
     <div className={classNames('image-gallery', className)}>
       <div
         className="image-gallery__thumbnails"
-        style={{ gridTemplateColumns: `repeat(${columns || 'auto-fit'}, 1fr)` }}
+        style={{
+          gridTemplateColumns: gridTemplate(columns, minWidth, maxWidth),
+        }}
       >
         {images.map((image, index) => {
           const isObject = typeof image !== 'string';
@@ -87,6 +106,8 @@ ImageGallery.propTypes = {
       PropTypes.string,
     ])
   ),
+  maxWidth: PropTypes.number,
+  minWidth: PropTypes.number,
 };
 
 export default ImageGallery;
