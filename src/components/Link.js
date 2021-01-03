@@ -7,6 +7,7 @@ import '../styles/link.css';
 const Link = ({
   children,
   className,
+  ElementType = 'a',
   external = false,
   href,
   link,
@@ -17,7 +18,7 @@ const Link = ({
   underlined = false,
   ...props
 }) => (
-  <a
+  <ElementType
     {...props}
     className={classNames(
       'link',
@@ -25,17 +26,27 @@ const Link = ({
       { 'link--undecorated': undecorated },
       className
     )}
-    href={href || to || (typeof link === 'string' ? link : link.url)}
-    rel={rel || (external ? 'noopener noreferrer' : undefined)}
-    target={target || (external ? '_blank' : undefined)}
+    href={
+      ElementType === 'a' &&
+      (href || to || (typeof link === 'string' ? link : link.url))
+    }
+    rel={
+      ElementType === 'a' &&
+      (rel || (external ? 'noopener noreferrer' : undefined))
+    }
+    target={
+      ElementType === 'a' && (target || (external ? '_blank' : undefined))
+    }
+    to={ElementType !== 'a' && to}
   >
     {children}
-  </a>
+  </ElementType>
 );
 
 Link.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  ElementType: PropTypes.elementType,
   external: PropTypes.bool,
   href: PropTypes.string,
   link: SocialLinkProps,
