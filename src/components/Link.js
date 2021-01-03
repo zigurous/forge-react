@@ -17,31 +17,31 @@ const Link = ({
   undecorated = false,
   underlined = false,
   ...props
-}) => (
-  <ElementType
-    {...props}
-    className={classNames(
-      'link',
-      { 'link--underlined': underlined },
-      { 'link--undecorated': undecorated },
-      className
-    )}
-    href={
-      ElementType === 'a' &&
-      (href || to || (typeof link === 'string' ? link : link.url))
-    }
-    rel={
-      ElementType === 'a' &&
-      (rel || (external ? 'noopener noreferrer' : undefined))
-    }
-    target={
-      ElementType === 'a' && (target || (external ? '_blank' : undefined))
-    }
-    to={ElementType !== 'a' && to}
-  >
-    {children}
-  </ElementType>
-);
+}) => {
+  const anchorProps =
+    ElementType === 'a'
+      ? {
+          href: href || to || (typeof link === 'string' ? link : link.url),
+          rel: rel || (external ? 'noopener noreferrer' : undefined),
+          target: target || (external ? '_blank' : undefined),
+        }
+      : {};
+  return (
+    <ElementType
+      {...props}
+      className={classNames(
+        'link',
+        { 'link--underlined': underlined },
+        { 'link--undecorated': undecorated },
+        className
+      )}
+      to={ElementType !== 'a' ? to : undefined}
+      {...anchorProps}
+    >
+      {children}
+    </ElementType>
+  );
+};
 
 Link.propTypes = {
   children: PropTypes.node,
