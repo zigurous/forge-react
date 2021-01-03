@@ -32,30 +32,30 @@
 
 .page-banner--xs,
 .page-banner--extraSmall {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .page-banner--sm,
 .page-banner--small {
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .page-banner--md,
 .page-banner--medium {
-  padding-top: 4em;
-  padding-bottom: 4em;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .page-banner--lg,
 .page-banner--large {
-  padding-top: 6em;
-  padding-bottom: 6em;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
 .page-banner--xl,
 .page-banner--extraLarge {
-  padding-top: 8em;
-  padding-bottom: 8em;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
 }
