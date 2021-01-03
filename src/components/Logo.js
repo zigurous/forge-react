@@ -27,6 +27,7 @@ const Logo = ({
   >
     {onClick ? (
       <button
+        aria-label="Logo"
         onClick={(event) => {
           event.target.blur();
           onClick();
