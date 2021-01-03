@@ -6,7 +6,6 @@ import '../styles/app-footer.css';
 const AppFooter = ({
   children,
   className,
-  fullBleed = false,
   sticky = false,
   theme,
   transparent = false,
@@ -20,21 +19,13 @@ const AppFooter = ({
     )}
     theme={theme}
   >
-    <div
-      className={classNames({
-        container: !fullBleed,
-        'container-fluid': fullBleed,
-      })}
-    >
-      {children}
-    </div>
+    {children}
   </footer>
 );
 
 AppFooter.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  fullBleed: PropTypes.bool,
   sticky: PropTypes.bool,
   theme: PropTypes.string,
   transparent: PropTypes.bool,

@@ -19,16 +19,3 @@
   bottom: 0;
   z-index: 1020;
 }
-
-.app-footer > .container,
-.app-footer > .container-fluid {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  margin: 0 auto;
-}
-
-.app-footer > .container-fluid {
-  max-width: 100%;
-}
