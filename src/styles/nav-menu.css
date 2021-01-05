@@ -62,9 +62,12 @@
   width: 56px;
   height: 56px;
   pointer-events: all !important;
+  transition: transform 0.2s;
+}
+
+.nav-menu__button--floating {
   border-radius: 50%;
   background-color: var(--color-nav-skin-decoration);
-  transition: transform 0.2s;
 }
 
 .nav-menu__button img {

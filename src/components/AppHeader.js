@@ -12,6 +12,7 @@ import '../styles/app-header.css';
 const AppHeader = ({
   bordered = false,
   className,
+  floatingNavMenu = false,
   fluid = false,
   location,
   logoSize = Logo.size.small,
@@ -72,22 +73,23 @@ const AppHeader = ({
                 links={Object.values(socialLinks)}
               />
             )}
+            {showNavigation && (navigationStyle === 'menu' || mobile) && (
+              <NavMenu
+                floating={floatingNavMenu}
+                location={location}
+                logoSize={logoSize}
+                logoVariant={logoVariant}
+                NavLink={NavLink}
+                onLogoClick={onLogoClick}
+                routes={routes}
+                showLogo={showLogo && navigationStyle === 'menu'}
+                showSocialLinks={showSocialLinks}
+                socialLinks={socialLinks}
+                theme={theme}
+              />
+            )}
           </div>
         </div>
-      )}
-      {showNavigation && (navigationStyle === 'menu' || mobile) && (
-        <NavMenu
-          location={location}
-          logoSize={logoSize}
-          logoVariant={logoVariant}
-          NavLink={NavLink}
-          onLogoClick={onLogoClick}
-          routes={routes}
-          showLogo={showLogo && navigationStyle === 'menu'}
-          showSocialLinks={showSocialLinks}
-          socialLinks={socialLinks}
-          theme={theme}
-        />
       )}
     </header>
   );
@@ -101,6 +103,7 @@ AppHeader.navigationStyle = Object.freeze({
 AppHeader.propTypes = {
   bordered: PropTypes.bool,
   className: PropTypes.string,
+  floatingNavMenu: PropTypes.bool,
   fluid: PropTypes.bool,
   location: PropTypes.shape({
     pathname: PropTypes.string,

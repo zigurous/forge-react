@@ -45,7 +45,7 @@
 }
 
 @media (max-width: 1199px) {
-  .app-header__content.right {
+  .app-header__content.right .social-nav-links {
     display: none;
   }
 }
