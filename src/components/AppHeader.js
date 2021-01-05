@@ -12,7 +12,7 @@ import '../styles/app-header.css';
 const AppHeader = ({
   bordered = false,
   className,
-  fullBleed = false,
+  fluid = false,
   location,
   logoSize = Logo.size.small,
   logoVariant = Logo.variant.wordmark,
@@ -43,8 +43,8 @@ const AppHeader = ({
       {navigationStyle === 'bar' && (
         <div
           className={classNames({
-            container: !fullBleed,
-            'container-fluid': fullBleed,
+            container: !fluid,
+            'container-fluid': fluid,
           })}
         >
           <div className="app-header__content left">
@@ -77,7 +77,6 @@ const AppHeader = ({
       )}
       {showNavigation && (navigationStyle === 'menu' || mobile) && (
         <NavMenu
-          fullBleed={fullBleed}
           location={location}
           logoSize={logoSize}
           logoVariant={logoVariant}
@@ -102,7 +101,7 @@ AppHeader.navigationStyle = Object.freeze({
 AppHeader.propTypes = {
   bordered: PropTypes.bool,
   className: PropTypes.string,
-  fullBleed: PropTypes.bool,
+  fluid: PropTypes.bool,
   location: PropTypes.shape({
     pathname: PropTypes.string,
     search: PropTypes.string,
