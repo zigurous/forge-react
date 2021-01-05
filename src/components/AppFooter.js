@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Link from './Link';
+import Logo from './Logo';
 import '../styles/app-footer.css';
 
 const AppFooter = ({
-  children,
   className,
+  copyright,
+  links = [],
+  onLogoClick = () => {},
+  showLogo = true,
   sticky = false,
   theme,
   transparent = false,
@@ -19,13 +24,49 @@ const AppFooter = ({
     )}
     theme={theme}
   >
-    {children}
+    <div className="container">
+      <div className="row align-items-center margin-top-lg margin-bottom-lg">
+        <div className="col font-xs gray-400">
+          <span>
+            {showLogo && (
+              <Logo fill="#8b919f" onClick={onLogoClick} size="xs" />
+            )}
+            {copyright && (
+              <span className="copyright margin-left-xl margin-right-xl">
+                {copyright}
+              </span>
+            )}
+          </span>
+          {links && links.length > 0 && (
+            <span className="links">
+              {links.map((link) => (
+                <Link
+                  className="margin-left-md margin-right-md"
+                  key={link.name}
+                  undecorated
+                  {...link}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
   </footer>
 );
 
 AppFooter.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
+  copyright: PropTypes.node,
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    })
+  ),
+  onLogoClick: PropTypes.func,
+  showLogo: PropTypes.bool,
   sticky: PropTypes.bool,
   theme: PropTypes.string,
   transparent: PropTypes.bool,
