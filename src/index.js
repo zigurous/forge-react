@@ -1,6 +1,7 @@
 export { default as AppFooter } from './components/AppFooter';
 export { default as AppHeader } from './components/AppHeader';
 export { default as AppStoreBadge } from './components/AppStoreBadge';
+export { default as AppUtilityBar } from './components/AppUtilityBar';
 export { default as Badge } from './components/Badge';
 export { default as Button } from './components/Button';
 export { default as ButtonGroup } from './components/ButtonGroup';

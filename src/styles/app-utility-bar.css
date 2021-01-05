@@ -1,0 +1,35 @@
+.app-utility-bar {
+  height: 32px;
+}
+
+.app-utility-bar[theme="dark"] {
+  background-color: var(--color-scale-gray-900);
+  color: var(--color-scale-gray-400);
+}
+
+.app-utility-bar[theme="light"] {
+  background-color: var(--color-scale-gray-050);
+  color: var(--color-scale-gray-600);
+}
+
+.app-utility-bar .container,
+.app-utility-bar .row {
+  height: 100%;
+}
+
+.app-utility-bar .row {
+  align-items: center;
+}
+
+.app-utility-bar .col {
+  display: flex;
+  align-items: center;
+}
+
+.app-utility-bar--left .col {
+  justify-content: flex-start;
+}
+
+.app-utility-bar--right .col {
+  justify-content: flex-end;
+}
