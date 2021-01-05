@@ -84,7 +84,7 @@ const NavMenu = ({
                   >
                     {route.name}
                   </NavLink>
-                  <span className="margin-left-md font-xs gray">
+                  <span className="margin-left-md font-xs font-weight-400 gray-500">
                     0{index + 1}.
                   </span>
                 </li>
