@@ -14,10 +14,6 @@
   background: none !important;
 }
 
-.app-header--bordered {
-  border-bottom: solid 1px var(--color-header-decoration);
-}
-
 .app-header--sticky {
   position: sticky;
   top: 0;

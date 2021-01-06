@@ -10,7 +10,6 @@ import { useMediaQuery } from '../hooks';
 import '../styles/app-header.css';
 
 const AppHeader = ({
-  bordered = false,
   className,
   floatingNavMenu = false,
   fluid = false,
@@ -35,7 +34,6 @@ const AppHeader = ({
       className={classNames(
         'app-header',
         { 'app-header--transparent': transparent },
-        { 'app-header--bordered': bordered },
         { 'app-header--sticky': sticky },
         className
       )}
@@ -101,7 +99,6 @@ AppHeader.navigationStyle = Object.freeze({
 });
 
 AppHeader.propTypes = {
-  bordered: PropTypes.bool,
   className: PropTypes.string,
   floatingNavMenu: PropTypes.bool,
   fluid: PropTypes.bool,
