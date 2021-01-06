@@ -11,12 +11,18 @@ const Thumbnail = ({
   image,
   imageProps = {},
   rounded = true,
+  shadow = true,
   style,
   ...props
 }) => (
   <ElementType
     {...props}
-    className={classNames('thumbnail', { 'img-rounded': rounded }, className)}
+    className={classNames(
+      'thumbnail',
+      { 'img-rounded': rounded },
+      { 'shadow-sm': shadow },
+      className
+    )}
   >
     {image && (
       <img
@@ -43,6 +49,7 @@ Thumbnail.propTypes = {
   imageProps: PropTypes.object,
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   rounded: PropTypes.bool,
+  shadow: PropTypes.bool,
   style: PropTypes.object,
 };
 

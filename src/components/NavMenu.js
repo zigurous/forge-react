@@ -79,7 +79,7 @@ const NavMenu = ({
             {floating && (
               <div className="nav-menu__button-wrapper">
                 <button
-                  className="nav-menu__button box-shadow-1"
+                  className="nav-menu__button shadow-sm"
                   onClick={() => {
                     setIsOpen(!isOpen);
                   }}
