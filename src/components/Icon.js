@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import '../styles/icon.css';
 
 const sizes = Object.freeze({
   sm: 'md-18',

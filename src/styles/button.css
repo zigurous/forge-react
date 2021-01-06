@@ -1,23 +1,3 @@
-.btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--color-button-primary);
-  border: solid 1px var(--color-button-primary);
-  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
-  font-weight: 600;
-  text-transform: uppercase;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.btn:hover:not(:disabled),
-.btn:focus:not(:disabled),
-.btn:active:not(:disabled) {
-  background-color: var(--color-button-primary);
-  color: var(--color-button-secondary);
-}
-
 .btn > .icon-wrapper {
   display: inline-flex;
   justify-content: center;
@@ -46,34 +26,10 @@
   fill: var(--color-button-secondary);
 }
 
-.btn--sm,
-.btn--small {
-  padding: 8px 16px;
-  font-size: 0.75rem;
-  line-height: 1.5;
-}
-
-.btn--sm.btn--rounded,
-.btn--small.btn--rounded {
-  border-radius: 24px;
-}
-
 .btn--sm > .icon-wrapper,
 .btn--small > .icon-wrapper {
   max-width: 18px;
   max-height: 18px;
-}
-
-.btn--md,
-.btn--medium {
-  padding: 12px 24px;
-  font-size: 0.9375rem;
-  line-height: 1.5;
-}
-
-.btn--md.btn--rounded,
-.btn--medium.btn--rounded {
-  border-radius: 32px;
 }
 
 .btn--md > .icon-wrapper,
@@ -82,28 +38,8 @@
   max-height: 21px;
 }
 
-.btn--lg,
-.btn--large {
-  padding: 16px 32px;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.btn--lg.btn--rounded,
-.btn--large.btn--rounded {
-  border-radius: 40px;
-}
-
 .btn--lg > .icon-wrapper,
 .btn--large > .icon-wrapper {
   max-width: 24px;
   max-height: 24px;
-}
-
-.btn--circle {
-  border-radius: 50%;
-}
-
-.btn--borderless {
-  border: none !important;
 }
