@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const ButtonGroup = ({ children, className, layout = 'row' }) => (
+const ButtonGroup = ({ children, className, layout = 'horizontal' }) => (
   <div
     className={classNames(
       'btn-group',
@@ -15,8 +15,8 @@ const ButtonGroup = ({ children, className, layout = 'row' }) => (
 );
 
 ButtonGroup.layout = Object.freeze({
-  row: 'row',
-  column: 'column',
+  horizontal: 'horizontal',
+  vertical: 'vertical',
 });
 
 ButtonGroup.propTypes = {
