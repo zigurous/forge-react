@@ -2,6 +2,11 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
+  height: 36px;
+}
+
+.input-wrapper--icon input {
+  padding-left: 32px;
 }
 
 .input-wrapper > .icon {
@@ -9,8 +14,10 @@
   top: 8px;
   left: 8px;
   pointer-events: none;
+  font-size: 21px;
+  color: var(--color-gray);
 }
 
-.input-wrapper > .icon + input {
-  padding-left: 32px;
-}
+/* .input-wrapper input:focus ~ .icon {
+  color: var(--color-dark);
+} */

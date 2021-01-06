@@ -6,9 +6,15 @@ import '../styles/input.css';
 
 const Input = ({ className, icon, placeholder, type, ...props }) => {
   return (
-    <div className={classNames('input-wrapper', className)}>
-      {icon && <Icon name={icon} size="small" />}
+    <div
+      className={classNames(
+        'input-wrapper',
+        { 'input-wrapper--icon': icon },
+        className
+      )}
+    >
       <input placeholder={placeholder} type={type} {...props} />
+      {icon && <Icon name={icon} size="md" />}
     </div>
   );
 };
