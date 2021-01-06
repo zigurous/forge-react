@@ -6,6 +6,7 @@ export { default as Badge } from './components/Badge';
 export { default as Button } from './components/Button';
 export { default as ButtonGroup } from './components/ButtonGroup';
 export { default as ClickableDiv } from './components/ClickableDiv';
+export { default as ContactForm } from './components/ContactForm';
 export { default as EmbeddedTwitch } from './components/EmbeddedTwitch';
 export { default as EmbeddedVideo } from './components/EmbeddedVideo';
 export { default as EmbeddedYouTube } from './components/EmbeddedYouTube';
