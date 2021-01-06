@@ -1,3 +1,7 @@
+:root {
+  --color-social-icon: inherit;
+}
+
 .social-icon {
   position: relative;
   display: inline-flex;

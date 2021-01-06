@@ -67,7 +67,7 @@
 
 .nav-menu__button--floating {
   border-radius: 50%;
-  background-color: var(--color-nav-skin-decoration);
+  background-color: var(--color-primary);
 }
 
 .nav-menu__button img {
@@ -138,18 +138,18 @@
 }
 
 .nav-menu__item > a {
-  color: var(--color-nav-skin);
+  color: inherit;
   transition: color 0.2s, padding 0.4s;
 }
 
 .nav-menu__item > a:hover {
-  color: var(--color-nav-skin-decoration);
+  color: var(--color-primary);
   border: none;
   padding-right: 40px;
 }
 
 .nav-menu__item > a.selected {
-  color: var(--color-nav-skin-decoration);
+  color: var(--color-primary);
 }
 
 .nav-menu__item > span {

@@ -1,5 +1,5 @@
 .link--underlined {
-  border-bottom: solid 1px var(--color-link, inherit);
+  border-bottom: solid 1px var(--color-primary, inherit);
   text-decoration: none;
 }
 

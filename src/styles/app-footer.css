@@ -11,6 +11,10 @@
   overflow: hidden;
 }
 
+.app-footer .logo {
+  fill: var(--color-gray);
+}
+
 .app-footer--transparent {
   background: none !important;
 }

@@ -42,8 +42,8 @@
 
 .nav-bar__item a,
 .nav-bar__item a > .icon {
-  color: var(--color-nav-skin);
-  /* transition: color 0.2s; */
+  color: var(--color-theme-foreground);
+  transition: color 0.2s;
 }
 
 .nav-bar__item a:hover,
@@ -51,10 +51,10 @@
 .nav-bar__item a:hover > .icon,
 .nav-bar__item a:active > .icon {
   border-color: transparent;
-  color: var(--color-nav-skin-decoration);
+  color: var(--color-primary);
 }
 
 .nav-bar__item a.selected {
-  border-color: var(--color-nav-skin-decoration);
+  border-color: var(--color-primary);
   text-decoration: none;
 }

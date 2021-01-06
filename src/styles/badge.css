@@ -19,11 +19,11 @@
 }
 
 .badge--filled {
-  background-color: var(--color-scale-black, black);
-  color: var(--color-scale-white, white);
+  background-color: var(--color-theme-foreground, black);
+  color: var(--color-theme-background, white);
 }
 
 .badge--outline {
-  border: solid 1px var(--color-scale-black, black);
-  color: var(--color-scale-black, black);
+  border: solid 1px var(--color-theme-foreground, black);
+  color: var(--color-theme-foreground, black);
 }

@@ -26,11 +26,9 @@ const AppFooter = ({
   >
     <div className="container">
       <div className="row align-items-center margin-top-lg margin-bottom-lg">
-        <div className="col font-xs gray-400">
+        <div className="col font-xs text-gray">
           <span>
-            {showLogo && (
-              <Logo fill="#8b919f" onClick={onLogoClick} size="xs" />
-            )}
+            {showLogo && <Logo onClick={onLogoClick} size="xs" />}
             {copyright && (
               <span className="copyright margin-left-xl margin-right-xl">
                 {copyright}

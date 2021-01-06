@@ -1,5 +1,6 @@
 .logo {
   display: inline-block;
+  fill: var(--color-theme-foreground);
 }
 
 .logo.xs,
@@ -28,19 +29,11 @@
 }
 
 .logo.dark {
-  fill: var(--color-scale-white, white);
+  fill: var(--color-light, white);
 }
 
 .logo.light {
-  fill: var(--color-scale-black, black);
-}
-
-[theme="dark"] .logo {
-  fill: var(--color-scale-white, white);
-}
-
-[theme="light"] .logo {
-  fill: var(--color-scale-black, black);
+  fill: var(--color-dark, black);
 }
 
 .logo svg {
