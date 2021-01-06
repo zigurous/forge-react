@@ -2,11 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const ButtonGroup = ({ children, className, layout = 'horizontal' }) => (
+const ButtonGroup = ({
+  children,
+  className,
+  layout = 'horizontal',
+  spaced = false,
+}) => (
   <div
     className={classNames(
       'btn-group',
       { [`btn-group--${layout}`]: layout },
+      { 'btn-group--spaced': spaced },
       className
     )}
   >
@@ -23,6 +29,7 @@ ButtonGroup.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   layout: PropTypes.oneOf(Object.values(ButtonGroup.layout)),
+  spaced: PropTypes.bool,
 };
 
 export default ButtonGroup;
