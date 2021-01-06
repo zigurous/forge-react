@@ -16,13 +16,17 @@ const Thumbnail = ({
 }) => (
   <ElementType
     {...props}
-    className={classNames('thumbnail', { rounded }, className)}
+    className={classNames('thumbnail', { 'img-rounded': rounded }, className)}
   >
     {image && (
       <img
         {...imageProps}
         alt={imageProps.alt || ''}
-        className={classNames('thumbnail__image', imageProps.className)}
+        className={classNames(
+          'img-fluid',
+          { 'img-rounded': rounded },
+          imageProps.className
+        )}
         height={imageProps.height || height}
         src={image}
       />
