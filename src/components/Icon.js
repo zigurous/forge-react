@@ -2,17 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const sizes = Object.freeze({
-  sm: 'md-18',
-  small: 'md-18',
-  md: 'md-24',
-  medium: 'md-24',
-  lg: 'md-36',
-  large: 'md-36',
-  xl: 'md-48',
-  extraLarge: 'md-48',
-});
-
 const Icon = ({
   ariaHidden = true,
   children,
@@ -27,10 +16,10 @@ const Icon = ({
     aria-hidden={ariaHidden}
     className={classNames(
       'icon',
-      'material-icons',
-      { [sizes[size]]: size },
-      { 'md-inactive': inactive },
-      { 'md-dark': theme === 'dark', 'md-light': theme === 'light' },
+      { [`icon--${size}`]: size },
+      { [`icon--${theme}`]: theme },
+      { 'icon--inactive': inactive },
+      'material-icon',
       className
     )}
     {...props}
@@ -39,7 +28,16 @@ const Icon = ({
   </i>
 );
 
-Icon.size = sizes;
+Icon.size = Object.freeze({
+  sm: 'sm',
+  small: 'small',
+  md: 'md',
+  medium: 'medium',
+  lg: 'lg',
+  large: 'large',
+  xl: 'xl',
+  extraLarge: 'extraLarge',
+});
 
 Icon.theme = Object.freeze({
   dark: 'dark',
