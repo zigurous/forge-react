@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { SocialLinkProps } from '../socialLinks';
-import '../styles/link.css';
 
 const Link = ({
   children,
