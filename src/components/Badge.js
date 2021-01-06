@@ -4,7 +4,9 @@ import classNames from 'classnames';
 import '../styles/badge.css';
 
 const Badge = ({ children, className, type = 'filled' }) => (
-  <div className={classNames('badge', type, className)}>{children}</div>
+  <div className={classNames('badge', { [`badge--${type}`]: type }, className)}>
+    {children}
+  </div>
 );
 
 Badge.type = Object.freeze({

@@ -18,12 +18,12 @@
   margin-right: 0;
 }
 
-.badge.filled {
+.badge--filled {
   background-color: var(--color-scale-black, black);
   color: var(--color-scale-white, white);
 }
 
-.badge.outline {
+.badge--outline {
   border: solid 1px var(--color-scale-black, black);
   color: var(--color-scale-black, black);
 }
