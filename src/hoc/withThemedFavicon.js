@@ -2,9 +2,9 @@ import React from 'react';
 import { useThemedFavicon } from '../hooks';
 
 export default function withThemedFavicon(Component) {
-  const ThemedFaviconComponent = (props) => {
+  const ThemedFaviconHOC = (props) => {
     useThemedFavicon();
     return <Component {...props} />;
   };
-  return ThemedFaviconComponent;
+  return ThemedFaviconHOC;
 }

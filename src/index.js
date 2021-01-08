@@ -27,7 +27,7 @@ export { default as SocialIcon } from './components/SocialIcon';
 export { default as socialLinks, SocialLinkProps } from './socialLinks';
 export { default as SocialNavLinks } from './components/SocialNavLinks';
 export { default as Thumbnail } from './components/Thumbnail';
-export { fadeIn, withThemedFavicon, withTransition } from './hoc';
+export { fadeIn, scrollToTop, withThemedFavicon, withTransition } from './hoc';
 export {
   useDocumentTitle,
   useFullscreenMenu,
