@@ -6,8 +6,8 @@ export default function scrollToTop(WrappedComponent, behavior) {
     useEffect(() => {
       window.scrollTo({ top: 0, left: 0, behavior });
     }, []);
-    ScrollToTop.displayName = getDisplayName('ScrollToTop', WrappedComponent);
     return <WrappedComponent {...props} />;
   };
+  ScrollToTop.displayName = getDisplayName('ScrollToTop', WrappedComponent);
   return ScrollToTop;
 }
