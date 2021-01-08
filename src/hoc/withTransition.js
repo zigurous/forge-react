@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import getDisplayName from './displayName';
 import { useMounted } from '../hooks';
 
 const transitionTriggers = {
@@ -12,11 +13,11 @@ const transitionTriggers = {
   'translate-right': 'hidden',
 };
 
-export const fadeIn = (Component) => {
+export const fadeIn = (WrappedComponent) => {
   const FadeInTransition = (props) => {
     const mounted = useMounted();
     return (
-      <Component
+      <WrappedComponent
         {...props}
         className={classNames(props.className, 'transition', 'fade-in', {
           visible: mounted,
@@ -24,6 +25,7 @@ export const fadeIn = (Component) => {
       />
     );
   };
+  FadeInTransition.displayName = getDisplayName('FadeIn', WrappedComponent);
   FadeInTransition.propTypes = {
     className: PropTypes.string,
   };
@@ -31,7 +33,7 @@ export const fadeIn = (Component) => {
 };
 
 const withTransition = (
-  Component,
+  WrappedComponent,
   transitionClass,
   transitionProp,
   transitionTrigger
@@ -40,7 +42,7 @@ const withTransition = (
     const shouldTransition = Boolean(props[transitionProp]);
     const trigger = transitionTrigger || transitionTriggers[transitionClass];
     return (
-      <Component
+      <WrappedComponent
         {...props}
         className={classNames(props.className, 'transition', transitionClass, {
           [trigger]: shouldTransition,
@@ -48,6 +50,7 @@ const withTransition = (
       />
     );
   };
+  Transition.displayName = getDisplayName('Transition', WrappedComponent);
   Transition.propTypes = {
     className: PropTypes.string,
   };

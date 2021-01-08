@@ -1,10 +1,12 @@
 import React from 'react';
+import getDisplayName from './displayName';
 import { useThemedFavicon } from '../hooks';
 
-export default function withThemedFavicon(Component) {
-  const ThemedFaviconHOC = (props) => {
+export default function withThemedFavicon(WrappedComponent) {
+  const ThemedFavicon = (props) => {
     useThemedFavicon();
-    return <Component {...props} />;
+    return <WrappedComponent {...props} />;
   };
-  return ThemedFaviconHOC;
+  ThemedFavicon.displayName = getDisplayName('ThemedFavicon', WrappedComponent);
+  return ThemedFavicon;
 }
