@@ -39,5 +39,6 @@ export {
 } from './hooks';
 export { icons, logo } from './svg';
 export { enterKeyHandler } from './utils/eventHandlers';
+export { hasHorizontalScroll, hasVerticalScroll } from './utils/scrolling';
 export { default as debounce } from './utils/debounce';
 export { default as throttle } from './utils/throttle';
