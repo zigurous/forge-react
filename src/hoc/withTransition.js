@@ -12,7 +12,25 @@ const transitionTriggers = {
   'translate-right': 'hidden',
 };
 
-export const withTransition = (
+export const fadeIn = (Component) => {
+  const FadeInTransition = (props) => {
+    const mounted = useMounted();
+    return (
+      <Component
+        {...props}
+        className={classNames(props.className, 'transition', 'fade-in', {
+          visible: mounted,
+        })}
+      />
+    );
+  };
+  FadeInTransition.propTypes = {
+    className: PropTypes.string,
+  };
+  return FadeInTransition;
+};
+
+const withTransition = (
   Component,
   transitionClass,
   transitionProp,
@@ -36,20 +54,4 @@ export const withTransition = (
   return Transition;
 };
 
-export const fadeIn = (Component) => {
-  const FadeInTransition = (props) => {
-    const mounted = useMounted();
-    return (
-      <Component
-        {...props}
-        className={classNames(props.className, 'transition', 'fade-in', {
-          visible: mounted,
-        })}
-      />
-    );
-  };
-  FadeInTransition.propTypes = {
-    className: PropTypes.string,
-  };
-  return FadeInTransition;
-};
+export default withTransition;

@@ -27,7 +27,7 @@ export { default as SocialIcon } from './components/SocialIcon';
 export { default as socialLinks, SocialLinkProps } from './socialLinks';
 export { default as SocialNavLinks } from './components/SocialNavLinks';
 export { default as Thumbnail } from './components/Thumbnail';
-export { withThemedFavicon } from './hoc';
+export { fadeIn, withThemedFavicon, withTransition } from './hoc';
 export {
   useDocumentTitle,
   useFullscreenMenu,
@@ -39,6 +39,5 @@ export {
 } from './hooks';
 export { icons, logo } from './svg';
 export { enterKeyHandler } from './utils/eventHandlers';
-export { fadeIn, withTransition } from './utils/transitions';
 export { default as debounce } from './utils/debounce';
 export { default as throttle } from './utils/throttle';
