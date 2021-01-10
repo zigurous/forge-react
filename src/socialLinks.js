@@ -8,6 +8,7 @@ import {
   paypal,
   twitch,
   twitter,
+  unity,
   youtube,
 } from './svg/icons';
 
@@ -71,6 +72,13 @@ const socialLinks = {
     color: '#191717',
     url: 'https://github.com/zigurous',
     icon: github,
+  },
+  unity: {
+    key: 'unity',
+    name: 'Unity',
+    color: '#000000',
+    url: 'https://assetstore.unity.com/publishers/51884?preview=1',
+    icon: unity,
   },
   paypal: {
     key: 'paypal',
