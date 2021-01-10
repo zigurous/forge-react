@@ -83,7 +83,7 @@ const socialLinks = {
     key: 'email',
     name: 'Email',
     color: '#808080',
-    url: 'mailto:adam@zigurous.com',
+    url: 'mailto:support@zigurous.com',
     icon: email,
   },
 };
