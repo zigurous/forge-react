@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Icon from './Icon';
 import '../styles/button.css';
 
 const Button = ({
@@ -10,11 +11,13 @@ const Button = ({
   className,
   external,
   history,
-  leftIcon,
+  icon,
+  iconElement,
+  iconName,
+  iconSize,
   link,
   linkTarget = '_blank',
   onClick,
-  rightIcon,
   rounded = true,
   size = 'medium',
   ...rest
@@ -26,6 +29,7 @@ const Button = ({
       { 'btn--rounded': rounded && !circle },
       { 'btn--circle': circle },
       { [`btn--${size}`]: size },
+      { 'btn--icon-only': icon === 'only' },
       className
     )}
     onClick={(event) => {
@@ -39,15 +43,21 @@ const Button = ({
     }}
     {...rest}
   >
-    {leftIcon && (
+    {icon === 'left' && (
       <span aria-hidden className="icon-wrapper margin-right-md">
-        {leftIcon}
+        {iconElement || <Icon name={iconName} size={iconSize || size} />}
       </span>
     )}
-    {children}
-    {rightIcon && (
+    {icon === 'only' ? (
+      <span aria-hidden className="icon-wrapper">
+        <Icon name={iconName} size={iconSize || size} />
+      </span>
+    ) : (
+      children
+    )}
+    {icon === 'right' && (
       <span aria-hidden className="icon-wrapper margin-left-md">
-        {rightIcon}
+        {iconElement || <Icon name={iconName} size={iconSize || size} />}
       </span>
     )}
   </button>
@@ -63,6 +73,7 @@ Button.size = Object.freeze({
 });
 
 Button.propTypes = {
+  ariaLabel: PropTypes.string,
   borderless: PropTypes.bool,
   children: PropTypes.node,
   circle: PropTypes.bool,
@@ -71,11 +82,13 @@ Button.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }),
-  leftIcon: PropTypes.element,
+  icon: PropTypes.oneOf(['left', 'right', 'only']),
+  iconElement: PropTypes.element,
+  iconName: PropTypes.string,
+  iconSize: PropTypes.oneOf(Object.values(Icon.size)),
   link: PropTypes.string,
   linkTarget: PropTypes.string,
   onClick: PropTypes.func,
-  rightIcon: PropTypes.element,
   rounded: PropTypes.bool,
   size: PropTypes.oneOf(Object.values(Button.size)),
 };

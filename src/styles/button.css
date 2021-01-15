@@ -14,15 +14,15 @@
   transition: fill 0.2s;
 }
 
-.btn:hover:not(:disabled) > .icon-wrapper > .icon,
-.btn:focus:not(:disabled) > .icon-wrapper > .icon,
-.btn:active:not(:disabled) > .icon-wrapper > .icon {
+.btn:hover:not(:disabled):not(.btn--icon-only) > .icon-wrapper > .icon,
+.btn:focus:not(:disabled):not(.btn--icon-only) > .icon-wrapper > .icon,
+.btn:active:not(:disabled):not(.btn--icon-only) > .icon-wrapper > .icon {
   color: var(--color-button-secondary);
 }
 
-.btn:hover:not(:disabled) > .icon-wrapper > svg,
-.btn:focus:not(:disabled) > .icon-wrapper > svg,
-.btn:active:not(:disabled) > .icon-wrapper > svg {
+.btn:hover:not(:disabled):not(.btn--icon-only) > .icon-wrapper > svg,
+.btn:focus:not(:disabled):not(.btn--icon-only) > .icon-wrapper > svg,
+.btn:active:not(:disabled):not(.btn--icon-only) > .icon-wrapper > svg {
   fill: var(--color-button-secondary);
 }
 

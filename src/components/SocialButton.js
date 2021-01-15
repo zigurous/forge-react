@@ -21,7 +21,8 @@ const SocialButton = ({
     <Button
       {...props}
       className={classNames('social-button', social.key, className)}
-      leftIcon={
+      icon="left"
+      iconElement={
         social.icon && (
           <SocialIcon
             aria-hidden
