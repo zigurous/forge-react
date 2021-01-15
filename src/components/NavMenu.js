@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Logo from './Logo';
-import Modal from './Modal';
+import ReactPortal from './ReactPortal';
 import SocialNavLinks from './SocialNavLinks';
+import { useModal } from '../hooks';
 import { SocialLinkProps } from '../socialLinks';
 import '../styles/nav-menu.css';
 
@@ -21,7 +22,7 @@ const NavMenu = ({
   socialLinks = [],
   theme = 'light',
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useModal(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -31,7 +32,7 @@ const NavMenu = ({
       });
     });
     setIsOpen(false);
-  }, [location]);
+  }, [location, setIsOpen]);
 
   return (
     <React.Fragment>
@@ -55,7 +56,7 @@ const NavMenu = ({
           />
         </button>
       )}
-      <Modal isOpen={isOpen}>
+      <ReactPortal>
         <div
           className={classNames(
             'nav-menu',
@@ -126,7 +127,7 @@ const NavMenu = ({
             )}
           </div>
         </div>
-      </Modal>
+      </ReactPortal>
     </React.Fragment>
   );
 };

@@ -6,7 +6,7 @@
   right: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
+  z-index: var(--z-index-fixed, 1030);
   pointer-events: none;
   background: none !important;
 }
@@ -23,7 +23,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1040;
+  z-index: var(--z-index-overlay, 1040);
   transition: opacity 0.2s, visibility 0.2s;
   /* background-image: url("../../images/patterns/classy-fabric.png"); */
 }
@@ -45,7 +45,7 @@
   margin-bottom: 32px;
   margin-left: 32px;
   margin-right: 32px;
-  z-index: 1050;
+  z-index: var(--z-index-modal, 1050);
 }
 
 .nav-menu__button-wrapper {
