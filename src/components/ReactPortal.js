@@ -8,7 +8,7 @@ const ReactPortal = ({ children, rootElement = '#root' }) => {
 
 ReactPortal.propTypes = {
   children: PropTypes.node.isRequired,
-  rootElement: PropTypes.string.isRequired,
+  rootElement: PropTypes.string,
 };
 
 export default ReactPortal;

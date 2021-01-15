@@ -1,53 +1,59 @@
-import { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Button from './Button';
+import ReactPortal from './ReactPortal';
+import { useModal } from '../hooks';
 
-const createModal = (className) => {
-  const modal = document.createElement('div');
-  modal.classList.add('modal');
-
-  if (className) {
-    modal.classList.add(className);
-  }
-
-  return modal;
-};
-
-const Modal = ({ children, className, isOpen = false, rootId = 'root' }) => {
-  const [modal] = useState(createModal(className));
-
-  useEffect(() => {
-    const root = document.getElementById(rootId);
-    root.appendChild(modal);
-
-    return () => {
-      root.removeChild(modal);
-    };
-  }, [modal, rootId]);
-
-  useEffect(() => {
-    if (isOpen) {
-      const canScroll = document.body.scrollHeight > document.body.clientHeight;
-      const scrollbarWidth =
-        window.innerWidth - document.documentElement.clientWidth;
-      if (canScroll && scrollbarWidth > 0) {
-        document.body.style.paddingRight = `${scrollbarWidth}px`;
-      }
-      document.body.classList.add('modal-open');
-    } else {
-      document.body.classList.remove('modal-open');
-      document.body.style.paddingRight = null;
-    }
-  }, [isOpen]);
-
-  return ReactDOM.createPortal(children, modal);
+const Modal = ({
+  children,
+  className,
+  footer,
+  id,
+  isOpen = false,
+  onRequestClose = () => {},
+  rootElement,
+  title,
+}) => {
+  useModal(isOpen, true);
+  return (
+    <ReactPortal rootElement={rootElement}>
+      <div
+        className={classNames('modal', { 'modal--open': isOpen }, className)}
+        id={id}
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div className="modal__dialog" role="document">
+          <div className="modal__content">
+            <div className="modal__header">
+              <div className="modal__title h5">{title}</div>
+              <Button
+                borderless
+                className="modal__close-button"
+                icon="only"
+                iconName="close"
+                onClick={onRequestClose}
+              />
+            </div>
+            <div className="modal__body">{children}</div>
+            {footer && <div className="modal__footer">{footer}</div>}
+          </div>
+        </div>
+      </div>
+    </ReactPortal>
+  );
 };
 
 Modal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  footer: PropTypes.element,
+  id: PropTypes.string,
   isOpen: PropTypes.bool,
-  rootId: PropTypes.string,
+  onRequestClose: PropTypes.func,
+  rootElement: PropTypes.string,
+  title: PropTypes.string,
 };
 
 export default Modal;
