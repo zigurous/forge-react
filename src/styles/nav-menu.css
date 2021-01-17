@@ -7,12 +7,18 @@
   width: 100vw;
   height: 100vh;
   z-index: var(--z-index-fixed, 1030);
-  pointer-events: none;
   background: none !important;
+  transition: visibility 0.2s;
 }
 
 .nav-menu--open {
   pointer-events: all;
+  visibility: visible;
+}
+
+.nav-menu--closed {
+  pointer-events: none;
+  visibility: hidden;
 }
 
 .nav-menu__overlay {
@@ -24,12 +30,15 @@
   width: 100vw;
   height: 100vh;
   z-index: var(--z-index-overlay, 1040);
-  transition: opacity 0.2s, visibility 0.2s;
+  transition: opacity 0.2s;
   /* background-image: url("../../images/patterns/classy-fabric.png"); */
 }
 
+.nav-menu--open .nav-menu__overlay  {
+  opacity: 1;
+}
+
 .nav-menu--closed .nav-menu__overlay  {
-  visibility: hidden;
   opacity: 0;
 }
 
