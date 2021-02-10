@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../styles/contact-form.css';
 
-const ContactForm = ({ onSubmit = () => {} }, ref) => (
+const ContactForm = React.forwardRef(({ onSubmit = () => {} }, ref) => (
   <form className="contact-form" onSubmit={onSubmit} ref={ref}>
     <input
       aria-label="Name"
@@ -35,6 +35,11 @@ const ContactForm = ({ onSubmit = () => {} }, ref) => (
       value="Send"
     />
   </form>
-);
+));
 
-export default React.forwardRef(ContactForm);
+ContactForm.displayName = 'ContactForm';
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
+
+export default ContactForm;
