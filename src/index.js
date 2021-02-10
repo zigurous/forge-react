@@ -29,21 +29,10 @@ export { default as socialLinks, SocialLinkProps } from './socialLinks';
 export { default as SocialNavLinks } from './components/SocialNavLinks';
 export { default as Thumbnail } from './components/Thumbnail';
 export { fadeIn, scrollToTop, withThemedFavicon, withTransition } from './hoc';
-export {
-  useDocumentTitle,
-  useLoading,
-  useMediaQuery,
-  useModal,
-  useMounted,
-  useParallax,
-  useThemedFavicon,
-} from './hooks';
+export { useDocumentTitle, useLoading, useMediaQuery, useModal, useMounted, useParallax, useThemedFavicon } from './hooks'; // prettier-ignore
 export { icons, logo } from './svg';
 export { enterKeyHandler } from './utils/eventHandlers';
-export {
-  getScrollbarWidth,
-  hasHorizontalScroll,
-  hasVerticalScroll,
-} from './utils/scrolling';
 export { default as debounce } from './utils/debounce';
 export { default as throttle } from './utils/throttle';
+export { default as omit } from './utils/omit';
+export { getScrollbarWidth, hasHorizontalScroll, hasVerticalScroll } from './utils/scrolling'; // prettier-ignore
