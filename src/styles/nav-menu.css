@@ -31,7 +31,6 @@
   height: 100vh;
   z-index: var(--z-index-overlay, 1040);
   transition: opacity 0.2s;
-  /* background-image: url("../../images/patterns/classy-fabric.png"); */
 }
 
 .nav-menu--open .nav-menu__overlay  {

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Lightbox from 'react-image-lightbox';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ImageFadeIn from './ImageFadeIn';
+import ProgressiveImage from './ProgressiveImage';
+import omit from '../utils/omit';
 import 'react-image-lightbox/style.css';
 import '../styles/image-gallery.css';
 
@@ -27,7 +28,6 @@ const gridTemplate = (columns, minWidth, maxWidth) => {
 const ImageGallery = ({
   className,
   columns,
-  fadeIn = false,
   images = [],
   maxWidth,
   minWidth,
@@ -43,27 +43,26 @@ const ImageGallery = ({
         }}
       >
         {images.map((image, index) => {
-          const isObject = typeof image !== 'string';
-          const className = isObject && image.className;
+          const isObject = typeof image === 'object';
           const src = isObject ? image.src : image;
-          const alt = (isObject && image.alt) || '';
           const id = (isObject && image.id) || src;
-          const other = (isObject && image) || {};
           return (
             <button
               aria-label="Image Thumbnail"
-              className={classNames('image-gallery__thumbnail', className)}
+              className={classNames(
+                'image-gallery__thumbnail',
+                isObject && image.className
+              )}
               key={id}
               onClick={() => {
                 setImageIndex(index);
                 setIsOpen(true);
               }}
             >
-              {fadeIn ? (
-                <ImageFadeIn {...other} alt={alt} src={src} />
-              ) : (
-                <img {...other} alt={alt} src={src} />
-              )}
+              <ProgressiveImage
+                imageProps={isObject ? omit(image, 'className') : {}}
+                src={src}
+              />
             </button>
           );
         })}
@@ -95,12 +94,12 @@ const ImageGallery = ({
 ImageGallery.propTypes = {
   className: PropTypes.string,
   columns: PropTypes.number,
-  fadeIn: PropTypes.bool,
   images: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.shape({
         alt: PropTypes.string,
         className: PropTypes.string,
+        id: PropTypes.string,
         src: PropTypes.string.isRequired,
       }),
       PropTypes.string,
