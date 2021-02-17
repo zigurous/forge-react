@@ -35,7 +35,7 @@ const socialLinks = {
     key: 'youtube',
     name: 'YouTube',
     color: '#ff0000',
-    url: 'https://www.youtube.com/c/Zigurous',
+    url: 'https://www.youtube.com/c/Zigurous?sub_confirmation=1',
     icon: youtube,
   },
   discord: {
