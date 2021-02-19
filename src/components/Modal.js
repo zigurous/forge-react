@@ -9,6 +9,7 @@ const Modal = ({
   children,
   className,
   footer,
+  footerAlignment = 'left',
   id,
   isOpen = false,
   onRequestClose = () => {},
@@ -37,7 +38,15 @@ const Modal = ({
               />
             </div>
             <div className="modal__body">{children}</div>
-            {footer && <div className="modal__footer">{footer}</div>}
+            {footer && (
+              <div
+                className={classNames('modal__footer', {
+                  [`modal__footer--${footerAlignment}-aligned`]: footerAlignment,
+                })}
+              >
+                {footer}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -49,6 +58,7 @@ Modal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   footer: PropTypes.element,
+  footerAlignment: PropTypes.oneOf(['left', 'right']),
   id: PropTypes.string,
   isOpen: PropTypes.bool,
   onRequestClose: PropTypes.func,
