@@ -10,6 +10,7 @@ const SocialButton = ({
   children,
   className,
   link,
+  onClick,
   primaryColor,
   secondaryColor = 'white',
   size = Button.size.medium,
@@ -35,9 +36,12 @@ const SocialButton = ({
           />
         )
       }
-      onClick={() => {
-        window.open(url || social.url, '_blank');
-      }}
+      onClick={
+        onClick ||
+        (() => {
+          window.open(url || social.url, '_blank');
+        })
+      }
       size={size}
       style={{
         '--color-social-icon': primaryColor || social.color,
@@ -54,6 +58,7 @@ SocialButton.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   link: SocialLinkProps.isRequired,
+  onClick: PropTypes.func,
   primaryColor: PropTypes.string,
   secondaryColor: PropTypes.string,
   size: PropTypes.oneOf(Object.values(Button.size)),
