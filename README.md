@@ -1,11 +1,10 @@
 # @zigurous/react-components
 
-> Made with create-react-library
+## Installation
 
-[![NPM](https://img.shields.io/npm/v/@zigurous/react-components.svg)](https://www.npmjs.com/package/@zigurous/react-components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
-## Install
-
+```bash
+npm install @zigurous/react-components
+```
 ```bash
 yarn add @zigurous/react-components
 ```
