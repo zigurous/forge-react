@@ -24,20 +24,6 @@ export const SocialLinkProps = PropTypes.oneOfType([
 ]);
 
 const socialLinks = {
-  twitter: {
-    key: 'twitter',
-    name: 'Twitter',
-    color: '#1da1f2',
-    url: 'https://twitter.com/zigurous',
-    icon: twitter,
-  },
-  youtube: {
-    key: 'youtube',
-    name: 'YouTube',
-    color: '#ff0000',
-    url: 'https://youtube.com/c/zigurous?sub_confirmation=1',
-    icon: youtube,
-  },
   discord: {
     key: 'discord',
     name: 'Discord',
@@ -45,19 +31,12 @@ const socialLinks = {
     url: 'https://discord.gg/DdYyWVb',
     icon: discord,
   },
-  twitch: {
-    key: 'twitch',
-    name: 'Twitch',
-    color: '#9146ff',
-    url: 'https://twitch.tv/zigurous',
-    icon: twitch,
-  },
-  instagram: {
-    key: 'instagram',
-    name: 'Instagram',
-    color: '#e4405f',
-    url: 'https://instagram.com/zigurous',
-    icon: instagram,
+  email: {
+    key: 'email',
+    name: 'Email',
+    color: '#808080',
+    url: 'mailto:support@zigurous.com',
+    icon: email,
   },
   facebook: {
     key: 'facebook',
@@ -73,12 +52,12 @@ const socialLinks = {
     url: 'https://github.com/zigurous',
     icon: github,
   },
-  unity: {
-    key: 'unity',
-    name: 'Unity',
-    color: '#000000',
-    url: 'https://assetstore.unity.com/publishers/51884?preview=1',
-    icon: unity,
+  instagram: {
+    key: 'instagram',
+    name: 'Instagram',
+    color: '#e4405f',
+    url: 'https://instagram.com/zigurous',
+    icon: instagram,
   },
   paypal: {
     key: 'paypal',
@@ -87,12 +66,33 @@ const socialLinks = {
     url: 'https://paypal.com/donate?hosted_button_id=BGS8Y9U798JS8',
     icon: paypal,
   },
-  email: {
-    key: 'email',
-    name: 'Email',
-    color: '#808080',
-    url: 'mailto:support@zigurous.com',
-    icon: email,
+  twitch: {
+    key: 'twitch',
+    name: 'Twitch',
+    color: '#9146ff',
+    url: 'https://twitch.tv/zigurous',
+    icon: twitch,
+  },
+  twitter: {
+    key: 'twitter',
+    name: 'Twitter',
+    color: '#1da1f2',
+    url: 'https://twitter.com/zigurous',
+    icon: twitter,
+  },
+  unity: {
+    key: 'unity',
+    name: 'Unity',
+    color: '#000000',
+    url: 'https://assetstore.unity.com/publishers/51884?preview=1',
+    icon: unity,
+  },
+  youtube: {
+    key: 'youtube',
+    name: 'YouTube',
+    color: '#ff0000',
+    url: 'https://youtube.com/c/zigurous?sub_confirmation=1',
+    icon: youtube,
   },
 };
 
