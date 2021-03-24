@@ -9,7 +9,7 @@ const SocialIcon = ({
   backgroundColor,
   className,
   ElementType = 'i',
-  foregroundColor = 'default',
+  foregroundColor,
   icon,
   iconName,
   innerPadding = 8,
@@ -24,17 +24,12 @@ const SocialIcon = ({
         'icon',
         'social-icon',
         { 'social-icon--rounded': rounded },
-        { 'social-icon--default': foregroundColor === 'default' },
-        { 'social-icon--auto': foregroundColor === 'auto' },
         iconName,
         className
       )}
       style={{
         backgroundColor: backgroundColor,
-        fill:
-          foregroundColor !== 'auto' && foregroundColor !== 'default'
-            ? foregroundColor
-            : undefined,
+        fill: foregroundColor,
         width: size,
         height: size,
         padding: innerPadding,

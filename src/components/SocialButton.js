@@ -28,7 +28,7 @@ const SocialButton = ({
           <SocialIcon
             aria-hidden
             ElementType="i"
-            foregroundColor={primaryColor}
+            foregroundColor={primaryColor || social.color}
             icon={social.icon}
             iconName={social.key}
             innerPadding={0}
@@ -44,7 +44,6 @@ const SocialButton = ({
       }
       size={size}
       style={{
-        '--color-social-icon': primaryColor || social.color,
         '--color-button-primary': primaryColor || social.color,
         '--color-button-secondary': secondaryColor,
       }}
