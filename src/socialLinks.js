@@ -5,6 +5,7 @@ import {
   facebook,
   github,
   instagram,
+  patreon,
   paypal,
   twitch,
   twitter,
@@ -58,6 +59,13 @@ const socialLinks = {
     color: '#e4405f',
     url: 'https://instagram.com/zigurous',
     icon: instagram,
+  },
+  patreon: {
+    key: 'patreon',
+    name: 'Patreon',
+    color: '#ff424d',
+    url: 'https://patreon.com/zigurous',
+    icon: patreon,
   },
   paypal: {
     key: 'paypal',
