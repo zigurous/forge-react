@@ -1,0 +1,21 @@
+.pagination {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.pagination > .btn {
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.pagination > .btn:first-child {
+  margin-left: 0;
+}
+
+.pagination > .btn:last-child {
+  margin-right: 0;
+}

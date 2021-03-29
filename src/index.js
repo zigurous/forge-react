@@ -20,6 +20,7 @@ export { default as Modal } from './components/Modal';
 export { default as NavBar } from './components/NavBar';
 export { default as NavMenu } from './components/NavMenu';
 export { default as PageBanner } from './components/PageBanner';
+export { default as Pagination } from './components/Pagination';
 export { default as ProgressiveImage } from './components/ProgressiveImage';
 export { default as ReactPortal } from './components/ReactPortal';
 export { default as SearchInput } from './components/SearchInput';
