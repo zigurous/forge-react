@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Logo from './Logo';
 import ReactPortal from './ReactPortal';
 import SocialNavLinks from './SocialNavLinks';
 import { useModal } from '../hooks';
@@ -9,15 +8,12 @@ import { SocialLinkProps } from '../socialLinks';
 import '../styles/nav-menu.css';
 
 const NavMenu = ({
+  animated = false,
   className,
   floating = false,
   location,
-  logoSize = Logo.size.medium,
-  logoVariant = Logo.variant.wordmark,
   NavLink,
-  onLogoClick,
   routes = [],
-  showLogo = false,
   showSocialLinks = true,
   socialLinks = [],
   theme = 'light',
@@ -61,22 +57,13 @@ const NavMenu = ({
           className={classNames(
             'nav-menu',
             { 'nav-menu--open': isOpen, 'nav-menu--closed': !isOpen },
+            { 'nav-menu--animated': animated },
             className
           )}
           theme={theme}
         >
           <div className="nav-menu__overlay" theme={theme} />
-          <div className="nav-menu__container">
-            <div className="nav-menu__logo-wrapper">
-              {showLogo && (
-                <Logo
-                  onClick={onLogoClick}
-                  size={logoSize}
-                  theme={theme}
-                  variant={logoVariant}
-                />
-              )}
-            </div>
+          <div className="nav-menu__container container">
             {floating && (
               <div className="nav-menu__button-wrapper">
                 <button
@@ -97,7 +84,7 @@ const NavMenu = ({
                 </button>
               </div>
             )}
-            <div className="nav-menu__list-wrapper">
+            <div className="nav-menu__content-wrapper">
               <ul className="nav-menu__list">
                 {routes.map((route, index) => (
                   <li className="nav-menu__item" key={route.path}>
@@ -109,22 +96,18 @@ const NavMenu = ({
                     >
                       {route.name}
                     </NavLink>
-                    <span className="margin-left-md font-xs font-weight-400 text-gray">
-                      0{index + 1}.
-                    </span>
                   </li>
                 ))}
               </ul>
-            </div>
-            {showSocialLinks && (
-              <div className="nav-menu__social-wrapper">
+              {showSocialLinks && (
                 <SocialNavLinks
+                  foregroundColor="white"
                   iconInnerPadding={10}
                   iconSize={20}
                   links={Object.values(socialLinks)}
                 />
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </ReactPortal>
@@ -133,16 +116,14 @@ const NavMenu = ({
 };
 
 NavMenu.propTypes = {
+  animated: PropTypes.bool,
   className: PropTypes.string,
   floating: PropTypes.bool,
   location: PropTypes.shape({
     pathname: PropTypes.string,
     search: PropTypes.string,
   }),
-  logoSize: PropTypes.oneOf(Object.values(Logo.size)),
-  logoVariant: PropTypes.oneOf(Object.values(Logo.variant)),
   NavLink: PropTypes.elementType.isRequired,
-  onLogoClick: PropTypes.func,
   routes: PropTypes.arrayOf(
     PropTypes.shape({
       path: PropTypes.string.isRequired,
@@ -151,7 +132,6 @@ NavMenu.propTypes = {
       component: PropTypes.elementType,
     })
   ),
-  showLogo: PropTypes.bool,
   showSocialLinks: PropTypes.bool,
   socialLinks: PropTypes.arrayOf(SocialLinkProps),
   theme: PropTypes.string,

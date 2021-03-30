@@ -80,7 +80,6 @@ const AppHeader = ({
                 NavLink={NavLink}
                 onLogoClick={onLogoClick}
                 routes={routes}
-                showLogo={showLogo && navigationStyle === 'menu'}
                 showSocialLinks={showSocialLinks}
                 socialLinks={socialLinks}
                 theme={theme}

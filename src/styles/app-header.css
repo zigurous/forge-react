@@ -40,6 +40,10 @@
   height: 100%;
 }
 
+.app-header .logo {
+  z-index: var(--z-index-modal, 1050);
+}
+
 @media (max-width: 1199px) {
   .app-header__content.right .social-nav-links {
     display: none;
