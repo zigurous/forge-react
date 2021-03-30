@@ -14,7 +14,12 @@ const Pagination = ({
 
   for (let i = 0; i < totalPages; i++) {
     pageButtons.push(
-      <Button key={i} onClick={() => onPageChange(i)} rounded={false}>
+      <Button
+        className={classNames({ active: currentPage === i })}
+        key={i}
+        onClick={() => onPageChange(i)}
+        rounded={false}
+      >
         {i + 1}
       </Button>
     );
