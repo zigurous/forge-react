@@ -8,12 +8,14 @@ import { enterKeyHandler } from '../utils/eventHandlers';
 const SearchInput = ({
   className,
   placeholder,
+  onChange = () => {},
   onSearch = () => {},
   ...props
 }) => {
   const debounced = debounce((query) => onSearch(query), 500);
   const handleChange = (event) => {
     const value = event.target.value;
+    onChange(event);
     debounced(value);
   };
   return (
@@ -31,8 +33,9 @@ const SearchInput = ({
 
 SearchInput.propTypes = {
   className: PropTypes.string,
-  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
   onSearch: PropTypes.func,
+  placeholder: PropTypes.string,
 };
 
 export default SearchInput;
