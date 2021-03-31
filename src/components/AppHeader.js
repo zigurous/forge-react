@@ -11,7 +11,6 @@ import '../styles/app-header.css';
 
 const AppHeader = ({
   className,
-  floatingNavMenu = false,
   fluid = false,
   location,
   logoSize = Logo.size.small,
@@ -73,7 +72,6 @@ const AppHeader = ({
             )}
             {showNavigation && (navigationStyle === 'menu' || mobile) && (
               <NavMenu
-                floating={floatingNavMenu}
                 location={location}
                 logoSize={logoSize}
                 logoVariant={logoVariant}
@@ -99,7 +97,6 @@ AppHeader.navigationStyle = Object.freeze({
 
 AppHeader.propTypes = {
   className: PropTypes.string,
-  floatingNavMenu: PropTypes.bool,
   fluid: PropTypes.bool,
   location: PropTypes.shape({
     pathname: PropTypes.string,

@@ -67,13 +67,6 @@
   height: 100%;
 }
 
-.nav-menu__button-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 8px;
-}
-
 .nav-menu__button {
   display: flex;
   justify-content: center;
@@ -84,11 +77,6 @@
   transition: transform 0.2s;
 }
 
-.nav-menu__button--floating {
-  border-radius: 50%;
-  background-color: var(--color-primary);
-}
-
 .nav-menu__button img {
   width: 50%;
   height: 50%;
@@ -96,13 +84,6 @@
 
 .nav-menu__button:hover:not(:disabled) {
   transform: scale(1.1);
-}
-
-.nav-menu__social-wrapper {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  right: 0;
 }
 
 .nav-menu__list {
@@ -122,6 +103,10 @@
 
 .nav-menu--animated .nav-menu__item {
   transition: opacity 0.2s;
+}
+
+.nav-menu--animated.nav-menu--open .nav-menu__item {
+  opacity: 1;
 }
 
 .nav-menu--animated.nav-menu--closed .nav-menu__item {
