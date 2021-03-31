@@ -30,7 +30,7 @@ export { default as socialLinks, SocialLinkProps } from './socialLinks';
 export { default as SocialNavLinks } from './components/SocialNavLinks';
 export { default as Thumbnail } from './components/Thumbnail';
 export { fadeIn, scrollToTop, withThemedFavicon, withTransition } from './hoc';
-export { useDocumentTitle, useLoading, useMediaQuery, useMobile, useModal, useMounted, usePagination, useParallax, useThemedFavicon } from './hooks'; // prettier-ignore
+export { useDocumentTitle, useLoading, useMediaQuery, useMobile, useModal, useMounted, usePagination, useParallax, useSearch, useThemedFavicon } from './hooks'; // prettier-ignore
 export { icons, logo } from './svg';
 export { enterKeyHandler } from './utils/eventHandlers';
 export { default as debounce } from './utils/debounce';

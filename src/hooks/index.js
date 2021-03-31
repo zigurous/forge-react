@@ -5,4 +5,5 @@ export { default as useModal } from './useModal';
 export { default as useMounted } from './useMounted';
 export { default as usePagination } from './usePagination';
 export { default as useParallax } from './useParallax';
+export { default as useSearch } from './useSearch';
 export { default as useThemedFavicon } from './useThemedFavicon';
