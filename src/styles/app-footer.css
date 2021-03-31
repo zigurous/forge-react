@@ -1,5 +1,5 @@
 :root {
-  --footer-height: 64px;
+  --footer-height: 72px;
 }
 
 .app-footer {
@@ -7,12 +7,9 @@
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: var(--footer-height, 64px);
+  min-height: var(--footer-height, 72px);
   overflow: hidden;
-}
-
-.app-footer .logo {
-  fill: var(--color-gray);
+  color: var(--color-theme-shaded-gray, gray);
 }
 
 .app-footer--transparent {
