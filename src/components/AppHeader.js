@@ -6,7 +6,7 @@ import NavBar from './NavBar';
 import NavMenu from './NavMenu';
 import SocialNavLinks from './SocialNavLinks';
 import { SocialLinkProps } from '../socialLinks';
-import { useMediaQuery } from '../hooks';
+import { useMobile } from '../hooks';
 import '../styles/app-header.css';
 
 const AppHeader = ({
@@ -27,7 +27,7 @@ const AppHeader = ({
   theme,
   transparent = false,
 }) => {
-  const mobile = useMediaQuery('(max-width: 991px)');
+  const mobile = useMobile();
   return (
     <header
       className={classNames(

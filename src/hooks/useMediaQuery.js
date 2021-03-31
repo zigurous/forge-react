@@ -22,4 +22,8 @@ const useMediaQuery = (query) => {
   return matches;
 };
 
+export const useMobile = () => {
+  return useMediaQuery('(max-width: 991px)');
+};
+
 export default useMediaQuery;
