@@ -113,6 +113,7 @@ export const twitch = (
   <svg
     focusable="false"
     role="img"
+    style={{ transform: 'translateY(1px)' }}
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -125,6 +126,7 @@ export const twitter = (
   <svg
     focusable="false"
     role="img"
+    style={{ transform: 'scale(1.1)' }}
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -149,6 +151,7 @@ export const youtube = (
   <svg
     focusable="false"
     role="img"
+    style={{ transform: 'scale(1.125)' }}
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
   >
