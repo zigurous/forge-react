@@ -11,7 +11,7 @@
 }
 
 .nav-menu--animated {
-  transition: visibility 0.2s;
+  transition: visibility 200ms;
 }
 
 .nav-menu--open {
@@ -36,7 +36,7 @@
 }
 
 .nav-menu--animated .nav-menu__overlay {
-  transition: opacity 0.2s;
+  transition: opacity 200ms;
 }
 
 .nav-menu--animated.nav-menu--open .nav-menu__overlay  {
@@ -74,7 +74,7 @@
   width: 56px;
   height: 56px;
   pointer-events: all !important;
-  transition: transform 0.2s;
+  transition: transform 200ms;
 }
 
 .nav-menu__button img {
@@ -101,7 +101,7 @@
 }
 
 .nav-menu--animated .nav-menu__item {
-  transition: opacity 0.2s;
+  transition: opacity 200ms;
 }
 
 .nav-menu--animated.nav-menu--open .nav-menu__item {

@@ -43,7 +43,7 @@
 .nav-bar__item a,
 .nav-bar__item a > .icon {
   color: var(--color-theme-foreground);
-  transition: color 0.2s;
+  transition: color 200ms;
 }
 
 .nav-bar__item a:hover,

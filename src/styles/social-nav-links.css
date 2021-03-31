@@ -16,7 +16,7 @@
 }
 
 .social-nav-links__item {
-  transition: opacity 0.2s, transform 0.2s;
+  transition: opacity 200ms, transform 200ms;
 }
 
 .social-nav-links__list:hover .social-nav-links__item {
