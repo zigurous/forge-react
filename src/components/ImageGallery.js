@@ -26,6 +26,8 @@ const gridTemplate = (columns, minWidth, maxWidth) => {
 };
 
 const ImageGallery = ({
+  animated = false,
+  animation = 'fade-in-up',
   className,
   columns,
   images = [],
@@ -51,6 +53,11 @@ const ImageGallery = ({
               aria-label="Image Thumbnail"
               className={classNames(
                 'image-gallery__thumbnail',
+                {
+                  'animation-short': animated,
+                  [`animation-delay-${index + 1}`]: animated,
+                  [animation]: animated,
+                },
                 isObject && image.className
               )}
               key={id}
@@ -92,6 +99,8 @@ const ImageGallery = ({
 };
 
 ImageGallery.propTypes = {
+  animated: PropTypes.bool,
+  animation: PropTypes.string,
   className: PropTypes.string,
   columns: PropTypes.number,
   images: PropTypes.arrayOf(
