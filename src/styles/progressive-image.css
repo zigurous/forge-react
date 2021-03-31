@@ -9,13 +9,15 @@
   opacity: 0;
 }
 
-.progressive-image--no-placeholder .progressive-image__source {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 200ms, visibility 200ms;
-}
+@media (hover: hover) {
+  .progressive-image--no-placeholder .progressive-image__source {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 200ms, visibility 200ms;
+  }
 
-.progressive-image--no-placeholder.progressive-image--loaded .progressive-image__source {
-  opacity: 1;
-  visibility: visible;
+  .progressive-image--no-placeholder.progressive-image--loaded .progressive-image__source {
+    opacity: 1;
+    visibility: visible;
+  }
 }

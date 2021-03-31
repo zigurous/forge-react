@@ -59,3 +59,9 @@
     column-gap: 8px;
   }
 }
+
+@media (hover: none) {
+  .image-gallery__thumbnail {
+    animation: 0;
+  }
+}

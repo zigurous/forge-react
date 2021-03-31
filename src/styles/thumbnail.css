@@ -6,8 +6,6 @@
   max-width: 100%;
   border-bottom: none !important;
   text-align: center;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1),
-              box-shadow 300ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .thumbnail--shadow {
@@ -20,13 +18,17 @@
 }
 
 @media (hover: hover) {
+  .thumbnail {
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
   .thumbnail:hover {
     transform: translateY(-4px);
     box-shadow: rgb(0 0 0 / 10%) 0px 10px 20px;
   }
 }
 
-@media (max-width: 991px) {
+@media (hover: none) {
   .thumbnail {
     animation: 0;
   }

@@ -19,11 +19,13 @@
   transition: opacity 200ms, transform 200ms;
 }
 
-.social-nav-links__list:hover .social-nav-links__item {
-  opacity: 0.5;
-}
+@media (hover: hover) {
+  .social-nav-links__list:hover .social-nav-links__item {
+    opacity: 0.5;
+  }
 
-.social-nav-links__item:hover {
-  opacity: 1 !important;
-  transform: scale(1.1);
+  .social-nav-links__item:hover {
+    opacity: 1 !important;
+    transform: scale(1.1);
+  }
 }
