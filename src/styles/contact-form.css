@@ -11,6 +11,7 @@
 
 .contact-form input[type="submit"] {
   min-width: 80px;
+  border: 1px solid var(--color-gray);
 }
 
 .contact-form textarea {
