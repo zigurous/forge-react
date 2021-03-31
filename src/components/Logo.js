@@ -55,8 +55,10 @@ Logo.size = Object.freeze({
 });
 
 Logo.theme = Object.freeze({
+  black: 'black',
   dark: 'dark',
   light: 'light',
+  white: 'white',
 });
 
 Logo.variant = Object.freeze({

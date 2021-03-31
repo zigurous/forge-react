@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Icon from './Icon';
 import '../styles/nav-bar.css';
 
-const NavBar = ({ className, NavLink, routes = [], theme }) => (
+const NavBar = ({ className, NavLink, routes = [] }) => (
   <nav className={classNames('nav-bar', className)}>
     <ul className="nav-bar__list">
       {routes.map((route) => (
@@ -21,7 +21,6 @@ const NavBar = ({ className, NavLink, routes = [], theme }) => (
                 className="margin-right-md"
                 name={route.leftIcon}
                 size="small"
-                theme={theme === 'dark' ? 'light' : 'dark'}
               />
             )}
             {route.name}
@@ -30,7 +29,6 @@ const NavBar = ({ className, NavLink, routes = [], theme }) => (
                 className="margin-left-md"
                 name={route.rightIcon}
                 size="small"
-                theme={theme === 'dark' ? 'light' : 'dark'}
               />
             )}
           </NavLink>
@@ -53,7 +51,6 @@ NavBar.propTypes = {
       rightIcon: PropTypes.string,
     })
   ),
-  theme: PropTypes.string,
 };
 
 export default NavBar;

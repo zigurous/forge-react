@@ -3,6 +3,11 @@
   fill: var(--color-theme-foreground);
 }
 
+.logo.black { fill: var(--color-black, black); }
+.logo.dark { fill: var(--color-dark, black); }
+.logo.light { fill: var(--color-light, white); }
+.logo.white { fill: var(--color-white, white); }
+
 .logo.xs,
 .logo.extraSmall {
   height: 32px;
@@ -26,14 +31,6 @@
 .logo.xl,
 .logo.extraLarge {
   height: 128px;
-}
-
-.logo.dark {
-  fill: var(--color-light, white);
-}
-
-.logo.light {
-  fill: var(--color-dark, black);
 }
 
 .logo svg {

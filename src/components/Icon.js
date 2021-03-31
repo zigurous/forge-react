@@ -9,7 +9,7 @@ const Icon = ({
   inactive,
   name,
   size = 'medium',
-  theme = 'dark',
+  theme = 'black',
   ...props
 }) => (
   <i
@@ -40,8 +40,10 @@ Icon.size = Object.freeze({
 });
 
 Icon.theme = Object.freeze({
+  black: 'black',
   dark: 'dark',
   light: 'light',
+  white: 'white',
 });
 
 Icon.propTypes = {

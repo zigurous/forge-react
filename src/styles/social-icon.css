@@ -26,10 +26,12 @@
   height: 100%;
 }
 
+[theme="white"] .social-icon.github,
 [theme="light"] .social-icon.github {
   fill: #191717 !important;
 }
 
+[theme="black"] .social-icon.github,
 [theme="dark"] .social-icon.github {
   fill: #fff !important;
 }
