@@ -6,13 +6,13 @@ const ButtonGroup = ({
   children,
   className,
   layout = 'horizontal',
-  spaced = false,
+  spacing = true,
 }) => (
   <div
     className={classNames(
       'btn-group',
       { [`btn-group--${layout}`]: layout },
-      { 'btn-group--spaced': spaced },
+      { 'btn-group--spacing': spacing },
       className
     )}
   >
@@ -29,7 +29,7 @@ ButtonGroup.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   layout: PropTypes.oneOf(Object.values(ButtonGroup.layout)),
-  spaced: PropTypes.bool,
+  spacing: PropTypes.bool,
 };
 
 export default ButtonGroup;
