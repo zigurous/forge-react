@@ -114,10 +114,7 @@
 
 .nav-menu__item > a {
   color: inherit;
-}
-
-.nav-menu__item > a:hover {
-  border: none;
+  border-bottom: none !important;
 }
 
 @media (min-width: 360px) {
