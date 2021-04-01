@@ -1,7 +1,7 @@
 const useDocumentTitle = (
+  routes = [],
   currentPath,
   matchPath = () => null,
-  routes = [],
   defaultTitle
 ) => {
   for (let i = 0; i < routes.length; i += 1) {
