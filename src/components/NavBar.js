@@ -11,7 +11,7 @@ const NavBar = ({ className, LinkElementType = 'a', links = [] }) => (
       {links.map((link) => (
         <li className="nav-bar__item" key={link.path}>
           <Link
-            activeClassName="selected"
+              activeClassName="active"
             aria-label={link.name}
             ElementType={LinkElementType}
             exact={link.exact}

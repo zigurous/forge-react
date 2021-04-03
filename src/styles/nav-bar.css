@@ -47,13 +47,12 @@
 }
 
 .nav-bar__item a:hover,
-.nav-bar__item a:active,
-.nav-bar__item a:hover > .icon,
-.nav-bar__item a:active > .icon {
+.nav-bar__item a:hover > .icon {
   border-color: transparent;
   color: var(--color-primary);
 }
 
+.nav-bar__item a.active,
 .nav-bar__item a.selected {
   border-color: var(--color-primary);
   text-decoration: none;
