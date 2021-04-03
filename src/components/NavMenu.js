@@ -13,12 +13,12 @@ const NavMenu = ({
   className,
   LinkElementType = 'a',
   links = [],
-  location,
   showSocialLinks = true,
   socialLinks = [],
   theme = 'light',
 }) => {
   const [isOpen, setIsOpen] = useModal(false);
+  const location = typeof window !== 'undefined' && window.location;
 
   useEffect(() => {
     setIsOpen(false);
@@ -70,6 +70,7 @@ const NavMenu = ({
                   <li className="nav-menu__item" key={link.path}>
                     <Link
                       activeClassName="active"
+                      aria-current={location && location.pathname === link.path}
                       aria-label={link.name}
                       ElementType={LinkElementType}
                       exact={link.exact}
@@ -111,9 +112,6 @@ NavMenu.propTypes = {
       component: PropTypes.elementType,
     })
   ),
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
-  }),
   showSocialLinks: PropTypes.bool,
   socialLinks: PropTypes.arrayOf(SocialLinkProps),
   theme: PropTypes.string,
