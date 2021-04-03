@@ -37,7 +37,7 @@ const Button = ({
         onClick(event);
       } else if (history && link && !external) {
         history.push(link);
-      } else if (link && external) {
+      } else if (window && link && external) {
         window.open(link, linkTarget);
       }
     }}
@@ -78,6 +78,7 @@ Button.propTypes = {
   children: PropTypes.node,
   circle: PropTypes.bool,
   className: PropTypes.string,
+  ElementType: PropTypes.elementType,
   external: PropTypes.bool,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,

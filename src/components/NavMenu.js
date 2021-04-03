@@ -21,10 +21,11 @@ const NavMenu = ({
 
   useEffect(() => {
     setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
+      window &&
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
     });
     setIsOpen(false);
   }, [location, setIsOpen]);
