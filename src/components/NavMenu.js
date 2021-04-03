@@ -13,6 +13,7 @@ const NavMenu = ({
   className,
   LinkElementType = 'a',
   links = [],
+  location,
   showSocialLinks = true,
   socialLinks = [],
   theme = 'light',
@@ -20,6 +21,7 @@ const NavMenu = ({
   const [isOpen, setIsOpen] = useModal(false);
 
   useEffect(() => {
+    setIsOpen(false);
     setTimeout(() => {
       if (typeof window !== 'undefined') {
         window.scrollTo({
@@ -28,7 +30,6 @@ const NavMenu = ({
         });
       }
     });
-    setIsOpen(false);
   }, [location, setIsOpen]);
 
   return (
@@ -110,6 +111,9 @@ NavMenu.propTypes = {
       component: PropTypes.elementType,
     })
   ),
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
   showSocialLinks: PropTypes.bool,
   socialLinks: PropTypes.arrayOf(SocialLinkProps),
   theme: PropTypes.string,

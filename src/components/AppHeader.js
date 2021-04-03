@@ -14,6 +14,7 @@ const AppHeader = ({
   fluid = false,
   LinkElementType = 'a',
   links = [],
+  location,
   logoSize = Logo.size.small,
   logoVariant = Logo.variant.wordmark,
   navigationStyle = 'bar',
@@ -72,6 +73,7 @@ const AppHeader = ({
               <NavMenu
                 LinkElementType={LinkElementType}
                 links={links}
+                location={location}
                 logoSize={logoSize}
                 logoVariant={logoVariant}
                 onLogoClick={onLogoClick}
@@ -106,6 +108,9 @@ AppHeader.propTypes = {
       rightIcon: PropTypes.string,
     })
   ),
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
   logoSize: PropTypes.oneOf(Object.values(Logo.size)),
   logoVariant: PropTypes.oneOf(Object.values(Logo.variant)),
   navigationStyle: PropTypes.oneOf(Object.values(AppHeader.navigationStyle)),
