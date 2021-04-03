@@ -21,7 +21,7 @@ const ClickableDiv = ({
         onClick(event);
       } else if (history && link && !external) {
         history.push(link);
-      } else if (window && link && external) {
+      } else if (typeof window !== 'undefined' && link && external) {
         window.open(link, linkTarget);
       }
     }}

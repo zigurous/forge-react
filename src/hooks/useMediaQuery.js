@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
 
 const useMediaQuery = (query) => {
-  const [mql, setMql] = useState(window && window.matchMedia(query));
+  const defaultMql =
+    typeof window !== 'undefined' ? window.matchMedia(query) : null;
+  const [mql, setMql] = useState(defaultMql);
   const [matches, setMatches] = useState(Boolean(mql && mql.matches));
 
   useEffect(() => {
-    setMql(window && window.matchMedia(query));
+    if (typeof window !== 'undefined') {
+      setMql(window.matchMedia(query));
+    }
   }, [query]);
 
   useEffect(() => {

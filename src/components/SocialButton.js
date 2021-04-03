@@ -39,7 +39,9 @@ const SocialButton = ({
       onClick={
         onClick ||
         (() => {
-          window && window.open(url || social.url, '_blank');
+          if (typeof window !== 'undefined') {
+            window.open(url || social.url, '_blank');
+          }
         })
       }
       size={size}
