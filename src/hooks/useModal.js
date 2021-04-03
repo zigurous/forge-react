@@ -5,21 +5,23 @@ const useModal = (open = false, reflow = false) => {
   const [isOpen, setIsOpen] = useState(Boolean(open));
 
   useEffect(() => {
-    if (isOpen) {
-      if (reflow) {
-        const scrollbarWidth = getScrollbarWidth();
+    if (typeof document !== 'undefined') {
+      if (isOpen) {
+        if (reflow) {
+          const scrollbarWidth = getScrollbarWidth();
 
-        if (scrollbarWidth > 0) {
-          document.body.style.paddingRight = `${scrollbarWidth}px`;
+          if (scrollbarWidth > 0) {
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+          }
         }
-      }
 
-      document.body.classList.add('overflow-hidden');
-    } else {
-      document.body.classList.remove('overflow-hidden');
+        document.body.classList.add('overflow-hidden');
+      } else {
+        document.body.classList.remove('overflow-hidden');
 
-      if (reflow) {
-        document.body.style.paddingRight = null;
+        if (reflow) {
+          document.body.style.paddingRight = null;
+        }
       }
     }
   }, [isOpen, reflow]);

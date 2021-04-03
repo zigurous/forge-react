@@ -2,10 +2,14 @@ import { useState } from 'react';
 import useMediaQuery from './useMediaQuery';
 
 const createFavicon = () => {
-  const favicon = document.createElement('link');
-  favicon.setAttribute('rel', 'favicon icon');
-  document.head.appendChild(favicon);
-  return favicon;
+  if (typeof document !== 'undefined') {
+    const favicon = document.createElement('link');
+    favicon.setAttribute('rel', 'favicon icon');
+    document.head.appendChild(favicon);
+    return favicon;
+  } else {
+    return null;
+  }
 };
 
 const useThemedFavicon = () => {
@@ -15,17 +19,19 @@ const useThemedFavicon = () => {
 
   let source = null;
 
-  if (light) {
-    source = document.querySelector(
-      'link[rel*="icon"][media="(prefers-color-scheme:light)"]'
-    );
-  } else if (dark) {
-    source = document.querySelector(
-      'link[rel*="icon"][media="(prefers-color-scheme:dark)"]'
-    );
+  if (typeof document !== 'undefined') {
+    if (light) {
+      source = document.querySelector(
+        'link[rel*="icon"][media="(prefers-color-scheme:light)"]'
+      );
+    } else if (dark) {
+      source = document.querySelector(
+        'link[rel*="icon"][media="(prefers-color-scheme:dark)"]'
+      );
+    }
   }
 
-  if (source) {
+  if (source && favicon) {
     const url = new URL(source.href);
     favicon.setAttribute('type', source.type);
     favicon.setAttribute('href', url.pathname);
