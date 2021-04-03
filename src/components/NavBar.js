@@ -5,32 +5,32 @@ import Icon from './Icon';
 import Link from './Link';
 import '../styles/nav-bar.css';
 
-const NavBar = ({ className, LinkElementType = 'a', routes = [] }) => (
+const NavBar = ({ className, LinkElementType = 'a', links = [] }) => (
   <nav className={classNames('nav-bar', className)}>
     <ul className="nav-bar__list">
-      {routes.map((route) => (
-        <li className="nav-bar__item" key={route.path}>
+      {links.map((link) => (
+        <li className="nav-bar__item" key={link.path}>
           <Link
             activeClassName="selected"
-            aria-label={route.name}
+            aria-label={link.name}
             ElementType={LinkElementType}
-            exact={Boolean(route.exact)}
-            strict={Boolean(route.strict)}
-            to={route.path}
+            exact={link.exact}
+            strict={link.strict}
+            to={link.path}
             unstyled
           >
-            {route.leftIcon && (
+            {link.leftIcon && (
               <Icon
                 className="margin-right-md"
-                name={route.leftIcon}
+                name={link.leftIcon}
                 size="small"
               />
             )}
-            {route.name}
-            {route.rightIcon && (
+            {link.name}
+            {link.rightIcon && (
               <Icon
                 className="margin-left-md"
-                name={route.rightIcon}
+                name={link.rightIcon}
                 size="small"
               />
             )}
@@ -44,12 +44,12 @@ const NavBar = ({ className, LinkElementType = 'a', routes = [] }) => (
 NavBar.propTypes = {
   className: PropTypes.string,
   LinkElementType: PropTypes.elementType,
-  routes: PropTypes.arrayOf(
+  links: PropTypes.arrayOf(
     PropTypes.shape({
       path: PropTypes.string,
-      exact: PropTypes.bool,
-      strict: PropTypes.bool,
-      component: PropTypes.elementType,
+      name: PropTypes.string,
+      exact: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+      strict: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
       leftIcon: PropTypes.string,
       rightIcon: PropTypes.string,
     })

@@ -8,6 +8,7 @@ import '../styles/app-footer.css';
 const AppFooter = ({
   className,
   copyright,
+  LinkElementType = 'a',
   links = [],
   onLogoClick = () => {},
   showLogo = true,
@@ -40,6 +41,7 @@ const AppFooter = ({
               {links.map((link) => (
                 <Link
                   className="margin-left-md margin-right-md"
+                  ElementType={LinkElementType}
                   key={link.name}
                   undecorated
                   {...link}
@@ -58,9 +60,11 @@ const AppFooter = ({
 AppFooter.propTypes = {
   className: PropTypes.string,
   copyright: PropTypes.node,
+  LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      path: PropTypes.string,
+      name: PropTypes.string,
     })
   ),
   onLogoClick: PropTypes.func,

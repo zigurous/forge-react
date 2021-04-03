@@ -13,12 +13,11 @@ const AppHeader = ({
   className,
   fluid = false,
   LinkElementType = 'a',
-  location,
+  links = [],
   logoSize = Logo.size.small,
   logoVariant = Logo.variant.wordmark,
   navigationStyle = 'bar',
   onLogoClick = () => {},
-  routes = [],
   showLogo = true,
   showNavigation = true,
   showSocialLinks = true,
@@ -56,8 +55,7 @@ const AppHeader = ({
             {showNavigation && !mobile && (
               <NavBar
                 LinkElementType={LinkElementType}
-                location={location}
-                routes={routes}
+                links={links}
                 theme={theme}
               />
             )}
@@ -73,11 +71,10 @@ const AppHeader = ({
             {showNavigation && (navigationStyle === 'menu' || mobile) && (
               <NavMenu
                 LinkElementType={LinkElementType}
-                location={location}
+                links={links}
                 logoSize={logoSize}
                 logoVariant={logoVariant}
                 onLogoClick={onLogoClick}
-                routes={routes}
                 showSocialLinks={showSocialLinks}
                 socialLinks={socialLinks}
                 theme={theme}
@@ -99,22 +96,20 @@ AppHeader.propTypes = {
   className: PropTypes.string,
   fluid: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
-    search: PropTypes.string,
-  }),
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      path: PropTypes.string,
+      name: PropTypes.string,
+      exact: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+      strict: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+      leftIcon: PropTypes.string,
+      rightIcon: PropTypes.string,
+    })
+  ),
   logoSize: PropTypes.oneOf(Object.values(Logo.size)),
   logoVariant: PropTypes.oneOf(Object.values(Logo.variant)),
   navigationStyle: PropTypes.oneOf(Object.values(AppHeader.navigationStyle)),
   onLogoClick: PropTypes.func,
-  routes: PropTypes.arrayOf(
-    PropTypes.shape({
-      path: PropTypes.string,
-      exact: PropTypes.bool,
-      strict: PropTypes.bool,
-      component: PropTypes.elementType,
-    })
-  ),
   showLogo: PropTypes.bool,
   showNavigation: PropTypes.bool,
   showSocialLinks: PropTypes.bool,

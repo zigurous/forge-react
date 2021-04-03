@@ -12,8 +12,7 @@ const NavMenu = ({
   animated = false,
   className,
   LinkElementType = 'a',
-  location,
-  routes = [],
+  links = [],
   showSocialLinks = true,
   socialLinks = [],
   theme = 'light',
@@ -66,17 +65,18 @@ const NavMenu = ({
           <div className="nav-menu__container container">
             <div className="nav-menu__content-wrapper">
               <ul className="nav-menu__list">
-                {routes.map((route) => (
-                  <li className="nav-menu__item" key={route.path}>
+                {links.map((link) => (
+                  <li className="nav-menu__item" key={link.path}>
                     <Link
                       activeClassName="selected"
+                      aria-label={link.name}
                       ElementType={LinkElementType}
-                      exact={Boolean(route.exact)}
-                      strict={Boolean(route.strict)}
-                      to={route.path}
+                      exact={link.exact}
+                      strict={link.strict}
+                      to={link.path}
                       unstyled
                     >
-                      {route.name}
+                      {link.name}
                     </Link>
                   </li>
                 ))}
@@ -101,15 +101,12 @@ NavMenu.propTypes = {
   animated: PropTypes.bool,
   className: PropTypes.string,
   LinkElementType: PropTypes.elementType,
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
-    search: PropTypes.string,
-  }),
-  routes: PropTypes.arrayOf(
+  links: PropTypes.arrayOf(
     PropTypes.shape({
       path: PropTypes.string,
-      exact: PropTypes.bool,
-      strict: PropTypes.bool,
+      name: PropTypes.string,
+      exact: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+      strict: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
       component: PropTypes.elementType,
     })
   ),
