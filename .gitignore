@@ -9,7 +9,6 @@ coverage
 # production
 public
 build
-certs
 dist
 
 # misc
@@ -23,6 +22,3 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# gatsby
-.cache

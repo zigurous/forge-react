@@ -12,53 +12,24 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
     "classnames": "^2.2.6",
     "clipboardy": "^2.3.0",
     "cross-env": "^7.0.2",
-    "eslint-config-prettier": "^6.12.0",
-    "eslint-config-react-app": "^6.0.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-config-standard-react": "^9.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.21.2",
-    "eslint-plugin-react-hooks": "^4.1.2",
-    "eslint-plugin-standard": "^4.0.1",
-    "gh-pages": "^3.1.0",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.0",
     "microbundle-crl": "^0.13.11",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-image-lightbox": "^5.1.1",
-    "react-scripts": "^3.4.3",
-    "svg2js": "^0.0.4-alpha1",
-    "typescript": "^4.0.3"
+    "svg2js": "^0.0.4-alpha1"
   },
   "scripts": {
     "build": "microbundle-crl --css-modules \"[local]\" --format modern,es,cjs,umd --globals react=React,react-dom=ReactDOM",
-    "deploy": "gh-pages -d dist -b dist -m \"Publish library to GitHub pages\"",
+    "start": "microbundle-crl watch --no-compress --format modern,es,cjs,umd --globals react=React,react-dom=ReactDOM",
     "predeploy": "yarn build",
-    "prepare": "run-s build",
-    "start": "microbundle-crl watch --no-compress --format modern,es,cjs,umd --globals react=React,react-dom=ReactDOM"
+    "prepare": "yarn build"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": "prettier --write --ignore-unknown"
   },
   "files": [
     "dist"
