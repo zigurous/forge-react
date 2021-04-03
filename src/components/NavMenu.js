@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Link from './Link';
 import ReactPortal from './ReactPortal';
 import SocialNavLinks from './SocialNavLinks';
 import { useModal } from '../hooks';
@@ -10,8 +11,8 @@ import '../styles/nav-menu.css';
 const NavMenu = ({
   animated = false,
   className,
+  LinkElementType = 'a',
   location,
-  NavLink,
   routes = [],
   showSocialLinks = true,
   socialLinks = [],
@@ -66,14 +67,16 @@ const NavMenu = ({
               <ul className="nav-menu__list">
                 {routes.map((route) => (
                   <li className="nav-menu__item" key={route.path}>
-                    <NavLink
+                    <Link
                       activeClassName="selected"
+                      ElementType={LinkElementType}
                       exact={Boolean(route.exact)}
                       strict={Boolean(route.strict)}
                       to={route.path}
+                      unstyled
                     >
                       {route.name}
-                    </NavLink>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -96,14 +99,14 @@ const NavMenu = ({
 NavMenu.propTypes = {
   animated: PropTypes.bool,
   className: PropTypes.string,
+  LinkElementType: PropTypes.elementType,
   location: PropTypes.shape({
     pathname: PropTypes.string,
     search: PropTypes.string,
   }),
-  NavLink: PropTypes.elementType.isRequired,
   routes: PropTypes.arrayOf(
     PropTypes.shape({
-      path: PropTypes.string.isRequired,
+      path: PropTypes.string,
       exact: PropTypes.bool,
       strict: PropTypes.bool,
       component: PropTypes.elementType,

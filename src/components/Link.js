@@ -15,27 +15,29 @@ const Link = ({
   to,
   undecorated = false,
   underlined = false,
+  unstyled = false,
   ...props
 }) => {
-  const anchorProps =
+  const elementProps =
     ElementType === 'a'
       ? {
           href: href || to || (typeof link === 'string' ? link : link.url),
           rel: rel || (external ? 'noopener noreferrer' : undefined),
           target: target || (external ? '_blank' : undefined),
         }
-      : {};
+      : {
+          to,
+        };
   return (
     <ElementType
       {...props}
+      {...elementProps}
       className={classNames(
-        'link',
-        { 'link--underlined': underlined },
-        { 'link--undecorated': undecorated },
+        { link: !unstyled },
+        { 'link--underlined': !unstyled && underlined },
+        { 'link--undecorated': !unstyled && undecorated },
         className
       )}
-      to={ElementType !== 'a' ? to : undefined}
-      {...anchorProps}
     >
       {children}
     </ElementType>

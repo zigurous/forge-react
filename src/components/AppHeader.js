@@ -12,11 +12,11 @@ import '../styles/app-header.css';
 const AppHeader = ({
   className,
   fluid = false,
+  LinkElementType = 'a',
   location,
   logoSize = Logo.size.small,
   logoVariant = Logo.variant.wordmark,
   navigationStyle = 'bar',
-  NavLink,
   onLogoClick = () => {},
   routes = [],
   showLogo = true,
@@ -55,8 +55,8 @@ const AppHeader = ({
             )}
             {showNavigation && !mobile && (
               <NavBar
+                LinkElementType={LinkElementType}
                 location={location}
-                NavLink={NavLink}
                 routes={routes}
                 theme={theme}
               />
@@ -72,10 +72,10 @@ const AppHeader = ({
             )}
             {showNavigation && (navigationStyle === 'menu' || mobile) && (
               <NavMenu
+                LinkElementType={LinkElementType}
                 location={location}
                 logoSize={logoSize}
                 logoVariant={logoVariant}
-                NavLink={NavLink}
                 onLogoClick={onLogoClick}
                 routes={routes}
                 showSocialLinks={showSocialLinks}
@@ -98,6 +98,7 @@ AppHeader.navigationStyle = Object.freeze({
 AppHeader.propTypes = {
   className: PropTypes.string,
   fluid: PropTypes.bool,
+  LinkElementType: PropTypes.elementType,
   location: PropTypes.shape({
     pathname: PropTypes.string,
     search: PropTypes.string,
@@ -105,11 +106,10 @@ AppHeader.propTypes = {
   logoSize: PropTypes.oneOf(Object.values(Logo.size)),
   logoVariant: PropTypes.oneOf(Object.values(Logo.variant)),
   navigationStyle: PropTypes.oneOf(Object.values(AppHeader.navigationStyle)),
-  NavLink: PropTypes.elementType,
   onLogoClick: PropTypes.func,
   routes: PropTypes.arrayOf(
     PropTypes.shape({
-      path: PropTypes.string.isRequired,
+      path: PropTypes.string,
       exact: PropTypes.bool,
       strict: PropTypes.bool,
       component: PropTypes.elementType,

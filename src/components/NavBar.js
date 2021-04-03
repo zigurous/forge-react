@@ -2,19 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Icon from './Icon';
+import Link from './Link';
 import '../styles/nav-bar.css';
 
-const NavBar = ({ className, NavLink, routes = [] }) => (
+const NavBar = ({ className, LinkElementType = 'a', routes = [] }) => (
   <nav className={classNames('nav-bar', className)}>
     <ul className="nav-bar__list">
       {routes.map((route) => (
         <li className="nav-bar__item" key={route.path}>
-          <NavLink
+          <Link
             activeClassName="selected"
             aria-label={route.name}
+            ElementType={LinkElementType}
             exact={Boolean(route.exact)}
             strict={Boolean(route.strict)}
             to={route.path}
+            unstyled
           >
             {route.leftIcon && (
               <Icon
@@ -31,7 +34,7 @@ const NavBar = ({ className, NavLink, routes = [] }) => (
                 size="small"
               />
             )}
-          </NavLink>
+          </Link>
         </li>
       ))}
     </ul>
@@ -40,10 +43,10 @@ const NavBar = ({ className, NavLink, routes = [] }) => (
 
 NavBar.propTypes = {
   className: PropTypes.string,
-  NavLink: PropTypes.elementType.isRequired,
+  LinkElementType: PropTypes.elementType,
   routes: PropTypes.arrayOf(
     PropTypes.shape({
-      path: PropTypes.string.isRequired,
+      path: PropTypes.string,
       exact: PropTypes.bool,
       strict: PropTypes.bool,
       component: PropTypes.elementType,
