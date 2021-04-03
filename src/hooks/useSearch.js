@@ -1,19 +1,15 @@
 import { useCallback, useEffect, useState } from 'react';
 
-const useSearch = (items, storageKey = undefined) => {
+const useSearch = (items, matches, storageKey = undefined) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState(null);
 
   const search = useCallback(
     (input) => {
       const query = input.toLowerCase().replace(' ', '').trim();
-      return items.filter((item) => {
-        const search =
-          item.searchQuery || item.title.toLowerCase().replace(' ', '');
-        return search.includes(query);
-      });
+      return items.filter((item) => matches(item, query));
     },
-    [items]
+    [items, matches]
   );
 
   useEffect(() => {
