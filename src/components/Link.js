@@ -56,6 +56,7 @@ Link.propTypes = {
   to: PropTypes.string,
   undecorated: PropTypes.bool,
   underlined: PropTypes.bool,
+  unstyled: PropTypes.bool,
 };
 
 export default Link;

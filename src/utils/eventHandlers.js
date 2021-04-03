@@ -3,7 +3,7 @@ export const enterKeyHandler = (callback = () => {}) => (event) => {
     return;
   }
 
-  var handled = false;
+  let handled = false;
   if (event.key === 'Enter') {
     handled = true;
     callback(event);
