@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React, { useEffect, useRef } from 'react';
 import ProgressiveImage from './ProgressiveImage';
 import '../styles/thumbnail.css';
 

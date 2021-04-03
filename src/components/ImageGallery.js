@@ -1,7 +1,7 @@
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Lightbox from 'react-image-lightbox';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import ProgressiveImage from './ProgressiveImage';
 import omit from '../utils/omit';
 import 'react-image-lightbox/style.css';

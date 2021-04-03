@@ -1,5 +1,5 @@
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
 
 const ReactPortal = ({ children, rootElement = '#root' }) => {
   if (typeof document !== 'undefined') {

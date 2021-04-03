@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import Link from './Link';
 import ReactPortal from './ReactPortal';
 import SocialNavLinks from './SocialNavLinks';
