@@ -9,7 +9,8 @@
   "unpkg": "dist/index.umd.js",
   "peerDependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "classnames": "^2.2.6",
@@ -23,8 +24,8 @@
     "svg2js": "^0.0.4-alpha1"
   },
   "scripts": {
-    "build": "microbundle-crl --css-modules \"[local]\" --format modern,es,cjs,umd --globals react=React,react-dom=ReactDOM",
-    "start": "microbundle-crl watch --no-compress --format modern,es,cjs,umd --globals react=React,react-dom=ReactDOM",
+    "build": "microbundle-crl --css-modules \"[local]\" --format modern,es,cjs,umd --globals react=React,react-dom=ReactDOM,prop-types=PropTypes",
+    "start": "microbundle-crl watch --no-compress --format modern,es,cjs,umd --globals react=React,react-dom=ReactDOM,prop-types=PropTypes",
     "predeploy": "yarn build",
     "prepare": "yarn build"
   },
