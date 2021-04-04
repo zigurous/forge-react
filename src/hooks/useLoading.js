@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const useLoading = () => {
-  const ref = useRef();
+const useLoading = (ref) => {
   const [loading, setLoading] = useState(true);
 
   const loadComplete = () => {
@@ -24,7 +23,19 @@ const useLoading = () => {
     };
   }, [ref, loading]);
 
-  return [ref, loading];
+  return loading;
+};
+
+export const useLoaded = (ref, onLoadComplete = () => {}) => {
+  const loaded = !useLoading(ref);
+
+  useEffect(() => {
+    if (loaded) {
+      onLoadComplete();
+    }
+  }, [loaded, onLoadComplete]);
+
+  return loaded;
 };
 
 export default useLoading;

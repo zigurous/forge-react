@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef } from 'react';
 import LoadingSpinner from './LoadingSpinner';
 import { useLoading } from '../hooks';
 import '../styles/embedded-video.css';
@@ -72,7 +72,8 @@ const EmbeddedVideo = ({
   title = 'Video Player',
   width,
 }) => {
-  const [ref, loading] = useLoading();
+  const ref = useRef();
+  const loading = useLoading(ref);
   const _width = width || (size && sizes[size].width);
   const _height = height || (size && sizes[size].height);
   return (

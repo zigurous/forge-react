@@ -1,65 +1,55 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
+import { useLoaded } from '../hooks';
 import '../styles/progressive-image.css';
 
-const ProgressiveImage = React.forwardRef(
-  (
-    {
-      alt,
-      className,
-      ImageElementType = 'img',
-      imageProps = {},
-      onLoad = () => {},
-      placeholder,
-      placeholderProps = {},
-      src,
-    },
-    ref
-  ) => {
-    const [loaded, setLoaded] = useState(false);
-    return (
-      <span
+const ProgressiveImage = ({
+  alt,
+  className,
+  ImageElementType = 'img',
+  imageProps = {},
+  onLoad = () => {},
+  placeholder,
+  placeholderProps = {},
+  src,
+}) => {
+  const imageRef = useRef();
+  const loaded = useLoaded(imageRef, onLoad);
+  return (
+    <span
+      className={classNames(
+        'progressive-image',
+        { 'progressive-image--loaded': loaded },
+        { 'progressive-image--no-placeholder': !placeholder },
+        className
+      )}
+    >
+      <ImageElementType
+        {...imageProps}
+        alt={imageProps.alt || alt}
         className={classNames(
-          'progressive-image',
-          { 'progressive-image--loaded': loaded },
-          { 'progressive-image--no-placeholder': !placeholder },
-          className
+          'progressive-image__source',
+          imageProps.className
         )}
-      >
+        ref={imageRef}
+        src={src}
+      />
+      {placeholder && (
         <ImageElementType
-          {...imageProps}
-          alt={imageProps.alt || alt}
+          {...placeholderProps}
+          alt={placeholderProps.alt || alt}
           className={classNames(
-            'progressive-image__source',
-            imageProps.className
+            'progressive-image__placeholder',
+            placeholderProps.className
           )}
-          onLoad={(e) => {
-            if (!loaded) {
-              setLoaded(true);
-              onLoad(e);
-            }
-          }}
-          ref={ref}
-          src={src}
+          src={placeholder}
         />
-        {placeholder && (
-          <ImageElementType
-            {...placeholderProps}
-            alt={placeholderProps.alt || alt}
-            className={classNames(
-              'progressive-image__placeholder',
-              placeholderProps.className
-            )}
-            src={placeholder}
-          />
-        )}
-      </span>
-    );
-  }
-);
+      )}
+    </span>
+  );
+};
 
-ProgressiveImage.displayName = 'ProgressiveImage';
 ProgressiveImage.propTypes = {
   alt: PropTypes.string,
   className: PropTypes.string,
