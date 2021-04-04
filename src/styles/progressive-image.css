@@ -1,8 +1,8 @@
 .progressive-image {
   position: relative;
-  display: inline-flex;
   box-sizing: content-box;
   overflow: hidden;
+  height: auto;
   max-width: 100%;
 }
 

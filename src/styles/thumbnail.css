@@ -3,6 +3,7 @@
   display: inline-flex;
   box-sizing: content-box;
   overflow: hidden;
+  height: auto;
   max-width: 100%;
   border-bottom: none !important;
   text-align: center;
