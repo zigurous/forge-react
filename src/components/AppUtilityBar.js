@@ -7,6 +7,7 @@ import '../styles/app-utility-bar.css';
 const AppUtilityBar = ({
   className,
   direction = 'right',
+  LinkElementType = 'a',
   links = [],
   theme,
 }) => (
@@ -23,11 +24,13 @@ const AppUtilityBar = ({
         <div className="col font-xs font-weight-500">
           {links.map((link) => (
             <Link
+              aria-label={link.name}
               className="margin-left-md margin-right-md"
-              key={link.name || link.path}
-              to={link.path}
+              ElementType={link.ElementType || LinkElementType}
+              external={link.external}
+              key={link.id || link.to}
+              to={link.to}
               undecorated
-              {...link}
             >
               {link.name}
             </Link>
@@ -41,10 +44,13 @@ const AppUtilityBar = ({
 AppUtilityBar.propTypes = {
   className: PropTypes.string,
   direction: PropTypes.oneOf(['left', 'right']),
+  LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      path: PropTypes.string.isRequired,
+      id: PropTypes.string,
+      to: PropTypes.string,
+      name: PropTypes.string,
+      external: PropTypes.bool,
       ElementType: PropTypes.elementType,
     })
   ),

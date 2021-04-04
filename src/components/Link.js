@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SocialLinkProps } from '../socialLinks';
 
 const Link = ({
   children,
@@ -9,7 +8,6 @@ const Link = ({
   ElementType = 'a',
   external = false,
   href,
-  link,
   rel,
   target,
   to,
@@ -21,7 +19,7 @@ const Link = ({
   const elementProps =
     ElementType === 'a'
       ? {
-          href: href || to || (typeof link === 'string' ? link : link.url),
+          href: href || to,
           rel: rel || (external ? 'noopener noreferrer' : undefined),
           target: target || (external ? '_blank' : undefined),
         }
@@ -50,7 +48,6 @@ Link.propTypes = {
   ElementType: PropTypes.elementType,
   external: PropTypes.bool,
   href: PropTypes.string,
-  link: SocialLinkProps,
   rel: PropTypes.string,
   target: PropTypes.string,
   to: PropTypes.string,

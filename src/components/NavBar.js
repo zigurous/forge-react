@@ -16,18 +16,17 @@ const NavBar = ({
     <nav className={classNames('nav-bar', className)}>
       <ul className="nav-bar__list">
         {links.map((link) => {
-          const active = isPathActive(link.path, location);
+          const active = isPathActive(link.to, location);
           return (
-            <li className="nav-bar__item" key={link.path}>
+            <li className="nav-bar__item" key={link.id || link.to}>
               <Link
                 activeClassName=""
                 aria-current={active ? 'page' : 'false'}
                 aria-label={link.name}
                 className={classNames({ active })}
-                ElementType={LinkElementType}
-                exact={link.exact}
-                strict={link.strict}
-                to={link.path}
+                ElementType={link.ElementType || LinkElementType}
+                external={link.external}
+                to={link.to}
                 unstyled
               >
                 {link.leftIcon && (
@@ -59,12 +58,13 @@ NavBar.propTypes = {
   LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      path: PropTypes.string,
+      id: PropTypes.string,
+      to: PropTypes.string,
       name: PropTypes.string,
-      exact: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-      strict: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
       leftIcon: PropTypes.string,
       rightIcon: PropTypes.string,
+      external: PropTypes.bool,
+      ElementType: PropTypes.elementType,
     })
   ),
   location: PropTypes.shape({

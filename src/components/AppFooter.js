@@ -40,11 +40,13 @@ const AppFooter = ({
             <span className="links">
               {links.map((link) => (
                 <Link
+                  aria-label={link.name}
                   className="margin-left-md margin-right-md"
-                  ElementType={LinkElementType}
-                  key={link.name}
+                  ElementType={link.ElementType || LinkElementType}
+                  external={link.external}
+                  key={link.id || link.to}
+                  to={link.to}
                   undecorated
-                  {...link}
                 >
                   {link.name}
                 </Link>
@@ -63,8 +65,11 @@ AppFooter.propTypes = {
   LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      path: PropTypes.string,
+      id: PropTypes.string,
+      to: PropTypes.string,
       name: PropTypes.string,
+      external: PropTypes.bool,
+      ElementType: PropTypes.elementType,
     })
   ),
   onLogoClick: PropTypes.func,

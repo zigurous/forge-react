@@ -67,7 +67,7 @@ const AppHeader = ({
               <SocialNavLinks
                 iconInnerPadding={10}
                 iconSize={20}
-                links={Object.values(socialLinks)}
+                links={socialLinks}
               />
             )}
             {showNavigation && (navigationStyle === 'menu' || mobile) && (
@@ -101,12 +101,13 @@ AppHeader.propTypes = {
   LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      path: PropTypes.string,
+      id: PropTypes.string,
+      to: PropTypes.string,
       name: PropTypes.string,
-      exact: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-      strict: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
       leftIcon: PropTypes.string,
       rightIcon: PropTypes.string,
+      external: PropTypes.bool,
+      ElementType: PropTypes.elementType,
     })
   ),
   location: PropTypes.shape({
