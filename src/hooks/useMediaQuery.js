@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { bindEvent, unbindEvent } from '../utils/events';
 
 const useMediaQuery = (query) => {
   const defaultMql =
@@ -17,10 +18,10 @@ const useMediaQuery = (query) => {
 
     if (_mql) {
       const handler = () => setMatches(_mql.matches);
-      _mql.addEventListener('change', handler);
+      bindEvent(_mql, 'change', handler);
 
       return () => {
-        _mql.removeEventListener('change', handler);
+        unbindEvent(_mql, 'change', handler);
       };
     }
   }, [mql]);

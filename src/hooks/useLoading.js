@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { bindEvent, unbindEvent } from '../utils/events';
 
 const useLoading = (ref) => {
   const [loading, setLoading] = useState(true);
@@ -13,12 +14,12 @@ const useLoading = (ref) => {
       if (element.complete) {
         loadComplete();
       } else {
-        element.addEventListener('load', loadComplete);
+        bindEvent(element, 'load', loadComplete);
       }
     }
     return () => {
       if (element) {
-        element.removeEventListener('load', loadComplete);
+        unbindEvent(element, 'load', loadComplete);
       }
     };
   }, [ref, loading]);

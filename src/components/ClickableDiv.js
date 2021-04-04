@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { enterKeyHandler } from '../utils/eventHandlers';
+import { enterKeyHandler } from '../utils/events';
 
 const ClickableDiv = ({
   children,

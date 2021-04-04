@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Input from './Input';
 import debounce from '../utils/debounce';
-import { enterKeyHandler } from '../utils/eventHandlers';
+import { enterKeyHandler } from '../utils/events';
 
 const SearchInput = ({
   className,

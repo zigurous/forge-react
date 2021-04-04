@@ -32,7 +32,7 @@ export { default as Thumbnail } from './components/Thumbnail';
 export { fadeIn, scrollToTop, withThemedFavicon, withTransition } from './hoc';
 export { useDocumentTitle, useLoaded, useLoading, useMediaQuery, useMobile, useModal, useMounted, usePagination, useSearch, useThemedFavicon } from './hooks'; // prettier-ignore
 export { icons, logo } from './svg';
-export { enterKeyHandler } from './utils/eventHandlers';
+export { bindEvent, enterKeyHandler, unbindEvent } from './utils/events';
 export { default as debounce } from './utils/debounce';
 export { default as throttle } from './utils/throttle';
 export { default as omit } from './utils/omit';
