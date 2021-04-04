@@ -6,6 +6,7 @@ import ReactPortal from './ReactPortal';
 import SocialNavLinks from './SocialNavLinks';
 import { useModal } from '../hooks';
 import { SocialLinkProps } from '../socialLinks';
+import { isPathActive } from '../utils/location';
 import '../styles/nav-menu.css';
 
 const NavMenu = ({
@@ -13,12 +14,12 @@ const NavMenu = ({
   className,
   LinkElementType = 'a',
   links = [],
+  location = typeof window !== 'undefined' && window.location,
   showSocialLinks = true,
   socialLinks = [],
   theme = 'light',
 }) => {
   const [isOpen, setIsOpen] = useModal(false);
-  const location = typeof window !== 'undefined' && window.location;
 
   useEffect(() => {
     setIsOpen(false);
@@ -66,22 +67,26 @@ const NavMenu = ({
           <div className="nav-menu__container container">
             <div className="nav-menu__content-wrapper">
               <ul className="nav-menu__list">
-                {links.map((link) => (
-                  <li className="nav-menu__item" key={link.path}>
-                    <Link
-                      activeClassName="active"
-                      aria-current={location && location.pathname === link.path}
-                      aria-label={link.name}
-                      ElementType={LinkElementType}
-                      exact={link.exact}
-                      strict={link.strict}
-                      to={link.path}
-                      unstyled
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
+                {links.map((link) => {
+                  const active = isPathActive(link.path, location);
+                  return (
+                    <li className="nav-menu__item" key={link.path}>
+                      <Link
+                        activeClassName=""
+                        aria-current={active ? 'page' : 'false'}
+                        aria-label={link.name}
+                        className={classNames({ active })}
+                        ElementType={LinkElementType}
+                        exact={link.exact}
+                        strict={link.strict}
+                        to={link.path}
+                        unstyled
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
               {showSocialLinks && (
                 <SocialNavLinks
@@ -112,6 +117,9 @@ NavMenu.propTypes = {
       component: PropTypes.elementType,
     })
   ),
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
   showSocialLinks: PropTypes.bool,
   socialLinks: PropTypes.arrayOf(SocialLinkProps),
   theme: PropTypes.string,
