@@ -1,11 +1,25 @@
-.progressive-image__overlay {
+.progressive-image {
+  position: relative;
+  display: inline-flex;
+  box-sizing: content-box;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.progressive-image__source,
+.progressive-image__placeholder {
+  max-width: 100%;
+  height: auto;
+}
+
+.progressive-image__placeholder {
   position: absolute;
   filter: blur(1px);
   transition: opacity ease-in 600ms;
   clip-path: inset(0);
 }
 
-.progressive-image--loaded .progressive-image__overlay {
+.progressive-image--loaded .progressive-image__placeholder {
   opacity: 0;
 }
 

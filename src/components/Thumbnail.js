@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ProgressiveImage from './ProgressiveImage';
 import '../styles/thumbnail.css';
 
@@ -10,8 +10,8 @@ const Thumbnail = ({
   children,
   className,
   ElementType = 'a',
-  height = 'auto',
   image,
+  ImageElementType = 'img',
   imageProps = {},
   index,
   placeholder,
@@ -22,16 +22,23 @@ const Thumbnail = ({
   ...props
 }) => {
   const ref = useRef();
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (animated) {
-      setTimeout(() => {
+    let handle;
+    if (animated && loaded) {
+      handle = setTimeout(() => {
         if (ref && ref.current) {
           ref.current.style.animation = 0;
         }
       }, 600);
     }
-  }, [animated, ref]);
+    return () => {
+      if (handle) {
+        clearTimeout(handle);
+      }
+    };
+  }, [animated, loaded, ref]);
 
   return (
     <ElementType
@@ -41,28 +48,22 @@ const Thumbnail = ({
         { 'thumbnail--rounded': rounded },
         { 'thumbnail--shadow': shadow },
         {
-          'animation-short': animated,
-          [`animation-delay-${index + 1}`]: animated && index >= 0,
-          [animation]: animated,
+          'animation-short': animated && loaded,
+          [`animation-delay-${index + 1}`]: animated && loaded && index >= 0,
+          [animation]: animated && loaded,
         },
         className
       )}
       ref={ref}
     >
-      {image && (
+      {ImageElementType && (
         <ProgressiveImage
           alt={imageProps.alt}
-          imageProps={{
-            ...imageProps,
-            className: classNames('img-fluid', imageProps.className),
-            height: imageProps.height || height,
-          }}
+          ImageElementType={ImageElementType}
+          imageProps={imageProps}
+          onLoad={() => setLoaded(true)}
           placeholder={placeholder}
-          placeholderProps={{
-            ...placeholderProps,
-            className: classNames('img-fluid', placeholderProps.className),
-            height: placeholderProps.height || height,
-          }}
+          placeholderProps={placeholderProps}
           src={image}
         />
       )}
@@ -77,8 +78,8 @@ Thumbnail.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   ElementType: PropTypes.elementType,
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   image: PropTypes.string,
+  ImageElementType: PropTypes.elementType,
   imageProps: PropTypes.object,
   index: PropTypes.number,
   placeholder: PropTypes.string,

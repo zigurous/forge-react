@@ -8,7 +8,9 @@ const ProgressiveImage = React.forwardRef(
     {
       alt,
       className,
+      ImageElementType = 'img',
       imageProps = {},
+      onLoad = () => {},
       placeholder,
       placeholderProps = {},
       src,
@@ -25,21 +27,24 @@ const ProgressiveImage = React.forwardRef(
           className
         )}
       >
-        <img
+        <ImageElementType
           {...imageProps}
           alt={imageProps.alt || alt}
           className={classNames(
             'progressive-image__source',
             imageProps.className
           )}
-          onLoad={() => {
-            setLoaded(true);
+          onLoad={(e) => {
+            if (!loaded) {
+              setLoaded(true);
+              onLoad(e);
+            }
           }}
           ref={ref}
           src={src}
         />
         {placeholder && (
-          <img
+          <ImageElementType
             {...placeholderProps}
             alt={placeholderProps.alt || alt}
             className={classNames(
@@ -58,10 +63,12 @@ ProgressiveImage.displayName = 'ProgressiveImage';
 ProgressiveImage.propTypes = {
   alt: PropTypes.string,
   className: PropTypes.string,
+  ImageElementType: PropTypes.elementType,
   imageProps: PropTypes.object,
+  onLoad: PropTypes.func,
   placeholder: PropTypes.string,
   placeholderProps: PropTypes.object,
-  src: PropTypes.string.isRequired,
+  src: PropTypes.string,
 };
 
 export default ProgressiveImage;

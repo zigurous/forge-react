@@ -1,8 +1,8 @@
 .thumbnail {
   position: relative;
   display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  box-sizing: content-box;
+  overflow: hidden;
   max-width: 100%;
   border-bottom: none !important;
   text-align: center;
@@ -14,7 +14,6 @@
 
 .thumbnail--rounded {
   border-radius: 0.25rem;
-  overflow: hidden;
 }
 
 @media (hover: hover) {
