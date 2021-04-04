@@ -30,8 +30,10 @@ const ProgressiveImage = ({
         alt={imageProps.alt || alt}
         className={classNames(
           'progressive-image__source',
+          'img-fluid',
           imageProps.className
         )}
+        height={imageProps.height || 'auto'}
         ref={imageRef}
         src={src}
       />
@@ -41,8 +43,10 @@ const ProgressiveImage = ({
           alt={placeholderProps.alt || alt}
           className={classNames(
             'progressive-image__placeholder',
+            'img-fluid',
             placeholderProps.className
           )}
+          height={placeholderProps.height || 'auto'}
           src={placeholder}
         />
       )}

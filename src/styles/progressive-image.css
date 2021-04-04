@@ -6,12 +6,6 @@
   max-width: 100%;
 }
 
-.progressive-image__source,
-.progressive-image__placeholder {
-  max-width: 100%;
-  height: auto;
-}
-
 .progressive-image__placeholder {
   position: absolute;
   filter: blur(1px);
