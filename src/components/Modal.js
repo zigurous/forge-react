@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Button from './Button';
 import ReactPortal from './ReactPortal';
-import { useModal } from '../hooks';
+import { useModalOverlay } from '../hooks';
 
 const Modal = ({
   children,
@@ -16,8 +16,8 @@ const Modal = ({
   rootElement,
   title,
 }) => {
-  useModal(isOpen, true);
-  return (
+  useModalOverlay(isOpen, true);
+  return isOpen ? (
     <ReactPortal rootElement={rootElement}>
       <div
         className={classNames('modal', { 'modal--open': isOpen }, className)}
@@ -51,7 +51,7 @@ const Modal = ({
         </div>
       </div>
     </ReactPortal>
-  );
+  ) : null;
 };
 
 Modal.propTypes = {

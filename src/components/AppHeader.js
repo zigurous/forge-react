@@ -19,6 +19,7 @@ const AppHeader = ({
   logoVariant = Logo.variant.wordmark,
   navigationStyle = 'bar',
   onLogoClick = () => {},
+  portalRootElement,
   showLogo = true,
   showNavigation = true,
   showSocialLinks = true,
@@ -78,6 +79,7 @@ const AppHeader = ({
                 logoSize={logoSize}
                 logoVariant={logoVariant}
                 onLogoClick={onLogoClick}
+                portalRootElement={portalRootElement}
                 showSocialLinks={showSocialLinks}
                 socialLinks={socialLinks}
                 theme={theme}
@@ -117,6 +119,7 @@ AppHeader.propTypes = {
   logoVariant: PropTypes.oneOf(Object.values(Logo.variant)),
   navigationStyle: PropTypes.oneOf(Object.values(AppHeader.navigationStyle)),
   onLogoClick: PropTypes.func,
+  portalRootElement: PropTypes.string,
   showLogo: PropTypes.bool,
   showNavigation: PropTypes.bool,
   showSocialLinks: PropTypes.bool,

@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from './Link';
 import ReactPortal from './ReactPortal';
 import SocialNavLinks from './SocialNavLinks';
-import { useModal } from '../hooks';
+import { useModalOverlay } from '../hooks';
 import { SocialLinkProps } from '../socialLinks';
 import { isPathActive } from '../utils/location';
 import '../styles/nav-menu.css';
@@ -15,12 +15,14 @@ const NavMenu = ({
   LinkElementType = 'a',
   links = [],
   location = typeof window !== 'undefined' && window.location,
+  portalRootElement,
   showSocialLinks = true,
   socialLinks = [],
   theme = 'light',
 }) => {
-  const [isOpen, setIsOpen] = useModal(false);
+  const [isOpen, setIsOpen] = useState(false);
 
+  useModalOverlay(isOpen);
   useEffect(() => {
     setIsOpen(false);
     setTimeout(() => {
@@ -39,9 +41,7 @@ const NavMenu = ({
         className={classNames('nav-menu__button', {
           'z-index-modal': isOpen,
         })}
-        onClick={() => {
-          setIsOpen(!isOpen);
-        }}
+        onClick={() => setIsOpen(!isOpen)}
         size="small"
       >
         <img
@@ -53,52 +53,54 @@ const NavMenu = ({
           }
         />
       </button>
-      <ReactPortal>
-        <div
-          className={classNames(
-            'nav-menu',
-            { 'nav-menu--open': isOpen, 'nav-menu--closed': !isOpen },
-            { 'nav-menu--animated': animated },
-            className
-          )}
-          theme={theme}
-        >
-          <div className="nav-menu__overlay" theme={theme} />
-          <div className="nav-menu__container container">
-            <div className="nav-menu__content-wrapper">
-              <ul className="nav-menu__list">
-                {links.map((link) => {
-                  const active = isPathActive(link.to, location);
-                  return (
-                    <li className="nav-menu__item" key={link.id || link.to}>
-                      <Link
-                        activeClassName=""
-                        aria-current={active ? 'page' : 'false'}
-                        aria-label={link.name}
-                        className={classNames({ active })}
-                        ElementType={link.ElementType || LinkElementType}
-                        external={link.external}
-                        to={link.to}
-                        unstyled
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-              {showSocialLinks && (
-                <SocialNavLinks
-                  foregroundColor="white"
-                  iconInnerPadding={10}
-                  iconSize={20}
-                  links={Object.values(socialLinks)}
-                />
-              )}
+      {isOpen && (
+        <ReactPortal rootElement={portalRootElement}>
+          <div
+            className={classNames(
+              'nav-menu',
+              { 'nav-menu--open': isOpen, 'nav-menu--closed': !isOpen },
+              { 'nav-menu--animated': animated },
+              className
+            )}
+            theme={theme}
+          >
+            <div className="nav-menu__overlay" theme={theme} />
+            <div className="nav-menu__container container">
+              <div className="nav-menu__content-wrapper">
+                <ul className="nav-menu__list">
+                  {links.map((link) => {
+                    const active = isPathActive(link.to, location);
+                    return (
+                      <li className="nav-menu__item" key={link.id || link.to}>
+                        <Link
+                          activeClassName=""
+                          aria-current={active ? 'page' : 'false'}
+                          aria-label={link.name}
+                          className={classNames({ active })}
+                          ElementType={link.ElementType || LinkElementType}
+                          external={link.external}
+                          to={link.to}
+                          unstyled
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+                {showSocialLinks && (
+                  <SocialNavLinks
+                    foregroundColor="white"
+                    iconInnerPadding={10}
+                    iconSize={20}
+                    links={Object.values(socialLinks)}
+                  />
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </ReactPortal>
+        </ReactPortal>
+      )}
     </React.Fragment>
   );
 };
@@ -119,6 +121,7 @@ NavMenu.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string,
   }),
+  portalRootElement: PropTypes.string,
   showSocialLinks: PropTypes.bool,
   socialLinks: PropTypes.arrayOf(SocialLinkProps),
   theme: PropTypes.string,

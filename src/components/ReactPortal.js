@@ -1,9 +1,29 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 const ReactPortal = ({ children, rootElement = '#root' }) => {
-  if (typeof document !== 'undefined') {
-    const parent = document.querySelector(rootElement) || document.body;
+  const [parent] = useState(
+    typeof document !== 'undefined' ? document.createElement('div') : null
+  );
+
+  const root =
+    typeof document !== 'undefined'
+      ? document.querySelector(rootElement)
+      : null;
+
+  useEffect(() => {
+    if (root && parent) {
+      root.appendChild(parent);
+    }
+    return () => {
+      if (root && parent) {
+        root.removeChild(parent);
+      }
+    };
+  }, [parent, root]);
+
+  if (parent) {
     return ReactDOM.createPortal(children, parent);
   } else {
     return null;

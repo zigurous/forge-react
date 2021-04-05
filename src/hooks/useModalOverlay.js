@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { getScrollbarWidth } from '../utils/scrolling';
 
-const useModal = (open = false, reflow = false) => {
-  const [isOpen, setIsOpen] = useState(Boolean(open));
-
+const useModalOverlay = (open = false, reflow = false) => {
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      if (isOpen) {
+      if (open) {
         if (reflow) {
           const scrollbarWidth = getScrollbarWidth();
 
@@ -24,9 +22,7 @@ const useModal = (open = false, reflow = false) => {
         }
       }
     }
-  }, [isOpen, reflow]);
-
-  return [isOpen, setIsOpen];
+  }, [open, reflow]);
 };
 
-export default useModal;
+export default useModalOverlay;
