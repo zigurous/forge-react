@@ -29,8 +29,4 @@ const useMediaQuery = (query) => {
   return matches;
 };
 
-export const useMobile = (maxWidth = '991px') => {
-  return useMediaQuery(`(max-width: ${maxWidth})`);
-};
-
 export default useMediaQuery;
