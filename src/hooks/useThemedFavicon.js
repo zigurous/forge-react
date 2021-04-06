@@ -1,7 +1,15 @@
 import { useState } from 'react';
 import useMediaQuery from './useMediaQuery';
 
-const createFavicon = () => {
+function queryFavicon() {
+  if (typeof document !== 'undefined') {
+    return document.querySelector('link[rel*="icon"]');
+  } else {
+    return null;
+  }
+}
+
+function createFavicon() {
   if (typeof document !== 'undefined') {
     const favicon = document.createElement('link');
     favicon.setAttribute('rel', 'favicon icon');
@@ -10,10 +18,10 @@ const createFavicon = () => {
   } else {
     return null;
   }
-};
+}
 
 export default function useThemedFavicon() {
-  const [favicon] = useState(createFavicon());
+  const [favicon] = useState(queryFavicon() || createFavicon());
   const light = useMediaQuery('(prefers-color-scheme:light)');
   const dark = useMediaQuery('(prefers-color-scheme:dark)');
 
