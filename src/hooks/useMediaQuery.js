@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { bindEvent, unbindEvent } from '../utils/events';
 
-export default function useMediaQuery(query) {
+export default function useMediaQuery(query, onChange) {
   const defaultMql =
     typeof window !== 'undefined' ? window.matchMedia(query) : null;
   const [mql, setMql] = useState(defaultMql);
@@ -15,16 +15,26 @@ export default function useMediaQuery(query) {
 
   useEffect(() => {
     const _mql = mql;
+    let handler;
 
     if (_mql) {
-      const handler = () => setMatches(_mql.matches);
-      bindEvent(_mql, 'change', handler);
+      handler = () => {
+        setMatches(_mql.matches);
 
-      return () => {
-        unbindEvent(_mql, 'change', handler);
+        if (onChange) {
+          onChange(_mql.matches);
+        }
       };
+
+      bindEvent(_mql, 'change', handler);
     }
-  }, [mql]);
+
+    return () => {
+      if (_mql && handler) {
+        unbindEvent(_mql, 'change', handler);
+      }
+    };
+  }, [mql, onChange]);
 
   return matches;
 }
