@@ -30,6 +30,7 @@ const ImageGallery = ({
   animation = 'fade-in-up',
   className,
   columns,
+  fullWidthFirstItem = false,
   images = [],
   maxWidth,
   minWidth,
@@ -53,6 +54,10 @@ const ImageGallery = ({
               aria-label="Image Thumbnail"
               className={classNames(
                 'image-gallery__thumbnail',
+                {
+                  'image-gallery__thumbnail--full-width':
+                    index === 0 && fullWidthFirstItem,
+                },
                 {
                   'animation-short': animated,
                   [`animation-delay-${index + 1}`]: animated,
@@ -103,6 +108,7 @@ ImageGallery.propTypes = {
   animation: PropTypes.string,
   className: PropTypes.string,
   columns: PropTypes.number,
+  fullWidthFirstItem: PropTypes.bool,
   images: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.shape({

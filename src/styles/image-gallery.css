@@ -15,6 +15,10 @@
   display: flex;
 }
 
+.image-gallery__thumbnail--full-width {
+  grid-column: 1 / -1;
+}
+
 .image-gallery__thumbnail img {
   max-width: 100%;
 }
