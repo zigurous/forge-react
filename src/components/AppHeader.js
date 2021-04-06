@@ -6,7 +6,6 @@ import NavBar from './NavBar';
 import NavMenu from './NavMenu';
 import SocialNavLinks from './SocialNavLinks';
 import { SocialLinkProps } from '../socialLinks';
-import { useMobile } from '../hooks';
 import '../styles/app-header.css';
 
 const AppHeader = ({
@@ -17,7 +16,6 @@ const AppHeader = ({
   location = typeof window !== 'undefined' && window.location,
   logoSize = Logo.size.small,
   logoVariant = Logo.variant.wordmark,
-  navigationStyle = 'bar',
   onLogoClick = () => {},
   portalRootElement,
   showLogo = true,
@@ -28,7 +26,6 @@ const AppHeader = ({
   theme,
   transparent = false,
 }) => {
-  const mobile = useMobile();
   return (
     <header
       className={classNames(
@@ -39,63 +36,52 @@ const AppHeader = ({
       )}
       theme={theme}
     >
-      {navigationStyle === 'bar' && (
-        <div
-          className={classNames({
-            container: !fluid,
-            'container-fluid': fluid,
-          })}
-        >
-          <div className="app-header__content left">
-            {showLogo && (
-              <Logo
-                onClick={onLogoClick}
-                size={logoSize}
-                variant={logoVariant}
-              />
-            )}
-            {showNavigation && !mobile && (
-              <NavBar
-                LinkElementType={LinkElementType}
-                links={links}
-                location={location}
-                theme={theme}
-              />
-            )}
-          </div>
-          <div className="app-header__content right">
-            {showSocialLinks && (
-              <SocialNavLinks
-                iconInnerPadding={10}
-                iconSize={20}
-                links={socialLinks}
-              />
-            )}
-            {showNavigation && (navigationStyle === 'menu' || mobile) && (
-              <NavMenu
-                LinkElementType={LinkElementType}
-                links={links}
-                location={location}
-                logoSize={logoSize}
-                logoVariant={logoVariant}
-                onLogoClick={onLogoClick}
-                portalRootElement={portalRootElement}
-                showSocialLinks={showSocialLinks}
-                socialLinks={socialLinks}
-                theme={theme}
-              />
-            )}
-          </div>
+      <div
+        className={classNames({
+          container: !fluid,
+          'container-fluid': fluid,
+        })}
+      >
+        <div className="app-header__content left">
+          {showLogo && (
+            <Logo onClick={onLogoClick} size={logoSize} variant={logoVariant} />
+          )}
+          {showNavigation && (
+            <NavBar
+              LinkElementType={LinkElementType}
+              links={links}
+              location={location}
+              theme={theme}
+            />
+          )}
         </div>
-      )}
+        <div className="app-header__content right">
+          {showSocialLinks && (
+            <SocialNavLinks
+              iconInnerPadding={10}
+              iconSize={20}
+              links={socialLinks}
+            />
+          )}
+          {showNavigation && (
+            <NavMenu
+              LinkElementType={LinkElementType}
+              links={links}
+              location={location}
+              logoSize={logoSize}
+              logoVariant={logoVariant}
+              onLogoClick={onLogoClick}
+              portalRootElement={portalRootElement}
+              showSocialLinks={showSocialLinks}
+              socialLinks={socialLinks}
+              theme={theme}
+            />
+          )}
+        </div>
+      </div>
     </header>
   );
 };
-
-AppHeader.navigationStyle = Object.freeze({
-  menu: 'menu',
-  bar: 'bar',
-});
 
 AppHeader.propTypes = {
   className: PropTypes.string,
@@ -117,7 +103,6 @@ AppHeader.propTypes = {
   }),
   logoSize: PropTypes.oneOf(Object.values(Logo.size)),
   logoVariant: PropTypes.oneOf(Object.values(Logo.variant)),
-  navigationStyle: PropTypes.oneOf(Object.values(AppHeader.navigationStyle)),
   onLogoClick: PropTypes.func,
   portalRootElement: PropTypes.string,
   showLogo: PropTypes.bool,

@@ -8,12 +8,15 @@ import '../styles/nav-bar.css';
 
 const NavBar = ({
   className,
+  hidden = false,
   LinkElementType = 'a',
   links = [],
   location = typeof window !== 'undefined' && window.location,
 }) => {
   return (
-    <nav className={classNames('nav-bar', className)}>
+    <nav
+      className={classNames('nav-bar', { 'display-none': hidden }, className)}
+    >
       <ul className="nav-bar__list">
         {links.map((link) => {
           const active = isPathActive(link.to, location);
@@ -55,6 +58,7 @@ const NavBar = ({
 
 NavBar.propTypes = {
   className: PropTypes.string,
+  hidden: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(
     PropTypes.shape({

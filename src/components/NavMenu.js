@@ -12,6 +12,7 @@ import '../styles/nav-menu.css';
 const NavMenu = ({
   animated = false,
   className,
+  hidden = false,
   LinkElementType = 'a',
   links = [],
   location = typeof window !== 'undefined' && window.location,
@@ -38,9 +39,11 @@ const NavMenu = ({
   return (
     <React.Fragment>
       <button
-        className={classNames('nav-menu__button', {
-          'z-index-modal': isOpen,
-        })}
+        className={classNames(
+          'nav-menu__button',
+          { 'z-index-modal': isOpen },
+          { 'display-none': hidden }
+        )}
         onClick={() => setIsOpen(!isOpen)}
         size="small"
       >
@@ -108,6 +111,7 @@ const NavMenu = ({
 NavMenu.propTypes = {
   animated: PropTypes.bool,
   className: PropTypes.string,
+  hidden: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(
     PropTypes.shape({

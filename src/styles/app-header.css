@@ -45,7 +45,15 @@
 }
 
 @media (max-width: 1199px) {
-  .app-header__content.right .social-nav-links {
+  .app-header .nav-bar,
+  .app-header .social-nav-links {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .app-header .nav-menu,
+  .app-header .nav-menu__button {
     display: none;
   }
 }

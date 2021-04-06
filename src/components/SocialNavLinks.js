@@ -9,6 +9,7 @@ const SocialNavLinks = ({
   backgroundColor,
   className,
   foregroundColor,
+  hidden = false,
   iconInnerPadding = 16,
   iconSize = 32,
   iconSpacing,
@@ -16,7 +17,13 @@ const SocialNavLinks = ({
   rounded = false,
   wrap = false,
 }) => (
-  <div className={classNames('social-nav-links', className)}>
+  <div
+    className={classNames(
+      'social-nav-links',
+      { 'display-none': hidden },
+      className
+    )}
+  >
     <ul className={classNames('social-nav-links__list', { 'flex-wrap': wrap })}>
       {links.map((link) => {
         const socialLink = typeof link === 'string' ? socialLinks[link] : link;
@@ -51,6 +58,7 @@ SocialNavLinks.propTypes = {
   backgroundColor: PropTypes.string,
   className: PropTypes.string,
   foregroundColor: PropTypes.string,
+  hidden: PropTypes.bool,
   iconInnerPadding: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   iconSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   iconSpacing: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
