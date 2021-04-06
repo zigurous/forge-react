@@ -1,3 +1,8 @@
+/* SVG */
+export { default as icons } from './svg/icons';
+export { default as logo } from './svg/logo';
+
+/* Components */
 export { default as AppFooter } from './components/AppFooter';
 export { default as AppHeader } from './components/AppHeader';
 export { default as AppStoreBadge } from './components/AppStoreBadge';
@@ -29,9 +34,25 @@ export { default as SocialIcon } from './components/SocialIcon';
 export { default as socialLinks, SocialLinkProps } from './socialLinks';
 export { default as SocialNavLinks } from './components/SocialNavLinks';
 export { default as Thumbnail } from './components/Thumbnail';
-export { fadeIn, scrollToTop, withThemedFavicon, withTransition } from './hoc';
-export { useDocumentTitle, useLoaded, useLoading, useMediaQuery, useModalOverlay, useMounted, usePagination, useSearch, useThemedFavicon } from './hooks'; // prettier-ignore
-export { icons, logo } from './svg';
+
+/* Higher-order Components */
+export { default as getDisplayName, getWrappedDisplayName } from './hoc/displayName'; // prettier-ignore
+export { default as scrollToTop } from './hoc/scrollToTop';
+export { default as withThemedFavicon } from './hoc/withThemedFavicon';
+export { default as withTransition, fadeIn } from './hoc/withTransition';
+
+/* Custom Hooks */
+export { default as useBreakpoint, useBreakpointMax, useSizeClass, useSizeClassMax } from './hooks/useBreakpoint'; // prettier-ignore
+export { default as useDocumentTitle } from './hooks/useDocumentTitle';
+export { default as useLoading, useLoaded } from './hooks/useLoading';
+export { default as useMediaQuery } from './hooks/useMediaQuery';
+export { default as useModalOverlay } from './hooks/useModalOverlay';
+export { default as useMounted } from './hooks/useMounted';
+export { default as usePagination } from './hooks/usePagination';
+export { default as useSearch } from './hooks/useSearch';
+export { default as useThemedFavicon } from './hooks/useThemedFavicon';
+
+/* Utils */
 export { bindEvent, enterKeyHandler, unbindEvent } from './utils/events';
 export { default as debounce } from './utils/debounce';
 export { default as throttle } from './utils/throttle';
