@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { bindEvent, unbindEvent } from '../utils/events';
 
-const useMediaQuery = (query) => {
+export default function useMediaQuery(query) {
   const defaultMql =
     typeof window !== 'undefined' ? window.matchMedia(query) : null;
   const [mql, setMql] = useState(defaultMql);
@@ -27,6 +27,4 @@ const useMediaQuery = (query) => {
   }, [mql]);
 
   return matches;
-};
-
-export default useMediaQuery;
+}

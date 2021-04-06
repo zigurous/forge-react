@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-const useSearch = (items, matches, storageKey = undefined) => {
+export default function useSearch(items, matches, storageKey = undefined) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState(null);
 
@@ -42,6 +42,4 @@ const useSearch = (items, matches, storageKey = undefined) => {
   };
 
   return [state, setQuery, setResults];
-};
-
-export default useSearch;
+}

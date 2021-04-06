@@ -13,7 +13,7 @@ const transitionTriggers = {
   'translate-right': 'hidden',
 };
 
-export const fadeIn = (WrappedComponent) => {
+export function fadeIn(WrappedComponent) {
   const FadeInTransition = (props) => {
     const mounted = useMounted();
     return (
@@ -30,7 +30,7 @@ export const fadeIn = (WrappedComponent) => {
     className: PropTypes.string,
   };
   return FadeInTransition;
-};
+}
 
 const withTransition = (
   WrappedComponent,

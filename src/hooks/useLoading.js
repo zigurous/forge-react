@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { bindEvent, unbindEvent } from '../utils/events';
 
-const useLoading = (ref) => {
+export default function useLoading(ref) {
   const [loading, setLoading] = useState(true);
 
   const loadComplete = () => {
@@ -25,9 +25,9 @@ const useLoading = (ref) => {
   }, [ref, loading]);
 
   return loading;
-};
+}
 
-export const useLoaded = (ref, onLoadComplete = () => {}) => {
+export function useLoaded(ref, onLoadComplete = () => {}) {
   const loaded = !useLoading(ref);
 
   useEffect(() => {
@@ -37,6 +37,4 @@ export const useLoaded = (ref, onLoadComplete = () => {}) => {
   }, [loaded, onLoadComplete]);
 
   return loaded;
-};
-
-export default useLoading;
+}

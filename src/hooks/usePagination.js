@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 
-const usePagination = (items, itemsPerPage = 6, storageKey = undefined) => {
+export default function usePagination(
+  items,
+  itemsPerPage = 6,
+  storageKey = undefined
+) {
   const [page, setPage] = useState(0);
   const startIndex = page * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -29,6 +33,4 @@ const usePagination = (items, itemsPerPage = 6, storageKey = undefined) => {
   };
 
   return [state, setPage];
-};
-
-export default usePagination;
+}

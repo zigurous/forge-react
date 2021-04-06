@@ -11,18 +11,18 @@ const sizes = {
   extraLarge: 1200,
 };
 
-export const useBreakpoint = (maxWidth) => {
+export default function useBreakpoint(maxWidth) {
   return useMediaQuery(`(min-width: ${maxWidth})`);
-};
+}
 
-export const useBreakpointMax = (maxWidth) => {
+export function useBreakpointMax(maxWidth) {
   return useMediaQuery(`(max-width: ${maxWidth})`);
-};
+}
 
-export const useSizeClass = (sizeClass) => {
+export function useSizeClass(sizeClass) {
   return useMediaQuery(`(min-width: ${sizes[sizeClass]}px)`);
-};
+}
 
-export const useSizeClassMax = (sizeClass) => {
+export function useSizeClassMax(sizeClass) {
   return useMediaQuery(`(max-width: ${sizes[sizeClass] - 1}px)`);
-};
+}

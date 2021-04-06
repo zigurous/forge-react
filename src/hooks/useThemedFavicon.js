@@ -12,7 +12,7 @@ const createFavicon = () => {
   }
 };
 
-const useThemedFavicon = () => {
+export default function useThemedFavicon() {
   const [favicon] = useState(createFavicon());
   const light = useMediaQuery('(prefers-color-scheme:light)');
   const dark = useMediaQuery('(prefers-color-scheme:dark)');
@@ -38,6 +38,4 @@ const useThemedFavicon = () => {
   }
 
   return favicon;
-};
-
-export default useThemedFavicon;
+}
