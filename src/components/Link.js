@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const Link = ({
+  activeClassName,
   children,
   className,
   ElementType = 'a',
@@ -25,6 +26,7 @@ const Link = ({
         }
       : {
           to,
+          activeClassName,
         };
   return (
     <ElementType
@@ -43,6 +45,7 @@ const Link = ({
 };
 
 Link.propTypes = {
+  activeClassName: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
   ElementType: PropTypes.elementType,
