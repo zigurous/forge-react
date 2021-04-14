@@ -1,6 +1,6 @@
 import useMediaQuery from './useMediaQuery';
 
-const sizes = {
+export const breakpoints = {
   sm: 576,
   small: 576,
   md: 768,
@@ -20,9 +20,9 @@ export function useBreakpointMax(maxWidth) {
 }
 
 export function useSizeClass(sizeClass) {
-  return useMediaQuery(`(min-width: ${sizes[sizeClass]}px)`);
+  return useMediaQuery(`(min-width: ${breakpoints[sizeClass]}px)`);
 }
 
 export function useSizeClassMax(sizeClass) {
-  return useMediaQuery(`(max-width: ${sizes[sizeClass] - 1}px)`);
+  return useMediaQuery(`(max-width: ${breakpoints[sizeClass] - 1}px)`);
 }

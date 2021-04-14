@@ -42,7 +42,7 @@ export { default as withThemedFavicon } from './hoc/withThemedFavicon';
 export { default as withTransition, fadeIn } from './hoc/withTransition';
 
 /* Custom Hooks */
-export { default as useBreakpoint, useBreakpointMax, useSizeClass, useSizeClassMax } from './hooks/useBreakpoint'; // prettier-ignore
+export { default as useBreakpoint, useBreakpointMax, useSizeClass, useSizeClassMax, breakpoints } from './hooks/useBreakpoint'; // prettier-ignore
 export { default as useDocumentTitle } from './hooks/useDocumentTitle';
 export { default as useLoading, useLoaded } from './hooks/useLoading';
 export { default as useMediaQuery } from './hooks/useMediaQuery';
