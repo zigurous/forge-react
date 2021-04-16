@@ -74,6 +74,7 @@ const EmbeddedVideo = ({
 }) => {
   const ref = useRef();
   const loading = useLoading(ref);
+  const offline = typeof navigator !== 'undefined' && !navigator.onLine;
   const _width = width || (size && sizes[size].width);
   const _height = height || (size && sizes[size].height);
   return (
@@ -101,7 +102,7 @@ const EmbeddedVideo = ({
           width={_width || '100%'}
         />
       </div>
-      {loading && <LoadingSpinner />}
+      {loading && !offline && <LoadingSpinner />}
     </div>
   );
 };
