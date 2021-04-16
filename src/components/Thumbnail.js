@@ -10,15 +10,19 @@ const Thumbnail = ({
   children,
   className,
   ElementType = 'a',
+  height,
   image,
+  imageClassName,
   ImageElementType = 'img',
   imageProps = {},
   index,
   placeholder,
+  placeholderClassName,
   placeholderProps = {},
   rounded = true,
   shadow = true,
   style,
+  width,
   ...props
 }) => {
   const ref = useRef();
@@ -58,12 +62,16 @@ const Thumbnail = ({
       {ImageElementType && (
         <ProgressiveImage
           alt={imageProps.alt}
+          height={height}
+          imageClassName={imageClassName}
           ImageElementType={ImageElementType}
           imageProps={imageProps}
           onLoad={() => setLoaded(true)}
           placeholder={placeholder}
+          placeholderClassName={placeholderClassName}
           placeholderProps={placeholderProps}
           src={image}
+          width={width}
         />
       )}
       {children}
@@ -77,15 +85,19 @@ Thumbnail.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   ElementType: PropTypes.elementType,
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   image: PropTypes.string,
+  imageClassName: PropTypes.string,
   ImageElementType: PropTypes.elementType,
   imageProps: PropTypes.object,
   index: PropTypes.number,
   placeholder: PropTypes.string,
+  placeholderClassName: PropTypes.string,
   placeholderProps: PropTypes.object,
   rounded: PropTypes.bool,
   shadow: PropTypes.bool,
   style: PropTypes.object,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default Thumbnail;

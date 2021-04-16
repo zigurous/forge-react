@@ -21,7 +21,7 @@
   .progressive-image--no-placeholder .progressive-image__source {
     opacity: 0;
     visibility: hidden;
-    transition: opacity 200ms, visibility 200ms;
+    transition: opacity ease-in 200ms, visibility ease-in 200ms;
   }
 
   .progressive-image--no-placeholder.progressive-image--loaded .progressive-image__source {
