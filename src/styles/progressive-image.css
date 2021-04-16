@@ -1,7 +1,7 @@
 .progressive-image {
+  display: inline-block;
   position: relative;
   box-sizing: content-box;
-  overflow: hidden;
   height: auto;
   max-width: 100%;
 }
