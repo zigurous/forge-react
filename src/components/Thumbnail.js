@@ -45,13 +45,12 @@ const Thumbnail = ({
       {...props}
       className={classNames(
         'thumbnail',
-        { 'thumbnail--rounded': rounded },
-        { 'thumbnail--shadow': shadow },
         {
           'animation-short': animated && loaded,
           [`animation-delay-${index + 1}`]: animated && loaded && index >= 0,
           [animation]: animated && loaded,
         },
+        { rounded, shadow },
         className
       )}
       ref={ref}

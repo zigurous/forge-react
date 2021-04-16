@@ -9,14 +9,6 @@
   text-align: center;
 }
 
-.thumbnail--shadow {
-  box-shadow: rgb(0 0 0 / 5%) 0px 10px 20px;
-}
-
-.thumbnail--rounded {
-  border-radius: 0.25rem;
-}
-
 @media (hover: hover) {
   a.thumbnail {
     transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 300ms cubic-bezier(0.23, 1, 0.32, 1);
