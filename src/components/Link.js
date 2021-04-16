@@ -12,7 +12,6 @@ const Link = ({
   rel,
   target,
   to,
-  undecorated = false,
   underlined = false,
   unstyled = false,
   ...props
@@ -33,9 +32,9 @@ const Link = ({
       {...props}
       {...elementProps}
       className={classNames(
-        { link: !unstyled },
-        { 'link--underlined': !unstyled && underlined },
-        { 'link--undecorated': !unstyled && undecorated },
+        'link',
+        { 'link--underlined': underlined },
+        { 'link--unstyled': unstyled },
         className
       )}
     >
@@ -54,7 +53,6 @@ Link.propTypes = {
   rel: PropTypes.string,
   target: PropTypes.string,
   to: PropTypes.string,
-  undecorated: PropTypes.bool,
   underlined: PropTypes.bool,
   unstyled: PropTypes.bool,
 };

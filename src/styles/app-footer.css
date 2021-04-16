@@ -9,7 +9,6 @@
   width: 100%;
   min-height: var(--footer-height, 72px);
   overflow: hidden;
-  color: var(--color-theme-shaded-gray, gray);
 }
 
 .app-footer--transparent {

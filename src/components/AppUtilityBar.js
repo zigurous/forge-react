@@ -25,12 +25,11 @@ const AppUtilityBar = ({
           {links.map((link) => (
             <Link
               aria-label={link.name}
-              className="margin-left-md margin-right-md"
+              className="color-inherit margin-left-md margin-right-md"
               ElementType={link.ElementType || LinkElementType}
               external={link.external}
               key={link.id || link.to}
               to={link.to}
-              undecorated
             >
               {link.name}
             </Link>

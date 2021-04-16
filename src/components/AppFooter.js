@@ -27,7 +27,7 @@ const AppFooter = ({
   >
     <div className="container">
       <div className="row align-items-center margin-top-lg margin-bottom-lg">
-        <div className="col font-xs font-weight-500">
+        <div className="col font-xs font-weight-500 text-themed-gray">
           <span>
             {showLogo && <Logo onClick={onLogoClick} size="xs" />}
             {copyright && (
@@ -41,12 +41,11 @@ const AppFooter = ({
               {links.map((link) => (
                 <Link
                   aria-label={link.name}
-                  className="margin-left-md margin-right-md"
+                  className="color-inherit margin-left-md margin-right-md"
                   ElementType={link.ElementType || LinkElementType}
                   external={link.external}
                   key={link.id || link.to}
                   to={link.to}
-                  undecorated
                 >
                   {link.name}
                 </Link>
