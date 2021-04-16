@@ -11,7 +11,7 @@ export default function usePagination(
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
   useEffect(() => {
-    if (storageKey && sessionStorage) {
+    if (storageKey && typeof sessionStorage !== 'undefined') {
       const storedValue = sessionStorage.getItem(storageKey);
       const storedPageNumber = parseInt(storedValue, 10);
 

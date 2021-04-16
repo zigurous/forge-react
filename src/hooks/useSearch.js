@@ -13,7 +13,11 @@ export default function useSearch(items, matches, storageKey = undefined) {
   );
 
   useEffect(() => {
-    if (storageKey && sessionStorage && items.length > 0) {
+    if (
+      storageKey &&
+      items.length > 0 &&
+      typeof sessionStorage !== 'undefined'
+    ) {
       const storedValue = sessionStorage.getItem(storageKey);
 
       if (storedValue) {
