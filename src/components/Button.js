@@ -45,19 +45,19 @@ const Button = ({
   >
     {icon === 'left' && (
       <span aria-hidden className="icon-wrapper margin-right-md">
-        {iconElement || <Icon name={iconName} size={iconSize || size} />}
+        {iconElement || <Icon name={iconName} size="inherit" />}
       </span>
     )}
     {icon === 'only' ? (
       <span aria-hidden className="icon-wrapper">
-        <Icon name={iconName} size={iconSize || size} />
+        <Icon name={iconName} size="inherit" />
       </span>
     ) : (
       children
     )}
     {icon === 'right' && (
       <span aria-hidden className="icon-wrapper margin-left-md">
-        {iconElement || <Icon name={iconName} size={iconSize || size} />}
+        {iconElement || <Icon name={iconName} size="inherit" />}
       </span>
     )}
   </button>

@@ -7,6 +7,7 @@ const Icon = ({
   children,
   className,
   inactive,
+  material = true,
   name,
   size = 'medium',
   theme = 'black',
@@ -19,7 +20,7 @@ const Icon = ({
       { [`icon--${size}`]: size },
       { [`icon--${theme}`]: theme },
       { 'icon--inactive': inactive },
-      'material-icon',
+      { 'material-icon': material },
       className
     )}
     {...props}
@@ -29,6 +30,7 @@ const Icon = ({
 );
 
 Icon.size = Object.freeze({
+  inherit: 'inherit',
   sm: 'sm',
   small: 'small',
   md: 'md',
@@ -51,6 +53,7 @@ Icon.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   inactive: PropTypes.bool,
+  material: PropTypes.bool,
   name: PropTypes.string,
   size: PropTypes.oneOf(Object.keys(Icon.size)),
   theme: PropTypes.oneOf(Object.values(Icon.theme)),

@@ -9,11 +9,6 @@
   transition: color 200ms;
 }
 
-.btn > .icon-wrapper > svg {
-  fill: var(--color-button-primary);
-  transition: fill 200ms;
-}
-
 .btn.hover:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > .icon,
 .btn:hover:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > .icon,
 .btn.focus:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > .icon,
@@ -23,29 +18,23 @@
   color: var(--color-button-secondary);
 }
 
-.btn.hover:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > svg,
-.btn:hover:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > svg,
-.btn.focus:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > svg,
-.btn:focus:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > svg,
-.btn.active:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > svg
-.btn:active:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > svg {
-  fill: var(--color-button-secondary);
-}
-
 .btn--sm > .icon-wrapper,
 .btn--small > .icon-wrapper {
-  max-width: 18px;
-  max-height: 18px;
+  font-size: 15px;
+  max-width: 14px;
+  max-height: 14px;
 }
 
 .btn--md > .icon-wrapper,
 .btn--medium > .icon-wrapper {
-  max-width: 21px;
-  max-height: 21px;
+  font-size: 18px;
+  max-width: 16px;
+  max-height: 16px;
 }
 
 .btn--lg > .icon-wrapper,
 .btn--large > .icon-wrapper {
-  max-width: 24px;
-  max-height: 24px;
+  font-size: 21px;
+  max-width: 18px;
+  max-height: 18px;
 }
