@@ -5,6 +5,7 @@ import ProgressiveImage from './ProgressiveImage';
 import '../styles/thumbnail.css';
 
 const Thumbnail = ({
+  alt,
   animated = false,
   animation = 'fade-in-up',
   children,
@@ -61,7 +62,7 @@ const Thumbnail = ({
     >
       {ImageElementType && (
         <ProgressiveImage
-          alt={imageProps.alt}
+          alt={alt}
           height={height}
           imageClassName={imageClassName}
           ImageElementType={ImageElementType}
@@ -80,6 +81,7 @@ const Thumbnail = ({
 };
 
 Thumbnail.propTypes = {
+  alt: PropTypes.string,
   animated: PropTypes.bool,
   animation: PropTypes.string,
   children: PropTypes.node,
