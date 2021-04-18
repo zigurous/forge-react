@@ -12,6 +12,7 @@ const NavBar = ({
   LinkElementType = 'a',
   links = [],
   location = typeof window !== 'undefined' && window.location,
+  onLinkClick,
 }) => {
   return (
     <nav
@@ -29,6 +30,11 @@ const NavBar = ({
                 className={classNames({ active })}
                 ElementType={link.ElementType || LinkElementType}
                 external={link.external}
+                onClick={() => {
+                  if (onLinkClick) {
+                    onLinkClick(link);
+                  }
+                }}
                 to={link.to}
                 unstyled
               >
@@ -74,6 +80,7 @@ NavBar.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string,
   }),
+  onLinkClick: PropTypes.func,
 };
 
 export default NavBar;

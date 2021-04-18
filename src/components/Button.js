@@ -33,12 +33,13 @@ const Button = ({
       className
     )}
     onClick={(event) => {
-      if (onClick) {
-        onClick(event);
-      } else if (history && link && !external) {
+      if (history && link && !external) {
         history.push(link);
       } else if (typeof window !== 'undefined' && link && external) {
         window.open(link, linkTarget);
+      }
+      if (onClick) {
+        onClick(event);
       }
     }}
     {...rest}

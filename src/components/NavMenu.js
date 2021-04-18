@@ -16,6 +16,7 @@ const NavMenu = ({
   LinkElementType = 'a',
   links = [],
   location = typeof window !== 'undefined' && window.location,
+  onLinkClick,
   portalRootElement,
   showSocialLinks = true,
   socialLinks = [],
@@ -82,6 +83,11 @@ const NavMenu = ({
                           className={classNames({ active })}
                           ElementType={link.ElementType || LinkElementType}
                           external={link.external}
+                          onClick={() => {
+                            if (onLinkClick) {
+                              onLinkClick(link);
+                            }
+                          }}
                           to={link.to}
                           unstyled
                         >
@@ -125,6 +131,7 @@ NavMenu.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string,
   }),
+  onLinkClick: PropTypes.func,
   portalRootElement: PropTypes.string,
   showSocialLinks: PropTypes.bool,
   socialLinks: PropTypes.arrayOf(SocialLinkProps),

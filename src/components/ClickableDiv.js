@@ -17,12 +17,13 @@ const ClickableDiv = ({
     {...props}
     className={classNames(className, 'cursor-pointer')}
     onClick={(event) => {
-      if (onClick) {
-        onClick(event);
-      } else if (history && link && !external) {
+      if (history && link && !external) {
         history.push(link);
       } else if (typeof window !== 'undefined' && link && external) {
         window.open(link, linkTarget);
+      }
+      if (onClick) {
+        onClick(event);
       }
     }}
     onKeyDown={enterKeyHandler(onClick)}

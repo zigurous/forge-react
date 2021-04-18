@@ -14,6 +14,7 @@ const SocialNavLinks = ({
   iconSize = 32,
   iconSpacing,
   links = [],
+  onLinkClick,
   rounded = false,
   wrap = false,
 }) => (
@@ -42,6 +43,11 @@ const SocialNavLinks = ({
               icon={socialLink.icon}
               iconName={socialLink.key}
               innerPadding={iconInnerPadding}
+              onClick={() => {
+                if (onLinkClick) {
+                  onLinkClick(socialLink);
+                }
+              }}
               rel="noopener noreferrer"
               rounded={rounded}
               size={iconSize}
@@ -63,6 +69,7 @@ SocialNavLinks.propTypes = {
   iconSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   iconSpacing: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   links: PropTypes.arrayOf(SocialLinkProps),
+  onLinkClick: PropTypes.func,
   rounded: PropTypes.bool,
   wrap: PropTypes.bool,
 };

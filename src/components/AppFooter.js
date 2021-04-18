@@ -10,7 +10,8 @@ const AppFooter = ({
   copyright,
   LinkElementType = 'a',
   links = [],
-  onLogoClick = () => {},
+  onLinkClick,
+  onLogoClick,
   showLogo = true,
   sticky = false,
   theme,
@@ -45,6 +46,11 @@ const AppFooter = ({
                   ElementType={link.ElementType || LinkElementType}
                   external={link.external}
                   key={link.id || link.to}
+                  onClick={() => {
+                    if (onLinkClick) {
+                      onLinkClick(link);
+                    }
+                  }}
                   to={link.to}
                 >
                   {link.name}
@@ -71,6 +77,7 @@ AppFooter.propTypes = {
       ElementType: PropTypes.elementType,
     })
   ),
+  onLinkClick: PropTypes.func,
   onLogoClick: PropTypes.func,
   showLogo: PropTypes.bool,
   sticky: PropTypes.bool,

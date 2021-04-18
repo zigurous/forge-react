@@ -22,6 +22,7 @@ const SocialButton = ({
     <Button
       {...props}
       className={classNames('social-button', social.key, className)}
+      external
       icon="left"
       iconElement={
         social.icon && (
@@ -36,14 +37,8 @@ const SocialButton = ({
           />
         )
       }
-      onClick={
-        onClick ||
-        (() => {
-          if (typeof window !== 'undefined') {
-            window.open(url || social.url, '_blank');
-          }
-        })
-      }
+      link={url || social.url}
+      onClick={onClick}
       size={size}
       style={{
         '--color-button-primary': primaryColor || social.color,

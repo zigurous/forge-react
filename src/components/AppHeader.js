@@ -16,7 +16,9 @@ const AppHeader = ({
   location = typeof window !== 'undefined' && window.location,
   logoSize = Logo.size.small,
   logoVariant = Logo.variant.wordmark,
-  onLogoClick = () => {},
+  onLogoClick,
+  onLinkClick,
+  onSocialLinkClick,
   portalRootElement,
   showLogo = true,
   showNavigation = true,
@@ -51,6 +53,7 @@ const AppHeader = ({
               LinkElementType={LinkElementType}
               links={links}
               location={location}
+              onLinkClick={onLinkClick}
               theme={theme}
             />
           )}
@@ -61,6 +64,7 @@ const AppHeader = ({
               iconInnerPadding={10}
               iconSize={20}
               links={socialLinks}
+              onLinkClick={onSocialLinkClick}
             />
           )}
           {showNavigation && (
@@ -70,6 +74,7 @@ const AppHeader = ({
               location={location}
               logoSize={logoSize}
               logoVariant={logoVariant}
+              onLinkClick={onLinkClick}
               onLogoClick={onLogoClick}
               portalRootElement={portalRootElement}
               showSocialLinks={showSocialLinks}
@@ -104,6 +109,8 @@ AppHeader.propTypes = {
   logoSize: PropTypes.oneOf(Object.values(Logo.size)),
   logoVariant: PropTypes.oneOf(Object.values(Logo.variant)),
   onLogoClick: PropTypes.func,
+  onLinkClick: PropTypes.func,
+  onSocialLinkClick: PropTypes.func,
   portalRootElement: PropTypes.string,
   showLogo: PropTypes.bool,
   showNavigation: PropTypes.bool,
