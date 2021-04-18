@@ -1,18 +1,23 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useCallback } from 'react';
 import Input from './Input';
 import debounce from '../utils/debounce';
 import { enterKeyHandler } from '../utils/events';
 
 const SearchInput = ({
   className,
-  placeholder,
+  debounceRate = 500,
   onChange = () => {},
   onSearch = () => {},
+  placeholder,
   ...props
 }) => {
-  const debounced = debounce((query) => onSearch(query), 500);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debounced = useCallback(
+    debounce((query) => onSearch(query), debounceRate),
+    [debounceRate]
+  );
   const handleChange = (event) => {
     const value = event.target.value;
     onChange(event);
@@ -33,6 +38,7 @@ const SearchInput = ({
 
 SearchInput.propTypes = {
   className: PropTypes.string,
+  debounceRate: PropTypes.number,
   onChange: PropTypes.func,
   onSearch: PropTypes.func,
   placeholder: PropTypes.string,
