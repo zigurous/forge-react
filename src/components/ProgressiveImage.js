@@ -7,6 +7,7 @@ import '../styles/progressive-image.css';
 
 const ProgressiveImage = ({
   alt,
+  animated = true,
   className,
   height,
   imageClassName,
@@ -27,6 +28,7 @@ const ProgressiveImage = ({
       className={classNames(
         'progressive-image',
         { 'progressive-image--loaded': loaded },
+        { 'progressive-image--animated': animated },
         { 'progressive-image--no-placeholder': !placeholder },
         className
       )}
@@ -67,6 +69,7 @@ const ProgressiveImage = ({
 
 ProgressiveImage.propTypes = {
   alt: PropTypes.string,
+  animated: PropTypes.bool,
   className: PropTypes.string,
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   imageClassName: PropTypes.string,

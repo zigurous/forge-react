@@ -9,8 +9,12 @@
 .progressive-image__placeholder {
   position: absolute;
   filter: blur(1px);
-  transition: opacity ease-in 600ms;
   clip-path: inset(0);
+  opacity: 1;
+}
+
+.progressive-image__placeholder.progressive-image--animated {
+  transition: opacity ease-in 600ms;
 }
 
 .progressive-image--loaded .progressive-image__placeholder {
@@ -18,10 +22,13 @@
 }
 
 @media (hover: hover) {
+  .progressive-image--no-placeholder.progressive-image--animated .progressive-image__source {
+    transition: opacity ease-in 200ms, visibility ease-in 200ms;
+  }
+
   .progressive-image--no-placeholder .progressive-image__source {
     opacity: 0;
     visibility: hidden;
-    transition: opacity ease-in 200ms, visibility ease-in 200ms;
   }
 
   .progressive-image--no-placeholder.progressive-image--loaded .progressive-image__source {
