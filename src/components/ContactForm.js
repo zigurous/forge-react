@@ -33,13 +33,7 @@ const ContactForm = React.forwardRef(
         placeholder="Message"
         required
       />
-      <input
-        aria-label="Send"
-        className="btn"
-        id="contactSubmit"
-        type="submit"
-        value="Send"
-      />
+      <input aria-label="Send" id="contactSubmit" type="submit" value="Send" />
     </form>
   )
 );

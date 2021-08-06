@@ -18,11 +18,10 @@ const Logo = ({
   image,
   onClick,
   size = 'medium',
-  theme,
   variant = 'wordmark',
 }) => (
   <div
-    className={classNames('logo', variant, theme, size, className)}
+    className={classNames('logo', variant, size, className)}
     style={{ fill }}
   >
     {onClick ? (
@@ -54,13 +53,6 @@ Logo.size = Object.freeze({
   extraLarge: 'extraLarge',
 });
 
-Logo.theme = Object.freeze({
-  black: 'black',
-  dark: 'dark',
-  light: 'light',
-  white: 'white',
-});
-
 Logo.variant = Object.freeze({
   wordmark: 'wordmark',
   lettermark: 'lettermark',
@@ -72,7 +64,6 @@ Logo.propTypes = {
   image: PropTypes.string,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(Object.values(Logo.size)),
-  theme: PropTypes.oneOf(Object.values(Logo.theme)),
   variant: PropTypes.oneOf(Object.values(Logo.variant)),
 };
 

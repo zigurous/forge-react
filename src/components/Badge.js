@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Badge = ({ children, className, pill = false, type = 'filled' }) => (
+const Badge = ({ children, className, pill = false, type = 'solid' }) => (
   <div
     className={classNames(
       'badge',
@@ -16,7 +16,7 @@ const Badge = ({ children, className, pill = false, type = 'filled' }) => (
 );
 
 Badge.type = Object.freeze({
-  filled: 'filled',
+  solid: 'solid',
   outline: 'outline',
 });
 

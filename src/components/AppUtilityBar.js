@@ -17,7 +17,7 @@ const AppUtilityBar = ({
       { [`app-utility-bar--${direction}`]: direction },
       className
     )}
-    theme={theme}
+    data-theme={theme}
   >
     <div className="container">
       <div className="row">

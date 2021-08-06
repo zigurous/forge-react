@@ -10,7 +10,7 @@ const Icon = ({
   material = true,
   name,
   size = 'medium',
-  theme = 'black',
+  theme,
   ...props
 }) => (
   <i
@@ -19,6 +19,7 @@ const Icon = ({
       'icon',
       { [`icon--${size}`]: size },
       { [`icon--${theme}`]: theme },
+      { 'icon--active': !inactive },
       { 'icon--inactive': inactive },
       { 'material-icon': material },
       className
@@ -42,10 +43,8 @@ Icon.size = Object.freeze({
 });
 
 Icon.theme = Object.freeze({
-  black: 'black',
-  dark: 'dark',
   light: 'light',
-  white: 'white',
+  dark: 'dark',
 });
 
 Icon.propTypes = {

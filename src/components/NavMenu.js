@@ -66,9 +66,9 @@ const NavMenu = ({
               { 'nav-menu--animated': animated },
               className
             )}
-            theme={theme}
+            data-theme={theme}
           >
-            <div className="nav-menu__overlay" theme={theme} />
+            <div className="nav-menu__overlay" data-theme={theme} />
             <div className="nav-menu__container container">
               <div className="nav-menu__content-wrapper">
                 <ul className="nav-menu__list">

@@ -15,9 +15,9 @@
   left: 8px;
   pointer-events: none;
   font-size: 21px;
-  color: var(--color-gray);
+  color: var(--color-foreground-secondary);
 }
 
 /* .input-wrapper input:focus ~ .icon {
-  color: var(--color-dark);
+  color: var(--color-foreground-secondary);
 } */

@@ -20,8 +20,8 @@ const PageBanner = ({
         { 'page-banner--transparent': transparent },
         className
       )}
+      data-theme={theme}
       style={{ backgroundColor: backgroundColor, ...style }}
-      theme={theme}
     >
       {children}
     </div>

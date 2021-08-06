@@ -34,13 +34,13 @@
   height: 100%;
   padding-bottom: 8px;
   padding-top: 12px;
-  border-bottom: solid 4px transparent;
+  border-bottom: 4px solid transparent;
   text-decoration: none;
 }
 
 .nav-bar__item a,
 .nav-bar__item a > .icon {
-  color: var(--color-theme-foreground);
+  color: var(--color-foreground);
   transition: color 200ms;
 }
 

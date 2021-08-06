@@ -18,7 +18,8 @@ const Pagination = ({
         className={classNames({ active: currentPage === i })}
         key={i}
         onClick={() => onPageChange(i)}
-        rounded={false}
+        size="md"
+        style={Button.style.outline}
       >
         {i + 1}
       </Button>
@@ -32,7 +33,8 @@ const Pagination = ({
         icon="only"
         iconName="chevron_left"
         onClick={() => onPageChange(currentPage - 1)}
-        rounded={false}
+        size="md"
+        style={Button.style.outline}
       />
       {pageButtons}
       <Button
@@ -40,7 +42,8 @@ const Pagination = ({
         icon="only"
         iconName="chevron_right"
         onClick={() => onPageChange(currentPage + 1)}
-        rounded={false}
+        size="md"
+        style={Button.style.outline}
       />
     </div>
   );

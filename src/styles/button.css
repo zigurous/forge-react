@@ -2,20 +2,13 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  color: inherit;
+  fill: inherit;
 }
 
 .btn > .icon-wrapper > .icon {
-  color: var(--color-button-primary);
-  transition: color 200ms;
-}
-
-.btn.hover:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > .icon,
-.btn:hover:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > .icon,
-.btn.focus:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > .icon,
-.btn:focus:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > .icon,
-.btn.active:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > .icon
-.btn:active:not(:disabled):not(.btn--icon-only.btn--borderless) > .icon-wrapper > .icon {
-  color: var(--color-button-secondary);
+  color: inherit;
+  fill: inherit;
 }
 
 .btn--sm > .icon-wrapper,

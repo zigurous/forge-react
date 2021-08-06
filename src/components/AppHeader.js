@@ -36,7 +36,7 @@ const AppHeader = ({
         { 'app-header--sticky': sticky },
         className
       )}
-      theme={theme}
+      data-theme={theme}
     >
       <div
         className={classNames({

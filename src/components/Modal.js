@@ -30,18 +30,20 @@ const Modal = ({
             <div className="modal__header">
               <div className="modal__title h5">{title}</div>
               <Button
-                borderless
                 className="modal__close-button"
                 icon="only"
                 iconName="close"
                 onClick={onRequestClose}
+                size="md"
+                style={Button.style.text}
               />
             </div>
             <div className="modal__body">{children}</div>
             {footer && (
               <div
                 className={classNames('modal__footer', {
-                  [`modal__footer--${footerAlignment}-aligned`]: footerAlignment,
+                  [`modal__footer--${footerAlignment}-aligned`]:
+                    footerAlignment,
                 })}
               >
                 {footer}

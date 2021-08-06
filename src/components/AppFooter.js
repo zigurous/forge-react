@@ -24,11 +24,11 @@ const AppFooter = ({
       { 'app-footer--sticky': sticky },
       className
     )}
-    theme={theme}
+    data-theme={theme}
   >
     <div className="container">
       <div className="row align-items-center margin-top-lg margin-bottom-lg">
-        <div className="col font-xs font-weight-500 text-themed-gray">
+        <div className="col font-xs font-weight-500 text-foreground-secondary">
           <span>
             {showLogo && <Logo onClick={onLogoClick} size="xs" />}
             {copyright && (

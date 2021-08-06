@@ -5,29 +5,29 @@ import Icon from './Icon';
 import '../styles/button.css';
 
 const Button = ({
-  borderless = false,
+  appearance = 'default',
   children,
-  circle = false,
   className,
   external,
   history,
   icon,
   iconElement,
   iconName,
-  iconSize,
   link,
   linkTarget = '_blank',
   onClick,
-  rounded = true,
-  size = 'medium',
+  shape = 'rounded-corners',
+  size = 'small',
+  style = 'solid',
+  styles,
   ...rest
 }) => (
   <button
     className={classNames(
       'btn',
-      { 'btn--borderless': borderless },
-      { 'btn--rounded': rounded && !circle },
-      { 'btn--circle': circle },
+      { [`btn--${appearance}`]: appearance },
+      { [`btn--${shape}`]: shape },
+      { [`btn--${style}`]: style },
       { [`btn--${size}`]: size },
       { 'btn--icon-only': icon === 'only' },
       className
@@ -42,6 +42,7 @@ const Button = ({
         onClick(event);
       }
     }}
+    style={styles}
     {...rest}
   >
     {icon === 'left' && (
@@ -64,6 +65,18 @@ const Button = ({
   </button>
 );
 
+Button.appearance = Object.freeze({
+  default: 'default',
+  primary: 'primary',
+});
+
+Button.shape = Object.freeze({
+  square: 'square',
+  roundedCorners: 'rounded-corners',
+  rounded: 'rounded',
+  circle: 'circle',
+});
+
 Button.size = Object.freeze({
   sm: 'sm',
   small: 'small',
@@ -73,11 +86,16 @@ Button.size = Object.freeze({
   large: 'large',
 });
 
+Button.style = Object.freeze({
+  solid: 'solid',
+  outline: 'outline',
+  text: 'text',
+});
+
 Button.propTypes = {
+  appearance: PropTypes.oneOf(Object.values(Button.appearance)),
   ariaLabel: PropTypes.string,
-  borderless: PropTypes.bool,
   children: PropTypes.node,
-  circle: PropTypes.bool,
   className: PropTypes.string,
   ElementType: PropTypes.elementType,
   external: PropTypes.bool,
@@ -87,12 +105,13 @@ Button.propTypes = {
   icon: PropTypes.oneOf(['left', 'right', 'only']),
   iconElement: PropTypes.element,
   iconName: PropTypes.string,
-  iconSize: PropTypes.oneOf(Object.values(Icon.size)),
   link: PropTypes.string,
   linkTarget: PropTypes.string,
   onClick: PropTypes.func,
-  rounded: PropTypes.bool,
+  shape: PropTypes.oneOf(Object.values(Button.shape)),
   size: PropTypes.oneOf(Object.values(Button.size)),
+  style: PropTypes.oneOf(Object.values(Button.style)),
+  styles: PropTypes.object,
 };
 
 export default Button;
