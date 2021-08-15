@@ -90,6 +90,7 @@ Button.style = Object.freeze({
   solid: 'solid',
   outline: 'outline',
   text: 'text',
+  none: 'unstyled',
 });
 
 Button.propTypes = {

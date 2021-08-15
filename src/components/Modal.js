@@ -34,8 +34,8 @@ const Modal = ({
                 icon="only"
                 iconName="close"
                 onClick={onRequestClose}
-                size="md"
-                style={Button.style.text}
+                size={Button.size.medium}
+                style={Button.style.none}
               />
             </div>
             <div className="modal__body">{children}</div>
