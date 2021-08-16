@@ -11,6 +11,9 @@ import '../styles/app-header.css';
 const AppHeader = ({
   className,
   fluid = false,
+  hideLogo = false,
+  hideNavigation = false,
+  hideSocialLinks = false,
   LinkElementType = 'a',
   links = [],
   location = typeof window !== 'undefined' && window.location,
@@ -20,9 +23,6 @@ const AppHeader = ({
   onLinkClick,
   onSocialLinkClick,
   portalRootElement,
-  showLogo = true,
-  showNavigation = true,
-  showSocialLinks = true,
   socialLinks = [],
   sticky = false,
   theme,
@@ -45,10 +45,10 @@ const AppHeader = ({
         })}
       >
         <div className="app-header__content left">
-          {showLogo && (
+          {!hideLogo && (
             <Logo onClick={onLogoClick} size={logoSize} variant={logoVariant} />
           )}
-          {showNavigation && (
+          {!hideNavigation && (
             <NavBar
               LinkElementType={LinkElementType}
               links={links}
@@ -59,7 +59,7 @@ const AppHeader = ({
           )}
         </div>
         <div className="app-header__content right">
-          {showSocialLinks && (
+          {!hideSocialLinks && (
             <SocialNavLinks
               iconInnerPadding={10}
               iconSize={20}
@@ -67,8 +67,9 @@ const AppHeader = ({
               onLinkClick={onSocialLinkClick}
             />
           )}
-          {showNavigation && (
+          {!hideNavigation && (
             <NavMenu
+              hideSocialLinks={hideSocialLinks}
               LinkElementType={LinkElementType}
               links={links}
               location={location}
@@ -77,7 +78,6 @@ const AppHeader = ({
               onLinkClick={onLinkClick}
               onLogoClick={onLogoClick}
               portalRootElement={portalRootElement}
-              showSocialLinks={showSocialLinks}
               socialLinks={socialLinks}
               theme={theme}
             />
@@ -91,6 +91,9 @@ const AppHeader = ({
 AppHeader.propTypes = {
   className: PropTypes.string,
   fluid: PropTypes.bool,
+  hideLogo: PropTypes.bool,
+  hideNavigation: PropTypes.bool,
+  hideSocialLinks: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(
     PropTypes.shape({
@@ -112,9 +115,6 @@ AppHeader.propTypes = {
   onLinkClick: PropTypes.func,
   onSocialLinkClick: PropTypes.func,
   portalRootElement: PropTypes.string,
-  showLogo: PropTypes.bool,
-  showNavigation: PropTypes.bool,
-  showSocialLinks: PropTypes.bool,
   socialLinks: PropTypes.arrayOf(SocialLinkProps),
   sticky: PropTypes.bool,
   theme: PropTypes.string,

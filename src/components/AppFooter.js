@@ -8,11 +8,11 @@ import '../styles/app-footer.css';
 const AppFooter = ({
   className,
   copyright,
+  hideLogo = false,
   LinkElementType = 'a',
   links = [],
   onLinkClick,
   onLogoClick,
-  showLogo = true,
   sticky = false,
   theme,
   transparent = false,
@@ -30,7 +30,7 @@ const AppFooter = ({
       <div className="row align-items-center margin-top-lg margin-bottom-lg">
         <div className="col font-xs font-weight-500 text-foreground-secondary">
           <span>
-            {showLogo && <Logo onClick={onLogoClick} size="xs" />}
+            {!hideLogo && <Logo onClick={onLogoClick} size="xs" />}
             {copyright && (
               <span className="copyright margin-left-xl margin-right-xl">
                 {copyright}
@@ -67,6 +67,7 @@ const AppFooter = ({
 AppFooter.propTypes = {
   className: PropTypes.string,
   copyright: PropTypes.node,
+  hideLogo: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(
     PropTypes.shape({
@@ -79,7 +80,6 @@ AppFooter.propTypes = {
   ),
   onLinkClick: PropTypes.func,
   onLogoClick: PropTypes.func,
-  showLogo: PropTypes.bool,
   sticky: PropTypes.bool,
   theme: PropTypes.string,
   transparent: PropTypes.bool,

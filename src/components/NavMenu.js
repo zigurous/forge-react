@@ -13,12 +13,12 @@ const NavMenu = ({
   animated = false,
   className,
   hidden = false,
+  hideSocialLinks = true,
   LinkElementType = 'a',
   links = [],
   location = typeof window !== 'undefined' && window.location,
   onLinkClick,
   portalRootElement,
-  showSocialLinks = true,
   socialLinks = [],
   theme = 'light',
 }) => {
@@ -97,7 +97,7 @@ const NavMenu = ({
                     );
                   })}
                 </ul>
-                {showSocialLinks && (
+                {!hideSocialLinks && (
                   <SocialNavLinks
                     foregroundColor="white"
                     iconInnerPadding={10}
@@ -118,6 +118,7 @@ NavMenu.propTypes = {
   animated: PropTypes.bool,
   className: PropTypes.string,
   hidden: PropTypes.bool,
+  hideSocialLinks: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(
     PropTypes.shape({
@@ -133,7 +134,6 @@ NavMenu.propTypes = {
   }),
   onLinkClick: PropTypes.func,
   portalRootElement: PropTypes.string,
-  showSocialLinks: PropTypes.bool,
   socialLinks: PropTypes.arrayOf(SocialLinkProps),
   theme: PropTypes.string,
 };
