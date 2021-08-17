@@ -11,6 +11,10 @@
   overflow: hidden;
 }
 
+.app-footer--bordered {
+  border-top: solid 1px var(--color-background-tertiary);
+}
+
 .app-footer--transparent {
   background: none !important;
 }

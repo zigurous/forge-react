@@ -9,6 +9,7 @@ import { SocialLinkProps } from '../socialLinks';
 import '../styles/app-header.css';
 
 const AppHeader = ({
+  bordered = false,
   className,
   fluid = false,
   hideLogo = false,
@@ -32,6 +33,7 @@ const AppHeader = ({
     <header
       className={classNames(
         'app-header',
+        { 'app-header--bordered': bordered },
         { 'app-header--transparent': transparent },
         { 'app-header--sticky': sticky },
         className
@@ -59,7 +61,7 @@ const AppHeader = ({
           )}
         </div>
         <div className="app-header__content right">
-          {!hideSocialLinks && (
+          {!hideSocialLinks && socialLinks && socialLinks.length > 0 && (
             <SocialNavLinks
               iconInnerPadding={10}
               iconSize={20}
@@ -89,6 +91,7 @@ const AppHeader = ({
 };
 
 AppHeader.propTypes = {
+  bordered: PropTypes.bool,
   className: PropTypes.string,
   fluid: PropTypes.bool,
   hideLogo: PropTypes.bool,

@@ -10,6 +10,10 @@
   height: var(--header-height, 80px);
 }
 
+.app-header--bordered {
+  border-bottom: solid 1px var(--color-background-tertiary);
+}
+
 .app-header--transparent {
   background: none !important;
 }

@@ -6,6 +6,7 @@ import Logo from './Logo';
 import '../styles/app-footer.css';
 
 const AppFooter = ({
+  bordered = false,
   className,
   copyright,
   hideLogo = false,
@@ -20,6 +21,7 @@ const AppFooter = ({
   <footer
     className={classNames(
       'app-footer',
+      { 'app-footer--bordered': bordered },
       { 'app-footer--transparent': transparent },
       { 'app-footer--sticky': sticky },
       className
@@ -65,6 +67,7 @@ const AppFooter = ({
 );
 
 AppFooter.propTypes = {
+  bordered: PropTypes.bool,
   className: PropTypes.string,
   copyright: PropTypes.node,
   hideLogo: PropTypes.bool,
