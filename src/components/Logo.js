@@ -18,11 +18,12 @@ const Logo = ({
   image,
   onClick,
   size = 'medium',
+  style,
   variant = 'wordmark',
 }) => (
   <div
     className={classNames('logo', variant, size, className)}
-    style={{ fill }}
+    style={{ ...style, fill }}
   >
     {onClick ? (
       <button
@@ -64,6 +65,7 @@ Logo.propTypes = {
   image: PropTypes.string,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(Object.values(Logo.size)),
+  style: PropTypes.object,
   variant: PropTypes.oneOf(Object.values(Logo.variant)),
 };
 
