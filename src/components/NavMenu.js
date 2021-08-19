@@ -73,22 +73,22 @@ const NavMenu = ({
               <div className="nav-menu__content-wrapper">
                 <ul className="nav-menu__list">
                   {links.map((link) => {
-                    const active = isPathActive(link.to, location);
+                    const key = link.to || link.path || link.href;
+                    const active = isPathActive(key, location);
                     return (
-                      <li className="nav-menu__item" key={link.id || link.to}>
+                      <li className="nav-menu__item" key={key}>
                         <Link
+                          {...link}
                           activeClassName=""
                           aria-current={active ? 'page' : 'false'}
                           aria-label={link.name}
                           className={classNames({ active })}
                           ElementType={link.ElementType || LinkElementType}
-                          external={link.external}
                           onClick={() => {
                             if (onLinkClick) {
                               onLinkClick(link);
                             }
                           }}
-                          to={link.to}
                           unstyled
                         >
                           {link.name}
@@ -120,15 +120,7 @@ NavMenu.propTypes = {
   hidden: PropTypes.bool,
   hideSocialLinks: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      to: PropTypes.string,
-      name: PropTypes.string,
-      external: PropTypes.bool,
-      ElementType: PropTypes.elementType,
-    })
-  ),
+  links: PropTypes.arrayOf(PropTypes.shape(Link.propTypes)),
   location: PropTypes.shape({
     pathname: PropTypes.string,
   }),

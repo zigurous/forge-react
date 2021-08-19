@@ -9,6 +9,7 @@ const Link = ({
   ElementType = 'a',
   external = false,
   href,
+  path,
   rel,
   target,
   to,
@@ -19,12 +20,13 @@ const Link = ({
   const elementProps =
     ElementType === 'a'
       ? {
-          href: href || to,
+          href: href || path || to,
           rel: rel || (external ? 'noopener noreferrer' : undefined),
           target: target || (external ? '_blank' : undefined),
         }
       : {
-          to,
+          to: to || path || href,
+          href: href || path || to,
           activeClassName,
         };
   return (
@@ -50,6 +52,7 @@ Link.propTypes = {
   ElementType: PropTypes.elementType,
   external: PropTypes.bool,
   href: PropTypes.string,
+  path: PropTypes.string,
   rel: PropTypes.string,
   target: PropTypes.string,
   to: PropTypes.string,

@@ -4,6 +4,7 @@ import React from 'react';
 import Icon from './Icon';
 import Link from './Link';
 import { isPathActive } from '../utils/location';
+import omit from '../utils/omit';
 import '../styles/nav-bar.css';
 
 const NavBar = ({
@@ -16,27 +17,26 @@ const NavBar = ({
 }) => {
   return (
     <nav
-      className={classNames('nav-bar', { 'display-none': hidden }, className)}
+      className={classNames('navbar', { 'display-none': hidden }, className)}
     >
-      <ul className="nav-bar__list">
+      <ul>
         {links.map((link) => {
-          const active = isPathActive(link.to, location);
+          const key = link.to || link.path || link.href;
+          const active = isPathActive(key, location);
           return (
-            <li className="nav-bar__item" key={link.id || link.to}>
+            <li key={key}>
               <Link
+                {...omit(link, ['leftIcon', 'rightIcon'])}
                 activeClassName=""
                 aria-current={active ? 'page' : 'false'}
                 aria-label={link.name}
                 className={classNames({ active })}
                 ElementType={link.ElementType || LinkElementType}
-                external={link.external}
                 onClick={() => {
                   if (onLinkClick) {
                     onLinkClick(link);
                   }
                 }}
-                to={link.to}
-                unstyled
               >
                 {link.leftIcon && (
                   <Icon
@@ -66,17 +66,7 @@ NavBar.propTypes = {
   className: PropTypes.string,
   hidden: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      to: PropTypes.string,
-      name: PropTypes.string,
-      leftIcon: PropTypes.string,
-      rightIcon: PropTypes.string,
-      external: PropTypes.bool,
-      ElementType: PropTypes.elementType,
-    })
-  ),
+  links: PropTypes.arrayOf(PropTypes.shape(Link.propTypes)),
   location: PropTypes.shape({
     pathname: PropTypes.string,
   }),

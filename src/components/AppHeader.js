@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
+import Link from './Link';
 import Logo from './Logo';
 import NavBar from './NavBar';
 import NavMenu from './NavMenu';
@@ -98,17 +99,7 @@ AppHeader.propTypes = {
   hideNavigation: PropTypes.bool,
   hideSocialLinks: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      to: PropTypes.string,
-      name: PropTypes.string,
-      leftIcon: PropTypes.string,
-      rightIcon: PropTypes.string,
-      external: PropTypes.bool,
-      ElementType: PropTypes.elementType,
-    })
-  ),
+  links: PropTypes.arrayOf(PropTypes.shape(Link.propTypes)),
   location: PropTypes.shape({
     pathname: PropTypes.string,
   }),

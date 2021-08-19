@@ -72,15 +72,7 @@ AppFooter.propTypes = {
   copyright: PropTypes.node,
   hideLogo: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      to: PropTypes.string,
-      name: PropTypes.string,
-      external: PropTypes.bool,
-      ElementType: PropTypes.elementType,
-    })
-  ),
+  links: PropTypes.arrayOf(PropTypes.shape(Link.propTypes)),
   onLinkClick: PropTypes.func,
   onLogoClick: PropTypes.func,
   sticky: PropTypes.bool,
