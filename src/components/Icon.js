@@ -21,7 +21,7 @@ const Icon = ({
       { [`icon--${theme}`]: theme },
       { 'icon--active': !inactive },
       { 'icon--inactive': inactive },
-      { 'material-icon': material },
+      { 'material-icons': material },
       className
     )}
     {...props}
