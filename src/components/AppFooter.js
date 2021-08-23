@@ -30,7 +30,7 @@ const AppFooter = ({
   >
     <div className="container">
       <div className="row align-items-center margin-top-lg margin-bottom-lg">
-        <div className="col font-xs font-weight-500 text-foreground-secondary">
+        <div className="col font-xs font-weight-500 color-foreground-secondary">
           <span>
             {!hideLogo && <Logo onClick={onLogoClick} size="xs" />}
             {copyright && (
