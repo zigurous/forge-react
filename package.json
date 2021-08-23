@@ -24,8 +24,8 @@
     "svg2js": "^0.0.4-alpha1"
   },
   "scripts": {
-    "build": "microbundle-crl --css-modules \"[local]\" --format modern,es,cjs,umd --globals react=React,react-dom=ReactDOM,prop-types=PropTypes",
-    "start": "microbundle-crl watch --no-compress --format modern,es,cjs,umd --globals react=React,react-dom=ReactDOM,prop-types=PropTypes",
+    "build": "microbundle-crl --compress --css-modules \"[local]\" --globals react=React,react-dom=ReactDOM,prop-types=PropTypes",
+    "start": "microbundle-crl watch --no-compress --globals react=React,react-dom=ReactDOM,prop-types=PropTypes",
     "predeploy": "yarn build",
     "prepare": "yarn build"
   },
