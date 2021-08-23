@@ -1,0 +1,45 @@
+.btn > .icon-wrapper {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: inherit;
+  fill: inherit;
+}
+
+.btn--sm > .icon-wrapper,
+.btn--small > .icon-wrapper {
+  max-width: 14px;
+  max-height: 14px;
+}
+
+.btn--md > .icon-wrapper,
+.btn--medium > .icon-wrapper {
+  max-width: 16px;
+  max-height: 16px;
+}
+
+.btn--lg > .icon-wrapper,
+.btn--large > .icon-wrapper {
+  max-width: 18px;
+  max-height: 18px;
+}
+
+.btn > .icon-wrapper > .icon {
+  color: inherit;
+  fill: inherit;
+}
+
+.btn--sm > .icon-wrapper > .icon,
+.btn--small > .icon-wrapper > .icon {
+  font-size: 15px;
+}
+
+.btn--md > .icon-wrapper > .icon,
+.btn--medium > .icon-wrapper > .icon {
+  font-size: 18px;
+}
+
+.btn--lg > .icon-wrapper > .icon,
+.btn--large > .icon-wrapper > .icon {
+  font-size: 21px;
+}
