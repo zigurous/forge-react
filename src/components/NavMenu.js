@@ -7,6 +7,7 @@ import SocialNavLinks from './SocialNavLinks';
 import { useModalOverlay } from '../hooks';
 import { SocialLinkProps } from '../socialLinks';
 import { isPathActive } from '../utils/location';
+import omit from '../utils/omit';
 import '../styles/nav-menu.css';
 
 const NavMenu = ({
@@ -78,7 +79,7 @@ const NavMenu = ({
                     return (
                       <li className="nav-menu__item" key={key}>
                         <Link
-                          {...link}
+                          {...omit(link, ['leftIcon', 'rightIcon'])}
                           activeClassName=""
                           aria-current={active ? 'page' : 'false'}
                           aria-label={link.name}

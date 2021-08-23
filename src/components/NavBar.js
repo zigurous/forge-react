@@ -5,7 +5,6 @@ import Icon from './Icon';
 import Link from './Link';
 import { isPathActive } from '../utils/location';
 import omit from '../utils/omit';
-import '../styles/nav-bar.css';
 
 const NavBar = ({
   className,
