@@ -11,13 +11,9 @@
 
 .input-wrapper > .icon {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 9px;
+  left: 9px;
   pointer-events: none;
-  font-size: 21px;
+  font-size: 18px;
   color: var(--color-foreground-secondary);
 }
-
-/* .input-wrapper input:focus ~ .icon {
-  color: var(--color-foreground-secondary);
-} */
