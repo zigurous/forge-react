@@ -8,7 +8,7 @@ import { useModalOverlay } from '../hooks';
 import { SocialLinkProps } from '../socialLinks';
 import { isPathActive } from '../utils/location';
 import omit from '../utils/omit';
-import '../styles/nav-menu.css';
+import '../styles/navmenu.css';
 
 const NavMenu = ({
   animated = false,
@@ -42,7 +42,7 @@ const NavMenu = ({
     <React.Fragment>
       <button
         className={classNames(
-          'nav-menu__button',
+          'navmenu__button',
           { 'z-index-modal': isOpen },
           { 'display-none': hidden }
         )}
@@ -62,22 +62,22 @@ const NavMenu = ({
         <ReactPortal rootElement={portalRootElement}>
           <div
             className={classNames(
-              'nav-menu',
-              { 'nav-menu--open': isOpen, 'nav-menu--closed': !isOpen },
-              { 'nav-menu--animated': animated },
+              'navmenu',
+              { 'navmenu--open': isOpen, 'navmenu--closed': !isOpen },
+              { 'navmenu--animated': animated },
               className
             )}
             data-theme={theme}
           >
-            <div className="nav-menu__overlay" data-theme={theme} />
-            <div className="nav-menu__container container">
-              <div className="nav-menu__content-wrapper">
-                <ul className="nav-menu__list">
+            <div className="navmenu__overlay" data-theme={theme} />
+            <div className="navmenu__container container">
+              <div className="navmenu__content-wrapper">
+                <ul className="navmenu__list">
                   {links.map((link) => {
                     const key = link.to || link.path || link.href;
                     const active = isPathActive(key, location);
                     return (
-                      <li className="nav-menu__item" key={key}>
+                      <li className="navmenu__item" key={key}>
                         <Link
                           {...omit(link, ['leftIcon', 'rightIcon'])}
                           activeClassName=""

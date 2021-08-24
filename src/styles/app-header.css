@@ -56,8 +56,8 @@
 }
 
 @media (min-width: 1200px) {
-  .app-header .nav-menu,
-  .app-header .nav-menu__button {
+  .app-header .navmenu,
+  .app-header .navmenu__button {
     display: none;
   }
 }
