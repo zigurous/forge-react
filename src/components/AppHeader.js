@@ -24,7 +24,7 @@ const AppHeader = ({
   onLogoClick,
   onLinkClick,
   onSocialLinkClick,
-  portalRootElement,
+  rootElement,
   socialLinks = [],
   sticky = false,
   theme,
@@ -80,7 +80,7 @@ const AppHeader = ({
               logoVariant={logoVariant}
               onLinkClick={onLinkClick}
               onLogoClick={onLogoClick}
-              portalRootElement={portalRootElement}
+              rootElement={rootElement}
               socialLinks={socialLinks}
               theme={theme}
             />
@@ -100,15 +100,13 @@ AppHeader.propTypes = {
   hideSocialLinks: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(PropTypes.shape(Link.propTypes)),
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
-  }),
+  location: PropTypes.object,
   logoSize: PropTypes.oneOf(Object.values(Logo.size)),
   logoVariant: PropTypes.oneOf(Object.values(Logo.variant)),
   onLogoClick: PropTypes.func,
   onLinkClick: PropTypes.func,
   onSocialLinkClick: PropTypes.func,
-  portalRootElement: PropTypes.string,
+  rootElement: PropTypes.string,
   socialLinks: PropTypes.arrayOf(SocialLinkProps),
   sticky: PropTypes.bool,
   theme: PropTypes.string,

@@ -8,53 +8,42 @@ import SocialNavLinks from './SocialNavLinks';
 import { useModalOverlay } from '../hooks';
 import { SocialLinkProps } from '../socialLinks';
 import { isPathActive } from '../utils/location';
+import { scrollToTop } from '../utils/scrolling';
 import omit from '../utils/omit';
 import '../styles/navmenu.css';
 
 const NavMenu = ({
   animated = false,
   className,
-  hidden = false,
   hideSocialLinks = true,
   LinkElementType = 'a',
   links = [],
   location = typeof window !== 'undefined' && window.location,
   onLinkClick,
-  portalRootElement,
+  rootElement,
   socialLinks = [],
-  theme = 'light',
+  theme,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  useModalOverlay(isOpen);
+  useModalOverlay(isOpen, true);
   useEffect(() => {
     setIsOpen(false);
-    setTimeout(() => {
-      if (typeof window !== 'undefined') {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        });
-      }
-    });
+    setTimeout(() => scrollToTop());
   }, [location, setIsOpen]);
 
   return (
     <React.Fragment>
       <button
         aria-label={isOpen ? 'Close' : 'Open'}
-        className={classNames(
-          'navmenu__button',
-          { 'z-index-modal': isOpen },
-          { 'display-none': hidden }
-        )}
+        className={classNames('navmenu__button', { 'z-index-modal': isOpen })}
         onClick={() => setIsOpen(!isOpen)}
         size="small"
       >
         <Icon name={isOpen ? 'close' : 'menu'} material />
       </button>
       {isOpen && (
-        <ReactPortal rootElement={portalRootElement}>
+        <ReactPortal rootElement={rootElement}>
           <div
             className={classNames(
               'navmenu',
@@ -66,7 +55,7 @@ const NavMenu = ({
           >
             <div className="navmenu__overlay" data-theme={theme} />
             <div className="navmenu__container container">
-              <div className="navmenu__content-wrapper">
+              <div className="navmenu__wrapper">
                 <ul className="navmenu__list">
                   {links.map((link) => {
                     const key = link.to || link.path || link.href;
@@ -113,15 +102,12 @@ const NavMenu = ({
 NavMenu.propTypes = {
   animated: PropTypes.bool,
   className: PropTypes.string,
-  hidden: PropTypes.bool,
   hideSocialLinks: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(PropTypes.shape(Link.propTypes)),
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
-  }),
+  location: PropTypes.object,
   onLinkClick: PropTypes.func,
-  portalRootElement: PropTypes.string,
+  rootElement: PropTypes.string,
   socialLinks: PropTypes.arrayOf(SocialLinkProps),
   theme: PropTypes.string,
 };

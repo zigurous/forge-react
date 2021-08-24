@@ -29,6 +29,7 @@ export { default as Pagination } from './components/Pagination';
 export { default as ProgressiveImage } from './components/ProgressiveImage';
 export { default as ReactPortal } from './components/ReactPortal';
 export { default as SearchInput } from './components/SearchInput';
+export { default as SideDrawer } from './components/SideDrawer';
 export { default as SocialButton } from './components/SocialButton';
 export { default as SocialIcon } from './components/SocialIcon';
 export { default as socialLinks, SocialLinkProps } from './socialLinks';

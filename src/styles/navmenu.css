@@ -10,20 +10,6 @@
   background: none !important;
 }
 
-.navmenu--animated {
-  transition: visibility 200ms;
-}
-
-.navmenu--open {
-  pointer-events: all;
-  visibility: visible;
-}
-
-.navmenu--closed {
-  pointer-events: none;
-  visibility: hidden;
-}
-
 .navmenu__overlay {
   position: absolute;
   top: 0;
@@ -33,18 +19,7 @@
   width: 100vw;
   height: 100vh;
   z-index: var(--z-index-overlay, 1040);
-}
-
-.navmenu--animated .navmenu__overlay {
-  transition: opacity 200ms;
-}
-
-.navmenu--animated.navmenu--open .navmenu__overlay  {
-  opacity: 1;
-}
-
-.navmenu--animated.navmenu--closed .navmenu__overlay  {
-  opacity: 0;
+  background-color: var(--color-background);
 }
 
 .navmenu__container {
@@ -59,7 +34,7 @@
   margin-left: -8px;
 }
 
-.navmenu__content-wrapper {
+.navmenu__wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -68,18 +43,14 @@
 }
 
 .navmenu__button {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 56px;
   height: 56px;
+  color: var(--color-foreground);
   pointer-events: all !important;
   transition: transform 200ms;
-}
-
-.navmenu__button img {
-  width: 50%;
-  height: 50%;
 }
 
 .navmenu__button:hover:not(:disabled) {
@@ -104,22 +75,39 @@
   margin-bottom: 0.25rem;
 }
 
-.navmenu--animated .navmenu__item {
-  transition: opacity 200ms;
-}
-
-.navmenu--animated.navmenu--open .navmenu__item {
-  opacity: 1;
-}
-
-.navmenu--animated.navmenu--closed .navmenu__item {
-  opacity: 0;
-}
-
 .navmenu__item > a {
   color: inherit;
   font-weight: 600;
   border-bottom: none !important;
+}
+
+.navmenu--open {
+  pointer-events: all;
+  visibility: visible;
+}
+
+.navmenu--closed {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.navmenu--animated {
+  transition: visibility 200ms;
+}
+
+.navmenu--animated .navmenu__overlay,
+.navmenu--animated .navmenu__item {
+  transition: opacity 200ms;
+}
+
+.navmenu--animated.navmenu--open .navmenu__overlay,
+.navmenu--animated.navmenu--open .navmenu__item {
+  opacity: 1;
+}
+
+.navmenu--animated.navmenu--closed .navmenu__overlay,
+.navmenu--animated.navmenu--closed .navmenu__item {
+  opacity: 0;
 }
 
 @media (min-width: 360px) {

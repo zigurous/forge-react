@@ -66,9 +66,7 @@ NavBar.propTypes = {
   hidden: PropTypes.bool,
   LinkElementType: PropTypes.elementType,
   links: PropTypes.arrayOf(PropTypes.shape(Link.propTypes)),
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
-  }),
+  location: PropTypes.object,
   onLinkClick: PropTypes.func,
 };
 
