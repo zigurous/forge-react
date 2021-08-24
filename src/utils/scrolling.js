@@ -1,3 +1,12 @@
+export function scrollToTop(behavior = 'smooth') {
+  if (typeof window !== 'undefined') {
+    window.scrollTo({
+      top: 0,
+      behavior,
+    });
+  }
+}
+
 export function getScrollbarWidth() {
   return typeof window !== 'undefined' && typeof document !== 'undefined'
     ? (window.innerWidth || 0) - (document.documentElement.clientWidth || 0)

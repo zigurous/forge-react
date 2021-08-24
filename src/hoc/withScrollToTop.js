@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import getDisplayName from './displayName';
+import { scrollToTop } from '../utils/scrolling';
 
-export default function scrollToTop(WrappedComponent, behavior) {
+export default function withScrollToTop(WrappedComponent, behavior = 'smooth') {
   const ScrollToTop = (props) => {
     useEffect(() => {
-      if (typeof window !== 'undefined') {
-        window.scrollTo({ top: 0, left: 0, behavior });
-      }
+      scrollToTop(behavior);
     }, []);
     return <WrappedComponent {...props} />;
   };

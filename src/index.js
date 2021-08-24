@@ -37,7 +37,7 @@ export { default as Thumbnail } from './components/Thumbnail';
 
 /* Higher-order Components */
 export { default as getDisplayName, getWrappedDisplayName } from './hoc/displayName'; // prettier-ignore
-export { default as scrollToTop } from './hoc/scrollToTop';
+export { default as withScrollToTop } from './hoc/withScrollToTop';
 export { default as withThemedFavicon } from './hoc/withThemedFavicon';
 export { default as withTransition, fadeIn } from './hoc/withTransition';
 
@@ -57,4 +57,4 @@ export { bindEvent, enterKeyHandler, unbindEvent } from './utils/events';
 export { default as debounce } from './utils/debounce';
 export { default as throttle } from './utils/throttle';
 export { default as omit } from './utils/omit';
-export { getScrollbarWidth, hasHorizontalScroll, hasVerticalScroll } from './utils/scrolling'; // prettier-ignore
+export { getScrollbarWidth, hasHorizontalScroll, hasVerticalScroll, scrollToTop } from './utils/scrolling'; // prettier-ignore
