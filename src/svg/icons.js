@@ -5,6 +5,8 @@ export const discord = (
     focusable="false"
     role="img"
     viewBox="0 0 24 24"
+    width="24px"
+    height="24px"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Discord</title>
@@ -16,8 +18,10 @@ export const email = (
   <svg
     focusable="false"
     role="img"
-    xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 184 184"
+    width="24px"
+    height="24px"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <title>Email</title>
     <path d="M160.746,24.61H23.254C10.432,24.61,0,35.042,0,47.864v88.271c0,12.822,10.432,23.254,23.254,23.254h137.492c12.822,0,23.254-10.432,23.254-23.254V47.864C184,35.042,173.568,24.61,160.746,24.61z M157.113,39.61L92,89.909L26.887,39.61H157.113z M160.746,144.39H23.254c-4.551,0-8.254-3.703-8.254-8.254V49.382l72.415,55.94c1.35,1.043,2.968,1.564,4.585,1.564s3.235-0.521,4.585-1.564L169,49.382v86.753C169,140.687,165.297,144.39,160.746,144.39z" />
@@ -29,6 +33,8 @@ export const facebook = (
     focusable="false"
     role="img"
     viewBox="0 0 24 24"
+    width="24px"
+    height="24px"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Facebook</title>
@@ -41,6 +47,8 @@ export const github = (
     focusable="false"
     role="img"
     viewBox="0 0 24 24"
+    width="24px"
+    height="24px"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>GitHub</title>
@@ -53,6 +61,8 @@ export const instagram = (
     focusable="false"
     role="img"
     viewBox="0 0 24 24"
+    width="24px"
+    height="24px"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Instagram</title>
@@ -65,6 +75,8 @@ export const linkedIn = (
     focusable="false"
     role="img"
     viewBox="0 0 24 24"
+    width="24px"
+    height="24px"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>LinkedIn</title>
@@ -77,6 +89,8 @@ export const patreon = (
     focusable="false"
     role="img"
     viewBox="0 0 24 24"
+    width="24px"
+    height="24px"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Patreon</title>
@@ -88,6 +102,8 @@ export const paypal = (
   <svg
     focusable="false"
     viewBox="0 0 25.576 30.177"
+    width="25.576px"
+    height="30.177px"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -115,6 +131,8 @@ export const twitch = (
     role="img"
     style={{ transform: 'translateY(1px)' }}
     viewBox="0 0 24 24"
+    width="24px"
+    height="24px"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Twitch</title>
@@ -128,6 +146,8 @@ export const twitter = (
     role="img"
     style={{ transform: 'scale(1.1)' }}
     viewBox="0 0 24 24"
+    width="24px"
+    height="24px"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Twitter</title>
@@ -140,6 +160,8 @@ export const unity = (
     focusable="false"
     role="img"
     viewBox="0 0 24 24"
+    width="24px"
+    height="24px"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Unity</title>
@@ -153,6 +175,8 @@ export const youtube = (
     role="img"
     style={{ transform: 'scale(1.125)' }}
     viewBox="0 0 24 24"
+    width="24px"
+    height="24px"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>YouTube</title>
