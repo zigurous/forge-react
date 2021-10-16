@@ -1,6 +1,6 @@
 {
   "name": "@zigurous/react-components",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "license": "SEE LICENSE IN LICENSE",
   "repository": "https://github.com/zigurous/react-components",
   "source": "src/index.js",
