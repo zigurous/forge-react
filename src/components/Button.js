@@ -8,13 +8,9 @@ const Button = ({
   appearance = 'default',
   children,
   className,
-  external,
-  history,
   icon,
   iconElement,
   iconName,
-  link,
-  linkTarget = '_blank',
   onClick,
   shape = 'rounded-corners',
   size = 'small',
@@ -32,16 +28,7 @@ const Button = ({
       { 'btn--icon-only': icon === 'only' },
       className
     )}
-    onClick={(event) => {
-      if (history && link && !external) {
-        history.push(link);
-      } else if (typeof window !== 'undefined' && link && external) {
-        window.open(link, linkTarget);
-      }
-      if (onClick) {
-        onClick(event);
-      }
-    }}
+    onClick={onClick}
     style={styles}
     {...rest}
   >
@@ -95,19 +82,11 @@ Button.style = Object.freeze({
 
 Button.propTypes = {
   appearance: PropTypes.oneOf(Object.values(Button.appearance)),
-  ariaLabel: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
-  ElementType: PropTypes.elementType,
-  external: PropTypes.bool,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }),
   icon: PropTypes.oneOf(['left', 'right', 'only']),
   iconElement: PropTypes.element,
   iconName: PropTypes.string,
-  link: PropTypes.string,
-  linkTarget: PropTypes.string,
   onClick: PropTypes.func,
   shape: PropTypes.oneOf(Object.values(Button.shape)),
   size: PropTypes.oneOf(Object.values(Button.size)),
