@@ -1,0 +1,88 @@
+import PropTypes from 'prop-types';
+
+export const ColorPropTypes = PropTypes.oneOf([
+  'inherit',
+  'transparent',
+  'white',
+  'black',
+  'primary',
+  'foreground',
+  'foreground-primary',
+  'foreground-secondary',
+  'foreground-tertiary',
+  'background',
+  'background-primary',
+  'background-secondary',
+  'background-tertiary',
+]);
+
+export const FontHeaderPropTypes = PropTypes.oneOf([
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+]);
+
+export const FontSizePropTypes = PropTypes.oneOf([
+  'xxxl',
+  'xxl',
+  'xl',
+  'lg',
+  'md',
+  'sm',
+  'xs',
+  'xxs',
+  'xxxs',
+]);
+
+export const FontWeightPropTypes = PropTypes.oneOf([
+  100,
+  200,
+  300,
+  400,
+  500,
+  600,
+  700,
+  800,
+  900,
+  '100',
+  '200',
+  '300',
+  '400',
+  '500',
+  '600',
+  '700',
+  '800',
+  '900',
+]);
+
+export const MarginPropTypes = PropTypes.oneOf([
+  '0',
+  'none',
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl',
+  'xxl',
+  'xxxl',
+  '2xl',
+  '2xxl',
+  '2xxxl',
+  '1em',
+  '2em',
+  '3em',
+  '4em',
+  '5em',
+  '6em',
+  '7em',
+  '8em',
+]);

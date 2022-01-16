@@ -37,7 +37,9 @@ export { default as SocialButton } from './components/SocialButton';
 export { default as SocialIcon } from './components/SocialIcon';
 export { default as socialLinks, SocialLinkProps } from './socialLinks';
 export { default as SocialNavLinks } from './components/SocialNavLinks';
+export { default as Text } from './components/Text';
 export { default as Thumbnail } from './components/Thumbnail';
+export { default as Title } from './components/Title';
 
 /* Higher-order Components */
 export { default as getDisplayName, getWrappedDisplayName } from './hoc/displayName'; // prettier-ignore
