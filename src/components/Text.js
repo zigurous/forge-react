@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { ColorPropTypes, FontSizePropTypes, MarginPropTypes } from '../props';
 
-const Text = ({
+function Text({
   bold,
   children,
   className,
@@ -13,7 +13,7 @@ const Text = ({
   marginTop,
   size,
   tag: Element = 'p',
-}) => {
+}) {
   return (
     <Element
       className={classNames(
@@ -33,7 +33,7 @@ const Text = ({
       )}
     </Element>
   );
-};
+}
 
 Text.propTypes = {
   bold: PropTypes.bool,

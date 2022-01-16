@@ -4,12 +4,12 @@ import React from 'react';
 import Button from './Button';
 import '../styles/pagination.css';
 
-const Pagination = ({
+function Pagination({
   className,
   currentPage = 0,
   onPageChange = () => {},
   totalPages,
-}) => {
+}) {
   const pageButtons = [];
 
   for (let i = 0; i < totalPages; i++) {
@@ -47,7 +47,7 @@ const Pagination = ({
       />
     </div>
   );
-};
+}
 
 Pagination.propTypes = {
   className: PropTypes.string,

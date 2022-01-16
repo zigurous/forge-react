@@ -4,43 +4,45 @@ import React from 'react';
 import Link from './Link';
 import '../styles/app-utility-bar.css';
 
-const AppUtilityBar = ({
+function AppUtilityBar({
   className,
   direction = 'right',
   LinkElementType = 'a',
   links = [],
   theme,
-}) => (
-  <div
-    className={classNames(
-      'app-utility-bar',
-      { [`app-utility-bar--${direction}`]: direction },
-      className
-    )}
-    data-theme={theme}
-  >
-    <div className="container">
-      <div className="row">
-        <div className="col font-xs font-weight-500">
-          {links.map((link) => {
-            const key = link.to || link.path || link.href;
-            return (
-              <Link
-                {...link}
-                aria-label={link.name}
-                className="color-inherit margin-left-md margin-right-md"
-                ElementType={link.ElementType || LinkElementType}
-                key={key}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
+}) {
+  return (
+    <div
+      className={classNames(
+        'app-utility-bar',
+        { [`app-utility-bar--${direction}`]: direction },
+        className
+      )}
+      data-theme={theme}
+    >
+      <div className="container">
+        <div className="row">
+          <div className="col font-xs font-weight-500">
+            {links.map((link) => {
+              const key = link.to || link.path || link.href;
+              return (
+                <Link
+                  {...link}
+                  aria-label={link.name}
+                  className="color-inherit margin-left-md margin-right-md"
+                  ElementType={link.ElementType || LinkElementType}
+                  key={key}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+}
 
 AppUtilityBar.propTypes = {
   className: PropTypes.string,

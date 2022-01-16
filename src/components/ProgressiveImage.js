@@ -5,7 +5,7 @@ import LoadingSpinner from './LoadingSpinner';
 import { useLoaded } from '../hooks';
 import '../styles/progressive-image.css';
 
-const ProgressiveImage = ({
+function ProgressiveImage({
   alt,
   animated = true,
   className,
@@ -20,7 +20,7 @@ const ProgressiveImage = ({
   showLoadingSpinner = false,
   src,
   width,
-}) => {
+}) {
   const imageRef = useRef();
   const loaded = useLoaded(imageRef, onLoad);
   return (
@@ -65,7 +65,7 @@ const ProgressiveImage = ({
       {showLoadingSpinner && !loaded && <LoadingSpinner />}
     </picture>
   );
-};
+}
 
 ProgressiveImage.propTypes = {
   alt: PropTypes.string,

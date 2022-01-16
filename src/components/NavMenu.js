@@ -12,7 +12,7 @@ import { scrollToTop } from '../utils/scrolling';
 import omit from '../utils/omit';
 import '../styles/navmenu.css';
 
-const NavMenu = ({
+function NavMenu({
   animated = false,
   className,
   hideSocialLinks = true,
@@ -23,7 +23,7 @@ const NavMenu = ({
   rootElement,
   socialLinks = [],
   theme,
-}) => {
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   useModalOverlay(isOpen, true);
@@ -97,7 +97,7 @@ const NavMenu = ({
       )}
     </React.Fragment>
   );
-};
+}
 
 NavMenu.propTypes = {
   animated: PropTypes.bool,

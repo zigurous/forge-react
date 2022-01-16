@@ -32,12 +32,12 @@ export function fadeIn(WrappedComponent) {
   return FadeInTransition;
 }
 
-const withTransition = (
+export default function withTransition(
   WrappedComponent,
   transitionClass,
   transitionProp,
   transitionTrigger
-) => {
+) {
   const Transition = (props) => {
     const shouldTransition = Boolean(props[transitionProp]);
     const trigger = transitionTrigger || transitionTriggers[transitionClass];
@@ -55,6 +55,4 @@ const withTransition = (
     className: PropTypes.string,
   };
   return Transition;
-};
-
-export default withTransition;
+}

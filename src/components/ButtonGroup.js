@@ -2,23 +2,25 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const ButtonGroup = ({
+function ButtonGroup({
   children,
   className,
   layout = 'horizontal',
   spacing = true,
-}) => (
-  <div
-    className={classNames(
-      'btn-group',
-      { [`btn-group--${layout}`]: layout },
-      { 'btn-group--spacing': spacing },
-      className
-    )}
-  >
-    {children}
-  </div>
-);
+}) {
+  return (
+    <div
+      className={classNames(
+        'btn-group',
+        { [`btn-group--${layout}`]: layout },
+        { 'btn-group--spacing': spacing },
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+}
 
 ButtonGroup.layout = Object.freeze({
   horizontal: 'horizontal',

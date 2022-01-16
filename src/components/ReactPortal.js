@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
-const ReactPortal = ({ children, rootElement = '#root' }) => {
+function ReactPortal({ children, rootElement = '#root' }) {
   const root =
     typeof document !== 'undefined'
       ? document.querySelector(rootElement)
@@ -12,7 +12,7 @@ const ReactPortal = ({ children, rootElement = '#root' }) => {
   } else {
     return null;
   }
-};
+}
 
 ReactPortal.propTypes = {
   children: PropTypes.node.isRequired,

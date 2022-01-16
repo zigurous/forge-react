@@ -7,7 +7,7 @@ import SocialIcon from './SocialIcon';
 import socialLinks, { SocialLinkProps } from '../socialLinks';
 import '../styles/social-button.css';
 
-const SocialButton = ({
+function SocialButton({
   children,
   className,
   link,
@@ -17,7 +17,7 @@ const SocialButton = ({
   size = Button.size.medium,
   url,
   ...props
-}) => {
+}) {
   const social = typeof link === 'string' ? socialLinks[link] : link;
   return (
     <Link
@@ -56,7 +56,7 @@ const SocialButton = ({
       </Button>
     </Link>
   );
-};
+}
 
 SocialButton.shape = Button.shape;
 SocialButton.size = Button.size;

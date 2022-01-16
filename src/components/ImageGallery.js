@@ -7,25 +7,25 @@ import omit from '../utils/omit';
 import 'react-image-lightbox/style.css';
 import '../styles/image-gallery.css';
 
-const imageSrc = (image) => {
+function imageSrc(image) {
   if (typeof image === 'string') {
     return image;
   } else {
     return image.src;
   }
-};
+}
 
-const px = (number) => {
+function px(number) {
   return number ? `${number}px` : undefined;
-};
+}
 
-const gridTemplate = (columns, minWidth, maxWidth) => {
+function gridTemplate(columns, minWidth, maxWidth) {
   return `repeat(${columns || 'auto-fit'}, minmax(${px(minWidth) || 0}, ${
     px(maxWidth) || '1fr'
   }))`;
-};
+}
 
-const ImageGallery = ({
+function ImageGallery({
   animated = false,
   animation = 'fade-in-up',
   className,
@@ -34,7 +34,7 @@ const ImageGallery = ({
   images = [],
   maxWidth,
   minWidth,
-}) => {
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   return (
@@ -101,7 +101,7 @@ const ImageGallery = ({
       )}
     </div>
   );
-};
+}
 
 ImageGallery.propTypes = {
   animated: PropTypes.bool,

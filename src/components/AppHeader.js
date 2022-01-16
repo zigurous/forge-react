@@ -9,7 +9,7 @@ import SocialNavLinks from './SocialNavLinks';
 import { SocialLinkProps } from '../socialLinks';
 import '../styles/app-header.css';
 
-const AppHeader = ({
+function AppHeader({
   bordered = false,
   className,
   fluid = false,
@@ -29,7 +29,7 @@ const AppHeader = ({
   sticky = false,
   theme,
   transparent = false,
-}) => {
+}) {
   return (
     <header
       className={classNames(
@@ -89,7 +89,7 @@ const AppHeader = ({
       </div>
     </header>
   );
-};
+}
 
 AppHeader.propTypes = {
   bordered: PropTypes.bool,

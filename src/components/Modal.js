@@ -5,7 +5,7 @@ import Button from './Button';
 import ReactPortal from './ReactPortal';
 import { useModalOverlay } from '../hooks';
 
-const Modal = ({
+function Modal({
   children,
   className,
   footer,
@@ -15,7 +15,7 @@ const Modal = ({
   onRequestClose = () => {},
   rootElement,
   title,
-}) => {
+}) {
   useModalOverlay(isOpen, true);
   return isOpen ? (
     <ReactPortal rootElement={rootElement}>
@@ -54,7 +54,7 @@ const Modal = ({
       </div>
     </ReactPortal>
   ) : null;
-};
+}
 
 Modal.propTypes = {
   children: PropTypes.node,

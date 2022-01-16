@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Container = ({ children, className, fluid }) => {
+function Container({ children, className, fluid }) {
   return (
     <div
       className={classNames(
@@ -15,7 +15,7 @@ const Container = ({ children, className, fluid }) => {
       {children}
     </div>
   );
-};
+}
 
 Container.propTypes = {
   children: PropTypes.node,

@@ -4,7 +4,7 @@ import React from 'react';
 import Icon from './Icon';
 import '../styles/button.css';
 
-const Button = ({
+function Button({
   appearance = 'default',
   children,
   className,
@@ -17,40 +17,42 @@ const Button = ({
   style = 'solid',
   styles,
   ...rest
-}) => (
-  <button
-    className={classNames(
-      'btn',
-      { [`btn--${appearance}`]: appearance },
-      { [`btn--${shape}`]: shape },
-      { [`btn--${style}`]: style },
-      { [`btn--${size}`]: size },
-      { 'btn--icon-only': icon === 'only' },
-      className
-    )}
-    onClick={onClick}
-    style={styles}
-    {...rest}
-  >
-    {icon === 'left' && (
-      <span aria-hidden className="icon-wrapper margin-right-md">
-        {iconElement || <Icon name={iconName} size="inherit" />}
-      </span>
-    )}
-    {icon === 'only' ? (
-      <span aria-hidden className="icon-wrapper">
-        <Icon name={iconName} size="inherit" />
-      </span>
-    ) : (
-      children
-    )}
-    {icon === 'right' && (
-      <span aria-hidden className="icon-wrapper margin-left-md">
-        {iconElement || <Icon name={iconName} size="inherit" />}
-      </span>
-    )}
-  </button>
-);
+}) {
+  return (
+    <button
+      className={classNames(
+        'btn',
+        { [`btn--${appearance}`]: appearance },
+        { [`btn--${shape}`]: shape },
+        { [`btn--${style}`]: style },
+        { [`btn--${size}`]: size },
+        { 'btn--icon-only': icon === 'only' },
+        className
+      )}
+      onClick={onClick}
+      style={styles}
+      {...rest}
+    >
+      {icon === 'left' && (
+        <span aria-hidden className="icon-wrapper margin-right-md">
+          {iconElement || <Icon name={iconName} size="inherit" />}
+        </span>
+      )}
+      {icon === 'only' ? (
+        <span aria-hidden className="icon-wrapper">
+          <Icon name={iconName} size="inherit" />
+        </span>
+      ) : (
+        children
+      )}
+      {icon === 'right' && (
+        <span aria-hidden className="icon-wrapper margin-left-md">
+          {iconElement || <Icon name={iconName} size="inherit" />}
+        </span>
+      )}
+    </button>
+  );
+}
 
 Button.appearance = Object.freeze({
   default: 'default',

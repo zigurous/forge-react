@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import EmbeddedVideo from './EmbeddedVideo';
 
-const EmbeddedTwitch = ({
+function EmbeddedTwitch({
   channel = 'zigurous',
   className,
   id = 'twitch-player',
@@ -11,12 +11,14 @@ const EmbeddedTwitch = ({
   secure = true,
   title = 'Twitch',
   ...props
-}) => {
+}) {
   const protocol = secure ? 'https' : 'http';
   const parents = ['zigurous.com', 'www.zigurous.com'];
+
   if (process.env.NODE_ENV === 'development') {
     parents.push('localhost');
   }
+
   return (
     <EmbeddedVideo
       className={classNames('twitch', className)}
@@ -28,7 +30,7 @@ const EmbeddedTwitch = ({
       {...props}
     />
   );
-};
+}
 
 EmbeddedTwitch.propTypes = {
   channel: PropTypes.string.isRequired,

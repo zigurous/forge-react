@@ -3,19 +3,21 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import '../styles/loading-spinner.css';
 
-const LoadingSpinner = ({ className, loading = true, size = 'medium' }) => (
-  <div
-    aria-hidden
-    className={classNames('loading-spinner', { loading }, size, className)}
-  >
-    <div className="loading-spinner__animation">
-      <div />
-      <div />
-      <div />
-      <div />
+function LoadingSpinner({ className, loading = true, size = 'medium' }) {
+  return (
+    <div
+      aria-hidden
+      className={classNames('loading-spinner', { loading }, size, className)}
+    >
+      <div className="loading-spinner__animation">
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 LoadingSpinner.size = Object.freeze({
   sm: 'sm',

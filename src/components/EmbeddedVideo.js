@@ -48,7 +48,7 @@ const sizes = Object.freeze({
   },
 });
 
-const formatSize = (size) => {
+function formatSize(size) {
   if (typeof size === 'string') {
     if (size.endsWith('%') || size.endsWith('px')) {
       return size;
@@ -58,9 +58,9 @@ const formatSize = (size) => {
   } else {
     return `${size}px`;
   }
-};
+}
 
-const EmbeddedVideo = ({
+function EmbeddedVideo({
   allowFullScreen = true,
   className,
   frameBorder = '0',
@@ -71,7 +71,7 @@ const EmbeddedVideo = ({
   src,
   title = 'Video Player',
   width,
-}) => {
+}) {
   const ref = useRef();
   const loading = useLoading(ref);
   const offline = typeof navigator !== 'undefined' && !navigator.onLine;
@@ -105,7 +105,7 @@ const EmbeddedVideo = ({
       {loading && !offline && <LoadingSpinner />}
     </div>
   );
-};
+}
 
 EmbeddedVideo.size = sizes;
 EmbeddedVideo.propTypes = {

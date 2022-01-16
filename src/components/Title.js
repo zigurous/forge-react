@@ -8,7 +8,7 @@ import {
   MarginPropTypes,
 } from '../props';
 
-const Title = ({
+function Title({
   bold,
   children,
   className,
@@ -23,7 +23,7 @@ const Title = ({
   subtitle,
   tag: Element = 'div',
   weight,
-}) => {
+}) {
   return (
     <Element
       className={classNames(
@@ -49,7 +49,7 @@ const Title = ({
       )}
     </Element>
   );
-};
+}
 
 Title.propTypes = {
   bold: PropTypes.bool,

@@ -6,14 +6,14 @@ import Link from './Link';
 import { isPathActive } from '../utils/location';
 import omit from '../utils/omit';
 
-const NavBar = ({
+function NavBar({
   className,
   hidden = false,
   LinkElementType = 'a',
   links = [],
   location = typeof window !== 'undefined' && window.location,
   onLinkClick,
-}) => {
+}) {
   return (
     <nav
       className={classNames('navbar', { 'display-none': hidden }, className)}
@@ -59,7 +59,7 @@ const NavBar = ({
       </ul>
     </nav>
   );
-};
+}
 
 NavBar.propTypes = {
   className: PropTypes.string,

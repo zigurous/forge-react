@@ -1,4 +1,5 @@
-/* SVG */
+/* Misc */
+export { default as socialLinks, SocialLinkProps } from './socialLinks';
 export { default as icons } from './svg/icons';
 export { default as logo } from './svg/logo';
 
@@ -35,7 +36,6 @@ export { default as SearchInput } from './components/SearchInput';
 export { default as SideDrawer } from './components/SideDrawer';
 export { default as SocialButton } from './components/SocialButton';
 export { default as SocialIcon } from './components/SocialIcon';
-export { default as socialLinks, SocialLinkProps } from './socialLinks';
 export { default as SocialNavLinks } from './components/SocialNavLinks';
 export { default as Text } from './components/Text';
 export { default as Thumbnail } from './components/Thumbnail';

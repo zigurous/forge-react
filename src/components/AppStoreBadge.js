@@ -5,14 +5,14 @@ import '../styles/app-store-badge.css';
 
 const HEIGHT_RATIO = 3.375;
 
-const getImage = (locale = 'en-us', code = locale) => {
+function getImage(locale = 'en-us', code = locale) {
   return {
     ios: `https://linkmaker.itunes.apple.com/images/badges/${locale}/badge_appstore-lrg.svg`,
     android: `https://raw.github.com/yjb94/google-play-badge-svg/master/img/${code}_get.svg?sanitize=true`,
   };
-};
+}
 
-const AppStoreBadge = ({
+function AppStoreBadge({
   alt = 'Download on the App Store',
   className,
   defaultLocale = 'en-us',
@@ -23,7 +23,7 @@ const AppStoreBadge = ({
   height = width / HEIGHT_RATIO,
   target = '_blank',
   url,
-}) => {
+}) {
   let shortCode = (locale = locale.toLowerCase());
   const expeptionLocale = ['zh-cn', 'zh-tw'];
   if (expeptionLocale.indexOf(locale) === -1) {
@@ -31,7 +31,6 @@ const AppStoreBadge = ({
   }
 
   const [image, setImage] = useState(getImage(locale, shortCode));
-
   const setDefaultImage = () => {
     setImage(getImage(defaultLocale, shortCode));
   };
@@ -53,7 +52,7 @@ const AppStoreBadge = ({
       <img alt={alt || ''} src={image[platform]} onError={setDefaultImage} />
     </a>
   );
-};
+}
 
 AppStoreBadge.platform = Object.freeze({
   ios: 'ios',

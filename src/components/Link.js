@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Link = ({
+function Link({
   activeClassName,
   children,
   className,
@@ -16,7 +16,7 @@ const Link = ({
   underlined = false,
   unstyled = false,
   ...props
-}) => {
+}) {
   const elementProps =
     ElementType === 'a'
       ? {
@@ -43,7 +43,7 @@ const Link = ({
       {children}
     </ElementType>
   );
-};
+}
 
 Link.propTypes = {
   activeClassName: PropTypes.string,

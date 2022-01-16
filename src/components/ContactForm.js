@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import '../styles/contact-form.css';
 
-const ContactForm = React.forwardRef(
-  ({ className, onSubmit = () => {} }, ref) => (
+function ContactForm({ className, onSubmit = () => {} }, ref) {
+  return (
     <form
       className={classNames('contact-form', className)}
       onSubmit={onSubmit}
@@ -35,13 +35,15 @@ const ContactForm = React.forwardRef(
       />
       <input aria-label="Send" id="contactSubmit" type="submit" value="Send" />
     </form>
-  )
-);
+  );
+}
 
-ContactForm.displayName = 'ContactForm';
-ContactForm.propTypes = {
+const ContactFormWrapper = React.forwardRef(ContactForm);
+
+ContactFormWrapper.displayName = 'ContactForm';
+ContactFormWrapper.propTypes = {
   className: PropTypes.string,
   onSubmit: PropTypes.func,
 };
 
-export default ContactForm;
+export default ContactFormWrapper;

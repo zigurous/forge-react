@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import EmbeddedVideo from './EmbeddedVideo';
 
-const EmbeddedYouTube = ({
+function EmbeddedYouTube({
   autoplay = false,
   captions = false,
   className,
@@ -19,7 +19,7 @@ const EmbeddedYouTube = ({
   title = 'YouTube',
   videoId,
   ...props
-}) => {
+}) {
   let query = 'enablejsapi=1';
   query += `&origin=${origin}`;
   if (hideRelated) query += '&rel=0';
@@ -40,7 +40,7 @@ const EmbeddedYouTube = ({
       {...props}
     />
   );
-};
+}
 
 EmbeddedYouTube.propTypes = {
   autoplay: PropTypes.bool,

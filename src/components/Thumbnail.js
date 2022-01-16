@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import ProgressiveImage from './ProgressiveImage';
 import '../styles/thumbnail.css';
 
-const Thumbnail = ({
+function Thumbnail({
   alt,
   animated = false,
   animation = 'fade-in-up',
@@ -25,7 +25,7 @@ const Thumbnail = ({
   style,
   width,
   ...props
-}) => {
+}) {
   const ref = useRef();
   const [loaded, setLoaded] = useState(false);
 
@@ -78,7 +78,7 @@ const Thumbnail = ({
       {children}
     </ElementType>
   );
-};
+}
 
 Thumbnail.propTypes = {
   alt: PropTypes.string,

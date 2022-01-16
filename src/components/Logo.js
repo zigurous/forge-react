@@ -4,15 +4,15 @@ import React from 'react';
 import svgs from '../svg/logo';
 import '../styles/logo.css';
 
-const renderLogo = (image, variant) => {
+function renderLogo(image, variant) {
   if (image) {
     return <img alt="Logo" src={image} />;
   } else {
     return svgs[variant];
   }
-};
+}
 
-const Logo = ({
+function Logo({
   className,
   fill,
   image,
@@ -20,26 +20,28 @@ const Logo = ({
   size = 'medium',
   style,
   variant = 'wordmark',
-}) => (
-  <div
-    className={classNames('logo', variant, size, className)}
-    style={{ ...style, fill }}
-  >
-    {onClick ? (
-      <button
-        aria-label="Logo"
-        onClick={(event) => {
-          event.target.blur();
-          onClick();
-        }}
-      >
-        {renderLogo(image, variant)}
-      </button>
-    ) : (
-      renderLogo(image, variant)
-    )}
-  </div>
-);
+}) {
+  return (
+    <div
+      className={classNames('logo', variant, size, className)}
+      style={{ ...style, fill }}
+    >
+      {onClick ? (
+        <button
+          aria-label="Logo"
+          onClick={(event) => {
+            event.target.blur();
+            onClick();
+          }}
+        >
+          {renderLogo(image, variant)}
+        </button>
+      ) : (
+        renderLogo(image, variant)
+      )}
+    </div>
+  );
+}
 
 Logo.size = Object.freeze({
   xs: 'xs',

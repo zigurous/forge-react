@@ -5,14 +5,14 @@ import Input from './Input';
 import debounce from '../utils/debounce';
 import { enterKeyHandler } from '../utils/events';
 
-const SearchInput = ({
+function SearchInput({
   className,
   debounceRate = 500,
   onChange = () => {},
   onSearch = () => {},
   placeholder,
   ...props
-}) => {
+}) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounced = useCallback(
     debounce((query) => onSearch(query), debounceRate),
@@ -34,7 +34,7 @@ const SearchInput = ({
       {...props}
     />
   );
-};
+}
 
 SearchInput.propTypes = {
   className: PropTypes.string,

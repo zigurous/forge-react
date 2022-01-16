@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Icon = ({
+function Icon({
   ariaHidden = true,
   children,
   className,
@@ -12,23 +12,25 @@ const Icon = ({
   size = 'medium',
   theme,
   ...props
-}) => (
-  <i
-    aria-hidden={ariaHidden}
-    className={classNames(
-      'icon',
-      { [`icon--${size}`]: size },
-      { [`icon--${theme}`]: theme },
-      { 'icon--active': !inactive },
-      { 'icon--inactive': inactive },
-      { 'icon--material': material },
-      className
-    )}
-    {...props}
-  >
-    {name || children}
-  </i>
-);
+}) {
+  return (
+    <i
+      aria-hidden={ariaHidden}
+      className={classNames(
+        'icon',
+        { [`icon--${size}`]: size },
+        { [`icon--${theme}`]: theme },
+        { 'icon--active': !inactive },
+        { 'icon--inactive': inactive },
+        { 'icon--material': material },
+        className
+      )}
+      {...props}
+    >
+      {name || children}
+    </i>
+  );
+}
 
 Icon.size = Object.freeze({
   inherit: 'inherit',

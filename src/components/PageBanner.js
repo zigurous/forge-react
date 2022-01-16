@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import '../styles/page-banner.css';
 
-const PageBanner = ({
+function PageBanner({
   backgroundColor,
   children,
   className,
@@ -11,7 +11,7 @@ const PageBanner = ({
   style,
   theme,
   transparent = false,
-}) => {
+}) {
   return (
     <div
       className={classNames(
@@ -26,7 +26,7 @@ const PageBanner = ({
       {children}
     </div>
   );
-};
+}
 
 PageBanner.size = Object.freeze({
   xs: 'xs',

@@ -2,18 +2,20 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Badge = ({ children, className, pill = false, type = 'solid' }) => (
-  <div
-    className={classNames(
-      'badge',
-      { [`badge--${type}`]: type },
-      { 'badge--pill': pill },
-      className
-    )}
-  >
-    {children}
-  </div>
-);
+function Badge({ children, className, pill = false, type = 'solid' }) {
+  return (
+    <div
+      className={classNames(
+        'badge',
+        { [`badge--${type}`]: type },
+        { 'badge--pill': pill },
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+}
 
 Badge.type = Object.freeze({
   solid: 'solid',

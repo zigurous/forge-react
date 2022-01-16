@@ -5,7 +5,7 @@ import Link from './Link';
 import Logo from './Logo';
 import '../styles/app-footer.css';
 
-const AppFooter = ({
+function AppFooter({
   bordered = false,
   className,
   copyright,
@@ -17,54 +17,56 @@ const AppFooter = ({
   sticky = false,
   theme,
   transparent = false,
-}) => (
-  <footer
-    className={classNames(
-      'app-footer',
-      { 'app-footer--bordered': bordered },
-      { 'app-footer--transparent': transparent },
-      { 'app-footer--sticky': sticky },
-      className
-    )}
-    data-theme={theme}
-  >
-    <div className="container">
-      <div className="row align-items-center margin-top-lg margin-bottom-lg">
-        <div className="col font-xs font-weight-500 color-foreground-secondary">
-          <span>
-            {!hideLogo && <Logo onClick={onLogoClick} size="xs" />}
-            {copyright && (
-              <span className="copyright margin-left-xl margin-right-xl">
-                {copyright}
+}) {
+  return (
+    <footer
+      className={classNames(
+        'app-footer',
+        { 'app-footer--bordered': bordered },
+        { 'app-footer--transparent': transparent },
+        { 'app-footer--sticky': sticky },
+        className
+      )}
+      data-theme={theme}
+    >
+      <div className="container">
+        <div className="row align-items-center margin-top-lg margin-bottom-lg">
+          <div className="col font-xs font-weight-500 color-foreground-secondary">
+            <span>
+              {!hideLogo && <Logo onClick={onLogoClick} size="xs" />}
+              {copyright && (
+                <span className="copyright margin-left-xl margin-right-xl">
+                  {copyright}
+                </span>
+              )}
+            </span>
+            {links && links.length > 0 && (
+              <span className="links">
+                {links.map((link) => (
+                  <Link
+                    aria-label={link.name}
+                    className="color-inherit margin-left-md margin-right-md"
+                    ElementType={link.ElementType || LinkElementType}
+                    external={link.external}
+                    key={link.id || link.to}
+                    onClick={() => {
+                      if (onLinkClick) {
+                        onLinkClick(link);
+                      }
+                    }}
+                    to={link.to}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
               </span>
             )}
-          </span>
-          {links && links.length > 0 && (
-            <span className="links">
-              {links.map((link) => (
-                <Link
-                  aria-label={link.name}
-                  className="color-inherit margin-left-md margin-right-md"
-                  ElementType={link.ElementType || LinkElementType}
-                  external={link.external}
-                  key={link.id || link.to}
-                  onClick={() => {
-                    if (onLinkClick) {
-                      onLinkClick(link);
-                    }
-                  }}
-                  to={link.to}
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </span>
-          )}
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+}
 
 AppFooter.propTypes = {
   bordered: PropTypes.bool,

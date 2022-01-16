@@ -4,7 +4,7 @@ import React from 'react';
 import Icon from './Icon';
 import '../styles/input.css';
 
-const Input = ({ className, icon, placeholder, type, ...props }) => {
+function Input({ className, icon, placeholder, type, ...props }) {
   return (
     <div
       className={classNames(
@@ -17,7 +17,7 @@ const Input = ({ className, icon, placeholder, type, ...props }) => {
       {icon && <Icon name={icon} size="md" />}
     </div>
   );
-};
+}
 
 Input.propTypes = {
   className: PropTypes.string,

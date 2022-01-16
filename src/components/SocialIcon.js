@@ -4,7 +4,7 @@ import React from 'react';
 import icons from '../svg/icons';
 import '../styles/social-icon.css';
 
-const SocialIcon = ({
+function SocialIcon({
   altText,
   backgroundColor,
   className,
@@ -16,7 +16,7 @@ const SocialIcon = ({
   rounded = false,
   size = 24,
   ...props
-}) => {
+}) {
   return (
     <ElementType
       {...props}
@@ -38,7 +38,7 @@ const SocialIcon = ({
       {icon || icons[iconName]}
     </ElementType>
   );
-};
+}
 
 SocialIcon.propTypes = {
   altText: PropTypes.string,

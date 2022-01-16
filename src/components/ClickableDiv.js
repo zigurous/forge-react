@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { enterKeyHandler } from '../utils/events';
 
-const ClickableDiv = ({
+function ClickableDiv({
   children,
   className,
   external,
@@ -12,27 +12,29 @@ const ClickableDiv = ({
   linkTarget = '_blank',
   onClick,
   ...props
-}) => (
-  <div
-    {...props}
-    className={classNames(className, 'cursor-pointer')}
-    onClick={(event) => {
-      if (history && link && !external) {
-        history.push(link);
-      } else if (typeof window !== 'undefined' && link && external) {
-        window.open(link, linkTarget);
-      }
-      if (onClick) {
-        onClick(event);
-      }
-    }}
-    onKeyDown={enterKeyHandler(onClick)}
-    role="button"
-    tabIndex="0"
-  >
-    {children}
-  </div>
-);
+}) {
+  return (
+    <div
+      {...props}
+      className={classNames(className, 'cursor-pointer')}
+      onClick={(event) => {
+        if (history && link && !external) {
+          history.push(link);
+        } else if (typeof window !== 'undefined' && link && external) {
+          window.open(link, linkTarget);
+        }
+        if (onClick) {
+          onClick(event);
+        }
+      }}
+      onKeyDown={enterKeyHandler(onClick)}
+      role="button"
+      tabIndex="0"
+    >
+      {children}
+    </div>
+  );
+}
 
 ClickableDiv.propTypes = {
   children: PropTypes.node,

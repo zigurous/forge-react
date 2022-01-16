@@ -5,7 +5,7 @@ import SocialIcon from './SocialIcon';
 import socialLinks, { SocialLinkProps } from '../socialLinks';
 import '../styles/social-nav-links.css';
 
-const SocialNavLinks = ({
+function SocialNavLinks({
   backgroundColor,
   className,
   foregroundColor,
@@ -17,48 +17,53 @@ const SocialNavLinks = ({
   onLinkClick,
   rounded = false,
   wrap = false,
-}) => (
-  <div
-    className={classNames(
-      'social-nav-links',
-      { 'display-none': hidden },
-      className
-    )}
-  >
-    <ul className={classNames('social-nav-links__list', { 'flex-wrap': wrap })}>
-      {links.map((link) => {
-        const socialLink = typeof link === 'string' ? socialLinks[link] : link;
-        return (
-          <li
-            className="social-nav-links__item"
-            key={socialLink.key}
-            style={{ margin: iconSpacing }}
-          >
-            <SocialIcon
-              aria-label={socialLink.name}
-              backgroundColor={backgroundColor}
-              ElementType="a"
-              foregroundColor={foregroundColor || socialLink.color}
-              href={socialLink.url}
-              icon={socialLink.icon}
-              iconName={socialLink.key}
-              innerPadding={iconInnerPadding}
-              onClick={() => {
-                if (onLinkClick) {
-                  onLinkClick(socialLink);
-                }
-              }}
-              rel="noopener noreferrer"
-              rounded={rounded}
-              size={iconSize}
-              target="_blank"
-            />
-          </li>
-        );
-      })}
-    </ul>
-  </div>
-);
+}) {
+  return (
+    <div
+      className={classNames(
+        'social-nav-links',
+        { 'display-none': hidden },
+        className
+      )}
+    >
+      <ul
+        className={classNames('social-nav-links__list', { 'flex-wrap': wrap })}
+      >
+        {links.map((link) => {
+          const socialLink =
+            typeof link === 'string' ? socialLinks[link] : link;
+          return (
+            <li
+              className="social-nav-links__item"
+              key={socialLink.key}
+              style={{ margin: iconSpacing }}
+            >
+              <SocialIcon
+                aria-label={socialLink.name}
+                backgroundColor={backgroundColor}
+                ElementType="a"
+                foregroundColor={foregroundColor || socialLink.color}
+                href={socialLink.url}
+                icon={socialLink.icon}
+                iconName={socialLink.key}
+                innerPadding={iconInnerPadding}
+                onClick={() => {
+                  if (onLinkClick) {
+                    onLinkClick(socialLink);
+                  }
+                }}
+                rel="noopener noreferrer"
+                rounded={rounded}
+                size={iconSize}
+                target="_blank"
+              />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
 
 SocialNavLinks.propTypes = {
   backgroundColor: PropTypes.string,

@@ -8,7 +8,7 @@ import { useModalOverlay } from '../hooks';
 import { scrollToTop } from '../utils/scrolling';
 import '../styles/sidedrawer.css';
 
-const SideDrawer = ({
+function SideDrawer({
   animated = true,
   children,
   className,
@@ -16,7 +16,7 @@ const SideDrawer = ({
   location,
   rootElement,
   theme,
-}) => {
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   useModalOverlay(isOpen, true);
@@ -56,7 +56,7 @@ const SideDrawer = ({
       </ReactPortal>
     </React.Fragment>
   );
-};
+}
 
 SideDrawer.propTypes = {
   animated: PropTypes.bool,

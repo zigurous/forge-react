@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Row = ({ children, className, gutters }) => {
+function Row({ children, className, gutters }) {
   return (
     <div
       className={classNames(
@@ -14,7 +14,7 @@ const Row = ({ children, className, gutters }) => {
       {children}
     </div>
   );
-};
+}
 
 Row.propTypes = {
   children: PropTypes.node,

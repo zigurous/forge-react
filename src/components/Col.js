@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const getClassNames = (name, obj) => {
+function getClassNames(name, obj) {
   if (typeof obj === 'boolean') {
     return {
       [`col-${name}`]: obj,
@@ -26,9 +26,9 @@ const getClassNames = (name, obj) => {
   }
 
   return null;
-};
+}
 
-const Col = ({ children, className, gutters, sm, md, lg, xl }) => {
+function Col({ children, className, gutters, sm, md, lg, xl }) {
   return (
     <div
       className={classNames(
@@ -44,7 +44,7 @@ const Col = ({ children, className, gutters, sm, md, lg, xl }) => {
       {children}
     </div>
   );
-};
+}
 
 const ColPropTypes = PropTypes.oneOfType([
   PropTypes.bool,
