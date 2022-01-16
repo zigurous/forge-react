@@ -89,7 +89,7 @@ const socialLinks = {
   unity: {
     key: 'unity',
     name: 'Unity',
-    url: 'https://assetstore.unity.com/publishers/51884?preview=1',
+    url: 'https://assetstore.unity.com/publishers/51884',
     icon: unity,
   },
   youtube: {
