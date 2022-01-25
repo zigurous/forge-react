@@ -12,12 +12,10 @@ yarn add @zigurous/react-components
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
 import { ExampleComponent } from '@zigurous/react-components'
 
-class Example extends Component {
-  render() {
-    return <ExampleComponent />
-  }
+function Example() {
+  return <ExampleComponent />
 }
 ```
