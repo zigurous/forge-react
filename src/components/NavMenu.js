@@ -24,30 +24,31 @@ function NavMenu({
   socialLinks = [],
   theme,
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  useModalOverlay(isOpen, true);
+  useModalOverlay(open, true);
+
   useEffect(() => {
-    setIsOpen(false);
+    setOpen(false);
     setTimeout(() => scrollToTop());
-  }, [location, setIsOpen]);
+  }, [location]);
 
   return (
     <React.Fragment>
       <button
-        aria-label={isOpen ? 'Close' : 'Open'}
-        className={classNames('navmenu__button', { 'z-index-modal': isOpen })}
-        onClick={() => setIsOpen(!isOpen)}
+        aria-label={open ? 'Close' : 'Open'}
+        className={classNames('navmenu__button', { 'z-index-modal': open })}
+        onClick={() => setOpen(!open)}
         size="small"
       >
-        <Icon name={isOpen ? 'close' : 'menu'} material />
+        <Icon name={open ? 'close' : 'menu'} material />
       </button>
-      {isOpen && (
+      {open && (
         <ReactPortal rootElement={rootElement}>
           <div
             className={classNames(
               'navmenu',
-              { 'navmenu--open': isOpen, 'navmenu--closed': !isOpen },
+              { 'navmenu--open': open, 'navmenu--closed': !open },
               { 'navmenu--animated': animated },
               className
             )}

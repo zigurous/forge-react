@@ -11,16 +11,16 @@ function Modal({
   footer,
   footerAlignment = 'left',
   id,
-  isOpen = false,
   onRequestClose = () => {},
+  open = false,
   rootElement,
   title,
 }) {
-  useModalOverlay(isOpen, true);
-  return isOpen ? (
+  useModalOverlay(open, true);
+  return open ? (
     <ReactPortal rootElement={rootElement}>
       <div
-        className={classNames('modal', { 'modal--open': isOpen }, className)}
+        className={classNames('modal', { 'modal--open': open }, className)}
         id={id}
         role="dialog"
         tabIndex="-1"
@@ -62,8 +62,8 @@ Modal.propTypes = {
   footer: PropTypes.element,
   footerAlignment: PropTypes.oneOf(['left', 'right']),
   id: PropTypes.string,
-  isOpen: PropTypes.bool,
   onRequestClose: PropTypes.func,
+  open: PropTypes.bool,
   rootElement: PropTypes.string,
   title: PropTypes.string,
 };

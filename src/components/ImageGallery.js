@@ -35,7 +35,7 @@ function ImageGallery({
   maxWidth,
   minWidth,
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   return (
     <div className={classNames('image-gallery', className)}>
@@ -68,7 +68,7 @@ function ImageGallery({
               key={id}
               onClick={() => {
                 setImageIndex(index);
-                setIsOpen(true);
+                setOpen(true);
               }}
             >
               <ProgressiveImage
@@ -79,7 +79,7 @@ function ImageGallery({
           );
         })}
       </div>
-      {isOpen && (
+      {open && (
         <Lightbox
           enableZoom={false}
           mainSrc={imageSrc(images[imageIndex])}
@@ -88,7 +88,7 @@ function ImageGallery({
             images[(imageIndex + images.length - 1) % images.length]
           )}
           onCloseRequest={() => {
-            setIsOpen(false);
+            setOpen(false);
           }}
           onMovePrevRequest={() => {
             setImageIndex((imageIndex + images.length - 1) % images.length);

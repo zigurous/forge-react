@@ -17,29 +17,30 @@ function SideDrawer({
   rootElement,
   theme,
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  useModalOverlay(isOpen, true);
+  useModalOverlay(open, true);
+
   useEffect(() => {
-    setIsOpen(false);
+    setOpen(false);
     setTimeout(() => scrollToTop());
-  }, [location, setIsOpen]);
+  }, [location]);
 
   return (
     <React.Fragment>
       <button
-        aria-label={isOpen ? 'Close' : 'Open'}
+        aria-label={open ? 'Close' : 'Open'}
         className={classNames('sidedrawer__button')}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setOpen(!open)}
         size="small"
       >
-        <Icon name={isOpen ? 'close' : 'menu'} material />
+        <Icon name={open ? 'close' : 'menu'} material />
       </button>
       <ReactPortal rootElement={rootElement}>
         <div
           className={classNames(
             'sidedrawer',
-            { 'sidedrawer--open': isOpen, 'sidedrawer--closed': !isOpen },
+            { 'sidedrawer--open': open, 'sidedrawer--closed': !open },
             { 'sidedrawer--animated': animated },
             className
           )}
@@ -48,7 +49,7 @@ function SideDrawer({
           {!hideOverlay && (
             <ClickableDiv
               className="sidedrawer__overlay"
-              onClick={() => setIsOpen(false)}
+              onClick={() => setOpen(false)}
             />
           )}
           <div className="sidedrawer__container">{children}</div>
