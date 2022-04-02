@@ -57,6 +57,7 @@ function Button({
 Button.appearance = Object.freeze({
   default: 'default',
   primary: 'primary',
+  secondary: 'secondary',
 });
 
 Button.shape = Object.freeze({
