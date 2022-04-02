@@ -14,6 +14,7 @@ function Modal({
   onRequestClose = () => {},
   open = false,
   rootElement,
+  theme,
   title,
 }) {
   useModalOverlay(open, true);
@@ -24,6 +25,7 @@ function Modal({
         id={id}
         role="dialog"
         tabIndex="-1"
+        data-theme={theme}
       >
         <div className="modal__dialog" role="document">
           <div className="modal__content">
@@ -65,6 +67,7 @@ Modal.propTypes = {
   onRequestClose: PropTypes.func,
   open: PropTypes.bool,
   rootElement: PropTypes.string,
+  theme: PropTypes.string,
   title: PropTypes.string,
 };
 
