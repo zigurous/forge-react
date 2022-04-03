@@ -15,18 +15,21 @@ function SearchInput({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounced = useCallback(
     debounce((query) => onSearch(query), debounceRate),
-    [debounceRate]
+    [debounceRate, onSearch]
   );
+
   const handleChange = (event) => {
     const value = event.target.value;
     onChange(event);
     debounced(value);
   };
+
   return (
     <Input
       aria-label="Search"
       className={classNames('search-input', className)}
       icon="search"
+      iconAlignment="left"
       onChange={handleChange}
       onKeyDown={enterKeyHandler((event) => event.target.blur())}
       placeholder={placeholder || 'Search'}
