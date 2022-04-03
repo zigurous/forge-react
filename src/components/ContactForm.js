@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import '../styles/contact-form.css';
 
+// eslint-disable-next-line react/prop-types
 function ContactForm({ className, onSubmit = () => {} }, ref) {
   return (
     <form
