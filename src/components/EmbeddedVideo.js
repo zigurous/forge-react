@@ -49,6 +49,9 @@ const sizes = Object.freeze({
 });
 
 function formatSize(size) {
+  if (size === undefined || size === null) {
+    return size;
+  }
   if (typeof size === 'string') {
     if (size.endsWith('%') || size.endsWith('px')) {
       return size;
