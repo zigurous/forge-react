@@ -22,7 +22,7 @@
 .app-footer--sticky {
   position: sticky;
   bottom: 0;
-  z-index: 1020;
+  z-index: var(--z-index-sticky, 1020);
 }
 
 .app-footer .col {
