@@ -7,9 +7,7 @@ import ReactPortal from './ReactPortal';
 import SocialNavLinks from './SocialNavLinks';
 import { useModalOverlay } from '../hooks';
 import { SocialLinkProps } from '../socialLinks';
-import { isPathActive } from '../utils/location';
-import { scrollToTop } from '../utils/scrolling';
-import omit from '../utils/omit';
+import { isPathActive, omit, scrollToTop } from '../utils';
 import '../styles/navmenu.css';
 
 function NavMenu({

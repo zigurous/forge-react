@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Lightbox from 'react-image-lightbox';
 import ProgressiveImage from './ProgressiveImage';
-import omit from '../utils/omit';
+import { omit } from '../utils';
 import 'react-image-lightbox/style.css';
 import '../styles/image-gallery.css';
 

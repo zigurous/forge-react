@@ -2,8 +2,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { useCallback } from 'react';
 import Input from './Input';
-import debounce from '../utils/debounce';
-import { enterKeyHandler } from '../utils/events';
+import { debounce, enterKeyHandler } from '../utils';
 
 function SearchInput({
   className,

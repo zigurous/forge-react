@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { bindEvent, unbindEvent } from '../utils/events';
+import { bindEvent, unbindEvent } from '../utils';
 
 export default function useLoading(ref) {
   const [loading, setLoading] = useState(true);

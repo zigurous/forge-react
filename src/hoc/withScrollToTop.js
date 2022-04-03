@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import getDisplayName from './displayName';
-import { scrollToTop } from '../utils/scrolling';
+import { scrollToTop } from '../utils';
 
 export default function withScrollToTop(WrappedComponent, behavior = 'smooth') {
   const ScrollToTop = (props) => {

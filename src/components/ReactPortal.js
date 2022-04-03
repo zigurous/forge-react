@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 
 function ReactPortal({ children, rootElement = '#root' }) {
   const root =
@@ -8,7 +8,7 @@ function ReactPortal({ children, rootElement = '#root' }) {
       : null;
 
   if (root) {
-    return ReactDOM.createPortal(children, root);
+    return createPortal(children, root);
   } else {
     return null;
   }

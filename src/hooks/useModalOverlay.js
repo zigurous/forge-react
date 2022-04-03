@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getScrollbarWidth } from '../utils/scrolling';
+import { getScrollbarWidth } from '../utils';
 
 export default function useModalOverlay(open = false, reflow = true) {
   useEffect(() => {

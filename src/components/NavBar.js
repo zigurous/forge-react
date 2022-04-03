@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from './Icon';
 import Link from './Link';
-import { isPathActive } from '../utils/location';
-import omit from '../utils/omit';
+import { isPathActive, omit } from '../utils';
 
 function NavBar({
   className,

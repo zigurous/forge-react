@@ -5,7 +5,7 @@ import ClickableDiv from './ClickableDiv';
 import Icon from './Icon';
 import ReactPortal from './ReactPortal';
 import { useModalOverlay } from '../hooks';
-import { scrollToTop } from '../utils/scrolling';
+import { scrollToTop } from '../utils';
 import '../styles/sidedrawer.css';
 
 function SideDrawer({
