@@ -74,7 +74,7 @@
 
 .navmenu__item {
   color: var(--color-on-background, black);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .navmenu__item > a {
