@@ -43,12 +43,9 @@ function SocialButton({
         }
         size={size}
         styles={{
-          '--button-solid-primary': primaryColor || social.color,
-          '--button-solid-secondary': secondaryColor,
-          '--button-solid-tertiary': primaryColor || social.color,
-          '--button-outline-primary': primaryColor || social.color,
-          '--button-outline-secondary': secondaryColor,
-          '--button-text-primary': primaryColor || social.color,
+          '--button-color-primary': primaryColor || social.color,
+          '--button-color-primary-hover': primaryColor || social.color,
+          '--button-color-secondary': secondaryColor,
         }}
         {...props}
       >

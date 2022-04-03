@@ -1,7 +1,7 @@
 .social-button:hover:not(:disabled) svg,
 .social-button:focus:not(:disabled) svg,
 .social-button:active:not(:disabled) svg {
-  fill: var(--color-button-secondary);
+  fill: var(--button-color-secondary);
 }
 
 .social-button.paypal path {

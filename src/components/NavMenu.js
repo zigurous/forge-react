@@ -54,7 +54,7 @@ function NavMenu({
             )}
             data-theme={theme}
           >
-            <div className="navmenu__overlay" data-theme={theme} />
+            <div className="navmenu__overlay" />
             <div className="navmenu__container container">
               <div className="navmenu__wrapper">
                 <ul className="navmenu__list">
@@ -85,7 +85,7 @@ function NavMenu({
                 </ul>
                 {!hideSocialLinks && (
                   <SocialNavLinks
-                    foregroundColor="white"
+                    foregroundColor="inherit"
                     iconInnerPadding={10}
                     iconSize={20}
                     links={Object.values(socialLinks)}

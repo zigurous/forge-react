@@ -12,7 +12,7 @@
 }
 
 .app-footer--bordered {
-  border-top: solid 1px var(--color-background-tertiary);
+  border-top: solid 1px var(--color-surface-24dp);
 }
 
 .app-footer--transparent {

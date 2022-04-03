@@ -11,7 +11,7 @@
 }
 
 .app-header--bordered {
-  border-bottom: solid 1px var(--color-background-tertiary);
+  border-bottom: solid 1px var(--color-surface-24dp);
 }
 
 .app-header--transparent {

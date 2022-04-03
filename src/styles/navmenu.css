@@ -6,8 +6,8 @@
   right: 0;
   width: 100vw;
   height: 100vh;
-  z-index: var(--z-index-fixed, 1030);
   background: none !important;
+  z-index: var(--z-index-fixed, 1030);
 }
 
 .navmenu__overlay {
@@ -18,8 +18,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  background-color: var(--color-background, white);
   z-index: var(--z-index-overlay, 1040);
-  background-color: var(--color-background);
 }
 
 .navmenu__container {
@@ -31,6 +31,7 @@
 }
 
 .navmenu__container .social-nav-links {
+  fill: var(--color-on-background, black);
   margin-left: -8px;
 }
 
@@ -48,7 +49,7 @@
   align-items: center;
   width: 56px;
   height: 56px;
-  color: var(--color-foreground);
+  color: var(--color-on-background, black);
   pointer-events: all !important;
   transition: transform 200ms;
 }
@@ -72,6 +73,7 @@
 }
 
 .navmenu__item {
+  color: var(--color-on-background, black);
   margin-bottom: 0.25rem;
 }
 

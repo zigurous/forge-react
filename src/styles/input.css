@@ -15,5 +15,5 @@
   left: 9px;
   pointer-events: none;
   font-size: 18px;
-  color: var(--color-foreground-secondary);
+  color: var(--color-on-surface-medium);
 }

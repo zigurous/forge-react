@@ -1,6 +1,6 @@
 .logo {
   display: inline-block;
-  fill: var(--color-foreground);
+  fill: var(--color-on-background);
 }
 
 .logo.xs,

@@ -6,8 +6,8 @@
   right: 0;
   width: 100vw;
   height: 100vh;
-  z-index: var(--z-index-fixed, 1030);
   background: none !important;
+  z-index: var(--z-index-fixed, 1030);
 }
 
 .sidedrawer__overlay {
@@ -18,8 +18,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  background-color: var(--color-on-background, black);
   z-index: var(--z-index-overlay, 1040);
-  background-color: rgba(0,0,0,0.54);
 }
 
 .sidedrawer__container {
@@ -28,7 +28,7 @@
   width: 287px;
   height: 100%;
   margin-right: auto;
-  z-index: var(--z-index-modal, 1050);
+  color: var(--color-on-background, black);
   background-color: var(--color-background, white);
   box-shadow: .25rem 0 .5rem rgba(0, 0, 0, 10%);
 }
@@ -39,7 +39,7 @@
   align-items: center;
   width: 56px;
   height: 56px;
-  color: var(--color-foreground);
+  color: var(--color-on-surface-high);
   pointer-events: all !important;
   transition: transform 200ms;
 }
