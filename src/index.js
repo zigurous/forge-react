@@ -59,6 +59,7 @@ export { default as useSearch } from './hooks/useSearch';
 export { default as useThemedFavicon } from './hooks/useThemedFavicon';
 
 /* Utils */
+export { contrastRatio, luminance, hexToRgb, rgbToHex } from './utils/color';
 export { bindEvent, enterKeyHandler, unbindEvent } from './utils/events';
 export { default as debounce } from './utils/debounce';
 export { default as throttle } from './utils/throttle';

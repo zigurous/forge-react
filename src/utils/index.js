@@ -1,3 +1,4 @@
+export { contrastRatio, luminance, hexToRgb, rgbToHex } from './color';
 export { default as debounce } from './debounce';
 export { bindEvent, unbindEvent, enterKeyHandler } from './events';
 export { isPathActive } from './location';
