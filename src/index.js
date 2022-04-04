@@ -51,6 +51,7 @@ export { default as withTransition, fadeIn } from './hoc/withTransition';
 export { default as useBreakpoint, useBreakpointMax, useSizeClass, useSizeClassMax, breakpoints } from './hooks/useBreakpoint'; // prettier-ignore
 export { default as useDocumentTitle } from './hooks/useDocumentTitle';
 export { default as useLoading, useLoaded } from './hooks/useLoading';
+export { default as useLocalStorage } from './hooks/useLocalStorage';
 export { default as useMediaQuery } from './hooks/useMediaQuery';
 export { default as useModalOverlay } from './hooks/useModalOverlay';
 export { default as useMounted } from './hooks/useMounted';
