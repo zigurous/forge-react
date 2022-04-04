@@ -7,4 +7,5 @@ export { default as useModalOverlay } from './useModalOverlay';
 export { default as useMounted } from './useMounted';
 export { default as usePagination } from './usePagination';
 export { default as useSearch } from './useSearch';
+export { default as useTheme, ThemeContext } from './useTheme';
 export { default as useThemedFavicon } from './useThemedFavicon';

@@ -57,6 +57,7 @@ export { default as useModalOverlay } from './hooks/useModalOverlay';
 export { default as useMounted } from './hooks/useMounted';
 export { default as usePagination } from './hooks/usePagination';
 export { default as useSearch } from './hooks/useSearch';
+export { default as useTheme, ThemeContext } from './hooks/useTheme';
 export { default as useThemedFavicon } from './hooks/useThemedFavicon';
 
 /* Utils */
