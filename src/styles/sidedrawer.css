@@ -18,8 +18,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--color-on-background, black);
-  opacity: var(--opacity-overlay, 0.32);
+  background-color: black;
+  opacity: var(--opacity-overlay, 0.5);
   z-index: var(--z-index-overlay, 1040);
 }
 
@@ -33,6 +33,11 @@
   background-color: var(--color-background, white);
   box-shadow: .25rem 0 .5rem rgba(0, 0, 0, 10%);
   z-index: var(--z-index-menu, 1050);
+}
+
+[data-theme="dark"] .sidedrawer__container,
+[data-theme="high-contrast"] .sidedrawer__container {
+  box-shadow: none;
 }
 
 .sidedrawer__button {
@@ -73,7 +78,7 @@
 }
 
 .sidedrawer--animated.sidedrawer--open .sidedrawer__overlay  {
-  opacity: var(--opacity-overlay, 0.32);
+  opacity: var(--opacity-overlay, 0.5);
 }
 
 .sidedrawer--animated.sidedrawer--closed .sidedrawer__overlay  {
