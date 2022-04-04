@@ -28,7 +28,7 @@ function NavBar({
                 activeClassName=""
                 aria-current={active ? 'page' : 'false'}
                 aria-label={link.name}
-                className={classNames({ active })}
+                className={classNames('btn btn--text', { active })}
                 ElementType={link.ElementType || LinkElementType}
                 onClick={() => {
                   if (onLinkClick) {
