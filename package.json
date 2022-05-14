@@ -9,17 +9,17 @@
   "unpkg": "dist/index.umd.js",
   "peerDependencies": {
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
     "classnames": "^2.2.6",
-    "clipboardy": "^2.3.0",
+    "clipboardy": "^3.0.0",
     "cross-env": "^7.0.2",
     "microbundle-crl": "^0.13.11",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "react-image-lightbox": "^5.1.1",
     "svg2js": "^0.0.4-alpha1"
   },
