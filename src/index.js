@@ -37,6 +37,7 @@ export { default as SideDrawer } from './components/SideDrawer';
 export { default as SocialButton } from './components/SocialButton';
 export { default as SocialIcon } from './components/SocialIcon';
 export { default as SocialNavLinks } from './components/SocialNavLinks';
+export { default as Stack } from './components/Stack';
 export { default as Text } from './components/Text';
 export { default as Thumbnail } from './components/Thumbnail';
 export { default as Title } from './components/Title';
