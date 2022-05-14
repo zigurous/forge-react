@@ -15,6 +15,7 @@ function Input({
   placeholder,
   size,
   type,
+  value,
   ...props
 }) {
   const [focus, setFocus] = useState(false);
@@ -42,6 +43,7 @@ function Input({
         }}
         placeholder={placeholder}
         type={type}
+        value={value}
         {...props}
       />
       {icon && <Icon className="input-wrapper__icon" name={icon} size="md" />}
@@ -74,6 +76,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   size: PropTypes.oneOf(Object.values(Input.size)),
   type: PropTypes.string,
+  value: PropTypes.any,
 };
 
 export default Input;
