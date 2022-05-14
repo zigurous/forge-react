@@ -59,6 +59,7 @@ Logo.size = Object.freeze({
 Logo.variant = Object.freeze({
   wordmark: 'wordmark',
   lettermark: 'lettermark',
+  logomark: 'logomark',
 });
 
 Logo.propTypes = {
