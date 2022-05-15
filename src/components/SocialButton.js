@@ -5,7 +5,6 @@ import Button from './Button';
 import Link from './Link';
 import SocialIcon from './SocialIcon';
 import socialLinks, { SocialLinkProps } from '../socialLinks';
-import '../styles/social-button.css';
 
 function SocialButton({
   children,

@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import svgs from '../svg/logo';
-import '../styles/logo.css';
 
 function renderLogo(image, variant) {
   if (image) {

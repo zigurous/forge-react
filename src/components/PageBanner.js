@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import '../styles/page-banner.css';
 
 function PageBanner({
   backgroundColor,

@@ -7,7 +7,6 @@ import NavBar from './NavBar';
 import NavMenu from './NavMenu';
 import SocialNavLinks from './SocialNavLinks';
 import { SocialLinkProps } from '../socialLinks';
-import '../styles/app-header.css';
 
 function AppHeader({
   bordered = false,

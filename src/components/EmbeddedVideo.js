@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React, { useRef } from 'react';
 import LoadingSpinner from './LoadingSpinner';
 import { useLoading } from '../hooks';
-import '../styles/embedded-video.css';
 
 const sizes = Object.freeze({
   xs: {

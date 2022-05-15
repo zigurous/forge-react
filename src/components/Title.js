@@ -1,12 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  ColorPropTypes,
-  FontHeaderPropTypes,
-  FontWeightPropTypes,
-  MarginPropTypes,
-} from '../props';
+import { ColorPropTypes, FontHeaderPropTypes, FontWeightPropTypes, MarginPropTypes } from '../props'; // prettier-ignore
 
 function Title({
   bold,

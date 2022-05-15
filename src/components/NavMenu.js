@@ -8,7 +8,6 @@ import SocialNavLinks from './SocialNavLinks';
 import { useModalOverlay } from '../hooks';
 import { SocialLinkProps } from '../socialLinks';
 import { isPathActive, omit, scrollToTop } from '../utils';
-import '../styles/navmenu.css';
 
 function NavMenu({
   animated = false,

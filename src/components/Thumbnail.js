@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import ProgressiveImage from './ProgressiveImage';
-import '../styles/thumbnail.css';
 
 function Thumbnail({
   alt,

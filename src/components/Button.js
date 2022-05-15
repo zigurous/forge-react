@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from './Icon';
-import '../styles/button.css';
 
 function Button({
   appearance = 'default',

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Link from './Link';
 import Logo from './Logo';
-import '../styles/app-footer.css';
 
 function AppFooter({
   bordered = false,

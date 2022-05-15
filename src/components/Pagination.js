@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from './Button';
-import '../styles/pagination.css';
 
 function Pagination({
   className,

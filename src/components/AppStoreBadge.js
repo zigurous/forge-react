@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { useLayoutEffect, useState } from 'react';
-import '../styles/app-store-badge.css';
 
 const HEIGHT_RATIO = 3.375;
 

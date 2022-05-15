@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import icons from '../svg/icons';
-import '../styles/social-icon.css';
 
 function SocialIcon({
   altText,
