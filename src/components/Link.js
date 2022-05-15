@@ -34,9 +34,8 @@ function Link({
       {...props}
       {...elementProps}
       className={classNames(
-        'link',
-        { 'link--underlined': underlined },
-        { 'link--unstyled': unstyled },
+        { link: !unstyled },
+        { 'link--underlined': underlined && !unstyled },
         className
       )}
     >

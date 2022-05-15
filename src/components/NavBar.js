@@ -28,13 +28,14 @@ function NavBar({
                 activeClassName=""
                 aria-current={active ? 'page' : 'false'}
                 aria-label={link.name}
-                className={classNames('btn btn--text', { active })}
+                className={classNames({ active })}
                 ElementType={link.ElementType || LinkElementType}
                 onClick={() => {
                   if (onLinkClick) {
                     onLinkClick(link);
                   }
                 }}
+                unstyled
               >
                 {link.leftIcon && (
                   <Icon
