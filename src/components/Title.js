@@ -31,7 +31,6 @@ function Title({
         { 'text-nowrap': nowrap },
         { subtitle: subtitle },
         { eyebrow: eyebrow },
-        color,
         className
       )}
     >
