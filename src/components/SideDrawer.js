@@ -5,7 +5,6 @@ import ClickableDiv from './ClickableDiv';
 import Icon from './Icon';
 import ReactPortal from './ReactPortal';
 import { useModalOverlay } from '../hooks';
-import { scrollToTop } from '../utils';
 
 function SideDrawer({
   animated = true,
@@ -22,7 +21,6 @@ function SideDrawer({
 
   useEffect(() => {
     setOpen(false);
-    setTimeout(() => scrollToTop());
   }, [location]);
 
   return (

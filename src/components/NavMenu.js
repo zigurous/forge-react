@@ -7,7 +7,7 @@ import ReactPortal from './ReactPortal';
 import SocialNavLinks from './SocialNavLinks';
 import { useModalOverlay } from '../hooks';
 import { SocialLinkProps } from '../socialLinks';
-import { isPathActive, omit, scrollToTop } from '../utils';
+import { isPathActive, omit } from '../utils';
 
 function NavMenu({
   animated = false,
@@ -27,7 +27,6 @@ function NavMenu({
 
   useEffect(() => {
     setOpen(false);
-    setTimeout(() => scrollToTop());
   }, [location]);
 
   return (
