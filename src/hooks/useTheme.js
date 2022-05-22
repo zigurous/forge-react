@@ -15,8 +15,10 @@ export default function useTheme(defaultTheme = 'light') {
     setTheme(toggled);
   }, [theme, setTheme]);
 
-  if (document && document.documentElement) {
-    document.documentElement.style.setProperty('color-scheme', theme);
+  if (typeof window !== 'undefined') {
+    if (document && document.documentElement) {
+      document.documentElement.style.setProperty('color-scheme', theme);
+    }
   }
 
   return [theme, setTheme, toggleTheme];
