@@ -7,25 +7,27 @@
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "unpkg": "dist/index.umd.js",
+  "dependencies": {
+    "classnames": "^2.3.1",
+    "prismjs": "^1.28.0",
+    "prop-types": "^15.8.1",
+    "react-image-lightbox": "^5.1.4"
+  },
+  "devDependencies": {
+    "clipboardy": "^3.0.0",
+    "cross-env": "^7.0.3",
+    "microbundle-crl": "^0.13.11",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "svg2js": "^0.0.4-alpha1"
+  },
   "peerDependencies": {
-    "prop-types": "^15.7.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },
-  "devDependencies": {
-    "classnames": "^2.2.6",
-    "clipboardy": "^3.0.0",
-    "cross-env": "^7.0.2",
-    "microbundle-crl": "^0.13.11",
-    "prop-types": "^15.7.2",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-image-lightbox": "^5.1.1",
-    "svg2js": "^0.0.4-alpha1"
-  },
   "scripts": {
-    "build": "microbundle-crl --compress --css-modules \"[local]\" --globals react=React,react-dom=ReactDOM,prop-types=PropTypes",
-    "start": "microbundle-crl watch --no-compress --globals react=React,react-dom=ReactDOM,prop-types=PropTypes",
+    "build": "microbundle-crl --compress --css-modules \"[local]\" --globals react=React,react-dom=ReactDOM",
+    "start": "microbundle-crl watch --no-compress --globals react=React,react-dom=ReactDOM",
     "predeploy": "yarn build",
     "prepare": "yarn build"
   },
