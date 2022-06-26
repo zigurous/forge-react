@@ -1,11 +1,17 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 function ReactPortal({ children, rootElement = '#root' }) {
-  const root =
-    typeof document !== 'undefined'
-      ? document.querySelector(rootElement)
-      : null;
+  const [root, setRoot] = useState(null);
+
+  useEffect(() => {
+    setRoot(
+      typeof document !== 'undefined'
+        ? document.querySelector(rootElement)
+        : null
+    );
+  }, [rootElement]);
 
   if (root) {
     return createPortal(children, root);
