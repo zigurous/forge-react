@@ -6,7 +6,7 @@ import ProgressiveImage from './ProgressiveImage';
 function Thumbnail({
   alt,
   animated = false,
-  animation = 'fade-in-up',
+  animation = 'fade-translate-in',
   children,
   className,
   ElementType = 'a',
