@@ -7,6 +7,7 @@ import { debounce, enterKeyHandler } from '../utils';
 function SearchInput({
   className,
   debounceRate = 500,
+  disabled,
   onChange = () => {},
   onSearch = () => {},
   placeholder,
@@ -28,6 +29,7 @@ function SearchInput({
     <Input
       aria-label="Search"
       className={classNames('search-input', className)}
+      disabled={disabled}
       icon="search"
       iconAlignment="left"
       onChange={handleChange}
@@ -41,6 +43,7 @@ function SearchInput({
 SearchInput.propTypes = {
   className: PropTypes.string,
   debounceRate: PropTypes.number,
+  disabled: PropTypes.bool,
   onChange: PropTypes.func,
   onSearch: PropTypes.func,
   placeholder: PropTypes.string,
