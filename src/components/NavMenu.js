@@ -33,9 +33,10 @@ function NavMenu({
     <React.Fragment>
       <button
         aria-label={open ? 'Close' : 'Open'}
-        className={classNames('navmenu__button', { 'z-index-modal': open })}
+        className="navmenu__button"
         onClick={() => setOpen(!open)}
         size="small"
+        style={{ zIndex: open ? 1055 : undefined }}
       >
         <Icon name={open ? 'close' : 'menu'} material />
       </button>
