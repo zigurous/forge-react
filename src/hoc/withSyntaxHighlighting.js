@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { highlightAll } from '../utils/syntax';
+import getDisplayName from './displayName';
 
 export default function withSyntaxHighlighting(WrappedComponent) {
   const SyntaxHighlighting = (props) => {
@@ -8,5 +9,9 @@ export default function withSyntaxHighlighting(WrappedComponent) {
     });
     return <WrappedComponent {...props} />;
   };
+  SyntaxHighlighting.displayName = getDisplayName(
+    'SyntaxHighlighting',
+    WrappedComponent
+  );
   return SyntaxHighlighting;
 }
