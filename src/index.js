@@ -14,6 +14,7 @@ export { default as Badge } from './components/Badge';
 export { default as Button } from './components/Button';
 export { default as ButtonGroup } from './components/ButtonGroup';
 export { default as ClickableDiv } from './components/ClickableDiv';
+export { default as CodeBlock } from './components/CodeBlock';
 export { default as Col } from './components/Col';
 export { default as ContactForm } from './components/ContactForm';
 export { default as Container } from './components/Container';

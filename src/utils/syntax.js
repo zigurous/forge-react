@@ -1,6 +1,9 @@
 import Prism from 'prismjs';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-csharp';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-markup';
 
 export function highlight(text, grammar, language) {
   Prism.highlight(text, grammar, language);
