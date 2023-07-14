@@ -1,3 +1,5 @@
+import './styles/index.css';
+
 /* Misc */
 export { default as socialLinks, SocialLinkProps } from './socialLinks';
 export { default as icons } from './svg/icons';
