@@ -4,9 +4,9 @@ import React from 'react';
 import Icon from './Icon';
 
 function Button({
-  appearance = 'default',
   children,
   className,
+  color = 'default',
   icon,
   iconElement,
   iconName,
@@ -21,7 +21,7 @@ function Button({
     <button
       className={classNames(
         'btn',
-        { [`btn--${appearance}`]: appearance },
+        { [`btn--${color}`]: color },
         { [`btn--${shape}`]: shape },
         { [`btn--${style}`]: style },
         { [`btn--${size}`]: size },
@@ -53,10 +53,15 @@ function Button({
   );
 }
 
-Button.appearance = Object.freeze({
+Button.color = Object.freeze({
   default: 'default',
   primary: 'primary',
   secondary: 'secondary',
+  tertiary: 'tertiary',
+  success: 'success',
+  danger: 'danger',
+  warning: 'warning',
+  info: 'info',
 });
 
 Button.shape = Object.freeze({
@@ -83,9 +88,9 @@ Button.style = Object.freeze({
 });
 
 Button.propTypes = {
-  appearance: PropTypes.oneOf(Object.values(Button.appearance)),
   children: PropTypes.node,
   className: PropTypes.string,
+  color: PropTypes.oneOf(Object.values(Button.color)),
   icon: PropTypes.oneOf(['left', 'right', 'only']),
   iconElement: PropTypes.element,
   iconName: PropTypes.string,

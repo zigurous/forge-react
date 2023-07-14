@@ -18,6 +18,7 @@ function SocialButton({
   ...props
 }) {
   const social = typeof link === 'string' ? socialLinks[link] : link;
+  const color = primaryColor || social.color;
   return (
     <Link
       ElementType={LinkElementType}
@@ -42,9 +43,9 @@ function SocialButton({
         }
         size={size}
         styles={{
-          '--button-color-primary': primaryColor || social.color,
-          '--button-color-primary-hover': primaryColor || social.color,
-          '--button-color-secondary': secondaryColor,
+          '--btn-color-primary': color,
+          '--btn-color-secondary': secondaryColor,
+          '--btn-color-emphasis': color,
         }}
         tabIndex={-1}
         {...props}
