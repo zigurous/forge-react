@@ -46,6 +46,7 @@ function SocialButton({
           '--button-color-primary-hover': primaryColor || social.color,
           '--button-color-secondary': secondaryColor,
         }}
+        tabIndex={-1}
         {...props}
       >
         {children || social.name}
