@@ -14,6 +14,7 @@ export const ColorPropTypes = PropTypes.oneOf([
   'foreground-subtle',
   'foreground-low',
   'background',
+  'surface-0',
   'surface-1',
   'surface-2',
   'surface-3',
