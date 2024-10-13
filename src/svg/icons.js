@@ -21,6 +21,7 @@ export const email = (
     viewBox="0 0 184 184"
     width="24px"
     height="24px"
+    scale="1.2"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Email</title>
