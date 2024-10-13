@@ -8,12 +8,13 @@ import { useModalOverlay } from '../hooks';
 function Modal({
   children,
   className,
+  dialogClassName,
   footer,
   footerAlignment = 'left',
   id,
   onRequestClose = () => {},
   open = false,
-  rootElement,
+  rootElement = 'body',
   theme,
   title,
 }) {
@@ -27,7 +28,10 @@ function Modal({
         tabIndex="-1"
         data-theme={theme}
       >
-        <div className="modal__dialog" role="document">
+        <div
+          className={classNames('modal__dialog', dialogClassName)}
+          role="document"
+        >
           <div className="modal__content">
             <div className="modal__header">
               <div className="modal__title h5">{title}</div>
@@ -61,6 +65,7 @@ function Modal({
 Modal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  dialogClassName: PropTypes.string,
   footer: PropTypes.element,
   footerAlignment: PropTypes.oneOf(['left', 'right']),
   id: PropTypes.string,
