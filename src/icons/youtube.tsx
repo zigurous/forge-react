@@ -11,7 +11,7 @@ export default function YouTubeIcon({
       viewBox="0 0 24 24"
       width="24px"
       height="24px"
-      scale="1.125"
+      transform="scale(1.125)"
       {...rest}
     >
       <title>YouTube</title>

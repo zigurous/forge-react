@@ -11,7 +11,7 @@ export default function TwitterIcon({
       viewBox="0 0 24 24"
       width="24px"
       height="24px"
-      scale="1.1"
+      transform="scale(1.1)"
       {...rest}
     >
       <title>Twitter</title>

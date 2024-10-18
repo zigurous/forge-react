@@ -9,7 +9,7 @@ export default function EmailIcon({ ...rest }: React.SVGProps<SVGSVGElement>) {
       viewBox="0 0 184 184"
       width="24px"
       height="24px"
-      scale="1.2"
+      transform="scale(1.2)"
       {...rest}
     >
       <title>Email</title>

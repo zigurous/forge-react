@@ -1,9 +1,6 @@
 import React from 'react';
 
-export default function TwitchIcon({
-  style,
-  ...rest
-}: React.SVGProps<SVGSVGElement>) {
+export default function TwitchIcon({ ...rest }: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,7 +9,6 @@ export default function TwitchIcon({
       viewBox="0 0 24 24"
       width="24px"
       height="24px"
-      style={{ transform: 'translateY(1px)', ...style }}
       {...rest}
     >
       <title>Twitch</title>
