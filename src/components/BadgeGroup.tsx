@@ -1,21 +1,21 @@
 import classNames from 'classnames';
 import React from 'react';
 
-export type ButtonGroupProps = {
+export type BadgeGroupProps = {
   layout?: 'horizontal' | 'vertical';
 } & React.ComponentPropsWithRef<'div'>;
 
-export default function ButtonGroup({
+export default function BadgeGroup({
   children,
   className,
   layout = 'horizontal',
   ...rest
-}: ButtonGroupProps) {
+}: BadgeGroupProps) {
   return (
     <div
       className={classNames(
-        'btn-group',
-        { [`btn-group--${layout}`]: layout },
+        'badge-group',
+        { [`badge-group--${layout}`]: layout },
         className,
       )}
       {...rest}

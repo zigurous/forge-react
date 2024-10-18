@@ -3,6 +3,7 @@ export { default as AppHeader, AppHeaderProps } from './AppHeader'; // prettier-
 export { default as AppStoreBadge, AppStoreBadgeProps } from './AppStoreBadge'; // prettier-ignore
 export { default as AppUtilityBar, AppUtilityBarProps } from './AppUtilityBar'; // prettier-ignore
 export { default as Badge, BadgeProps } from './Badge'; // prettier-ignore
+export { default as BadgeGroup, BadgeGroupProps } from './BadgeGroup'; // prettier-ignore
 export { default as Button, ButtonProps } from './Button'; // prettier-ignore
 export { default as ButtonGroup, ButtonGroupProps } from './ButtonGroup'; // prettier-ignore
 export { default as ClickableDiv, ClickableDivProps } from './ClickableDiv'; // prettier-ignore
