@@ -7,5 +7,6 @@ export * from './useModalOverlay';
 export * from './useMounted';
 export * from './usePagination';
 export * from './useSearch';
+export * from './useSmoothDamp';
 export * from './useTheme';
 export * from './useThemedFavicon';
