@@ -21,8 +21,9 @@ export type ButtonProps = {
       };
   icon?: string | React.ReactElement;
   iconAlignment?: 'left' | 'right' | 'only';
+  iconSize?: 'inherit' | 'sm' | 'md' | 'lg' | 'xl';
   shape?: 'square' | 'rounded-corners' | 'rounded' | 'circle';
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'intrinsic';
   style?: 'solid' | 'outline' | 'text' | 'unstyled';
 } & React.ComponentPropsWithRef<'button'>;
 
@@ -33,6 +34,7 @@ export default function Button({
   customStyles,
   icon,
   iconAlignment,
+  iconSize = 'inherit',
   onClick,
   shape = 'rounded-corners',
   size = 'sm',
@@ -46,7 +48,7 @@ export default function Button({
         { [`btn--${color}`]: color },
         { [`btn--${shape}`]: shape },
         { [`btn--${style}`]: style },
-        { [`btn--${size}`]: size },
+        { [`btn--${size}`]: size && size !== 'intrinsic' },
         { 'btn--icon-only': iconAlignment === 'only' },
         className,
       )}
@@ -57,7 +59,7 @@ export default function Button({
       {iconAlignment === 'left' && (
         <span aria-hidden className="icon-wrapper margin-right-md">
           {typeof icon === 'string' ? (
-            <Icon name={icon} size="inherit" />
+            <Icon name={icon} size={iconSize} />
           ) : (
             icon
           )}
@@ -66,7 +68,7 @@ export default function Button({
       {iconAlignment === 'only' ? (
         <span aria-hidden className="icon-wrapper">
           {typeof icon === 'string' ? (
-            <Icon name={icon} size="inherit" />
+            <Icon name={icon} size={iconSize} />
           ) : (
             icon
           )}
@@ -77,7 +79,7 @@ export default function Button({
       {iconAlignment === 'right' && (
         <span aria-hidden className="icon-wrapper margin-left-md">
           {typeof icon === 'string' ? (
-            <Icon name={icon} size="inherit" />
+            <Icon name={icon} size={iconSize} />
           ) : (
             icon
           )}

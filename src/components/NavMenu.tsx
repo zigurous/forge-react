@@ -50,8 +50,10 @@ export default function NavMenu({
         customStyles={{ zIndex: open ? 1055 : undefined }}
         icon={open ? 'close' : 'menu'}
         iconAlignment="only"
+        iconSize="md"
         onClick={() => setOpen(!open)}
-        size="sm"
+        size="intrinsic"
+        style="unstyled"
       />
       {open && (
         <ReactPortal rootElement={rootElement}>
@@ -78,7 +80,7 @@ export default function NavMenu({
                             activeClassName=""
                             aria-current={active ? 'page' : 'false'}
                             aria-label={link.name}
-                            as={LinkElementType}
+                            as={link.external ? 'a' : LinkElementType}
                             className={classNames({ active })}
                             external={link.external}
                             onClick={() => {
