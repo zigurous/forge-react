@@ -6,7 +6,7 @@ import { debounce, enterKeyHandler } from '../utils';
 export type SearchInputProps = {
   className?: string;
   debounceRate?: number;
-  onChange?: React.ChangeEvent<HTMLInputElement>;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   onSearch?: (query: string) => void;
 } & InputProps;
 
@@ -33,10 +33,10 @@ export default function SearchInput({
       icon="search"
       iconAlignment="left"
       onChange={event => {
-        debounced(event.target.value);
         if (onChange) {
           onChange(event);
         }
+        debounced(event.target.value);
       }}
       onKeyDown={enterKeyHandler(
         (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
