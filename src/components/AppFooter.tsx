@@ -11,7 +11,8 @@ export interface AppFooterProps {
   hideLogo?: boolean;
   LinkElementType?: React.ElementType;
   links?: LinkType[];
-  logoProps?: LogoProps;
+  LogoElementType?: React.ElementType;
+  logoProps?: Omit<LogoProps, 'as'>;
   onLinkClick?: (link: LinkType) => void;
   sticky?: boolean;
   theme?: Theme | string;
@@ -25,6 +26,7 @@ export default function AppFooter({
   hideLogo = false,
   LinkElementType = 'a',
   links,
+  LogoElementType = 'a',
   logoProps,
   onLinkClick,
   sticky = false,
@@ -46,7 +48,9 @@ export default function AppFooter({
         <div className="row align-items-center margin-top-lg margin-bottom-lg">
           <div className="col font-xs font-weight-500">
             <span>
-              {!hideLogo && <Logo size="xs" {...logoProps} />}
+              {!hideLogo && (
+                <Logo as={LogoElementType} size="xs" {...logoProps} />
+              )}
               {copyright && (
                 <span className="copyright margin-left-xl margin-right-xl">
                   {copyright}

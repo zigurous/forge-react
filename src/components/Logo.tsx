@@ -22,10 +22,12 @@ export default function Logo<T extends React.ElementType = 'a'>({
   as,
   className,
   fill,
+  href = '/',
   image,
   label = 'Logo',
   size = 'md',
   style,
+  to,
   variant = 'wordmark',
   ...rest
 }: LogoProps<T>) {
@@ -35,7 +37,9 @@ export default function Logo<T extends React.ElementType = 'a'>({
     <Element
       aria-label={label}
       className={classNames('logo', variant, size, className)}
+      href={Element === 'a' ? href : undefined}
       style={{ fill, ...style }}
+      to={Element !== 'a' ? href : undefined}
       {...rest}
     >
       {image && <img alt={label} src={image} />}

@@ -16,7 +16,8 @@ export interface AppHeaderProps {
   LinkElementType?: React.ElementType;
   links?: LinkType[];
   location?: Location | null;
-  logoProps?: LogoProps;
+  LogoElementType?: React.ElementType;
+  logoProps?: Omit<LogoProps, 'as'>;
   onLinkClick?: (link: LinkType) => void;
   rootElement?: string;
   socialLinks?: SocialLinkType[];
@@ -36,11 +37,12 @@ export default function AppHeader({
   LinkElementType = 'a',
   links,
   location = typeof window !== 'undefined' ? window.location : null,
+  LogoElementType = 'a',
   logoProps,
   onLinkClick,
   rootElement = 'body',
   socialLinks,
-  socialNavLinksProps = { iconInnerPadding: 10, iconSize: 20 },
+  socialNavLinksProps,
   sticky = false,
   theme,
   transparent = false,
@@ -63,7 +65,7 @@ export default function AppHeader({
         })}
       >
         <div className="app-header__content left">
-          {!hideLogo && <Logo size="sm" {...logoProps} />}
+          {!hideLogo && <Logo as={LogoElementType} size="sm" {...logoProps} />}
           {!hideNavigation && (
             <NavBar
               LinkElementType={LinkElementType}
@@ -75,7 +77,12 @@ export default function AppHeader({
         </div>
         <div className="app-header__content right">
           {!hideSocialLinks && socialLinks && socialLinks.length > 0 && (
-            <SocialNavLinks links={socialLinks} {...socialNavLinksProps} />
+            <SocialNavLinks
+              links={socialLinks}
+              iconInnerPadding={10}
+              iconSize={20}
+              {...socialNavLinksProps}
+            />
           )}
           {!hideNavigation && (
             <NavMenu
