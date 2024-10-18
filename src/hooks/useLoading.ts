@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import { bindEvent, unbindEvent } from '../utils';
 
-export function useLoading(
-  ref: React.RefObject<HTMLElement | (HTMLElement & { complete: boolean })>,
-): boolean {
+export function useLoading(ref: React.RefObject<HTMLElement>): boolean {
   const [loading, setLoading] = useState(true);
 
   const loadComplete = () => {
@@ -13,7 +11,7 @@ export function useLoading(
   useEffect(() => {
     const element = ref.current;
     if (element && loading) {
-      if ('complete' in element && (element.complete as boolean) === true) {
+      if (element instanceof HTMLImageElement && element.complete) {
         loadComplete();
       } else {
         bindEvent(element, 'load', loadComplete);
