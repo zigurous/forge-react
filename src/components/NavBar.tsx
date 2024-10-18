@@ -40,7 +40,7 @@ export default function NavBar({
                   activeClassName=""
                   aria-current={active ? 'page' : 'false'}
                   aria-label={link.name}
-                  as={LinkElementType}
+                  as={link.external ? 'a' : LinkElementType}
                   className={classNames({ active })}
                   external={link.external}
                   onClick={() => {
@@ -51,17 +51,18 @@ export default function NavBar({
                   to={link.to}
                   unstyled
                 >
-                  {link.icon && link.iconAlignment === 'left' && (
-                    <Icon
-                      className="margin-right-md"
-                      material={typeof link.icon === 'string'}
-                      size="sm"
-                    >
-                      {typeof link.icon === 'string'
-                        ? link.icon
-                        : SVGIcon && <SVGIcon />}
-                    </Icon>
-                  )}
+                  {link.icon &&
+                    (link.iconAlignment === 'left' || !link.iconAlignment) && (
+                      <Icon
+                        className="margin-right-md"
+                        material={typeof link.icon === 'string'}
+                        size="sm"
+                      >
+                        {typeof link.icon === 'string'
+                          ? link.icon
+                          : SVGIcon && <SVGIcon />}
+                      </Icon>
+                    )}
                   {link.name}
                   {link.icon && link.iconAlignment === 'right' && (
                     <Icon
