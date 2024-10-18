@@ -43,12 +43,14 @@ export default function Thumbnail<T extends React.ElementType = 'a'>({
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (!animated || !loaded) return;
-    const handle = setTimeout(() => {
-      if (ref && ref.current) {
-        ref.current.style.animation = '';
-      }
-    }, 600);
+    let handle: ReturnType<typeof setTimeout>;
+    if (animated && loaded) {
+      handle = setTimeout(() => {
+        if (ref.current) {
+          ref.current.style.animation = 'none';
+        }
+      }, 600);
+    }
     return () => {
       if (handle) {
         clearTimeout(handle);
