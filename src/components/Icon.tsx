@@ -8,7 +8,7 @@ export type IconProps = {
   inactive?: boolean;
   material?: boolean;
   name?: string;
-  size?: 'inherit' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'inherit' | number;
   theme?: 'light' | 'dark';
 } & React.ComponentPropsWithRef<'i'>;
 
@@ -20,6 +20,7 @@ export default function Icon({
   material = true,
   name,
   size = 'md',
+  style,
   theme,
   ...rest
 }: IconProps) {
@@ -28,13 +29,18 @@ export default function Icon({
       aria-hidden={ariaHidden}
       className={classNames(
         'icon',
-        { [`icon--${size}`]: size },
+        { [`icon--${size}`]: size && typeof size !== 'number' },
         { [`icon--${theme}`]: theme },
         { 'icon--active': !inactive },
         { 'icon--inactive': inactive },
         { 'icon--material': material },
         className,
       )}
+      style={{
+        width: typeof size === 'number' ? `${size}px` : undefined,
+        height: typeof size === 'number' ? `${size}px` : undefined,
+        ...style,
+      }}
       {...rest}
     >
       {name || children}

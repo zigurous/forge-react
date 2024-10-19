@@ -46,8 +46,8 @@ export default function SocialIcon<T extends React.ElementType = 'i'>({
       style={{
         backgroundColor: backgroundColor,
         fill: foregroundColor,
-        width: size,
-        height: size,
+        width: size !== 'inherit' ? size : undefined,
+        height: size !== 'inherit' ? size : undefined,
         padding: innerPadding,
         ...style,
       }}
