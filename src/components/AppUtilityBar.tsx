@@ -30,7 +30,7 @@ export default function AppUtilityBar({
     >
       <div className="container">
         <div className="row">
-          <div className="col font-xs font-weight-500">
+          <div className="col text-xs font-500">
             {links &&
               links.length > 0 &&
               links.map(link => {
@@ -38,7 +38,7 @@ export default function AppUtilityBar({
                   <Link
                     aria-label={link.name}
                     as={LinkElementType}
-                    className="color-inherit margin-left-md margin-right-md"
+                    className="text-inherit mx-sm"
                     external={link.external}
                     key={link.id || link.name}
                     to={link.to}

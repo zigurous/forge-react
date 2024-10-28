@@ -2,12 +2,21 @@ import classNames from 'classnames';
 import React from 'react';
 
 export type StackProps = {
-  alignItems?: 'start' | 'end' | 'center' | 'stretch' | 'baseline';
+  alignItems?: 'normal' | 'center' | 'start' | 'end' | 'stretch' | 'baseline';
   children?: React.ReactNode;
   direction?: 'row' | 'column';
-  justifyContent?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
+  justifyContent?:
+    | 'normal'
+    | 'center'
+    | 'start'
+    | 'end'
+    | 'between'
+    | 'around'
+    | 'evenly'
+    | 'stretch'
+    | 'baseline';
   reversed?: boolean;
-  wrap?: boolean;
+  wrap?: boolean | 'reverse' | 'nowrap';
 } & React.ComponentPropsWithRef<'div'>;
 
 export default function Stack({
@@ -21,20 +30,17 @@ export default function Stack({
 }: StackProps) {
   return (
     <div
-      className={classNames(
-        'display-flex',
-        {
-          'flex-row': direction === 'row' && !reversed,
-          'flex-row-reverse': direction === 'row' && reversed,
-          'flex-column': direction === 'column' && !reversed,
-          'flex-column-reverse': direction === 'column' && reversed,
-          'flex-wrap': wrap,
-        },
-        {
-          [`justify-content-${justifyContent}`]: justifyContent,
-          [`align-items-${alignItems}`]: alignItems,
-        },
-      )}
+      className={classNames('flex', {
+        'flex-row': direction === 'row' && !reversed,
+        'flex-row-reverse': direction === 'row' && reversed,
+        'flex-col': direction === 'column' && !reversed,
+        'flex-col-reverse': direction === 'column' && reversed,
+        'flex-wrap': typeof wrap === 'boolean' && wrap,
+        'flex-wrap-reverse': wrap === 'reverse',
+        'flex-nowrap': wrap === 'nowrap',
+        [`justify-${justifyContent}`]: justifyContent,
+        [`align-${alignItems}`]: alignItems,
+      })}
       {...rest}
     >
       {children}

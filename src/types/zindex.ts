@@ -1,5 +1,6 @@
 export enum ZIndex {
-  dropdown = 1000,
+  min = -9999,
+  dropdown = 1010,
   sticky = 1020,
   fixed = 1030,
   overlay = 1040,
@@ -8,7 +9,7 @@ export enum ZIndex {
   popover = 1070,
   tooltip = 1080,
   toast = 1090,
-  max = 1100,
+  max = 9999,
 }
 
-export type ZIndexKey = keyof typeof ZIndex;
+export type ZIndexToken = keyof typeof ZIndex;

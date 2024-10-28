@@ -59,7 +59,7 @@ export default function Modal({
                   iconAlignment="only"
                   onClick={onRequestClose}
                   size="md"
-                  style="unstyled"
+                  variant="unstyled"
                 />
               </div>
             )}

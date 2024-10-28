@@ -38,11 +38,6 @@ export default function SocialButton({
     >
       <Button
         className={classNames('social-button', social.id, className)}
-        customStyles={{
-          '--btn-color-primary': color,
-          '--btn-color-secondary': secondaryColor,
-          '--btn-color-emphasis': color,
-        }}
         icon={
           <SocialIcon
             aria-hidden
@@ -51,7 +46,10 @@ export default function SocialButton({
             size="100%"
           />
         }
-        iconAlignment="left"
+        style={{
+          '--btn-color-primary': color,
+          '--btn-color-secondary': secondaryColor,
+        }}
         tabIndex={-1}
         {...rest}
       >

@@ -1,16 +1,16 @@
 import classNames from 'classnames';
 import React from 'react';
-import type { FontSize, Margin, PaletteColor, PolymorphicProps } from '../types'; // prettier-ignore
+import type { ColorToken, FontSizeToken, FontWeight, MarginToken, PolymorphicProps } from '../types'; // prettier-ignore
 
 export type BaseTextProps = {
   bold?: boolean;
   children?: React.ReactNode;
   className?: string;
-  color?: PaletteColor;
+  color?: ColorToken;
   italic?: boolean;
-  marginBottom?: Margin;
-  marginTop?: Margin;
-  size?: FontSize;
+  marginBottom?: MarginToken;
+  marginTop?: MarginToken;
+  size?: FontSizeToken;
 };
 
 export type TextProps<T extends React.ElementType = 'p'> = PolymorphicProps<
@@ -34,10 +34,10 @@ export default function Text<T extends React.ElementType = 'p'>({
   return (
     <Element
       className={classNames(
-        { [`font-${size}`]: size },
-        { [`color-${color}`]: color },
-        { [`margin-top-${marginTop}`]: marginTop },
-        { [`margin-bottom-${marginBottom}`]: marginBottom },
+        { [`text-${size}`]: size },
+        { [`text-${color}`]: color },
+        { [`mt-${marginTop}`]: marginTop },
+        { [`mb-${marginBottom}`]: marginBottom },
         className,
       )}
       {...rest}

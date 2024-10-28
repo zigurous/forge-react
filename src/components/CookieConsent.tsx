@@ -35,14 +35,14 @@ export default function CookieConsent({
         data-theme={theme}
       >
         <div className="cookie-consent__container">
-          <span className="cookie-consent__text font-sm">
-            <span className="margin-right-md">
+          <span className="cookie-consent__text text-sm">
+            <span className="mr-sm">
               This website uses cookies to ensure you get the best experience on
               our website.
             </span>
             {learnMoreLink && (
               <Link
-                className="color-inherit"
+                className="text-inherit hover:text-inheit"
                 to={learnMoreLink}
                 external
                 underlined
@@ -52,8 +52,8 @@ export default function CookieConsent({
             )}
           </span>
           <Button
+            aria-label={buttonText}
             className="cookie-consent__button"
-            color="default"
             shape="square"
             size="md"
             onClick={() => {

@@ -12,17 +12,6 @@ export type FontHeader =
   | '5'
   | '6';
 
-export type FontSize =
-  | 'xxxl'
-  | 'xxl'
-  | 'xl'
-  | 'lg'
-  | 'md'
-  | 'sm'
-  | 'xs'
-  | 'xxs'
-  | 'xxxs';
-
 export type FontWeight =
   | 100
   | 200
@@ -41,7 +30,30 @@ export type FontWeight =
   | '600'
   | '700'
   | '800'
-  | '900';
+  | '900'
+  | FontWeightToken;
+
+export type FontWeightToken =
+  | 'thin'
+  | 'extralight'
+  | 'light'
+  | 'regular'
+  | 'medium'
+  | 'semibold'
+  | 'bold'
+  | 'extrabold'
+  | 'black';
+
+export type FontSizeToken =
+  | 'xxxl'
+  | 'xxl'
+  | 'xl'
+  | 'lg'
+  | 'md'
+  | 'sm'
+  | 'xs'
+  | 'xxs'
+  | 'xxxs';
 
 export type FontType =
   | 'default'

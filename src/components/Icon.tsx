@@ -8,7 +8,7 @@ export type IconProps = {
   inactive?: boolean;
   material?: boolean;
   name?: string;
-  size?: 'sm' | 'md' | 'lg' | 'xl' | 'inherit' | number;
+  size?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | number;
   theme?: 'light' | 'dark';
 } & React.ComponentPropsWithRef<'i'>;
 
@@ -19,7 +19,7 @@ export default function Icon({
   inactive,
   material = true,
   name,
-  size = 'md',
+  size = 'inherit',
   style,
   theme,
   ...rest

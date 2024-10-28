@@ -33,11 +33,7 @@ export default function SocialNavLinks({
 }: SocialNavLinksProps) {
   return (
     <div
-      className={classNames(
-        'social-nav-links',
-        { 'display-none': hidden },
-        className,
-      )}
+      className={classNames('social-nav-links', { hidden: hidden }, className)}
     >
       <ul
         className={classNames('social-nav-links__list', { 'flex-wrap': wrap })}

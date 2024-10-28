@@ -1,17 +1,17 @@
 import classNames from 'classnames';
 import React from 'react';
-import type { FontHeader, FontWeight, Margin, PaletteColor, PolymorphicProps } from '../types'; // prettier-ignore
+import type { ColorToken, FontHeader, FontWeight, MarginToken, PolymorphicProps } from '../types'; // prettier-ignore
 
 export type BaseTitleProps = {
   bold?: boolean;
   children?: React.ReactNode;
   className?: string;
-  color?: PaletteColor;
+  color?: ColorToken;
   display?: boolean;
   eyebrow?: boolean;
   italic?: boolean;
-  marginBottom?: Margin;
-  marginTop?: Margin;
+  marginBottom?: MarginToken;
+  marginTop?: MarginToken;
   nowrap?: boolean;
   size?: FontHeader;
   subtitle?: boolean;
@@ -45,10 +45,10 @@ export default function Title<T extends React.ElementType = 'div'>({
       className={classNames(
         { [`h${size}`]: !display && typeof size !== 'undefined' },
         { [`display-${size}`]: display && typeof size !== 'undefined' },
-        { [`font-weight-${weight}`]: typeof weight !== 'undefined' },
-        { [`color-${color}`]: color },
-        { [`margin-top-${marginTop}`]: marginTop },
-        { [`margin-bottom-${marginBottom}`]: marginBottom },
+        { [`font-${weight}`]: typeof weight !== 'undefined' },
+        { [`text-${color}`]: color },
+        { [`mt-${marginTop}`]: marginTop },
+        { [`mb-${marginBottom}`]: marginBottom },
         { 'text-nowrap': nowrap },
         { subtitle: subtitle },
         { eyebrow: eyebrow },

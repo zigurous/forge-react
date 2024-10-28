@@ -15,7 +15,12 @@ export default function LoadingSpinner({
   return (
     <div
       aria-hidden
-      className={classNames('loading-spinner', { loading }, size, className)}
+      className={classNames(
+        'loading-spinner',
+        { loaded: !loading },
+        size,
+        className,
+      )}
     >
       <div className="loading-spinner__animation">
         <div />

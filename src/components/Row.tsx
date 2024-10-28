@@ -1,8 +1,9 @@
 import classNames from 'classnames';
 import React from 'react';
+import type { SpacingToken } from '../types';
 
 export type RowProps = {
-  gutters?: 'sm' | 'md' | 'lg' | 'none';
+  gutters?: SpacingToken | 'none';
 } & React.ComponentPropsWithRef<'div'>;
 
 export default function Row({

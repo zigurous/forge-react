@@ -1,1 +1,2 @@
-export type Theme = 'light' | 'dark' | 'high-contrast' | string;
+export type SupportedTheme = 'light' | 'dark' | 'high-contrast';
+export type Theme = SupportedTheme | string;

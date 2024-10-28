@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
-import Icon from './Icon';
+import Icon, { IconProps } from './Icon';
 
 export type InputProps = {
   className?: string;
   disabled?: boolean;
   icon?: string;
-  iconSize?: 'sm' | 'md' | 'lg' | 'xl';
   iconAlignment?: 'left' | 'right';
+  iconProps?: IconProps;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   size?: 'sm' | 'md' | 'lg';
@@ -17,8 +17,8 @@ export default function Input({
   className,
   disabled,
   icon,
-  iconSize = 'md',
   iconAlignment = 'right',
+  iconProps,
   onBlur,
   onFocus,
   size,
@@ -31,6 +31,8 @@ export default function Input({
         'input-wrapper',
         { [`input-wrapper--${size}`]: size },
         { [`input-wrapper--icon-${iconAlignment}`]: icon && iconAlignment },
+        { 'flex-row': icon && iconAlignment === 'right' },
+        { 'flex-row-reverse': icon && iconAlignment === 'left' },
         { focused: focus, disabled: disabled },
         className,
       )}
@@ -53,7 +55,14 @@ export default function Input({
         {...rest}
       />
       {icon && (
-        <Icon className="input-wrapper__icon" name={icon} size={iconSize} />
+        <Icon
+          className={classNames('input-wrapper__icon', {
+            'mr-xxs': iconAlignment === 'left',
+            'ml-xxs': iconAlignment === 'right',
+          })}
+          name={icon}
+          {...iconProps}
+        />
       )}
     </div>
   );

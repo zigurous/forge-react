@@ -5,7 +5,7 @@ import Link from './Link';
 import ReactPortal from './ReactPortal';
 import SocialNavLinks from './SocialNavLinks';
 import { useModalOverlay } from '../hooks';
-import type { LinkType, SocialLinkType, Theme } from '../types';
+import type { LinkTypeWithIcon, SocialLinkType, Theme } from '../types';
 import { isPathActive } from '../utils';
 
 export interface NavMenuProps {
@@ -13,9 +13,9 @@ export interface NavMenuProps {
   className?: string;
   hideSocialLinks?: boolean;
   LinkElementType?: React.ElementType;
-  links?: LinkType[];
+  links?: LinkTypeWithIcon[];
   location?: Location | null;
-  onLinkClick?: (link: LinkType) => void;
+  onLinkClick?: (link: LinkTypeWithIcon) => void;
   onSocialLinkClick?: (link: SocialLinkType) => void;
   rootElement?: string;
   socialLinks?: SocialLinkType[];
@@ -45,15 +45,14 @@ export default function NavMenu({
   return (
     <>
       <Button
-        aria-label={open ? 'Close' : 'Open'}
+        aria-label={open ? 'Close Menu' : 'Open Menu'}
         className="navmenu__button"
-        customStyles={{ zIndex: open ? 1055 : undefined }}
         icon={open ? 'close' : 'menu'}
         iconAlignment="only"
-        iconSize="md"
         onClick={() => setOpen(!open)}
-        size="intrinsic"
-        style="unstyled"
+        size="md"
+        style={{ zIndex: open ? 1055 : undefined }}
+        variant="unstyled"
       />
       {open && (
         <ReactPortal rootElement={rootElement}>

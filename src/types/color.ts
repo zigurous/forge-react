@@ -1,13 +1,11 @@
-export type PaletteColor =
+export type ColorToken =
   | 'inherit'
+  | 'current'
   | 'transparent'
   | 'black'
   | 'white'
   | 'foreground'
-  | 'foreground-muted'
-  | 'foreground-subtle'
   | 'background'
-  | 'surface-0'
   | 'surface-1'
   | 'surface-2'
   | 'surface-3'
@@ -17,17 +15,18 @@ export type PaletteColor =
   | 'surface-7'
   | 'surface-8'
   | 'surface-9'
-  | 'border'
+  | SemanticColorToken;
+
+export type SemanticColorToken =
   | 'default'
   | 'primary'
   | 'secondary'
-  | 'tertiary'
   | 'success'
   | 'danger'
   | 'warning'
   | 'info';
 
-export type SyntaxColor =
+export type SyntaxColorToken =
   | 'comment'
   | 'constant'
   | 'diff-changed-text'

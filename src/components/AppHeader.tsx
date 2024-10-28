@@ -4,7 +4,7 @@ import Logo, { LogoProps } from './Logo';
 import NavBar from './NavBar';
 import NavMenu from './NavMenu';
 import SocialNavLinks, { SocialNavLinksProps } from './SocialNavLinks';
-import type { LinkType, SocialLinkType, Theme } from '../types';
+import type { LinkTypeWithIcon, SocialLinkType, Theme } from '../types';
 
 export interface AppHeaderProps {
   bordered?: boolean;
@@ -14,11 +14,11 @@ export interface AppHeaderProps {
   hideNavigation?: boolean;
   hideSocialLinks?: boolean;
   LinkElementType?: React.ElementType;
-  links?: LinkType[];
+  links?: LinkTypeWithIcon[];
   location?: Location | null;
   LogoElementType?: React.ElementType;
   logoProps?: Omit<LogoProps, 'as'>;
-  onLinkClick?: (link: LinkType) => void;
+  onLinkClick?: (link: LinkTypeWithIcon) => void;
   rootElement?: string;
   socialLinks?: SocialLinkType[];
   socialNavLinksProps?: SocialNavLinksProps;

@@ -6,5 +6,6 @@ export * from './link';
 export * from './opacity';
 export * from './polymorphic';
 export * from './size';
+export * from './spacing';
 export * from './theme';
 export * from './zindex';

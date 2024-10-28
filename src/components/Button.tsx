@@ -1,44 +1,34 @@
 import classNames from 'classnames';
 import React from 'react';
-import Icon from './Icon';
+import Icon, { IconProps } from './Icon';
+import type { SemanticColorToken } from '../types';
 
 export type ButtonProps = {
-  color?:
-    | 'default'
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'info';
-  customStyles?:
-    | React.CSSProperties & {
-        '--btn-color-primary'?: string;
-        '--btn-color-secondary'?: string;
-        '--btn-color-emphasis'?: string;
-        '--btn-color-subtle'?: string;
-      };
+  color?: SemanticColorToken;
   icon?: string | React.ReactElement;
-  iconAlignment?: 'left' | 'right' | 'only';
-  iconSize?: 'inherit' | 'sm' | 'md' | 'lg' | 'xl';
-  shape?: 'square' | 'rounded-corners' | 'rounded' | 'circle';
-  size?: 'sm' | 'md' | 'lg' | 'intrinsic';
-  style?: 'solid' | 'outline' | 'text' | 'unstyled';
+  iconAlignment?: 'leading' | 'trailing' | 'only' | 'none';
+  iconProps?: IconProps;
+  shape?: 'square' | 'rounded' | 'pill' | 'circle';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  style?: React.CSSProperties & {
+    '--btn-color-primary'?: string;
+    '--btn-color-secondary'?: string;
+  };
+  variant?: 'solid' | 'outline' | 'link' | 'text' | 'unstyled';
 } & React.ComponentPropsWithRef<'button'>;
 
 export default function Button({
   children,
   className,
   color = 'default',
-  customStyles,
   icon,
-  iconAlignment,
-  iconSize = 'inherit',
+  iconAlignment = 'leading',
+  iconProps,
   onClick,
-  shape = 'rounded-corners',
-  size = 'sm',
-  style = 'solid',
+  shape = 'rounded',
+  size,
+  style,
+  variant = 'solid',
   ...rest
 }: ButtonProps) {
   return (
@@ -47,19 +37,22 @@ export default function Button({
         'btn',
         { [`btn--${color}`]: color },
         { [`btn--${shape}`]: shape },
-        { [`btn--${style}`]: style },
-        { [`btn--${size}`]: size && size !== 'intrinsic' },
-        { 'btn--icon-only': iconAlignment === 'only' },
+        { [`btn--${variant}`]: variant },
+        { [`btn--${size}`]: size },
+        {
+          [`btn--icon-${iconAlignment}`]:
+            icon && iconAlignment && iconAlignment !== 'none',
+        },
         className,
       )}
       onClick={onClick}
-      style={customStyles}
+      style={style}
       {...rest}
     >
-      {iconAlignment === 'left' && (
-        <span aria-hidden className="icon-wrapper margin-right-md">
+      {iconAlignment === 'leading' && (
+        <span aria-hidden className="icon-wrapper">
           {typeof icon === 'string' ? (
-            <Icon name={icon} size={iconSize} />
+            <Icon name={icon} {...iconProps} />
           ) : (
             icon
           )}
@@ -68,7 +61,7 @@ export default function Button({
       {iconAlignment === 'only' ? (
         <span aria-hidden className="icon-wrapper">
           {typeof icon === 'string' ? (
-            <Icon name={icon} size={iconSize} />
+            <Icon name={icon} size={size} {...iconProps} />
           ) : (
             icon
           )}
@@ -76,10 +69,10 @@ export default function Button({
       ) : (
         children
       )}
-      {iconAlignment === 'right' && (
-        <span aria-hidden className="icon-wrapper margin-left-md">
+      {iconAlignment === 'trailing' && (
+        <span aria-hidden className="icon-wrapper">
           {typeof icon === 'string' ? (
-            <Icon name={icon} size={iconSize} />
+            <Icon name={icon} {...iconProps} />
           ) : (
             icon
           )}

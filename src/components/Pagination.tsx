@@ -24,7 +24,7 @@ export default function Pagination({
         key={i}
         onClick={() => onPageChange(i)}
         size="md"
-        style="outline"
+        variant="outline"
       >
         {i + 1}
       </Button>,
@@ -39,7 +39,7 @@ export default function Pagination({
         iconAlignment="only"
         onClick={() => onPageChange(currentPage - 1)}
         size="md"
-        style="outline"
+        variant="outline"
       />
       {pageButtons}
       <Button
@@ -48,7 +48,7 @@ export default function Pagination({
         iconAlignment="only"
         onClick={() => onPageChange(currentPage + 1)}
         size="md"
-        style="outline"
+        variant="outline"
       />
     </div>
   );

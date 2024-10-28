@@ -45,8 +45,8 @@ export default function AppFooter({
       data-theme={theme}
     >
       <div className="container">
-        <div className="row align-items-center margin-top-lg margin-bottom-lg">
-          <div className="col font-xs font-weight-500">
+        <div className="row align-center my-lg">
+          <div className="col text-xs font-500">
             <span>
               {!hideLogo && (
                 <Logo as={LogoElementType} size="xs" {...logoProps} />
@@ -63,7 +63,7 @@ export default function AppFooter({
                   <Link
                     aria-label={link.name}
                     as={LinkElementType}
-                    className="color-inherit margin-left-md margin-right-md"
+                    className="text-inherit mx-sm"
                     external={link.external}
                     key={link.id || link.to}
                     onClick={() => {

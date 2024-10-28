@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import type { SpacingToken } from '../types';
 
 export type ColSizeClass =
   | number
@@ -12,7 +13,7 @@ export type ColSizeClass =
     };
 
 export type ColProps = {
-  gutters?: 'sm' | 'md' | 'lg' | 'none';
+  gutters?: SpacingToken | 'none';
   sm?: ColSizeClass;
   md?: ColSizeClass;
   lg?: ColSizeClass;
@@ -48,26 +49,26 @@ export default function Col({
 }
 
 function getClassNames(
-  name: string,
+  breakpoint: string,
   obj: ColSizeClass | undefined,
 ): { [key: string]: boolean } | null {
   if (typeof obj === 'boolean') {
     return {
-      [`col-${name}`]: obj,
+      [`${breakpoint}:col`]: obj,
     };
   }
   if (typeof obj === 'number' || typeof obj === 'string') {
     return {
-      [`col-${name}-${obj}`]: true,
+      [`${breakpoint}:col-${obj}`]: true,
     };
   }
   if (typeof obj === 'object' && obj) {
     const { size, order, offset } = obj;
     return {
-      [`col-${name}`]: typeof size === 'undefined',
-      [`col-${name}-${size}`]: typeof size !== 'undefined',
-      [`order-${name}-${order}`]: typeof order !== 'undefined',
-      [`offset-${name}-${offset}`]: typeof offset !== 'undefined',
+      [`${breakpoint}:col`]: typeof size === 'undefined',
+      [`${breakpoint}:col-${size}`]: typeof size !== 'undefined',
+      [`${breakpoint}:order-${order}`]: typeof order !== 'undefined',
+      [`${breakpoint}:offset-${offset}`]: typeof offset !== 'undefined',
     };
   }
   return null;

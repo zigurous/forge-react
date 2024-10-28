@@ -4,12 +4,10 @@ import { logo } from '../icons';
 import type { PolymorphicProps } from '../types';
 
 export type BaseLogoProps = {
-  className?: string;
   fill?: string;
   image?: string;
   label?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  style?: React.CSSProperties;
   variant?: 'wordmark' | 'lettermark' | 'logomark';
 };
 
@@ -36,7 +34,12 @@ export default function Logo<T extends React.ElementType = 'a'>({
   return (
     <Element
       aria-label={label}
-      className={classNames('logo', variant, size, className)}
+      className={classNames(
+        'logo',
+        { [`logo--${variant}`]: variant },
+        { [`logo--${size}`]: size },
+        className,
+      )}
       href={Element === 'a' ? href : undefined}
       style={{ fill, ...style }}
       to={Element !== 'a' ? href : undefined}

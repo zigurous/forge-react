@@ -25,7 +25,7 @@ export default function NavBar({
 }: NavBarProps) {
   return (
     <nav
-      className={classNames('navbar', { 'display-none': hidden }, className)}
+      className={classNames('navbar', { hidden: hidden }, className)}
       {...rest}
     >
       <ul className="navbar__list">
@@ -54,7 +54,7 @@ export default function NavBar({
                   {link.icon &&
                     (link.iconAlignment === 'left' || !link.iconAlignment) && (
                       <Icon
-                        className="margin-right-md"
+                        className="mr-sm"
                         material={typeof link.icon === 'string'}
                         size="sm"
                       >
@@ -66,7 +66,7 @@ export default function NavBar({
                   {link.name}
                   {link.icon && link.iconAlignment === 'right' && (
                     <Icon
-                      className="margin-left-md"
+                      className="ml-sm"
                       material={typeof link.icon === 'string'}
                       size="sm"
                     >

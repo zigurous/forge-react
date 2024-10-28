@@ -5,4 +5,4 @@ export enum Breakpoint {
   xl = 1200,
 }
 
-export type BreakpointKey = keyof typeof Breakpoint;
+export type BreakpointToken = keyof typeof Breakpoint;

@@ -37,10 +37,9 @@ export default function SideDrawer({
         className="sidedrawer__button"
         icon={open ? 'close' : 'menu'}
         iconAlignment="only"
-        iconSize="md"
         onClick={() => setOpen(!open)}
-        size="intrinsic"
-        style="unstyled"
+        size="md"
+        variant="unstyled"
       />
       <ReactPortal rootElement={rootElement}>
         <div
