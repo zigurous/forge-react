@@ -1,17 +1,25 @@
 import classNames from 'classnames';
 import React from 'react';
+import type { SemanticColorToken } from '../types';
 
 export type BadgeProps = {
-  pill?: boolean;
+  color?: SemanticColorToken;
   selected?: boolean;
+  shape?: 'square' | 'pill' | 'rounded';
+  style?: React.CSSProperties & {
+    '--badge-color-primary'?: string;
+    '--badge-color-secondary'?: string;
+  };
   type?: 'solid' | 'outline';
 } & React.ComponentPropsWithRef<'div'>;
 
 export default function Badge({
   children,
   className,
-  pill = false,
+  color = 'default',
   selected = false,
+  shape = 'pill',
+  style,
   type = 'solid',
   ...rest
 }: BadgeProps) {
@@ -19,11 +27,13 @@ export default function Badge({
     <div
       className={classNames(
         'badge',
+        { [`badge--${color}`]: color },
         { [`badge--${type}`]: type },
-        { 'badge--pill': pill },
+        { [`badge--${shape}`]: shape },
         { 'badge--selected': selected },
         className,
       )}
+      style={style}
       {...rest}
     >
       {children}
