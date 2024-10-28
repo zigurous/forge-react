@@ -11,6 +11,7 @@ export type BaseTextProps = {
   marginBottom?: MarginToken;
   marginTop?: MarginToken;
   size?: FontSizeToken;
+  weight?: FontWeight;
 };
 
 export type TextProps<T extends React.ElementType = 'p'> = PolymorphicProps<
@@ -28,6 +29,7 @@ export default function Text<T extends React.ElementType = 'p'>({
   marginBottom,
   marginTop,
   size,
+  weight,
   ...rest
 }: TextProps<T>) {
   const Element = as ?? 'p';
@@ -36,6 +38,7 @@ export default function Text<T extends React.ElementType = 'p'>({
       className={classNames(
         { [`text-${size}`]: size },
         { [`text-${color}`]: color },
+        { [`font-${weight}`]: typeof weight !== 'undefined' },
         { [`mt-${marginTop}`]: marginTop },
         { [`mb-${marginBottom}`]: marginBottom },
         className,
