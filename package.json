@@ -14,17 +14,28 @@
     "react-image-lightbox": "^5.1.4"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "8.3.6",
+    "@storybook/addon-links": "8.3.6",
+    "@storybook/addon-themes": "^8.3.6",
+    "@storybook/blocks": "8.3.6",
+    "@storybook/react": "8.3.6",
+    "@storybook/react-vite": "8.3.6",
+    "@storybook/test": "8.3.6",
     "@types/prismjs": "^1.26.4",
     "@types/react": "^18.1.0",
     "@types/react-dom": "^18.1.0",
     "clipboardy": "^3.0.0",
     "cross-env": "^7.0.3",
     "microbundle": "^0.15.1",
+    "prop-types": "15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "svg2js": "^0.0.4-alpha1"
+    "storybook": "8.3.6",
+    "svg2js": "^0.0.4-alpha1",
+    "vite": "^5.4.10"
   },
   "peerDependencies": {
+    "@zigurous/css-styles": "^3.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },
@@ -32,7 +43,8 @@
     "build": "microbundle --compress --jsx React.createElement --jsxFragment React.Fragment --globals react=React,react-dom=ReactDOM",
     "start": "microbundle watch --no-compress --jsx React.createElement --jsxFragment React.Fragment --globals react=React,react-dom=ReactDOM",
     "predeploy": "yarn build",
-    "prepare": "yarn build"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
