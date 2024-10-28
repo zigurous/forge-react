@@ -20,6 +20,7 @@ export default function Pagination({
   for (let i = 0; i < totalPages; i++) {
     pageButtons.push(
       <Button
+        aria-label={`Page ${i + 1}`}
         className={classNames({ active: currentPage === i })}
         key={i}
         onClick={() => onPageChange(i)}
@@ -34,6 +35,7 @@ export default function Pagination({
   return (
     <div className={classNames('pagination', className)}>
       <Button
+        aria-label="Previous"
         disabled={currentPage <= 0}
         icon="chevron_left"
         iconAlignment="only"
@@ -43,6 +45,7 @@ export default function Pagination({
       />
       {pageButtons}
       <Button
+        aria-label="Next"
         disabled={currentPage >= totalPages - 1}
         icon="chevron_right"
         iconAlignment="only"

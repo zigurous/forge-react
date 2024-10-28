@@ -54,6 +54,7 @@ export default function Modal({
               <div className="modal__header">
                 <div className="modal__title h5">{title}</div>
                 <Button
+                  aria-label="Close"
                   className="modal__close-button"
                   icon="close"
                   iconAlignment="only"
