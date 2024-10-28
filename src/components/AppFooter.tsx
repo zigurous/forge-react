@@ -8,6 +8,7 @@ export interface AppFooterProps {
   bordered?: boolean;
   className?: string;
   copyright?: React.ReactNode;
+  hideCopyright?: boolean;
   hideLogo?: boolean;
   LinkElementType?: React.ElementType;
   links?: LinkType[];
@@ -22,7 +23,13 @@ export interface AppFooterProps {
 export default function AppFooter({
   bordered = false,
   className,
-  copyright,
+  copyright = (
+    <>
+      Copyright <span aria-hidden>©</span> {new Date().getFullYear()} All Rights
+      Reserved
+    </>
+  ),
+  hideCopyright = false,
   hideLogo = false,
   LinkElementType = 'a',
   links,
@@ -51,10 +58,8 @@ export default function AppFooter({
               {!hideLogo && (
                 <Logo as={LogoElementType} size="xs" {...logoProps} />
               )}
-              {copyright && (
-                <span className="copyright margin-left-xl margin-right-xl">
-                  {copyright}
-                </span>
+              {!hideCopyright && copyright && (
+                <span className="copyright mx-xl">{copyright}</span>
               )}
             </span>
             {links && links.length > 0 && (
