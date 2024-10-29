@@ -31,7 +31,7 @@ export default function SearchInput({
       aria-label="Search"
       className={classNames('search-input', className)}
       icon="search"
-      iconAlignment="left"
+      iconAlignment="leading"
       onChange={event => {
         if (onChange) {
           onChange(event);
