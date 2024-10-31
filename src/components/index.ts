@@ -11,6 +11,7 @@ export { default as Col, ColProps, ColSizeClass } from './Col'; // prettier-igno
 export { default as ContactForm, ContactFormProps } from './ContactForm'; // prettier-ignore
 export { default as Container, ContainerProps } from './Container'; // prettier-ignore
 export { default as CookieConsent, CookieConsentProps } from './CookieConsent'; // prettier-ignore
+export { default as Drawer, DrawerProps } from './Drawer'; // prettier-ignore
 export { default as EmbeddedTwitch, EmbeddedTwitchProps } from './EmbeddedTwitch'; // prettier-ignore
 export { default as EmbeddedVideo, EmbeddedVideoProps } from './EmbeddedVideo'; // prettier-ignore
 export { default as EmbeddedYouTube, EmbeddedYouTubeProps } from './EmbeddedYouTube'; // prettier-ignore
@@ -29,7 +30,6 @@ export { default as ProgressiveImage, ProgressiveImageProps } from './Progressiv
 export { default as ReactPortal, ReactPortalProps } from './ReactPortal'; // prettier-ignore
 export { default as Row, RowProps } from './Row'; // prettier-ignore
 export { default as SearchInput, SearchInputProps } from './SearchInput'; // prettier-ignore
-export { default as SideDrawer, SideDrawerProps } from './SideDrawer'; // prettier-ignore
 export { default as SocialButton, SocialButtonProps } from './SocialButton'; // prettier-ignore
 export { default as SocialIcon, SocialIconProps } from './SocialIcon'; // prettier-ignore
 export { default as SocialNavLinks, SocialNavLinksProps } from './SocialNavLinks'; // prettier-ignore
