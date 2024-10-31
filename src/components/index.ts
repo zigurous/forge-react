@@ -31,8 +31,7 @@ export { default as ReactPortal, ReactPortalProps } from './ReactPortal'; // pre
 export { default as Row, RowProps } from './Row'; // prettier-ignore
 export { default as SearchInput, SearchInputProps } from './SearchInput'; // prettier-ignore
 export { default as SocialButton, SocialButtonProps } from './SocialButton'; // prettier-ignore
-export { default as SocialIcon, SocialIconProps } from './SocialIcon'; // prettier-ignore
-export { default as SocialNavLinks, SocialNavLinksProps } from './SocialNavLinks'; // prettier-ignore
+export { default as SocialIcons, SocialIconsProps } from './SocialIcons'; // prettier-ignore
 export { default as Stack, StackProps } from './Stack'; // prettier-ignore
 export { default as Text, TextProps } from './Text'; // prettier-ignore
 export { default as Thumbnail, ThumbnailProps } from './Thumbnail'; // prettier-ignore

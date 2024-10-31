@@ -1,43 +1,31 @@
 import classNames from 'classnames';
 import React from 'react';
-import SocialIcon from './SocialIcon';
+import Icon, { IconProps } from './Icon';
 import { socialLinks } from '../links';
 import type { SocialLinkType } from '../types';
 
-export interface SocialNavLinksProps {
-  backgroundColor?: string;
+export interface SocialIconsProps {
   className?: string;
-  foregroundColor?: string;
   hidden?: boolean;
-  iconInnerPadding?: number | string;
-  iconSize?: number | string;
-  iconSpacing?: number | string;
+  iconProps?: IconProps<'a'>;
   links?: SocialLinkType[];
   onLinkClick?: (link: SocialLinkType) => void;
-  rounded?: boolean;
+  spacing?: number | string;
   wrap?: boolean;
 }
 
-export default function SocialNavLinks({
-  backgroundColor,
+export default function SocialIcons({
   className,
-  foregroundColor,
   hidden = false,
-  iconInnerPadding = 12,
-  iconSize = 24,
-  iconSpacing,
+  iconProps,
   links,
   onLinkClick,
-  rounded = false,
+  spacing,
   wrap = false,
-}: SocialNavLinksProps) {
+}: SocialIconsProps) {
   return (
-    <div
-      className={classNames('social-nav-links', { hidden: hidden }, className)}
-    >
-      <ul
-        className={classNames('social-nav-links__list', { 'flex-wrap': wrap })}
-      >
+    <div className={classNames('social-icons', { hidden: hidden }, className)}>
+      <ul className={classNames({ 'flex-wrap': wrap })}>
         {links &&
           links.length > 0 &&
           links.map(link => {
@@ -45,27 +33,24 @@ export default function SocialNavLinks({
               typeof link === 'string' ? socialLinks[link] : link;
             return (
               <li
-                className="social-nav-links__item"
                 key={socialLink.id || socialLink.name}
-                style={{ margin: iconSpacing }}
+                style={{ margin: spacing }}
               >
-                <SocialIcon
+                <Icon
                   aria-label={socialLink.name}
                   as="a"
-                  backgroundColor={backgroundColor}
-                  foregroundColor={foregroundColor || socialLink.color}
+                  color={socialLink.color}
                   href={socialLink.to}
                   icon={socialLink.icon}
-                  innerPadding={iconInnerPadding}
                   onClick={() => {
                     if (onLinkClick) {
                       onLinkClick(socialLink);
                     }
                   }}
                   rel="noopener noreferrer"
-                  rounded={rounded}
-                  size={iconSize}
                   target="_blank"
+                  type="social"
+                  {...iconProps}
                 />
               </li>
             );

@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import React from 'react';
 import Button, { ButtonProps } from './Button';
 import Link from './Link';
-import SocialIcon from './SocialIcon';
 import { socialLinks } from '../links';
 import type { LinkTypeWithIcon, SocialLinkType } from '../types';
 
@@ -38,14 +37,8 @@ export default function SocialButton({
     >
       <Button
         className={classNames('social-button', social.id, className)}
-        icon={
-          <SocialIcon
-            aria-hidden
-            icon={social.icon}
-            innerPadding={0}
-            size="100%"
-          />
-        }
+        icon={social.icon}
+        iconProps={{ 'aria-hidden': true, type: 'social' }}
         style={{
           '--btn-color-primary': color,
           '--btn-color-secondary': secondaryColor,

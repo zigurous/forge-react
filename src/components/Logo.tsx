@@ -30,7 +30,7 @@ export default function Logo<T extends React.ElementType = 'a'>({
   ...rest
 }: LogoProps<T>) {
   const Element = as ?? 'a';
-  const Icon = image ? undefined : logo[variant];
+  const SVG = image ? undefined : logo[variant];
   return (
     <Element
       aria-label={label}
@@ -46,7 +46,7 @@ export default function Logo<T extends React.ElementType = 'a'>({
       {...rest}
     >
       {image && <img alt={label} src={image} />}
-      {Icon && <Icon />}
+      {SVG && <SVG />}
     </Element>
   );
 }
