@@ -1,17 +1,19 @@
 import classNames from 'classnames';
 import React from 'react';
-import type { ColorToken, FontSizeToken, FontWeight, MarginToken, PolymorphicProps } from '../types'; // prettier-ignore
+import type { FontSizeToken, FontTypeToken, FontWeightToken, MarginToken, PolymorphicProps, TextColorToken } from '../types'; // prettier-ignore
 
 export type BaseTextProps = {
   bold?: boolean;
   children?: React.ReactNode;
   className?: string;
-  color?: ColorToken;
+  color?: TextColorToken;
   italic?: boolean;
   marginBottom?: MarginToken;
   marginTop?: MarginToken;
+  nowrap?: boolean;
   size?: FontSizeToken;
-  weight?: FontWeight;
+  type?: FontTypeToken;
+  weight?: FontWeightToken;
 };
 
 export type TextProps<T extends React.ElementType = 'p'> = PolymorphicProps<
@@ -28,7 +30,9 @@ export default function Text<T extends React.ElementType = 'p'>({
   italic,
   marginBottom,
   marginTop,
+  nowrap,
   size,
+  type,
   weight,
   ...rest
 }: TextProps<T>) {
@@ -36,11 +40,15 @@ export default function Text<T extends React.ElementType = 'p'>({
   return (
     <Element
       className={classNames(
-        { [`text-${size}`]: size },
-        { [`text-${color}`]: color },
-        { [`font-${weight}`]: typeof weight !== 'undefined' },
-        { [`mt-${marginTop}`]: marginTop },
-        { [`mb-${marginBottom}`]: marginBottom },
+        {
+          [`${type}`]: type,
+          [`text-${size}`]: size,
+          [`text-${color}`]: color,
+          [`font-${weight}`]: typeof weight !== 'undefined',
+          [`mt-${marginTop}`]: marginTop,
+          [`mb-${marginBottom}`]: marginBottom,
+          'text-nowrap': nowrap,
+        },
         className,
       )}
       {...rest}

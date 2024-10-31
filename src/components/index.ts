@@ -36,4 +36,3 @@ export { default as SocialNavLinks, SocialNavLinksProps } from './SocialNavLinks
 export { default as Stack, StackProps } from './Stack'; // prettier-ignore
 export { default as Text, TextProps } from './Text'; // prettier-ignore
 export { default as Thumbnail, ThumbnailProps } from './Thumbnail'; // prettier-ignore
-export { default as Title, TitleProps } from './Title'; // prettier-ignore
