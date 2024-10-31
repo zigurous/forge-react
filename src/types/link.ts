@@ -1,4 +1,4 @@
-import type { SVGIcon } from './icon';
+import type { IconElement } from './icon';
 
 export type LinkType = {
   color?: string;
@@ -9,8 +9,8 @@ export type LinkType = {
 };
 
 export type LinkTypeWithIcon = LinkType & {
-  icon?: string | SVGIcon;
-  iconAlignment?: 'left' | 'right';
+  icon?: IconElement;
+  iconAlignment?: 'leading' | 'trailing';
 };
 
 export type SocialLinkType = string | LinkTypeWithIcon;

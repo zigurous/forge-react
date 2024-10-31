@@ -1,10 +1,10 @@
 import { createContext, useCallback } from 'react';
 import { useLocalStorage } from './useLocalStorage';
-import type { Theme } from '../types';
+import type { BaseThemeToken } from '../types';
 
 type ThemeContextType = {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
+  theme: BaseThemeToken;
+  setTheme: (theme: BaseThemeToken) => void;
   toggleTheme: () => void;
 };
 
@@ -17,8 +17,8 @@ const defaultThemeContext: ThemeContextType = {
 export const ThemeContext = createContext(defaultThemeContext);
 
 export function useTheme(
-  defaultTheme: Theme = 'light',
-): [Theme, (theme: Theme) => void, () => void] {
+  defaultTheme: BaseThemeToken = 'light',
+): [BaseThemeToken, (theme: BaseThemeToken) => void, () => void] {
   const [theme, setTheme] = useLocalStorage('theme', defaultTheme);
 
   const toggleTheme = useCallback(() => {

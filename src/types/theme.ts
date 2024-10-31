@@ -1,2 +1,5 @@
-export type SupportedTheme = 'light' | 'dark' | 'high-contrast';
-export type Theme = SupportedTheme | string;
+import { BaseTheme, SupportedTheme } from '../enums';
+
+export type BaseThemeToken = `${BaseTheme}`;
+export type SupportedThemeToken = `${SupportedTheme}`;
+export type ThemeToken = BaseThemeToken | SupportedThemeToken | string;

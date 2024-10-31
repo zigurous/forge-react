@@ -1,0 +1,55 @@
+export enum Color {
+  Inherit = 'inherit',
+  Current = 'current',
+  Transparent = 'transparent',
+  Black = 'black',
+  White = 'white',
+  Default = 'default',
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Success = 'success',
+  Danger = 'danger',
+  Warning = 'warning',
+  Info = 'info',
+  Foreground = 'foreground',
+  Background = 'background',
+  Surface1 = 'surface-1',
+  Surface2 = 'surface-2',
+  Surface3 = 'surface-3',
+  Surface4 = 'surface-4',
+  Surface5 = 'surface-5',
+  Surface6 = 'surface-6',
+  Surface7 = 'surface-7',
+  Surface8 = 'surface-8',
+  Surface9 = 'surface-9',
+}
+
+export enum SemanticColor {
+  Default = 'default',
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Success = 'success',
+  Danger = 'danger',
+  Warning = 'warning',
+  Info = 'info',
+}
+
+export enum SyntaxColor {
+  Comment = 'comment',
+  Constant = 'constant',
+  DiffChangedText = 'diff-changed-text',
+  DiffChangedBg = 'diff-changed-bg',
+  DiffDeletedText = 'diff-deleted-text',
+  DiffDeletedBg = 'diff-deleted-bg',
+  DiffIgnoredText = 'diff-ignored-text',
+  DiffIgnoredBg = 'diff-ignored-bg',
+  DiffInsertedText = 'diff-inserted-text',
+  DiffInsertedBg = 'diff-inserted-bg',
+  Entity = 'entity',
+  Function = 'function',
+  Keyword = 'keyword',
+  Property = 'property',
+  String = 'string',
+}
+
+export const ColorTokenList: string[] = Object.values(Color);

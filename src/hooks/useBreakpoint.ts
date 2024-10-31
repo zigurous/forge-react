@@ -1,27 +1,23 @@
 import { useMediaQuery } from './useMediaQuery';
-import type { Breakpoint } from '../types';
+import { BreakpointMinWidth, BreakpointMaxWidth } from '../enums';
+import type { BreakpointToken } from '../types';
 
-const sizes = {
-  sm: 576,
-  md: 768,
-  lg: 992,
-  xl: 1200,
-};
-
-export function useBreakpoint(minWidth: number | Breakpoint): boolean {
-  switch (typeof minWidth) {
+export function useBreakpoint(breakpoint: number | BreakpointToken): boolean {
+  switch (typeof breakpoint) {
     case 'number':
-      return useMediaQuery(`(min-width: ${minWidth}px)`);
+      return useMediaQuery(`(min-width: ${breakpoint}px)`);
     default:
-      return useMediaQuery(`(min-width: ${sizes[minWidth]}px)`);
+      return useMediaQuery(`(min-width: ${BreakpointMinWidth[breakpoint]}px)`);
   }
 }
 
-export function useBreakpointMax(maxWidth: number | Breakpoint): boolean {
-  switch (typeof maxWidth) {
+export function useBreakpointMax(
+  breakpoint: number | BreakpointToken,
+): boolean {
+  switch (typeof breakpoint) {
     case 'number':
-      return useMediaQuery(`(max-width: ${maxWidth - 1}px)`);
+      return useMediaQuery(`(max-width: ${breakpoint}px)`);
     default:
-      return useMediaQuery(`(max-width: ${sizes[maxWidth] - 1}px)`);
+      return useMediaQuery(`(max-width: ${BreakpointMaxWidth[breakpoint]}px)`);
   }
 }
