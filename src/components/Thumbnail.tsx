@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import React, { useEffect, useRef, useState } from 'react';
-import ProgressiveImage, { ProgressiveImageProps } from './ProgressiveImage';
-import type { PolymorphicProps, PolymorphicRef } from '../types';
+import React, { useEffect, useMemo, useState } from 'react';
+import ProgressiveImage, { type ProgressiveImageProps } from './ProgressiveImage'; // prettier-ignore
+import type { PolymorphicProps } from '../types';
 
 export type BaseThumbnailProps = {
   animated?: boolean;
@@ -10,9 +10,9 @@ export type BaseThumbnailProps = {
     | 'fade-out'
     | 'translate-in'
     | 'translate-out'
-    | 'fade-translate-in'
-    | 'fade-translate-out'
-    | string;
+    | string
+    | string[];
+  animationDuration?: number;
   children?: React.ReactNode;
   className?: string;
   image?: string | ProgressiveImageProps;
@@ -26,7 +26,8 @@ export type ThumbnailProps<T extends React.ElementType = 'a'> =
 
 export default function Thumbnail<T extends React.ElementType = 'a'>({
   animated = false,
-  animation = 'fade-translate-in',
+  animation = ['fade-in', 'translate-in'],
+  animationDuration,
   as,
   children,
   className,
@@ -39,43 +40,35 @@ export default function Thumbnail<T extends React.ElementType = 'a'>({
 }: ThumbnailProps<T>) {
   const Element = as ?? 'a';
   const imageProps = typeof image === 'object' ? image : { src: image };
-  const ref = useRef<PolymorphicRef<T>>(null);
   const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    let handle: ReturnType<typeof setTimeout>;
-    if (animated && loaded) {
-      handle = setTimeout(() => {
-        if (ref.current) {
-          ref.current.style.animation = 'none';
-        }
-      }, 600);
-    }
-    return () => {
-      if (handle) {
-        clearTimeout(handle);
-      }
-    };
-  }, [animated, loaded, ref]);
-
+  const animationState = useAnimationState(loaded, index, animationDuration);
   return (
     <Element
       {...rest}
       className={classNames(
         'thumbnail',
         {
-          'animation-short': animated && loaded,
-          [`animation-delay-${index + 1}`]: animated && loaded && index >= 0,
-          [animation]: animated && loaded,
+          [getAnimationClasses(animation)]: animated,
+          'transition-start': animated && !loaded,
+          'transition-end': animated && loaded,
+          rounded,
+          shadow,
         },
-        { rounded, shadow },
         className,
       )}
-      ref={ref}
+      style={{
+        transitionDelay:
+          animated && !animationState.done
+            ? `${animationState.delay}ms`
+            : undefined,
+        transitionDuration:
+          animated && animationDuration ? `${animationDuration}ms` : undefined,
+      }}
     >
       {image && (
         <ProgressiveImage
           {...imageProps}
+          animated={false}
           onLoaded={() => {
             setLoaded(true);
             if (typeof image === 'object' && image.onLoaded) {
@@ -87,4 +80,37 @@ export default function Thumbnail<T extends React.ElementType = 'a'>({
       {children}
     </Element>
   );
+}
+
+function useAnimationState(loaded: boolean, index: number, duration?: number) {
+  const [mountTime] = useState(Date.now());
+  const [done, setDone] = useState(false);
+
+  // Subtract the time it took to load the image from the delay
+  const delay = useMemo(() => {
+    let delay = index * 50;
+    if (loaded) {
+      const elapsed = Date.now() - mountTime;
+      delay = Math.max(0, delay - elapsed);
+    }
+    return delay;
+  }, [index, loaded]);
+
+  // Mark as done after the delay and duration have passed
+  useEffect(() => {
+    if (!loaded) return;
+    const ms = delay + (duration ?? 300);
+    const timeout = setTimeout(() => setDone(true), ms);
+    return () => clearTimeout(timeout);
+  }, [delay, duration, loaded]);
+
+  return { delay, done };
+}
+
+function getAnimationClasses(animation: string | string[]) {
+  if (Array.isArray(animation)) {
+    return animation.map(name => `transition-${name}`).join(' ');
+  } else {
+    return `transition-${animation}`;
+  }
 }
