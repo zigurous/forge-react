@@ -6,6 +6,7 @@ export interface PaginationProps {
   className?: string;
   currentPage?: number;
   onPageChange?: (page: number) => void;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   totalPages: number;
 }
 
@@ -13,6 +14,7 @@ export default function Pagination({
   className,
   currentPage = 0,
   onPageChange = () => {},
+  size,
   totalPages,
 }: PaginationProps) {
   const pageButtons = [];
@@ -24,7 +26,6 @@ export default function Pagination({
         className={classNames({ active: currentPage === i })}
         key={i}
         onClick={() => onPageChange(i)}
-        size="md"
         variant="outline"
       >
         {i + 1}
@@ -33,24 +34,28 @@ export default function Pagination({
   }
 
   return (
-    <div className={classNames('pagination', className)}>
+    <div
+      className={classNames(
+        'pagination',
+        { [`pagination--${size}`]: size },
+        className,
+      )}
+    >
       <Button
-        aria-label="Previous"
+        aria-label="Previous Page"
         disabled={currentPage <= 0}
         icon="chevron_left"
         iconAlignment="only"
         onClick={() => onPageChange(currentPage - 1)}
-        size="md"
         variant="outline"
       />
       {pageButtons}
       <Button
-        aria-label="Next"
+        aria-label="Next Page"
         disabled={currentPage >= totalPages - 1}
         icon="chevron_right"
         iconAlignment="only"
         onClick={() => onPageChange(currentPage + 1)}
-        size="md"
         variant="outline"
       />
     </div>

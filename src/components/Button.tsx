@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import React from 'react';
-import Icon, { IconProps } from './Icon';
-import type { SemanticColorToken } from '../types';
+import Icon, { type IconProps } from './Icon';
+import type { IconElement, SemanticColorToken } from '../types';
 
 export type ButtonProps = {
   color?: SemanticColorToken;
-  icon?: string | React.ReactElement;
+  icon?: IconElement;
   iconAlignment?: 'leading' | 'trailing' | 'only' | 'none';
-  iconProps?: IconProps;
+  iconProps?: IconProps<'i'>;
   shape?: 'square' | 'rounded' | 'pill' | 'circle';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   style?: React.CSSProperties & {
@@ -35,11 +35,11 @@ export default function Button({
     <button
       className={classNames(
         'btn',
-        { [`btn--${color}`]: color },
-        { [`btn--${shape}`]: shape },
-        { [`btn--${variant}`]: variant },
-        { [`btn--${size}`]: size },
         {
+          [`btn--${color}`]: color,
+          [`btn--${shape}`]: shape,
+          [`btn--${variant}`]: variant,
+          [`btn--${size}`]: size,
           [`btn--icon-${iconAlignment}`]:
             icon && iconAlignment && iconAlignment !== 'none',
         },
@@ -49,33 +49,21 @@ export default function Button({
       style={style}
       {...rest}
     >
-      {iconAlignment === 'leading' && (
+      {icon && iconAlignment === 'leading' && (
         <span aria-hidden className="icon-wrapper">
-          {typeof icon === 'string' ? (
-            <Icon name={icon} {...iconProps} />
-          ) : (
-            icon
-          )}
+          <Icon icon={icon} {...iconProps} />
         </span>
       )}
-      {iconAlignment === 'only' ? (
+      {icon && iconAlignment === 'only' ? (
         <span aria-hidden className="icon-wrapper">
-          {typeof icon === 'string' ? (
-            <Icon name={icon} size={size} {...iconProps} />
-          ) : (
-            icon
-          )}
+          <Icon icon={icon} size={size} {...iconProps} />
         </span>
       ) : (
         children
       )}
-      {iconAlignment === 'trailing' && (
+      {icon && iconAlignment === 'trailing' && (
         <span aria-hidden className="icon-wrapper">
-          {typeof icon === 'string' ? (
-            <Icon name={icon} {...iconProps} />
-          ) : (
-            icon
-          )}
+          <Icon icon={icon} {...iconProps} />
         </span>
       )}
     </button>

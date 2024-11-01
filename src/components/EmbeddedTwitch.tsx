@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import EmbeddedVideo, { EmbeddedVideoProps } from './EmbeddedVideo';
+import EmbeddedVideo, { type EmbeddedVideoProps } from './EmbeddedVideo';
 
 export type EmbeddedTwitchProps = {
   channel: string;

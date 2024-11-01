@@ -3,9 +3,9 @@ import React from 'react';
 import Button from './Button';
 import ReactPortal from './ReactPortal';
 import { useModalOverlay } from '../hooks';
-import type { Theme } from '../types';
+import type { ThemeToken } from '../types';
 
-export interface ModalProps {
+export type ModalProps = {
   children?: React.ReactNode;
   className?: string;
   dialogClassName?: string;
@@ -16,9 +16,9 @@ export interface ModalProps {
   onRequestClose?: () => void;
   open?: boolean;
   rootElement?: string;
-  theme?: Theme | string;
+  theme?: ThemeToken;
   title?: string;
-}
+} & React.ComponentPropsWithRef<'div'>;
 
 export default function Modal({
   children,
@@ -33,6 +33,7 @@ export default function Modal({
   rootElement = 'body',
   theme,
   title,
+  ...rest
 }: ModalProps) {
   useModalOverlay(open, true);
   if (!open) return null;
@@ -44,6 +45,7 @@ export default function Modal({
         role="dialog"
         tabIndex={-1}
         data-theme={theme}
+        {...rest}
       >
         <div
           className={classNames('modal__dialog', dialogClassName)}
@@ -58,9 +60,10 @@ export default function Modal({
                   className="modal__close-button"
                   icon="close"
                   iconAlignment="only"
+                  iconProps={{ color: '' }}
                   onClick={onRequestClose}
                   size="md"
-                  variant="unstyled"
+                  variant="text"
                 />
               </div>
             )}

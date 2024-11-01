@@ -4,30 +4,28 @@ import React from 'react';
 export interface LoadingSpinnerProps {
   className?: string;
   loading?: boolean;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
 export default function LoadingSpinner({
   className,
   loading = true,
-  size = 'md',
+  size,
 }: LoadingSpinnerProps) {
   return (
     <div
       aria-hidden
       className={classNames(
         'loading-spinner',
-        { loaded: !loading },
-        size,
+        { [`loading-spinner--${size}`]: size },
+        { hidden: !loading },
         className,
       )}
     >
-      <div className="loading-spinner__animation">
-        <div />
-        <div />
-        <div />
-        <div />
-      </div>
+      <div />
+      <div />
+      <div />
+      <div />
     </div>
   );
 }

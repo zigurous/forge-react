@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import Icon, { IconProps } from './Icon';
+import Icon, { type IconProps } from './Icon';
 import { socialLinks } from '../links';
 import type { SocialLinkType } from '../types';
 

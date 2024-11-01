@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
 import Link from './Link';
-import Logo, { LogoProps } from './Logo';
-import type { LinkType, Theme } from '../types';
+import Logo, { type LogoProps } from './Logo';
+import type { LinkType, ThemeToken } from '../types';
 
 export interface AppFooterProps {
   bordered?: boolean;
@@ -13,10 +13,10 @@ export interface AppFooterProps {
   LinkElementType?: React.ElementType;
   links?: LinkType[];
   LogoElementType?: React.ElementType;
-  logoProps?: Omit<LogoProps, 'as'>;
+  logoProps?: Omit<LogoProps<'a'>, 'as'>;
   onLinkClick?: (link: LinkType) => void;
   sticky?: boolean;
-  theme?: Theme | string;
+  theme?: ThemeToken;
   transparent?: boolean;
 }
 

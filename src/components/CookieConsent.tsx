@@ -4,7 +4,7 @@ import React from 'react';
 import Button from './Button';
 import Link from './Link';
 import ReactPortal from './ReactPortal';
-import type { Theme } from '../types';
+import type { ThemeToken } from '../types';
 
 const COOKIE_NAME = 'cookieconsent_status';
 const COOKIE_VALUE = 'accepted';
@@ -15,7 +15,7 @@ export interface CookieConsentProps {
   learnMoreLink?: string;
   onConsent?: (consented: boolean) => void;
   rootElement?: string;
-  theme?: Theme | string;
+  theme?: ThemeToken;
 }
 
 export default function CookieConsent({

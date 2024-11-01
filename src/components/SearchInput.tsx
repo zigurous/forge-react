@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useCallback } from 'react';
-import Input, { InputProps } from './Input';
+import Input, { type InputProps } from './Input';
 import { debounce, enterKeyHandler } from '../utils';
 
 export type SearchInputProps = {

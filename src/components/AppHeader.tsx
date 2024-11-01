@@ -1,10 +1,12 @@
 import classNames from 'classnames';
-import React from 'react';
-import Logo, { LogoProps } from './Logo';
+import React, { useState } from 'react';
+import Button from './Button';
+import Logo, { type LogoProps } from './Logo';
 import NavBar from './NavBar';
 import NavMenu from './NavMenu';
-import SocialNavLinks, { SocialNavLinksProps } from './SocialNavLinks';
-import type { LinkTypeWithIcon, SocialLinkType, Theme } from '../types';
+import SocialIcons, { type SocialIconsProps } from './SocialIcons';
+import { useBreakpoint } from '../hooks';
+import type { LinkTypeWithIcon, SocialLinkType, ThemeToken } from '../types';
 
 export interface AppHeaderProps {
   bordered?: boolean;
@@ -17,13 +19,13 @@ export interface AppHeaderProps {
   links?: LinkTypeWithIcon[];
   location?: Location | null;
   LogoElementType?: React.ElementType;
-  logoProps?: Omit<LogoProps, 'as'>;
+  logoProps?: Omit<LogoProps<'a'>, 'as'>;
   onLinkClick?: (link: LinkTypeWithIcon) => void;
   rootElement?: string;
+  socialIconsProps?: SocialIconsProps;
   socialLinks?: SocialLinkType[];
-  socialNavLinksProps?: SocialNavLinksProps;
   sticky?: boolean;
-  theme?: Theme | string;
+  theme?: ThemeToken;
   transparent?: boolean;
 }
 
@@ -41,12 +43,14 @@ export default function AppHeader({
   logoProps,
   onLinkClick,
   rootElement = 'body',
+  socialIconsProps,
   socialLinks,
-  socialNavLinksProps,
   sticky = false,
   theme,
   transparent = false,
 }: AppHeaderProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const xl = useBreakpoint('xl');
   return (
     <header
       className={classNames(
@@ -68,6 +72,7 @@ export default function AppHeader({
           {!hideLogo && <Logo as={LogoElementType} size="sm" {...logoProps} />}
           {!hideNavigation && (
             <NavBar
+              className={classNames({ hidden: !xl })}
               LinkElementType={LinkElementType}
               links={links}
               location={location}
@@ -77,24 +82,47 @@ export default function AppHeader({
         </div>
         <div className="app-header__content right">
           {!hideSocialLinks && socialLinks && socialLinks.length > 0 && (
-            <SocialNavLinks
+            <SocialIcons
+              className={classNames({ hidden: !xl })}
+              iconProps={{
+                size: '1.25rem',
+                padding: '0.625rem',
+              }}
               links={socialLinks}
-              iconInnerPadding={10}
-              iconSize={20}
-              {...socialNavLinksProps}
+              {...socialIconsProps}
             />
           )}
           {!hideNavigation && (
-            <NavMenu
-              hideSocialLinks={hideSocialLinks}
-              LinkElementType={LinkElementType}
-              links={links}
-              location={location}
-              onLinkClick={onLinkClick}
-              rootElement={rootElement}
-              socialLinks={socialLinks}
-              theme={theme}
-            />
+            <>
+              <Button
+                aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
+                className={classNames('app-header__menu-button', {
+                  hidden: xl && !isMenuOpen,
+                })}
+                icon={isMenuOpen ? 'close' : 'menu'}
+                iconAlignment="only"
+                iconProps={{ size: 'md' }}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                size="lg"
+                variant="text"
+              />
+              <NavMenu
+                hideSocialLinks={hideSocialLinks}
+                LinkElementType={LinkElementType}
+                links={links}
+                location={location}
+                onLinkClick={link => {
+                  setIsMenuOpen(false);
+                  if (onLinkClick) {
+                    onLinkClick(link);
+                  }
+                }}
+                open={isMenuOpen}
+                rootElement={rootElement}
+                socialLinks={socialLinks}
+                theme={theme}
+              />
+            </>
           )}
         </div>
       </div>

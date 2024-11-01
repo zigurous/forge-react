@@ -1,17 +1,18 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
-import Icon, { IconProps } from './Icon';
+import Icon, { type IconProps } from './Icon';
+import type { IconElement } from '../types';
 
 export type InputProps = {
   className?: string;
   disabled?: boolean;
-  icon?: string;
+  icon?: IconElement;
   iconAlignment?: 'leading' | 'trailing';
-  iconProps?: IconProps;
+  iconProps?: IconProps<'i'>;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
-  size?: 'sm' | 'md' | 'lg';
-} & React.ComponentPropsWithRef<'input'>;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+} & Omit<React.ComponentPropsWithRef<'input'>, 'size'>;
 
 export default function Input({
   className,
@@ -53,7 +54,7 @@ export default function Input({
         {...rest}
       />
       {icon && (
-        <Icon className="input-wrapper__icon" name={icon} {...iconProps} />
+        <Icon className="input-wrapper__icon" icon={icon} {...iconProps} />
       )}
     </div>
   );

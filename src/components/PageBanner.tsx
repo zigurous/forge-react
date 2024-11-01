@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import type { Theme } from '../types';
+import type { ThemeToken } from '../types';
 
 export type PageBannerProps = {
   backgroundColor?: string;
@@ -8,7 +8,7 @@ export type PageBannerProps = {
   className?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   style?: React.CSSProperties;
-  theme?: Theme | string;
+  theme?: ThemeToken;
   transparent?: boolean;
 } & React.ComponentPropsWithRef<'div'>;
 

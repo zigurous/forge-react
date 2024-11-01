@@ -33,7 +33,7 @@ export default function NavBar({
           links.length > 0 &&
           links.map(link => {
             const active = isPathActive(link.to, location);
-            const { icon: SVGIcon } = link;
+            const iconAlignment = link.iconAlignment || 'leading';
             return (
               <li className="navbar__item" key={link.id || link.to}>
                 <Link
@@ -41,7 +41,11 @@ export default function NavBar({
                   aria-current={active ? 'page' : 'false'}
                   aria-label={link.name}
                   as={link.external ? 'a' : LinkElementType}
-                  className={classNames({ active })}
+                  className={classNames('btn btn--text', {
+                    'btn--primary': active,
+                    [`btn--icon-${iconAlignment}`]: link.icon && iconAlignment,
+                    active: active,
+                  })}
                   external={link.external}
                   onClick={() => {
                     if (onLinkClick) {
@@ -51,29 +55,16 @@ export default function NavBar({
                   to={link.to}
                   unstyled
                 >
-                  {link.icon &&
-                    (link.iconAlignment === 'left' || !link.iconAlignment) && (
-                      <Icon
-                        className="mr-sm"
-                        material={typeof link.icon === 'string'}
-                        size="sm"
-                      >
-                        {typeof link.icon === 'string'
-                          ? link.icon
-                          : SVGIcon && <SVGIcon />}
-                      </Icon>
-                    )}
+                  {link.icon && iconAlignment === 'leading' && (
+                    <span aria-hidden className="icon-wrapper">
+                      <Icon icon={link.icon} size="sm" />
+                    </span>
+                  )}
                   {link.name}
-                  {link.icon && link.iconAlignment === 'right' && (
-                    <Icon
-                      className="ml-sm"
-                      material={typeof link.icon === 'string'}
-                      size="sm"
-                    >
-                      {typeof link.icon === 'string'
-                        ? link.icon
-                        : SVGIcon && <SVGIcon />}
-                    </Icon>
+                  {link.icon && iconAlignment === 'trailing' && (
+                    <span aria-hidden className="icon-wrapper">
+                      <Icon icon={link.icon} size="sm" />
+                    </span>
                   )}
                 </Link>
               </li>
