@@ -46,8 +46,8 @@ export default function Thumbnail<T extends React.ElementType = 'a'>({
           [getAnimationClasses(animation)]: animated,
           'transition-start': animated && !loaded,
           'transition-end': animated && loaded,
+          'shadow-lg': shadow,
           rounded,
-          shadow,
         },
         className,
       )}
