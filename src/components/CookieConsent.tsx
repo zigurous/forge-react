@@ -54,11 +54,21 @@ export default function CookieConsent({
           <Button
             aria-label={buttonText}
             className="cookie-consent__button"
-            shape="square"
-            size="md"
             onClick={() => {
               setCookie(COOKIE_NAME, COOKIE_VALUE, { path: '/' });
               onConsent(true);
+            }}
+            shape="square"
+            size="md"
+            style={{
+              '--btn-color-primary':
+                theme === 'light'
+                  ? 'var(--color-default)'
+                  : 'var(--color-white)',
+              '--btn-color-secondary':
+                theme === 'light'
+                  ? 'var(--color-on-default)'
+                  : 'var(--color-on-white)',
             }}
           >
             {buttonText}
