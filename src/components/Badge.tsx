@@ -4,23 +4,25 @@ import type { SemanticColorToken } from '../types';
 
 export type BadgeProps = {
   color?: SemanticColorToken;
+  interactive?: boolean;
   selected?: boolean;
-  shape?: 'square' | 'pill' | 'rounded';
+  shape?: 'pill' | 'rounded' | 'circle' | 'square';
   style?: React.CSSProperties & {
     '--badge-color-primary'?: string;
     '--badge-color-secondary'?: string;
   };
-  type?: 'solid' | 'outline';
+  variant?: 'solid' | 'outline' | 'tint';
 } & React.ComponentPropsWithRef<'div'>;
 
 export default function Badge({
   children,
   className,
   color = 'default',
+  interactive,
   selected = false,
   shape = 'pill',
   style,
-  type = 'solid',
+  variant = 'solid',
   ...rest
 }: BadgeProps) {
   return (
@@ -28,8 +30,9 @@ export default function Badge({
       className={classNames(
         'badge',
         { [`badge--${color}`]: color },
-        { [`badge--${type}`]: type },
+        { [`badge--${variant}`]: variant },
         { [`badge--${shape}`]: shape },
+        { 'badge--interactive': interactive },
         { 'badge--selected': selected },
         className,
       )}
