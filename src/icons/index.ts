@@ -30,7 +30,7 @@ export const socialIcons: SVGIconSet = {
   youtube,
 };
 
-export const logo: SVGIconSet = {
+export const logos: SVGIconSet = {
   wordmark,
   lettermark,
   logomark,
