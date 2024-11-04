@@ -1,18 +1,21 @@
 import classNames from 'classnames';
 import React from 'react';
 import Button from './Button';
+import ClickableDiv from './ClickableDiv';
 import ReactPortal from './ReactPortal';
 import { useModalOverlay } from '../hooks';
 import type { ThemeToken } from '../types';
 
 export type ModalProps = {
+  animated?: boolean;
   children?: React.ReactNode;
   className?: string;
+  closeOnOverlayClick?: boolean;
   dialogClassName?: string;
   footer?: React.ReactElement;
   footerAlignment?: 'left' | 'right';
   hideHeader?: boolean;
-  id?: string;
+  hideOverlay?: boolean;
   onRequestClose?: () => void;
   open?: boolean;
   rootElement?: string;
@@ -21,13 +24,15 @@ export type ModalProps = {
 } & React.ComponentPropsWithRef<'div'>;
 
 export default function Modal({
+  animated = true,
   children,
   className,
+  closeOnOverlayClick = true,
   dialogClassName,
   footer,
-  footerAlignment = 'left',
+  footerAlignment = 'right',
   hideHeader = false,
-  id,
+  hideOverlay = false,
   onRequestClose = () => {},
   open = false,
   rootElement = 'body',
@@ -36,23 +41,39 @@ export default function Modal({
   ...rest
 }: ModalProps) {
   useModalOverlay(open, true);
-  if (!open) return null;
   return (
     <ReactPortal rootElement={rootElement}>
       <div
-        className={classNames('modal', { 'modal--open': open }, className)}
-        id={id}
-        role="dialog"
-        tabIndex={-1}
+        className={classNames(
+          'modal',
+          {
+            'modal--open': open,
+            'modal--closed': !open,
+            'modal--animated': animated,
+          },
+          className,
+        )}
         data-theme={theme}
         {...rest}
       >
+        {!hideOverlay && (
+          <>
+            {closeOnOverlayClick ? (
+              <ClickableDiv
+                className="modal__overlay scrim-fixed"
+                onClick={onRequestClose}
+              />
+            ) : (
+              <div className="modal__overlay scrim-fixed" />
+            )}
+          </>
+        )}
         <div
           className={classNames('modal__dialog', dialogClassName)}
-          role="document"
+          role="dialog"
         >
-          <div className="modal__content">
-            {!hideHeader && (
+          <div className="modal__content" role="document">
+            {!hideHeader && title && (
               <div className="modal__header">
                 <div className="modal__title h5">{title}</div>
                 <Button
