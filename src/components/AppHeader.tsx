@@ -84,10 +84,6 @@ export default function AppHeader({
           {!hideSocialLinks && socialLinks && socialLinks.length > 0 && (
             <SocialIcons
               className={classNames({ hidden: !xl })}
-              iconProps={{
-                size: '1.25rem',
-                padding: '0.625rem',
-              }}
               links={socialLinks}
               {...socialIconsProps}
             />

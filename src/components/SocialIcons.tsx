@@ -2,12 +2,14 @@ import classNames from 'classnames';
 import React from 'react';
 import Icon, { type IconProps } from './Icon';
 import { socialLinks } from '../links';
-import type { SocialLinkType } from '../types';
+import type { PaddingToken, SocialLinkType } from '../types';
 
 export interface SocialIconsProps {
   className?: string;
   hidden?: boolean;
+  iconPadding?: PaddingToken | number | string;
   iconProps?: IconProps<'a'>;
+  iconSize?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string | number;
   links?: SocialLinkType[];
   onLinkClick?: (link: SocialLinkType) => void;
   spacing?: number | string;
@@ -17,7 +19,9 @@ export interface SocialIconsProps {
 export default function SocialIcons({
   className,
   hidden = false,
+  iconPadding = '0.625rem',
   iconProps,
+  iconSize = '1.25rem',
   links,
   onLinkClick,
   spacing,
@@ -47,7 +51,9 @@ export default function SocialIcons({
                       onLinkClick(socialLink);
                     }
                   }}
+                  padding={iconPadding}
                   rel="noopener noreferrer"
+                  size={iconSize}
                   target="_blank"
                   type="social"
                   {...iconProps}

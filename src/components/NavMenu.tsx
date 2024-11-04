@@ -84,11 +84,7 @@ export default function NavMenu({
             </ul>
             {!hideSocialLinks && socialLinks && socialLinks.length > 0 && (
               <SocialIcons
-                iconProps={{
-                  color: 'inherit',
-                  size: '1.25rem',
-                  padding: '0.625rem',
-                }}
+                iconProps={{ color: 'inherit' }}
                 links={socialLinks}
                 onLinkClick={onSocialLinkClick}
                 {...socialIconsProps}
