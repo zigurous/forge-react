@@ -3,19 +3,14 @@ import React, { useState } from 'react';
 import Lightbox from 'react-image-lightbox';
 import { type ProgressiveImageProps } from './ProgressiveImage';
 import Thumbnail from './Thumbnail';
+import type { Transition } from '../types';
 import 'react-image-lightbox/style.css';
 
 type Image = string | ProgressiveImageProps;
 
 export interface ImageGalleryProps {
   animated?: boolean;
-  animation?:
-    | 'fade-in'
-    | 'fade-out'
-    | 'translate-in'
-    | 'translate-out'
-    | string
-    | string[];
+  animation?: Transition | Transition[];
   animationDuration?: number;
   className?: string;
   columns?: number;

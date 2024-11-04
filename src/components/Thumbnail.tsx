@@ -1,17 +1,11 @@
 import classNames from 'classnames';
 import React, { useEffect, useMemo, useState } from 'react';
 import ProgressiveImage, { type ProgressiveImageProps } from './ProgressiveImage'; // prettier-ignore
-import type { PolymorphicProps } from '../types';
+import type { PolymorphicProps, Transition } from '../types';
 
 export type BaseThumbnailProps = {
   animated?: boolean;
-  animation?:
-    | 'fade-in'
-    | 'fade-out'
-    | 'translate-in'
-    | 'translate-out'
-    | string
-    | string[];
+  animation?: Transition | Transition[];
   animationDuration?: number;
   children?: React.ReactNode;
   className?: string;
@@ -26,7 +20,7 @@ export type ThumbnailProps<T extends React.ElementType = 'a'> =
 
 export default function Thumbnail<T extends React.ElementType = 'a'>({
   animated = false,
-  animation = ['fade-in', 'translate-in'],
+  animation = ['fade-in', 'slide-in'],
   animationDuration,
   as,
   children,
@@ -107,7 +101,7 @@ function useAnimationState(loaded: boolean, index: number, duration?: number) {
   return { delay, done };
 }
 
-function getAnimationClasses(animation: string | string[]) {
+function getAnimationClasses(animation: Transition | Transition[]) {
   if (Array.isArray(animation)) {
     return animation.map(name => `transition-${name}`).join(' ');
   } else {

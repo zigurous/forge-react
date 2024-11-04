@@ -1,3 +1,4 @@
+export * from './animation';
 export * from './border-radius';
 export * from './breakpoint';
 export * from './color';

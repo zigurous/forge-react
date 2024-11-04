@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import { useMounted } from '../hooks';
+import type { Transition } from '../types';
 import { getDisplayName } from '../utils';
 
 export function fadeIn<
@@ -30,13 +31,7 @@ export function withTransition<
   P extends object & { className?: string; style?: React.CSSProperties },
 >(
   WrappedComponent: React.ComponentType<P>,
-  transition:
-    | 'fade-in'
-    | 'fade-out'
-    | 'translate-in'
-    | 'translate-out'
-    | string
-    | string[],
+  transition: Transition | Transition[],
   duration?: number,
 ) {
   const Transition = (props: P) => {
@@ -60,7 +55,7 @@ export function withTransition<
   return Transition;
 }
 
-function getTransitionClasses(transition: string | string[]) {
+function getTransitionClasses(transition: Transition | Transition[]) {
   if (Array.isArray(transition)) {
     return transition.map(name => `transition-${name}`).join(' ');
   } else {
