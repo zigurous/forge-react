@@ -42,6 +42,7 @@ export default function Thumbnail<T extends React.ElementType = 'a'>({
       className={classNames(
         'thumbnail',
         {
+          'thumbnail--animated': animated,
           [getAnimationClasses(animation)]: animated,
           'transition-start': animated && !loaded,
           'transition-end': animated && loaded,
