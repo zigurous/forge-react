@@ -5,7 +5,7 @@ import { ColorTokenList, PaddingTokenList } from '../enums';
 import type { ColorToken, IconElement, PaddingToken, PolymorphicProps } from '../types'; // prettier-ignore
 
 export type BaseIconProps = {
-  backgroundColor?: string;
+  backgroundColor?: ColorToken | string;
   children?: React.ReactNode;
   className?: string;
   color?: ColorToken | string;
@@ -14,6 +14,7 @@ export type BaseIconProps = {
   shape?: 'square' | 'rounded' | 'circle';
   size?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string | number;
   type?: 'material' | 'social' | 'custom';
+  variant?: 'outlined' | 'filled' | 'rounded' | 'sharp';
 };
 
 export type IconProps<T extends React.ElementType = 'i'> = PolymorphicProps<
@@ -33,6 +34,7 @@ export default function Icon<T extends React.ElementType = 'i'>({
   size = 'inherit',
   style,
   type = 'material',
+  variant = 'rounded',
   ...rest
 }: IconProps<T>) {
   const Element = as ?? 'i';
@@ -41,6 +43,9 @@ export default function Icon<T extends React.ElementType = 'i'>({
     ['inherit', 'xs', 'sm', 'md', 'lg', 'xl'].includes(size);
   const isTokenColor =
     typeof color === 'string' && ColorTokenList.includes(color);
+  const isTokenBackgroundColor =
+    typeof backgroundColor === 'string' &&
+    ColorTokenList.includes(backgroundColor);
   const isTokenPadding =
     typeof padding === 'string' && PaddingTokenList.includes(padding);
   return (
@@ -51,16 +56,31 @@ export default function Icon<T extends React.ElementType = 'i'>({
           icon: true,
           [`icon--${shape}`]: shape,
           [`icon--${size}`]: isTokenSize,
-          'icon--material': type === 'material' && typeof icon === 'string',
-          'icon--social': type === 'social',
           [`text-${color}`]: isTokenColor,
           [`fill-${color}`]: isTokenColor,
+          [`bg-${backgroundColor}`]: isTokenBackgroundColor,
           [`p-${padding}`]: isTokenPadding,
+          'material-icons':
+            type === 'material' &&
+            variant === 'filled' &&
+            typeof icon === 'string',
+          'material-icons-outlined':
+            type === 'material' &&
+            variant === 'outlined' &&
+            typeof icon === 'string',
+          'material-icons-round':
+            type === 'material' &&
+            variant === 'rounded' &&
+            typeof icon === 'string',
+          'material-icons-sharp':
+            type === 'material' &&
+            variant === 'sharp' &&
+            typeof icon === 'string',
         },
         className,
       )}
       style={{
-        backgroundColor: backgroundColor,
+        backgroundColor: isTokenBackgroundColor ? undefined : backgroundColor,
         color: isTokenColor ? undefined : color,
         fill: isTokenColor ? undefined : color,
         width: isTokenSize ? undefined : size,
@@ -87,6 +107,5 @@ function renderIcon(
     const CustomIcon = icon;
     return <CustomIcon />;
   }
-
   return icon;
 }
