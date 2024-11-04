@@ -56,7 +56,7 @@ export default function Button({
       )}
       {icon && iconAlignment === 'only' ? (
         <span aria-hidden className="icon-wrapper">
-          <Icon icon={icon} size={size} {...iconProps} />
+          <Icon icon={icon} {...iconProps} />
         </span>
       ) : (
         children
