@@ -27,17 +27,17 @@ export default function SocialButton({
 }: SocialButtonProps) {
   const social: LinkTypeWithIcon =
     typeof link === 'string' ? socialLinks[link] : link;
-  const color = primaryColor || social.color;
+  const color = primaryColor || (social?.color ?? undefined);
   return (
     <Link
       as={LinkElementType}
-      external={social.external || true}
-      to={url || social.to}
+      external={social ? social.external : true}
+      to={url || social?.to}
       unstyled
     >
       <Button
-        className={classNames('social-button', social.id, className)}
-        icon={social.icon}
+        className={classNames('social-button', social?.id, className)}
+        icon={social?.icon}
         iconProps={{ 'aria-hidden': true, type: 'social' }}
         style={{
           '--btn-color-primary': color,
@@ -46,7 +46,7 @@ export default function SocialButton({
         tabIndex={-1}
         {...rest}
       >
-        {children || social.name}
+        {children || social?.name}
       </Button>
     </Link>
   );
