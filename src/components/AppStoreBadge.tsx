@@ -2,17 +2,12 @@ import classNames from 'classnames';
 import React, { useLayoutEffect, useState } from 'react';
 import type { PolymorphicProps } from '../types';
 
-const HEIGHT_RATIO = 3.375;
-
 export type BaseAppStoreBadgeProps = {
-  alt?: string;
   className?: string;
-  defaultLocale?: string;
-  height?: number;
   locale?: string;
   platform: 'ios' | 'android';
-  style?: React.CSSProperties;
-  target?: string;
+  url?: string;
+  variant?: 'black' | 'white';
   width?: number;
 };
 
@@ -20,17 +15,17 @@ export type AppStoreBadgeProps<T extends React.ElementType = 'a'> =
   PolymorphicProps<T, BaseAppStoreBadgeProps>;
 
 export default function AppStoreBadge<T extends React.ElementType = 'a'>({
-  alt = 'Download on the App Store',
+  alt,
   as,
   className,
-  defaultLocale = 'en-us',
-  locale = (typeof navigator !== 'undefined' && navigator.language) ||
-    defaultLocale,
+  href,
+  locale = (typeof navigator !== 'undefined' && navigator.language) || 'en-us',
   platform,
-  width = 200,
-  height = width / HEIGHT_RATIO,
   style,
   target = '_blank',
+  url,
+  variant = 'black',
+  width = 200,
   ...rest
 }: AppStoreBadgeProps<T>) {
   const Element = as ?? 'a';
@@ -41,34 +36,48 @@ export default function AppStoreBadge<T extends React.ElementType = 'a'>({
     shortCode = locale.split(/[_-]/)[0];
   }
 
-  const [image, setImage] = useState(getImage(locale, shortCode));
-  const setDefaultImage = () => {
-    setImage(getImage(defaultLocale, shortCode));
-  };
+  const [image, setImage] = useState(getImage(locale, shortCode, variant));
 
   useLayoutEffect(() => {
-    setImage(getImage(locale, shortCode));
-  }, [locale, shortCode]);
+    setImage(getImage(locale, shortCode, variant));
+  }, [locale, shortCode, variant]);
 
   return (
     <Element
       {...rest}
       className={classNames('app-store-badge', className)}
+      href={href || url}
       target={target}
       style={{
         width: width,
-        height: height,
+        height: width / 3.375,
         ...style,
       }}
     >
-      <img alt={alt || ''} src={image[platform]} onError={setDefaultImage} />
+      <img
+        alt={alt || image[platform].alt}
+        src={image[platform].src}
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+        onError={() => {
+          setImage(getImage('en-us', shortCode, variant));
+        }}
+      />
     </Element>
   );
 }
 
-function getImage(locale = 'en-us', code = locale) {
+function getImage(locale: string, code = locale, variant = 'black') {
   return {
-    ios: `https://linkmaker.itunes.apple.com/images/badges/${locale}/badge_appstore-lrg.svg`,
-    android: `https://raw.github.com/yjb94/google-play-badge-svg/master/img/${code}_get.svg?sanitize=true`,
+    ios: {
+      src: `https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/${variant}/${locale}`,
+      alt: 'Download on the App Store',
+    },
+    android: {
+      src: `https://raw.github.com/yjb94/google-play-badge-svg/master/img/${code}_get.svg?sanitize=true`,
+      alt: 'Get it on Google Play',
+    },
   };
 }
