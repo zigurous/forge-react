@@ -29,11 +29,13 @@ export default function Badge({
     <div
       className={classNames(
         'badge',
-        { [`badge--${color}`]: color },
-        { [`badge--${variant}`]: variant },
-        { [`badge--${shape}`]: shape },
-        { 'badge--interactive': interactive },
-        { 'badge--selected': selected },
+        {
+          [`badge--${color}`]: color,
+          [`badge--${variant}`]: variant,
+          [`badge--${shape}`]: shape,
+          'badge--interactive': interactive,
+          'badge--selected': selected,
+        },
         className,
       )}
       style={style}

@@ -26,8 +26,10 @@ export default function PageBanner({
     <div
       className={classNames(
         'page-banner',
-        { [`page-banner--${size}`]: size },
-        { 'page-banner--transparent': transparent },
+        {
+          [`page-banner--${size}`]: size,
+          'page-banner--transparent': transparent,
+        },
         className,
       )}
       data-theme={theme}

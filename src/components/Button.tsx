@@ -8,7 +8,7 @@ export type ButtonProps = {
   icon?: IconElement;
   iconAlignment?: 'leading' | 'trailing' | 'only' | 'none';
   iconProps?: IconProps<'i'>;
-  shape?: 'square' | 'rounded' | 'pill' | 'circle';
+  shape?: 'rounded' | 'pill' | 'circle' | 'square';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   style?: React.CSSProperties & {
     '--btn-color-primary'?: string;

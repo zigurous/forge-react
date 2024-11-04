@@ -17,8 +17,10 @@ export default function LoadingSpinner({
       aria-hidden
       className={classNames(
         'loading-spinner',
-        { [`loading-spinner--${size}`]: size },
-        { hidden: !loading },
+        {
+          [`loading-spinner--${size}`]: size,
+          hidden: !loading,
+        },
         className,
       )}
     >

@@ -41,9 +41,11 @@ export default function ProgressiveImage({
     <picture
       className={classNames(
         'progressive-image',
-        { 'progressive-image--loaded': loaded },
-        { 'progressive-image--animated': animated },
-        { 'progressive-image--no-placeholder': !placeholder },
+        {
+          'progressive-image--loaded': loaded,
+          'progressive-image--animated': animated,
+          'progressive-image--no-placeholder': !placeholder,
+        },
         className,
       )}
       {...rest}

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Icon, { type IconProps } from './Icon';
 import type { IconElement } from '../types';
 
@@ -25,37 +25,42 @@ export default function Input({
   size,
   ...rest
 }: InputProps) {
-  const [focus, setFocus] = useState(false);
+  const ref = useRef<HTMLInputElement>(null);
+  const [focused, setFocused] = useState(false);
   return (
     <div
       className={classNames(
         'input-wrapper',
-        { [`input-wrapper--${size}`]: size },
-        { [`input-wrapper--icon-${iconAlignment}`]: icon && iconAlignment },
-        { focused: focus, disabled: disabled },
+        {
+          [`input-wrapper--${size}`]: size,
+          [`input-wrapper--icon-${iconAlignment}`]: icon && iconAlignment,
+          focused: focused,
+          disabled: disabled,
+        },
         className,
       )}
     >
       <input
-        className="input-wrapper__input"
+        className={classNames({
+          empty: !Boolean(ref.current?.value || rest.value),
+        })}
         disabled={disabled}
         onBlur={event => {
-          setFocus(false);
+          setFocused(false);
           if (onBlur) {
             onBlur(event);
           }
         }}
         onFocus={event => {
-          setFocus(true);
+          setFocused(true);
           if (onFocus) {
             onFocus(event);
           }
         }}
+        ref={ref}
         {...rest}
       />
-      {icon && (
-        <Icon className="input-wrapper__icon" icon={icon} {...iconProps} />
-      )}
+      {icon && <Icon icon={icon} {...iconProps} />}
     </div>
   );
 }

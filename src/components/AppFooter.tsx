@@ -44,9 +44,11 @@ export default function AppFooter({
     <footer
       className={classNames(
         'app-footer',
-        { 'app-footer--bordered': bordered },
-        { 'app-footer--transparent': transparent },
-        { 'app-footer--sticky': sticky },
+        {
+          'app-footer--bordered': bordered,
+          'app-footer--transparent': transparent,
+          'app-footer--sticky': sticky,
+        },
         className,
       )}
       data-theme={theme}

@@ -45,8 +45,11 @@ export default function NavMenu({
       <div
         className={classNames(
           'navmenu',
-          { 'navmenu--open': open, 'navmenu--closed': !open },
-          { 'navmenu--animated': animated },
+          {
+            'navmenu--open': open,
+            'navmenu--closed': !open,
+            'navmenu--animated': animated,
+          },
           className,
         )}
         data-theme={theme}

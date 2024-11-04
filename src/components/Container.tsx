@@ -14,9 +14,11 @@ export default function Container({
   return (
     <div
       className={classNames(
-        { container: !fluid },
-        { [`container-${fluid}`]: fluid && typeof fluid === 'string' },
-        { 'container-fluid': fluid && typeof fluid === 'boolean' },
+        {
+          container: !fluid,
+          [`container-${fluid}`]: fluid && typeof fluid === 'string',
+          'container-fluid': fluid && typeof fluid === 'boolean',
+        },
         className,
       )}
       {...rest}

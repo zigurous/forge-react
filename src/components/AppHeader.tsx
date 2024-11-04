@@ -55,9 +55,11 @@ export default function AppHeader({
     <header
       className={classNames(
         'app-header',
-        { 'app-header--bordered': bordered },
-        { 'app-header--transparent': transparent },
-        { 'app-header--sticky': sticky },
+        {
+          'app-header--bordered': bordered,
+          'app-header--transparent': transparent,
+          'app-header--sticky': sticky,
+        },
         className,
       )}
       data-theme={theme}

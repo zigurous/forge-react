@@ -36,8 +36,10 @@ export default function Logo<T extends React.ElementType = 'a'>({
       aria-label={label}
       className={classNames(
         'logo',
-        { [`logo--${variant}`]: variant },
-        { [`logo--${size}`]: size },
+        {
+          [`logo--${variant}`]: variant,
+          [`logo--${size}`]: size,
+        },
         className,
       )}
       href={Element === 'a' ? href : undefined}

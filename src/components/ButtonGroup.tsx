@@ -17,8 +17,10 @@ export default function ButtonGroup({
     <div
       className={classNames(
         'btn-group',
-        { [`btn-group--${layout}`]: layout },
-        { [`align-${align}`]: align },
+        {
+          [`btn-group--${layout}`]: layout,
+          [`align-${align}`]: align,
+        },
         className,
       )}
       {...rest}

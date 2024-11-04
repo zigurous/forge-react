@@ -50,8 +50,10 @@ export default function Link<T extends React.ElementType = 'a'>({
       {...rest}
       {...elementProps}
       className={classNames(
-        { link: !unstyled },
-        { 'link--underlined': underlined && !unstyled },
+        {
+          link: !unstyled,
+          'link--underlined': underlined && !unstyled,
+        },
         className,
       )}
     >
