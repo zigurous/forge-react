@@ -50,15 +50,21 @@ export default function Drawer({
           className,
         )}
         data-theme={theme}
+        role="dialog"
         style={{
           ...customStyles,
           ...style,
         }}
       >
         {!hideOverlay && (
-          <ClickableDiv className="drawer__overlay" onClick={onRequestClose} />
+          <ClickableDiv
+            className="drawer__overlay scrim-fixed"
+            onClick={onRequestClose}
+          />
         )}
-        <div className="drawer__container">{children}</div>
+        <div className="drawer__container" role="document">
+          {children}
+        </div>
       </div>
     </ReactPortal>
   );
