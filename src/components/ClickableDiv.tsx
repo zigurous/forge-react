@@ -2,7 +2,11 @@ import classNames from 'classnames';
 import React from 'react';
 import { enterKeyHandler } from '../utils';
 
-export type ClickableDivProps = {} & React.ComponentPropsWithRef<'div'>;
+export type ClickableDivProps = {
+  children?: React.ReactNode;
+  className?: string;
+  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+} & React.ComponentPropsWithRef<'div'>;
 
 export default function ClickableDiv({
   children,
