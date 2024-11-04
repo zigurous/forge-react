@@ -19,8 +19,8 @@ export type ThumbnailProps<T extends React.ElementType = 'a'> =
   PolymorphicProps<T, BaseThumbnailProps>;
 
 export default function Thumbnail<T extends React.ElementType = 'a'>({
-  animated = false,
-  animation = ['fade-in', 'slide-in'],
+  animated = true,
+  animation = 'fade-in',
   animationDuration,
   as,
   children,
