@@ -1,77 +1,83 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import Lightbox from 'react-image-lightbox';
-import ProgressiveImage from './ProgressiveImage';
-import { omit } from '../utils';
+import { type ProgressiveImageProps } from './ProgressiveImage';
+import Thumbnail from './Thumbnail';
 import 'react-image-lightbox/style.css';
 
-type Image = string | ({ src: string } & React.ComponentPropsWithoutRef<'img'>);
+type Image = string | ProgressiveImageProps;
 
 export interface ImageGalleryProps {
   animated?: boolean;
-  animation?: string;
+  animation?:
+    | 'fade-in'
+    | 'fade-out'
+    | 'translate-in'
+    | 'translate-out'
+    | string
+    | string[];
+  animationDuration?: number;
   className?: string;
   columns?: number;
   fullWidthFirstItem?: boolean;
   images?: Image[];
   maxWidth?: number;
   minWidth?: number;
+  rounded?: boolean;
+  shadow?: boolean;
 }
 
 export default function ImageGallery({
-  animated = false,
-  animation = 'fade-in-up',
+  animated = true,
+  animation = 'fade-in',
+  animationDuration,
   className,
   columns,
   fullWidthFirstItem = false,
   images = [],
   maxWidth,
   minWidth,
+  rounded = false,
+  shadow = true,
 }: ImageGalleryProps) {
   const [open, setOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   return (
-    <div className={classNames('image-gallery', className)}>
-      <div
-        className="image-gallery__thumbnails"
-        style={{
-          gridTemplateColumns: gridTemplate(columns, minWidth, maxWidth),
-        }}
-      >
-        {images.map((image, index) => {
-          const isObject = typeof image === 'object';
-          const src = isObject ? image.src : image;
-          const key = isObject ? image.key || image.id || image.src : image;
-          return (
-            <button
-              aria-label="Image Thumbnail"
-              className={classNames(
-                'image-gallery__thumbnail',
-                {
-                  'image-gallery__thumbnail--full-width':
-                    index === 0 && fullWidthFirstItem,
-                },
-                {
-                  'animation-short': animated,
-                  [`animation-delay-${index + 1}`]: animated,
-                  [animation]: animated,
-                },
-                isObject && image.className,
-              )}
-              key={key}
-              onClick={() => {
-                setImageIndex(index);
-                setOpen(true);
-              }}
-            >
-              <ProgressiveImage
-                imageProps={isObject ? omit(image, 'className') : {}}
-                src={src}
-              />
-            </button>
-          );
-        })}
-      </div>
+    <div
+      className={classNames('image-gallery', className)}
+      style={{
+        gridTemplateColumns: gridTemplate(columns, minWidth, maxWidth),
+      }}
+    >
+      {images.map((image, index) => {
+        const key =
+          typeof image === 'object'
+            ? image.key || image.id || image.src
+            : image;
+        const label =
+          (typeof image === 'object' && image.alt) || `Image ${index + 1}`;
+        return (
+          <Thumbnail
+            aria-label={label}
+            animated={animated}
+            animation={animation}
+            animationDuration={animationDuration}
+            as="button"
+            className={classNames({
+              'full-width': index === 0 && fullWidthFirstItem,
+            })}
+            image={image}
+            index={index}
+            key={key}
+            onClick={() => {
+              setImageIndex(index);
+              setOpen(true);
+            }}
+            rounded={rounded}
+            shadow={shadow}
+          />
+        );
+      })}
       {open && (
         <Lightbox
           enableZoom={false}
@@ -100,7 +106,7 @@ function imageSrc(image: Image): string {
   if (typeof image === 'string') {
     return image;
   } else {
-    return image.src;
+    return image.src || '';
   }
 }
 
