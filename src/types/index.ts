@@ -3,6 +3,7 @@ export * from './border-radius';
 export * from './breakpoint';
 export * from './color';
 export * from './font';
+export * from './grid-system';
 export * from './icon';
 export * from './link';
 export * from './opacity';

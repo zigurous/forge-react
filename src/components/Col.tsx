@@ -1,19 +1,12 @@
 import classNames from 'classnames';
 import React from 'react';
-import type { SpacingToken } from '../types';
-
-export type ColSizeClass =
-  | number
-  | string
-  | boolean
-  | {
-      size?: number | string;
-      order?: number | string;
-      offset?: number | string;
-    };
+import type { ColOffset, ColOrder, ColSize, ColSizeClass, SpacingToken } from '../types'; // prettier-ignore
 
 export type ColProps = {
   gutters?: SpacingToken | 'none';
+  size?: ColSize;
+  offset?: ColOffset;
+  order?: ColOrder;
   sm?: ColSizeClass;
   md?: ColSizeClass;
   lg?: ColSizeClass;
@@ -24,6 +17,9 @@ export default function Col({
   children,
   className,
   gutters,
+  size,
+  order,
+  offset,
   sm,
   md,
   lg,
@@ -33,11 +29,11 @@ export default function Col({
   return (
     <div
       className={classNames(
-        { col: !sm && !md && !lg && !xl },
-        getClassNames('sm', sm),
-        getClassNames('md', md),
-        getClassNames('lg', lg),
-        getClassNames('xl', xl),
+        getClassNames('', { size, order, offset }),
+        getClassNames('sm:', sm),
+        getClassNames('md:', md),
+        getClassNames('lg:', lg),
+        getClassNames('xl:', xl),
         { [`gutters-${gutters}`]: gutters },
         className,
       )}
@@ -50,25 +46,23 @@ export default function Col({
 
 function getClassNames(
   breakpoint: string,
-  obj: ColSizeClass | undefined,
+  sizeClass: ColSizeClass | undefined,
 ): { [key: string]: boolean } | null {
-  if (typeof obj === 'boolean') {
+  if (typeof sizeClass === 'number' || typeof sizeClass === 'string') {
     return {
-      [`${breakpoint}:col`]: obj,
+      [`${breakpoint}col`]: sizeClass === 'equal',
+      [`${breakpoint}col-${sizeClass}`]:
+        sizeClass !== 'none' && sizeClass !== 'equal',
     };
   }
-  if (typeof obj === 'number' || typeof obj === 'string') {
+  if (typeof sizeClass === 'object') {
+    const { size, order, offset } = sizeClass;
     return {
-      [`${breakpoint}:col-${obj}`]: true,
-    };
-  }
-  if (typeof obj === 'object' && obj) {
-    const { size, order, offset } = obj;
-    return {
-      [`${breakpoint}:col`]: typeof size === 'undefined',
-      [`${breakpoint}:col-${size}`]: typeof size !== 'undefined',
-      [`${breakpoint}:order-${order}`]: typeof order !== 'undefined',
-      [`${breakpoint}:offset-${offset}`]: typeof offset !== 'undefined',
+      [`${breakpoint}col`]: typeof size === 'undefined' || size === 'equal',
+      [`${breakpoint}col-${size}`]:
+        typeof size !== 'undefined' && size != 'none' && size !== 'equal',
+      [`${breakpoint}order-${order}`]: typeof order !== 'undefined',
+      [`${breakpoint}offset-${offset}`]: typeof offset !== 'undefined',
     };
   }
   return null;
