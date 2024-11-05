@@ -2,13 +2,13 @@
 
 ## Installation
 
-Set github as the registry for `@zigurous` scoped packages in your `.npmrc` file:
+Add scoped package registry to `.npmrc` file
 ```bash
 registry=https://registry.npmjs.org/
 @zigurous:registry=https://npm.pkg.github.com
 ```
 
-Run one of the following commands in your terminal:
+Run one of the following commands in a terminal
 ```bash
 npm install @zigurous/react-components
 # or
