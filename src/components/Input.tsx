@@ -60,7 +60,7 @@ export default function Input({
         ref={ref}
         {...rest}
       />
-      {icon && <Icon icon={icon} {...iconProps} />}
+      {icon && <Icon aria-hidden icon={icon} {...iconProps} />}
     </div>
   );
 }
