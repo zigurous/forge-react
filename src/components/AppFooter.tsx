@@ -68,17 +68,16 @@ export default function AppFooter({
               <span className="links">
                 {links.map(link => (
                   <Link
-                    aria-label={link.name}
-                    as={LinkElementType}
+                    as={link.external ? 'a' : LinkElementType}
                     className="text-inherit mx-sm"
                     external={link.external}
-                    key={link.id || link.to}
+                    href={link.href}
+                    key={link.id || link.name}
                     onClick={() => {
                       if (onLinkClick) {
                         onLinkClick(link);
                       }
                     }}
-                    to={link.to}
                   >
                     {link.name}
                   </Link>

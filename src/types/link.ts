@@ -1,11 +1,11 @@
 import type { IconElement } from './icon';
 
 export type LinkType = {
-  color?: string;
-  external?: boolean;
-  id?: string;
   name: string;
-  to: string;
+  href: string;
+  external?: boolean;
+  color?: string;
+  id?: string;
 };
 
 export type LinkTypeWithIcon = LinkType & {

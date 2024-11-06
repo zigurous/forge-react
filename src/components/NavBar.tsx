@@ -32,12 +32,11 @@ export default function NavBar({
         {links &&
           links.length > 0 &&
           links.map(link => {
-            const active = isPathActive(link.to, location);
+            const active = isPathActive(link.href, location);
             const iconAlignment = link.iconAlignment || 'leading';
             return (
-              <li className="navbar__item" key={link.id || link.to}>
+              <li className="navbar__item" key={link.id || link.name}>
                 <Link
-                  activeClassName=""
                   aria-current={active ? 'page' : 'false'}
                   aria-label={link.name}
                   as={link.external ? 'a' : LinkElementType}
@@ -47,12 +46,12 @@ export default function NavBar({
                     active: active,
                   })}
                   external={link.external}
+                  href={link.href}
                   onClick={() => {
                     if (onLinkClick) {
                       onLinkClick(link);
                     }
                   }}
-                  to={link.to}
                   unstyled
                 >
                   {link.icon && iconAlignment === 'leading' && (

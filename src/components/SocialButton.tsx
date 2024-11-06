@@ -28,11 +28,13 @@ export default function SocialButton({
   const social: LinkTypeWithIcon =
     typeof link === 'string' ? socialLinks[link] : link;
   const color = primaryColor || (social?.color ?? undefined);
+  const external = social?.external ?? true;
   return (
     <Link
+      aria-label={social?.name}
       as={LinkElementType}
-      external={social ? social.external : true}
-      to={url || social?.to}
+      external={external}
+      href={url || social?.href}
       unstyled
     >
       <Button

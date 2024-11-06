@@ -44,7 +44,7 @@ export default function SocialIcons({
                   aria-label={socialLink.name}
                   as="a"
                   color={socialLink.color}
-                  href={socialLink.to}
+                  href={socialLink.href}
                   icon={socialLink.icon}
                   onClick={() => {
                     if (onLinkClick) {

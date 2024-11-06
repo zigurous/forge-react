@@ -42,9 +42,9 @@ export default function CookieConsent({
             </span>
             {learnMoreLink && (
               <Link
-                className="text-inherit hover:text-inheit"
-                to={learnMoreLink}
+                className="text-inherit"
                 external
+                href={learnMoreLink}
                 underlined
               >
                 Learn more
