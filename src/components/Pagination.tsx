@@ -26,6 +26,7 @@ export default function Pagination({
         className={classNames({ active: currentPage === i })}
         key={i}
         onClick={() => onPageChange(i)}
+        size={size}
         variant="outline"
       >
         {i + 1}
@@ -34,19 +35,14 @@ export default function Pagination({
   }
 
   return (
-    <div
-      className={classNames(
-        'pagination',
-        { [`pagination--${size}`]: size },
-        className,
-      )}
-    >
+    <div className={classNames('pagination', className)}>
       <Button
         aria-label="Previous Page"
         disabled={currentPage <= 0}
         icon="chevron_left"
         iconAlignment="only"
         onClick={() => onPageChange(currentPage - 1)}
+        size={size}
         variant="outline"
       />
       {pageButtons}
@@ -56,6 +52,7 @@ export default function Pagination({
         icon="chevron_right"
         iconAlignment="only"
         onClick={() => onPageChange(currentPage + 1)}
+        size={size}
         variant="outline"
       />
     </div>
