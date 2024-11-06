@@ -75,7 +75,7 @@ export default function Modal({
           <div className="modal__content" role="document">
             {!hideHeader && title && (
               <div className="modal__header">
-                <div className="modal__title h5">{title}</div>
+                <div className="modal__title title-sm">{title}</div>
                 <Button
                   aria-label="Close"
                   className="modal__close-button"

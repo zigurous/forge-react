@@ -11,31 +11,24 @@ export enum FontWeight {
 }
 
 export enum FontSize {
-  xxxs = 'xxxs',
-  xxs = 'xxs',
   xs = 'xs',
   sm = 'sm',
   md = 'md',
   lg = 'lg',
   xl = 'xl',
-  xxl = 'xxl',
-  xxxl = 'xxxl',
 }
 
 export enum FontType {
+  Display = 'display',
   Title = 'title',
+  TitleLarge = 'title-lg',
+  TitleMedium = 'title-md',
+  TitleSmall = 'title-sm',
   Subtitle = 'subtitle',
+  Body = 'body',
+  BodyLarge = 'body-lg',
+  BodyMedium = 'body-md',
+  BodySmall = 'body-sm',
+  Caption = 'caption',
   Eyebrow = 'eyebrow',
-  H1 = 'h1',
-  H2 = 'h2',
-  H3 = 'h3',
-  H4 = 'h4',
-  H5 = 'h5',
-  H6 = 'h6',
-  Display1 = 'display-1',
-  Display2 = 'display-2',
-  Display3 = 'display-3',
-  Display4 = 'display-4',
-  Display5 = 'display-5',
-  Display6 = 'display-6',
 }
