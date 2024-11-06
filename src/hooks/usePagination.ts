@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 
 export type PaginationState<T> = {
-  page: number;
-  paginated: boolean;
   currentPage: number;
-  totalPages: number;
+  pageCount: number;
+  paginated: boolean;
   itemsPerPage: number;
   items: T[];
 };
@@ -14,30 +13,29 @@ export function usePagination<T>(
   itemsPerPage = 6,
   storageKey?: string,
 ): [PaginationState<T>, React.Dispatch<React.SetStateAction<number>>] {
-  const [page, setPage] = useState(0);
-  const startIndex = page * itemsPerPage;
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageCount = Math.ceil(items.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const totalPages = Math.ceil(items.length / itemsPerPage);
 
   useEffect(() => {
     if (storageKey && typeof sessionStorage !== 'undefined') {
       const storedValue = sessionStorage.getItem(storageKey);
       const storedPageNumber = storedValue ? parseInt(storedValue, 10) : NaN;
       if (!Number.isNaN(storedPageNumber)) {
-        setPage(storedPageNumber);
+        setCurrentPage(storedPageNumber);
       }
       sessionStorage.removeItem(storageKey);
     }
   }, [storageKey, items]);
 
   const state: PaginationState<T> = {
-    page,
-    paginated: totalPages > 1,
-    currentPage: page,
-    totalPages,
+    currentPage,
+    pageCount,
+    paginated: pageCount > 1,
     itemsPerPage,
     items: items.slice(startIndex, endIndex),
   };
 
-  return [state, setPage];
+  return [state, setCurrentPage];
 }
