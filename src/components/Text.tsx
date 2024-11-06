@@ -8,8 +8,8 @@ export type BaseTextProps = {
   className?: string;
   color?: TextColorToken;
   italic?: boolean;
-  marginBottom?: MarginToken;
-  marginTop?: MarginToken;
+  marginBottom?: Omit<MarginToken, 'auto'>;
+  marginTop?: Omit<MarginToken, 'auto'>;
   nowrap?: boolean;
   size?: FontSizeToken;
   type?: FontTypeToken;
