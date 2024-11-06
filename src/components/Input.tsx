@@ -12,7 +12,7 @@ export type InputProps = {
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-} & Omit<React.ComponentPropsWithRef<'input'>, 'size'>;
+} & Omit<React.ComponentPropsWithoutRef<'input'>, 'size'>;
 
 export default function Input({
   className,
