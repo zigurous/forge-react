@@ -6,16 +6,16 @@ export type ContactFormProps = {
   onSubmit?: React.FormEventHandler<HTMLFormElement>;
 } & React.ComponentPropsWithRef<'form'>;
 
-export default function ContactForm({
-  className,
-  onSubmit = () => {},
-  ...rest
-}: ContactFormProps) {
+export default React.forwardRef(function ContactForm(
+  { className, onSubmit = () => {}, ...rest }: ContactFormProps,
+  ref: React.ForwardedRef<HTMLFormElement>,
+) {
   return (
     <form
       className={classNames('contact-form', className)}
       onSubmit={onSubmit}
       {...rest}
+      ref={ref}
     >
       <input
         aria-label="Name"
@@ -43,4 +43,4 @@ export default function ContactForm({
       <input aria-label="Send" id="contactSubmit" type="submit" value="Send" />
     </form>
   );
-}
+});
