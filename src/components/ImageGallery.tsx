@@ -33,7 +33,7 @@ export default function ImageGallery({
   maxWidth,
   minWidth,
   rounded = false,
-  shadow = true,
+  shadow = false,
 }: ImageGalleryProps) {
   const [open, setOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
