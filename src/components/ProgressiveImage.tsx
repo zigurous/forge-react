@@ -10,8 +10,9 @@ export type ProgressiveImageProps = {
   height?: string | number;
   imageClassName?: string;
   imageProps?: React.ComponentPropsWithoutRef<'img'>;
-  onLoaded?: () => void;
+  onLoad?: () => void;
   placeholder?: string;
+  placeholderBlurred?: boolean;
   placeholderClassName?: string;
   placeholderProps?: React.ComponentPropsWithoutRef<'img'>;
   showLoadingSpinner?: boolean;
@@ -26,8 +27,9 @@ export default function ProgressiveImage({
   height,
   imageClassName,
   imageProps = {},
-  onLoaded = () => {},
+  onLoad = () => {},
   placeholder,
+  placeholderBlurred,
   placeholderClassName,
   placeholderProps = {},
   showLoadingSpinner = false,
@@ -36,7 +38,7 @@ export default function ProgressiveImage({
   ...rest
 }: ProgressiveImageProps) {
   const imageRef = useRef<HTMLImageElement>(null);
-  const loaded = useLoaded(imageRef, onLoaded);
+  const loaded = useLoaded(imageRef, onLoad) && src;
   return (
     <picture
       className={classNames(
@@ -68,8 +70,12 @@ export default function ProgressiveImage({
         <img
           {...placeholderProps}
           alt={placeholderProps.alt || alt}
+          aria-hidden
           className={classNames(
             'progressive-image__placeholder',
+            {
+              'progressive-image__placeholder--blurred': placeholderBlurred,
+            },
             'img-fluid',
             placeholderClassName,
             placeholderProps.className,
