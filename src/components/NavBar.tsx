@@ -7,7 +7,6 @@ import { isPathActive } from '../utils';
 
 export type NavBarProps = {
   className?: string;
-  hidden?: boolean;
   LinkElementType?: React.ElementType;
   links?: LinkTypeWithIcon[];
   location?: Location | null;
@@ -16,7 +15,6 @@ export type NavBarProps = {
 
 export default function NavBar({
   className,
-  hidden = false,
   LinkElementType = 'a',
   links,
   location = typeof window !== 'undefined' ? window.location : null,
@@ -24,10 +22,7 @@ export default function NavBar({
   ...rest
 }: NavBarProps) {
   return (
-    <nav
-      className={classNames('navbar', { hidden: hidden }, className)}
-      {...rest}
-    >
+    <nav className={classNames('navbar', className)} {...rest}>
       <ul className="navbar__list">
         {links &&
           links.length > 0 &&
