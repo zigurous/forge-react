@@ -68,7 +68,6 @@ export default function CodeBlock({
             }
           }}
           variant="text"
-          size="lg"
         />
       )}
     </pre>
