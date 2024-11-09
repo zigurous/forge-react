@@ -6,23 +6,23 @@ import type { LinkTypeWithIcon, PaddingToken } from '../types';
 import { isPathActive } from '../utils';
 
 export type NavBarProps = {
-  buttonVariant?: 'solid' | 'outline' | 'link' | 'text' | 'unstyled';
   className?: string;
   LinkElementType?: React.ElementType;
   links?: LinkTypeWithIcon[];
   location?: Location | null;
   onLinkClick?: (link: LinkTypeWithIcon) => void;
   spacing?: PaddingToken;
+  variant?: 'button' | 'link';
 } & React.ComponentProps<'nav'>;
 
 export default function NavBar({
-  buttonVariant = 'text',
   className,
   LinkElementType = 'a',
   links,
   location = typeof window !== 'undefined' ? window.location : null,
   onLinkClick,
   spacing,
+  variant = 'button',
   ...rest
 }: NavBarProps) {
   return (
@@ -46,7 +46,8 @@ export default function NavBar({
                   as={link.external ? 'a' : LinkElementType}
                   className={classNames('btn', {
                     'btn--primary': active,
-                    [`btn--${buttonVariant}`]: buttonVariant,
+                    [`btn--text`]: variant === 'button',
+                    [`btn--link`]: variant === 'link',
                     [`btn--icon-${iconAlignment}`]: link.icon && iconAlignment,
                     active: active,
                   })}
@@ -60,15 +61,17 @@ export default function NavBar({
                   unstyled
                 >
                   {link.icon && iconAlignment === 'leading' && (
-                    <span aria-hidden className="icon-wrapper">
-                      <Icon icon={link.icon} size="sm" />
-                    </span>
+                    <>
+                      <Icon aria-hidden icon={link.icon} size="sm" />
+                      <span aria-hidden>&#8192;</span>
+                    </>
                   )}
                   {link.name}
                   {link.icon && iconAlignment === 'trailing' && (
-                    <span aria-hidden className="icon-wrapper">
-                      <Icon icon={link.icon} size="sm" />
-                    </span>
+                    <>
+                      <span aria-hidden>&#8192;</span>
+                      <Icon aria-hidden icon={link.icon} size="sm" />
+                    </>
                   )}
                 </Link>
               </li>
