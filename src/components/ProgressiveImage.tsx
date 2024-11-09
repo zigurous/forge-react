@@ -10,6 +10,7 @@ export type ProgressiveImageProps = {
   height?: string | number;
   imageClassName?: string;
   imageProps?: React.ComponentPropsWithoutRef<'img'>;
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
   onLoad?: () => void;
   placeholder?: string;
   placeholderBlurred?: boolean;
@@ -27,6 +28,7 @@ export default function ProgressiveImage({
   height,
   imageClassName,
   imageProps = {},
+  objectFit,
   onLoad = () => {},
   placeholder,
   placeholderBlurred,
@@ -60,6 +62,7 @@ export default function ProgressiveImage({
           'img-fluid',
           imageClassName,
           imageProps.className,
+          { [`object-${objectFit}`]: objectFit },
         )}
         width={width || imageProps.width}
         height={height || imageProps.height}

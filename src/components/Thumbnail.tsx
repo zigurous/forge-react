@@ -63,8 +63,9 @@ export default function Thumbnail<T extends React.ElementType = 'a'>({
     >
       {image && (
         <ProgressiveImage
-          {...imageProps}
+          objectFit="contain"
           animated={false}
+          {...imageProps}
           onLoad={() => {
             setLoaded(true);
             if (typeof image === 'object' && image.onLoad) {
