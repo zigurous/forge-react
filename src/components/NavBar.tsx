@@ -2,23 +2,27 @@ import classNames from 'classnames';
 import React from 'react';
 import Icon from './Icon';
 import Link from './Link';
-import type { LinkTypeWithIcon } from '../types';
+import type { LinkTypeWithIcon, PaddingToken } from '../types';
 import { isPathActive } from '../utils';
 
 export type NavBarProps = {
+  buttonVariant?: 'solid' | 'outline' | 'link' | 'text' | 'unstyled';
   className?: string;
   LinkElementType?: React.ElementType;
   links?: LinkTypeWithIcon[];
   location?: Location | null;
   onLinkClick?: (link: LinkTypeWithIcon) => void;
+  spacing?: PaddingToken;
 } & React.ComponentProps<'nav'>;
 
 export default function NavBar({
+  buttonVariant = 'text',
   className,
   LinkElementType = 'a',
   links,
   location = typeof window !== 'undefined' ? window.location : null,
   onLinkClick,
+  spacing,
   ...rest
 }: NavBarProps) {
   return (
@@ -30,13 +34,19 @@ export default function NavBar({
             const active = isPathActive(link.href, location);
             const iconAlignment = link.iconAlignment || 'leading';
             return (
-              <li className="navbar__item" key={link.id || link.name}>
+              <li
+                className={classNames('navbar__item', {
+                  [`px-${spacing}`]: spacing,
+                })}
+                key={link.id || link.name}
+              >
                 <Link
                   aria-current={active ? 'page' : 'false'}
                   aria-label={link.name}
                   as={link.external ? 'a' : LinkElementType}
-                  className={classNames('btn btn--text', {
+                  className={classNames('btn', {
                     'btn--primary': active,
+                    [`btn--${buttonVariant}`]: buttonVariant,
                     [`btn--icon-${iconAlignment}`]: link.icon && iconAlignment,
                     active: active,
                   })}
