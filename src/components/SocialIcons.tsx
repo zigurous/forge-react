@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import Icon, { type IconProps } from './Icon';
 import { socialLinks } from '../links';
-import type { PaddingToken, SocialLinkType } from '../types';
+import type { MarginToken, PaddingToken, SocialLinkType } from '../types';
 
 export interface SocialIconsProps {
   className?: string;
@@ -12,7 +12,7 @@ export interface SocialIconsProps {
   iconSize?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string | number;
   links?: SocialLinkType[];
   onLinkClick?: (link: SocialLinkType) => void;
-  spacing?: number | string;
+  spacing?: Omit<MarginToken, 'auto'>;
   wrap?: boolean;
 }
 
@@ -29,17 +29,19 @@ export default function SocialIcons({
 }: SocialIconsProps) {
   return (
     <div className={classNames('social-icons', { hidden: hidden }, className)}>
-      <ul className={classNames({ 'flex-wrap': wrap })}>
+      <ul
+        className={classNames({
+          'flex-wrap': wrap,
+          [`space-x-${spacing}`]: spacing,
+        })}
+      >
         {links &&
           links.length > 0 &&
           links.map(link => {
             const socialLink =
               typeof link === 'string' ? socialLinks[link] : link;
             return (
-              <li
-                key={socialLink.id || socialLink.name}
-                style={{ margin: spacing }}
-              >
+              <li key={socialLink.id || socialLink.name}>
                 <Icon
                   aria-label={socialLink.name}
                   as="a"
