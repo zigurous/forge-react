@@ -7,6 +7,7 @@ export type BadgeProps = {
   interactive?: boolean;
   selected?: boolean;
   shape?: 'pill' | 'rounded' | 'circle' | 'square';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   style?: React.CSSProperties & {
     '--badge-color-primary'?: string;
     '--badge-color-secondary'?: string;
@@ -21,6 +22,7 @@ export default function Badge({
   interactive,
   selected = false,
   shape = 'pill',
+  size,
   style,
   variant = 'solid',
   ...rest
@@ -30,6 +32,7 @@ export default function Badge({
       className={classNames(
         'badge',
         {
+          [`badge--${size}`]: size,
           [`badge--${color}`]: color,
           [`badge--${variant}`]: variant,
           [`badge--${shape}`]: shape,
