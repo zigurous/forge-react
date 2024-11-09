@@ -12,6 +12,8 @@ export default function ClickableDiv({
   children,
   className,
   onClick,
+  role = 'button',
+  tabIndex = 0,
   ...rest
 }: ClickableDivProps) {
   return (
@@ -25,8 +27,8 @@ export default function ClickableDiv({
           }
         },
       )}
-      role="button"
-      tabIndex={0}
+      role={role}
+      tabIndex={tabIndex}
       {...rest}
     >
       {children}
