@@ -1,0 +1,103 @@
+import classNames from 'classnames';
+import React from 'react';
+import Button from './Button';
+import Overlay, { type OverlayProps } from './Overlay';
+import ProgressiveImage, { type ProgressiveImageProps } from './ProgressiveImage'; // prettier-ignore
+
+type Image = string | ProgressiveImageProps;
+
+export type LightboxProps = {
+  className?: string;
+  currentIndex?: number;
+  images?: Image[];
+  loop?: boolean;
+  onChangeImage?: (newIndex: number) => void;
+  rounded?: boolean;
+} & Omit<OverlayProps, 'children' | 'dialogClassName' | 'dialogZIndex'>;
+
+export default function Lightbox({
+  className,
+  closeOnScrimClick = false,
+  currentIndex = 0,
+  images,
+  loop = false,
+  onChangeImage,
+  onRequestClose,
+  rounded,
+  ...rest
+}: LightboxProps) {
+  const currentImage =
+    images && currentIndex >= 0 && currentIndex < images.length
+      ? images[currentIndex]
+      : null;
+  const imageProps =
+    typeof currentImage === 'object' ? currentImage : { src: currentImage };
+  return (
+    <Overlay
+      className={classNames('lightbox', className)}
+      closeOnScrimClick={closeOnScrimClick}
+      dialogClassName="lightbox__dialog"
+      onRequestClose={onRequestClose}
+      scrimColor="auto"
+      {...rest}
+    >
+      <ProgressiveImage
+        animated={false}
+        className={classNames('lightbox__image', 'shadow-lg', {
+          'rounded-xl': rounded,
+        })}
+        objectFit="cover"
+        {...imageProps}
+      />
+      <div className="lightbox__buttons">
+        <Button
+          aria-label="Previous"
+          className="lightbox__previous"
+          disabled={!images || (!loop && currentIndex <= 0)}
+          icon="arrow_back_ios"
+          iconAlignment="only"
+          iconProps={{ size: 'lg' }}
+          onClick={() => {
+            if (onChangeImage) {
+              if (loop) {
+                onChangeImage(
+                  (currentIndex - 1 + images!.length) % images!.length,
+                );
+              } else if (currentIndex > 0) {
+                onChangeImage(currentIndex - 1);
+              }
+            }
+          }}
+          variant="unstyled"
+        />
+        <Button
+          aria-label="Next"
+          className="lightbox__next"
+          disabled={!images || (!loop && currentIndex >= images.length - 1)}
+          icon="arrow_forward_ios"
+          iconAlignment="only"
+          iconProps={{ size: 'lg' }}
+          onClick={() => {
+            if (onChangeImage) {
+              if (loop) {
+                onChangeImage((currentIndex + 1) % images!.length);
+              } else if (currentIndex < images!.length - 1) {
+                onChangeImage(currentIndex + 1);
+              }
+            }
+          }}
+          variant="unstyled"
+        />
+        <Button
+          aria-label="Close"
+          className="lightbox__close"
+          icon="close"
+          iconAlignment="only"
+          iconProps={{ size: 'lg' }}
+          onClick={onRequestClose}
+          variant="unstyled"
+        />
+      </div>
+    </Overlay>
+  );
+}

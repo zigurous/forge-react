@@ -1,10 +1,9 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
-import Lightbox from 'react-image-lightbox';
+import Lightbox, { type LightboxProps } from './Lightbox';
 import { type ProgressiveImageProps } from './ProgressiveImage';
 import Thumbnail from './Thumbnail';
 import type { Transition } from '../types';
-import 'react-image-lightbox/style.css';
 
 type Image = string | ProgressiveImageProps;
 
@@ -16,6 +15,7 @@ export interface ImageGalleryProps {
   columns?: number;
   fullWidthFirstItem?: boolean;
   images?: Image[];
+  lightboxProps?: LightboxProps;
   maxWidth?: number;
   minWidth?: number;
   rounded?: boolean;
@@ -30,13 +30,13 @@ export default function ImageGallery({
   columns,
   fullWidthFirstItem = false,
   images = [],
+  lightboxProps,
   maxWidth,
   minWidth,
   rounded = false,
   shadow = false,
 }: ImageGalleryProps) {
-  const [open, setOpen] = useState(false);
-  const [imageIndex, setImageIndex] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(-1);
   return (
     <div
       className={classNames('image-gallery', className)}
@@ -65,44 +65,26 @@ export default function ImageGallery({
             index={index}
             key={key}
             onClick={() => {
-              setImageIndex(index);
-              setOpen(true);
+              setSelectedImageIndex(index);
             }}
             rounded={rounded}
             shadow={shadow}
           />
         );
       })}
-      {open && (
-        <Lightbox
-          enableZoom={false}
-          mainSrc={imageSrc(images[imageIndex])}
-          nextSrc={imageSrc(images[(imageIndex + 1) % images.length])}
-          prevSrc={imageSrc(
-            images[(imageIndex + images.length - 1) % images.length],
-          )}
-          onCloseRequest={() => {
-            setOpen(false);
-          }}
-          onMovePrevRequest={() => {
-            setImageIndex((imageIndex + images.length - 1) % images.length);
-          }}
-          onMoveNextRequest={() => {
-            setImageIndex((imageIndex + 1) % images.length);
-          }}
-          wrapperClassName="image-gallery__lightbox"
-        />
-      )}
+      <Lightbox
+        animated={animated}
+        className="image-gallery__lightbox"
+        currentIndex={selectedImageIndex}
+        images={images}
+        onRequestClose={() => setSelectedImageIndex(-1)}
+        onChangeImage={setSelectedImageIndex}
+        open={selectedImageIndex != -1}
+        rounded={rounded}
+        {...lightboxProps}
+      />
     </div>
   );
-}
-
-function imageSrc(image: Image): string {
-  if (typeof image === 'string') {
-    return image;
-  } else {
-    return image.src || '';
-  }
 }
 
 function gridTemplate(

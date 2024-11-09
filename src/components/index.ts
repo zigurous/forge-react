@@ -18,6 +18,7 @@ export { default as EmbeddedYouTube, type EmbeddedYouTubeProps } from './Embedde
 export { default as Icon, type IconProps } from './Icon'; // prettier-ignore
 export { default as ImageGallery, type ImageGalleryProps } from './ImageGallery'; // prettier-ignore
 export { default as Input, type InputProps } from './Input'; // prettier-ignore
+export { default as Lightbox, type LightboxProps } from './Lightbox'; // prettier-ignore
 export { default as Link, type LinkProps } from './Link'; // prettier-ignore
 export { default as LoadingSpinner, type LoadingSpinnerProps } from './LoadingSpinner'; // prettier-ignore
 export { default as Logo, type LogoProps } from './Logo'; // prettier-ignore
