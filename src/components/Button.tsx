@@ -50,21 +50,21 @@ export default function Button({
       {...rest}
     >
       {icon && iconAlignment === 'leading' && (
-        <span aria-hidden className="icon-wrapper">
-          <Icon icon={icon} {...iconProps} />
-        </span>
+        <>
+          <Icon aria-hidden icon={icon} {...iconProps} />
+          <span aria-hidden>&#8192;</span>
+        </>
       )}
       {icon && iconAlignment === 'only' ? (
-        <span aria-hidden className="icon-wrapper">
-          <Icon icon={icon} {...iconProps} />
-        </span>
+        <Icon aria-hidden icon={icon} {...iconProps} />
       ) : (
         children
       )}
       {icon && iconAlignment === 'trailing' && (
-        <span aria-hidden className="icon-wrapper">
-          <Icon icon={icon} {...iconProps} />
-        </span>
+        <>
+          <span aria-hidden>&#8192;</span>
+          <Icon aria-hidden icon={icon} {...iconProps} />
+        </>
       )}
     </button>
   );
