@@ -1,71 +1,44 @@
 import classNames from 'classnames';
 import React from 'react';
-import ClickableDiv from './ClickableDiv';
-import ReactPortal from './ReactPortal';
-import { useModalOverlay } from '../hooks';
-import type { ThemeToken } from '../types';
+import Overlay, { type OverlayProps } from './Overlay';
 
 export type DrawerProps = {
   anchor?: 'left' | 'right' | 'top' | 'bottom';
-  animated?: boolean;
   children?: React.ReactNode;
   className?: string;
-  hideOverlay?: boolean;
-  onRequestClose?: () => void;
-  open?: boolean;
-  rootElement?: string;
   size?: 'sm' | 'md' | 'lg' | number;
-  theme?: ThemeToken | string;
-} & React.ComponentPropsWithRef<'div'>;
+} & Omit<OverlayProps, 'dialogClassName' | 'dialogZIndex'>;
 
 export default function Drawer({
   anchor = 'left',
-  animated = true,
   children,
   className,
-  hideOverlay = false,
-  onRequestClose,
-  open = false,
-  rootElement = 'body',
   size = 'md',
   style,
-  theme,
+  ...rest
 }: DrawerProps) {
   const customStyles = {
     '--drawer-size': typeof size === 'number' ? `${size}px` : undefined,
   };
-  useModalOverlay(open, true);
   return (
-    <ReactPortal rootElement={rootElement}>
-      <div
-        className={classNames(
-          'drawer',
-          {
-            'drawer--open': open,
-            'drawer--closed': !open,
-            'drawer--animated': animated,
-            [`drawer--${anchor}`]: anchor,
-            [`drawer--${size}`]: size && typeof size === 'string',
-          },
-          className,
-        )}
-        data-theme={theme}
-        role="dialog"
-        style={{
-          ...customStyles,
-          ...style,
-        }}
-      >
-        {!hideOverlay && (
-          <ClickableDiv
-            className="drawer__overlay scrim-fixed"
-            onClick={onRequestClose}
-          />
-        )}
-        <div className="drawer__container" role="document">
-          {children}
-        </div>
-      </div>
-    </ReactPortal>
+    <Overlay
+      className={classNames(
+        'drawer',
+        {
+          [`drawer--${anchor}`]: anchor,
+          [`drawer--${size}`]: size && typeof size === 'string',
+        },
+        className,
+      )}
+      dialogClassName="drawer__dialog"
+      dialogZIndex="menu"
+      style={{
+        ...customStyles,
+        ...style,
+      }}
+      {...rest}
+    >
+      {children}
+    </Overlay>
   );
 }
