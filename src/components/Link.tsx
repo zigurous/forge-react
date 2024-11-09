@@ -9,7 +9,7 @@ export type BaseLinkProps = {
   href?: string;
   rel?: string;
   target?: string;
-  underlined?: boolean;
+  underline?: boolean;
   unstyled?: boolean;
 };
 
@@ -26,7 +26,7 @@ export default function Link<T extends React.ElementType = 'a'>({
   href,
   rel,
   target,
-  underlined = false,
+  underline = false,
   unstyled = false,
   ...rest
 }: LinkProps<T>) {
@@ -36,7 +36,7 @@ export default function Link<T extends React.ElementType = 'a'>({
       className={classNames(
         {
           link: !unstyled,
-          'link--underlined': underlined && !unstyled,
+          'link--underline': underline && !unstyled,
         },
         className,
       )}

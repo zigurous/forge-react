@@ -45,7 +45,7 @@ export default function CookieConsent({
                 className="text-inherit"
                 external
                 href={learnMoreLink}
-                underlined
+                underline
               >
                 Learn more
               </Link>
