@@ -1,58 +1,39 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
-import Button from './Button';
-import Logo, { type LogoProps } from './Logo';
-import NavBar from './NavBar';
-import NavMenu from './NavMenu';
-import SocialIcons, { type SocialIconsProps } from './SocialIcons';
-import { useBreakpoint } from '../hooks';
-import type { LinkTypeWithIcon, SocialLinkType, ThemeToken } from '../types';
+import React from 'react';
+import Container from './Container';
+import Row from './Row';
+import Col from './Col';
+import type { ColSize, ThemeToken } from '../types';
 
-export interface AppHeaderProps {
+export type AppHeaderProps = {
   bordered?: boolean;
+  center?: React.ReactNode;
   className?: string;
   fluid?: boolean;
-  hideLogo?: boolean;
-  hideNavigation?: boolean;
-  hideSocialLinks?: boolean;
-  LinkElementType?: React.ElementType;
-  links?: LinkTypeWithIcon[];
-  location?: Location | null;
-  LogoElementType?: React.ElementType;
-  logoProps?: Omit<LogoProps<'a'>, 'as'>;
-  onLinkClick?: (link: LinkTypeWithIcon) => void;
-  rootElement?: string;
-  socialIconsProps?: SocialIconsProps;
-  socialLinks?: SocialLinkType[];
+  left?: React.ReactNode;
+  right?: React.ReactNode;
+  sizing?: { left?: ColSize; center?: ColSize; right?: ColSize };
   sticky?: boolean;
   theme?: ThemeToken;
   transparent?: boolean;
-}
+} & React.ComponentPropsWithRef<'header'>;
 
 export default function AppHeader({
   bordered = false,
+  center,
   className,
   fluid = false,
-  hideLogo = false,
-  hideNavigation = false,
-  hideSocialLinks = false,
-  LinkElementType = 'a',
-  links,
-  location = typeof window !== 'undefined' ? window.location : null,
-  LogoElementType = 'a',
-  logoProps,
-  onLinkClick,
-  rootElement = 'body',
-  socialIconsProps,
-  socialLinks,
+  left,
+  right,
+  sizing,
   sticky = false,
-  theme,
+  theme = 'light',
   transparent = false,
+  ...rest
 }: AppHeaderProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const xl = useBreakpoint('xl');
   return (
     <header
+      {...rest}
       className={classNames(
         'app-header',
         {
@@ -64,66 +45,34 @@ export default function AppHeader({
       )}
       data-theme={theme}
     >
-      <div
-        className={classNames({
-          container: !fluid,
-          'container-fluid': fluid,
-        })}
-      >
-        <div className="app-header__content left">
-          {!hideLogo && <Logo as={LogoElementType} size="sm" {...logoProps} />}
-          {!hideNavigation && (
-            <NavBar
-              className={classNames({ hidden: !xl })}
-              LinkElementType={LinkElementType}
-              links={links}
-              location={location}
-              onLinkClick={onLinkClick}
-            />
-          )}
-        </div>
-        <div className="app-header__content right">
-          {!hideSocialLinks && socialLinks && socialLinks.length > 0 && (
-            <SocialIcons
-              className={classNames({ hidden: !xl })}
-              links={socialLinks}
-              {...socialIconsProps}
-            />
-          )}
-          {!hideNavigation && (
-            <>
-              <Button
-                aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
-                className={classNames('app-header__menu-button', {
-                  hidden: xl && !isMenuOpen,
-                })}
-                icon={isMenuOpen ? 'close' : 'menu'}
-                iconAlignment="only"
-                iconProps={{ size: 'md' }}
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                size="lg"
-                variant="text"
-              />
-              <NavMenu
-                hideSocialLinks={hideSocialLinks}
-                LinkElementType={LinkElementType}
-                links={links}
-                location={location}
-                onLinkClick={link => {
-                  setIsMenuOpen(false);
-                  if (onLinkClick) {
-                    onLinkClick(link);
-                  }
-                }}
-                open={isMenuOpen}
-                rootElement={rootElement}
-                socialLinks={socialLinks}
-                theme={theme}
-              />
-            </>
-          )}
-        </div>
-      </div>
+      <Container fluid={fluid}>
+        <Row className="flex-nowrap">
+          <Col
+            className={classNames('app-header__left', {
+              'pointer-events-none': !left,
+            })}
+            size={sizing?.left}
+          >
+            {left}
+          </Col>
+          <Col
+            className={classNames('app-header__center', {
+              'pointer-events-none': !center,
+            })}
+            size={sizing?.center}
+          >
+            {center}
+          </Col>
+          <Col
+            className={classNames('app-header__right', {
+              'pointer-events-none': !right,
+            })}
+            size={sizing?.right}
+          >
+            {right}
+          </Col>
+        </Row>
+      </Container>
     </header>
   );
 }
