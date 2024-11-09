@@ -81,11 +81,12 @@ export default function Icon<T extends React.ElementType = 'i'>({
       )}
       style={{
         backgroundColor: isTokenBackgroundColor ? undefined : backgroundColor,
-        color: isTokenColor ? undefined : color,
-        fill: isTokenColor ? undefined : color,
-        width: isTokenSize ? undefined : size,
-        height: isTokenSize ? undefined : size,
-        padding: isTokenPadding ? undefined : padding,
+        color: !isTokenColor ? color : undefined,
+        fill: !isTokenColor ? color : undefined,
+        width: !isTokenSize ? size : undefined,
+        height: !isTokenSize ? size : undefined,
+        fontSize: !isTokenSize && type === 'material' ? size : undefined,
+        padding: !isTokenPadding ? padding : undefined,
         ...style,
       }}
     >
