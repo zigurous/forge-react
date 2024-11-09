@@ -1,9 +1,13 @@
 import classNames from 'classnames';
 import React from 'react';
-import type { SemanticColorToken } from '../types';
+import Icon, { type IconProps } from './Icon';
+import type { IconElement, SemanticColorToken } from '../types';
 
 export type BadgeProps = {
   color?: SemanticColorToken;
+  icon?: IconElement;
+  iconAlignment?: 'leading' | 'trailing' | 'only' | 'none';
+  iconProps?: IconProps<'i'>;
   interactive?: boolean;
   selected?: boolean;
   shape?: 'pill' | 'rounded' | 'circle' | 'square';
@@ -19,6 +23,9 @@ export default function Badge({
   children,
   className,
   color = 'default',
+  icon,
+  iconAlignment = 'leading',
+  iconProps,
   interactive,
   selected = false,
   shape = 'pill',
@@ -44,7 +51,23 @@ export default function Badge({
       style={style}
       {...rest}
     >
-      {children}
+      {icon && iconAlignment === 'leading' && (
+        <>
+          <Icon aria-hidden icon={icon} {...iconProps} />
+          <span aria-hidden>&#160;</span>
+        </>
+      )}
+      {icon && iconAlignment === 'only' ? (
+        <Icon aria-hidden icon={icon} {...iconProps} />
+      ) : (
+        children
+      )}
+      {icon && iconAlignment === 'trailing' && (
+        <>
+          <span aria-hidden>&#160;</span>
+          <Icon aria-hidden icon={icon} {...iconProps} />
+        </>
+      )}
     </div>
   );
 }
