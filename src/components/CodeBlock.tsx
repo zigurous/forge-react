@@ -59,7 +59,7 @@ export default function CodeBlock({
       </code>
       {showCopyButton && (
         <Button
-          className="code-block__copy"
+          className="code-block__copy opacity-subtle"
           icon="copy"
           iconAlignment="only"
           onClick={() => {
@@ -67,6 +67,7 @@ export default function CodeBlock({
               navigator.clipboard.writeText(children as string);
             }
           }}
+          size="lg"
           variant="text"
         />
       )}
