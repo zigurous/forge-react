@@ -1,6 +1,6 @@
 export * from './useBreakpoint';
 export * from './useElementSize';
-export * from './useLoading';
+export * from './useLoaded';
 export * from './useLocalStorage';
 export * from './useMediaQuery';
 export * from './useModalOverlay';

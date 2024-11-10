@@ -40,7 +40,7 @@ export default function ProgressiveImage({
   ...rest
 }: ProgressiveImageProps) {
   const imageRef = useRef<HTMLImageElement>(null);
-  const loaded = useLoaded(imageRef, onLoad) && src;
+  const loaded = useLoaded(imageRef, undefined, onLoad);
   return (
     <picture
       className={classNames(

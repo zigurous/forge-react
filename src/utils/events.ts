@@ -3,7 +3,7 @@ export function bindEvent(
   eventName: string,
   eventHandler: EventListenerOrEventListenerObject,
 ) {
-  if (element.addEventListener) {
+  if (element && element.addEventListener) {
     element.addEventListener(eventName, eventHandler);
   }
 }
@@ -13,7 +13,7 @@ export function unbindEvent(
   eventName: string,
   eventHandler: EventListenerOrEventListenerObject,
 ) {
-  if (element.removeEventListener) {
+  if (element && element.removeEventListener) {
     element.removeEventListener(eventName, eventHandler);
   }
 }
