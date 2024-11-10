@@ -13,6 +13,7 @@ export interface ImageGalleryProps {
   animationDuration?: number;
   className?: string;
   columns?: number;
+  disableLightbox?: boolean;
   fullWidthFirstItem?: boolean;
   images?: Image[];
   lightboxProps?: LightboxProps;
@@ -28,6 +29,7 @@ export default function ImageGallery({
   animationDuration,
   className,
   columns,
+  disableLightbox = false,
   fullWidthFirstItem = false,
   images = [],
   lightboxProps,
@@ -61,6 +63,7 @@ export default function ImageGallery({
             className={classNames({
               'full-width': index === 0 && fullWidthFirstItem,
             })}
+            disabled={disableLightbox}
             image={image}
             index={index}
             key={key}
@@ -72,17 +75,19 @@ export default function ImageGallery({
           />
         );
       })}
-      <Lightbox
-        animated={animated}
-        className="image-gallery__lightbox"
-        currentIndex={selectedImageIndex}
-        images={images}
-        onRequestClose={() => setSelectedImageIndex(-1)}
-        onChangeImage={setSelectedImageIndex}
-        open={selectedImageIndex != -1}
-        rounded={rounded}
-        {...lightboxProps}
-      />
+      {!disableLightbox && (
+        <Lightbox
+          animated={animated}
+          className="image-gallery__lightbox"
+          currentIndex={selectedImageIndex}
+          images={images}
+          onRequestClose={() => setSelectedImageIndex(-1)}
+          onChangeImage={setSelectedImageIndex}
+          open={selectedImageIndex != -1}
+          rounded={rounded}
+          {...lightboxProps}
+        />
+      )}
     </div>
   );
 }
