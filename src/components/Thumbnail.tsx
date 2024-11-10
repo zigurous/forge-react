@@ -9,6 +9,7 @@ export type BaseThumbnailProps = {
   animationDuration?: number;
   children?: React.ReactNode;
   className?: string;
+  disabled?: boolean;
   image?: string | ProgressiveImageProps;
   index?: number;
   rounded?: boolean;
@@ -25,6 +26,7 @@ export default function Thumbnail<T extends React.ElementType = 'a'>({
   as,
   children,
   className,
+  disabled = false,
   image,
   index = -1,
   ref: _,
@@ -43,6 +45,7 @@ export default function Thumbnail<T extends React.ElementType = 'a'>({
         'thumbnail',
         {
           'thumbnail--animated': animated,
+          'thumbnail--disabled': disabled,
           [getAnimationClasses(animation)]: animated,
           'transition-start': animated && !loaded,
           'transition-end': animated && loaded,
