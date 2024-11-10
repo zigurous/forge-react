@@ -14,11 +14,18 @@ export type LightboxProps = {
   loop?: boolean;
   onChangeImage?: (newIndex: number) => void;
   rounded?: boolean;
-} & Omit<OverlayProps, 'children' | 'dialogClassName' | 'dialogZIndex'>;
+} & Omit<
+  OverlayProps,
+  | 'children'
+  | 'closeOnScrimClick'
+  | 'dialogClassName'
+  | 'dialogZIndex'
+  | 'theme'
+>;
 
 export default function Lightbox({
+  animated = true,
   className,
-  closeOnScrimClick = false,
   currentIndex = 0,
   hidePagination,
   images,
@@ -26,6 +33,7 @@ export default function Lightbox({
   onChangeImage,
   onRequestClose,
   rounded,
+  scrimColor = 'auto',
   ...rest
 }: LightboxProps) {
   const currentImage =
@@ -36,16 +44,17 @@ export default function Lightbox({
     typeof currentImage === 'object' ? currentImage : { src: currentImage };
   return (
     <Overlay
+      animated={animated}
       className={classNames('lightbox', className)}
-      closeOnScrimClick={closeOnScrimClick}
+      closeOnScrimClick={false}
       dialogClassName="lightbox__dialog"
       onRequestClose={onRequestClose}
-      scrimColor="auto"
+      scrimColor={scrimColor}
       {...rest}
     >
       <div className="lightbox__container">
         <ProgressiveImage
-          animated={false}
+          animated={animated}
           className={classNames('lightbox__image', 'shadow-lg', {
             'rounded-xl': rounded,
           })}
