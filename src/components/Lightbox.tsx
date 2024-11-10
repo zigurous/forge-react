@@ -9,6 +9,7 @@ type Image = string | ProgressiveImageProps;
 export type LightboxProps = {
   className?: string;
   currentIndex?: number;
+  hidePagination?: boolean;
   images?: Image[];
   loop?: boolean;
   onChangeImage?: (newIndex: number) => void;
@@ -19,6 +20,7 @@ export default function Lightbox({
   className,
   closeOnScrimClick = false,
   currentIndex = 0,
+  hidePagination,
   images,
   loop = false,
   onChangeImage,
@@ -41,14 +43,28 @@ export default function Lightbox({
       scrimColor="auto"
       {...rest}
     >
-      <ProgressiveImage
-        animated={false}
-        className={classNames('lightbox__image', 'shadow-lg', {
-          'rounded-xl': rounded,
-        })}
-        objectFit="cover"
-        {...imageProps}
-      />
+      <div className="lightbox__container">
+        <ProgressiveImage
+          animated={false}
+          className={classNames('lightbox__image', 'shadow-lg', {
+            'rounded-xl': rounded,
+          })}
+          objectFit="cover"
+          {...imageProps}
+        />
+        {!hidePagination && images && images.length > 1 && (
+          <div aria-hidden className="lightbox__pagination">
+            {Array.from({ length: images.length }).map((_, index) => (
+              <div
+                key={index}
+                className={classNames('lightbox__pagination-dot', {
+                  selected: index === currentIndex,
+                })}
+              />
+            ))}
+          </div>
+        )}
+      </div>
       <div className="lightbox__buttons">
         <Button
           aria-label="Previous"

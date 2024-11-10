@@ -41,7 +41,8 @@ export default function Overlay({
     'bg-white':
       scrimColor === 'light' || (scrimColor === 'auto' && theme === 'light'),
     'bg-black':
-      scrimColor === 'dark' || (scrimColor === 'auto' && theme !== 'light'),
+      scrimColor === 'dark' ||
+      (scrimColor === 'auto' && theme !== 'light' && theme),
     'bg-background': scrimColor === 'auto' && !theme,
     hidden: hideScrim,
   });
