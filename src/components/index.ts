@@ -2,9 +2,7 @@ export { default as AppFooter, type AppFooterProps } from './AppFooter'; // pret
 export { default as AppHeader, type AppHeaderProps } from './AppHeader'; // prettier-ignore
 export { default as AppStoreBadge, type AppStoreBadgeProps } from './AppStoreBadge'; // prettier-ignore
 export { default as Badge, type BadgeProps } from './Badge'; // prettier-ignore
-export { default as BadgeGroup, type BadgeGroupProps } from './BadgeGroup'; // prettier-ignore
 export { default as Button, type ButtonProps } from './Button'; // prettier-ignore
-export { default as ButtonGroup, type ButtonGroupProps } from './ButtonGroup'; // prettier-ignore
 export { default as ClickableDiv, type ClickableDivProps } from './ClickableDiv'; // prettier-ignore
 export { default as CodeBlock, type CodeBlockProps } from './CodeBlock'; // prettier-ignore
 export { default as Col, type ColProps } from './Col'; // prettier-ignore
@@ -15,6 +13,7 @@ export { default as Drawer, type DrawerProps } from './Drawer'; // prettier-igno
 export { default as EmbeddedTwitch, type EmbeddedTwitchProps } from './EmbeddedTwitch'; // prettier-ignore
 export { default as EmbeddedVideo, type EmbeddedVideoProps } from './EmbeddedVideo'; // prettier-ignore
 export { default as EmbeddedYouTube, type EmbeddedYouTubeProps } from './EmbeddedYouTube'; // prettier-ignore
+export { default as FlexGroup, type FlexGroupProps } from './FlexGroup'; // prettier-ignore
 export { default as Icon, type IconProps } from './Icon'; // prettier-ignore
 export { default as ImageGallery, type ImageGalleryProps } from './ImageGallery'; // prettier-ignore
 export { default as Input, type InputProps } from './Input'; // prettier-ignore

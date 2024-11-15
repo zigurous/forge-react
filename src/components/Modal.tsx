@@ -39,9 +39,9 @@ export default function Modal({
               className="modal__close-button"
               icon="close"
               iconAlignment="only"
-              iconProps={{ color: '' }}
+              iconProps={{ color: '', size: 'md' }}
               onClick={onRequestClose}
-              size="md"
+              size="lg"
               variant="text"
             />
           </div>
