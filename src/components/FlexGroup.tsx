@@ -3,20 +3,11 @@ import React from 'react';
 import type { SpacingToken } from '../types';
 
 export type FlexGroupProps = {
-  align?: 'normal' | 'center' | 'start' | 'end' | 'stretch' | 'baseline';
+  align?: 'start' | 'end' | 'center' | 'stretch' | 'baseline';
   children: React.ReactNode;
   className?: string;
   inline?: boolean;
-  justify?:
-    | 'normal'
-    | 'center'
-    | 'start'
-    | 'end'
-    | 'between'
-    | 'around'
-    | 'evenly'
-    | 'stretch'
-    | 'baseline';
+  justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
   layout?: 'horizontal' | 'vertical';
   reverse?: boolean;
   spacing?: SpacingToken | '0' | 0;
@@ -24,7 +15,7 @@ export type FlexGroupProps = {
 } & React.ComponentPropsWithRef<'div'>;
 
 export default function FlexGroup({
-  align,
+  align = 'start',
   children,
   className,
   inline = false,

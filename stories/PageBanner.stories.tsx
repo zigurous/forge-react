@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import Badge from '../src/components/Badge';
-import BadgeGroup from '../src/components/BadgeGroup';
 import Button from '../src/components/Button';
 import Col from '../src/components/Col';
 import Container from '../src/components/Container';
+import FlexGroup from '../src/components/FlexGroup';
 import PageBanner from '../src/components/PageBanner';
 import Row from '../src/components/Row';
 import SocialButton from '../src/components/SocialButton';
@@ -55,7 +55,7 @@ export const CallToAction: Story = {
             <Text
               as="div"
               className="ml-xxxs"
-              marginBottom="xs"
+              marginBottom="xxs"
               type="subtitle"
             >
               Subtitle
@@ -91,7 +91,7 @@ export const ProductFeature: Story = {
             <Text
               as="div"
               className="ml-xxxs"
-              marginBottom="xs"
+              marginBottom="xxs"
               type="subtitle"
             >
               Subtitle
@@ -99,14 +99,14 @@ export const ProductFeature: Story = {
             <Text as="h1" marginBottom="lg" type="title-lg">
               Product
             </Text>
-            <BadgeGroup>
+            <FlexGroup spacing="sm" wrap>
               <Badge color="primary" variant="tint">
                 Badge
               </Badge>
               <Badge color="primary" variant="tint">
                 Badge
               </Badge>
-            </BadgeGroup>
+            </FlexGroup>
           </Col>
           <Col>
             <Text marginBottom="lg" type="body-lg">
@@ -134,7 +134,7 @@ export const ProductCTA: Story = {
             <Text
               as="div"
               className="ml-xxxs"
-              marginBottom="xs"
+              marginBottom="xxs"
               type="subtitle"
             >
               Subtitle
