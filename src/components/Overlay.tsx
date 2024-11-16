@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import ClickableDiv from './ClickableDiv';
 import ReactPortal from './ReactPortal';
-import { useKeyboardEvent, useModalOverlay } from '../hooks';
+import { useBodyOverflow, useKeyboardEvent } from '../hooks';
 import type { ThemeToken, ZIndexToken } from '../types';
 
 export type OverlayProps = {
@@ -46,7 +46,7 @@ export default function Overlay({
     'bg-background': scrimColor === 'auto' && !theme,
     hidden: hideScrim,
   });
-  useModalOverlay(open, reflow);
+  useBodyOverflow(open, reflow);
   useKeyboardEvent(['Escape', 'Backspace'], onRequestClose, false);
   return (
     <ReactPortal rootElement={rootElement}>

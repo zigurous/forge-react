@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
 import { getScrollbarWidth } from '../utils';
 
-export function useModalOverlay(open = false, reflow = true) {
+export function useBodyOverflow(
+  hidden = false,
+  adjustForScrollbarReflow = true,
+) {
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      if (open) {
-        if (reflow) {
+      if (hidden) {
+        if (adjustForScrollbarReflow) {
           const scrollbarWidth = getScrollbarWidth();
           if (scrollbarWidth > 0) {
             document.body.style.paddingRight = `${scrollbarWidth}px`;
@@ -14,10 +17,10 @@ export function useModalOverlay(open = false, reflow = true) {
         document.body.classList.add('overflow-hidden');
       } else {
         document.body.classList.remove('overflow-hidden');
-        if (reflow) {
+        if (adjustForScrollbarReflow) {
           document.body.style.paddingRight = '';
         }
       }
     }
-  }, [open, reflow]);
+  }, [hidden, adjustForScrollbarReflow]);
 }

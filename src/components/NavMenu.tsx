@@ -4,7 +4,7 @@ import Button from './Button';
 import Link from './Link';
 import ReactPortal from './ReactPortal';
 import SocialIcons, { type SocialIconsProps } from './SocialIcons';
-import { useModalOverlay } from '../hooks';
+import { useBodyOverflow } from '../hooks';
 import type { LinkTypeWithIcon, SocialLinkType, ThemeToken } from '../types';
 import { isPathActive } from '../utils';
 
@@ -45,7 +45,7 @@ export default function NavMenu({
   socialLinks,
   theme,
 }: NavMenuProps) {
-  useModalOverlay(open, true);
+  useBodyOverflow(open, true);
   if (!open) null;
   return (
     <ReactPortal rootElement={rootElement}>
