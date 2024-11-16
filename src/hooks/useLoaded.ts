@@ -4,13 +4,12 @@ import { bindEvent, unbindEvent } from '../utils';
 export function useLoaded(
   ref: React.RefObject<HTMLElement>,
   key?: string,
-  onLoadComplete?: () => void,
+  onLoad?: () => void,
 ): boolean {
   const [loaded, setLoaded] = useState(false);
 
   // reset loaded state when the key changes
   useEffect(() => {
-    console.log('reset loaded state');
     setLoaded(false);
   }, [key]);
 
@@ -20,20 +19,17 @@ export function useLoaded(
 
     // set as not loaded if the element is not set
     if (!element) {
-      console.log('element not set');
       setLoaded(false);
       return;
     }
 
     // set as loaded if the element is an image and already loaded
     if (element instanceof HTMLImageElement && element.complete) {
-      console.log('image already loaded', element.src);
       setLoaded(true);
       return;
     }
 
     const loadComplete = () => {
-      console.log('load complete', element);
       setLoaded(true);
     };
 
@@ -46,10 +42,10 @@ export function useLoaded(
 
   // trigger callback when the element is loaded
   useEffect(() => {
-    if (loaded && onLoadComplete) {
-      onLoadComplete();
+    if (loaded && onLoad) {
+      onLoad();
     }
-  }, [loaded, onLoadComplete]);
+  }, [loaded, onLoad]);
 
   return loaded;
 }
