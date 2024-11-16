@@ -29,7 +29,7 @@ export default function ProgressiveImage({
   imageClassName,
   imageProps = {},
   objectFit,
-  onLoad = () => {},
+  onLoad,
   placeholder,
   placeholderBlurred,
   placeholderClassName,

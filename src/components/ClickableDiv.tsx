@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import { enterKeyHandler } from '../utils';
+import { keyboardEventHandler } from '../utils';
 
 export type ClickableDivProps = {
   children?: React.ReactNode;
@@ -20,7 +20,8 @@ export default function ClickableDiv({
     <div
       className={classNames(className, 'cursor-pointer')}
       onClick={onClick}
-      onKeyDown={enterKeyHandler(
+      onKeyDown={keyboardEventHandler(
+        'Enter',
         (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
           if (onClick) {
             onClick(e);

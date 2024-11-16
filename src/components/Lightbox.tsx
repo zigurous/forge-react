@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { useCallback } from 'react';
 import Button from './Button';
 import Overlay, { type OverlayProps } from './Overlay';
 import ProgressiveImage, { type ProgressiveImageProps } from './ProgressiveImage'; // prettier-ignore
+import { useKeyboardEvent } from '../hooks';
 
 type Image = string | ProgressiveImageProps;
 
@@ -28,7 +29,7 @@ export default function Lightbox({
   className,
   currentIndex = 0,
   hidePagination,
-  images,
+  images = [],
   loop = false,
   onChangeImage,
   onRequestClose,
@@ -42,6 +43,26 @@ export default function Lightbox({
       : null;
   const imageProps =
     typeof currentImage === 'object' ? currentImage : { src: currentImage };
+  const previousImage = useCallback(() => {
+    if (onChangeImage) {
+      if (loop) {
+        onChangeImage((currentIndex - 1 + images!.length) % images!.length);
+      } else if (currentIndex > 0) {
+        onChangeImage(currentIndex - 1);
+      }
+    }
+  }, [currentIndex, images, loop, onChangeImage]);
+  const nextImage = useCallback(() => {
+    if (onChangeImage) {
+      if (loop) {
+        onChangeImage((currentIndex + 1) % images!.length);
+      } else if (currentIndex < images!.length - 1) {
+        onChangeImage(currentIndex + 1);
+      }
+    }
+  }, [currentIndex, images, loop, onChangeImage]);
+  useKeyboardEvent('ArrowLeft', previousImage);
+  useKeyboardEvent('ArrowRight', nextImage);
   return (
     <Overlay
       animated={animated}
@@ -82,17 +103,7 @@ export default function Lightbox({
           icon="arrow_back_ios"
           iconAlignment="only"
           iconProps={{ size: 'lg' }}
-          onClick={() => {
-            if (onChangeImage) {
-              if (loop) {
-                onChangeImage(
-                  (currentIndex - 1 + images!.length) % images!.length,
-                );
-              } else if (currentIndex > 0) {
-                onChangeImage(currentIndex - 1);
-              }
-            }
-          }}
+          onClick={previousImage}
           variant="unstyled"
         />
         <Button
@@ -102,15 +113,7 @@ export default function Lightbox({
           icon="arrow_forward_ios"
           iconAlignment="only"
           iconProps={{ size: 'lg' }}
-          onClick={() => {
-            if (onChangeImage) {
-              if (loop) {
-                onChangeImage((currentIndex + 1) % images!.length);
-              } else if (currentIndex < images!.length - 1) {
-                onChangeImage(currentIndex + 1);
-              }
-            }
-          }}
+          onClick={nextImage}
           variant="unstyled"
         />
         <Button

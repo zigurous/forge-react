@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import ClickableDiv from './ClickableDiv';
 import ReactPortal from './ReactPortal';
-import { useModalOverlay } from '../hooks';
+import { useKeyboardEvent, useModalOverlay } from '../hooks';
 import type { ThemeToken, ZIndexToken } from '../types';
 
 export type OverlayProps = {
@@ -29,7 +29,7 @@ export default function Overlay({
   dialogClassName,
   dialogZIndex,
   hideScrim = false,
-  onRequestClose,
+  onRequestClose = () => {},
   open = false,
   reflow = true,
   rootElement = 'body',
@@ -47,6 +47,7 @@ export default function Overlay({
     hidden: hideScrim,
   });
   useModalOverlay(open, reflow);
+  useKeyboardEvent(['Escape', 'Backspace'], onRequestClose, false);
   return (
     <ReactPortal rootElement={rootElement}>
       <div

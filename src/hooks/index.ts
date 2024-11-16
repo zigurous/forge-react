@@ -1,5 +1,6 @@
 export * from './useBreakpoint';
 export * from './useElementSize';
+export * from './useKeyboardEvent';
 export * from './useLoaded';
 export * from './useLocalStorage';
 export * from './useMediaQuery';

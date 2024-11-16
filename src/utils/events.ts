@@ -18,9 +18,10 @@ export function unbindEvent(
   }
 }
 
-export function keyHandler<T>(
-  key: string,
+export function keyboardEventHandler<T>(
+  key: string | string[],
   callback: Function,
+  preventDefault = true,
 ): React.KeyboardEventHandler<T> {
   return (event: React.KeyboardEvent<T>) => {
     if (event.defaultPrevented) {
@@ -28,19 +29,47 @@ export function keyHandler<T>(
     }
 
     let handled = false;
-    if (event.key === key) {
+
+    if (Array.isArray(key)) {
+      if (key.includes(event.key)) {
+        handled = true;
+        callback(event);
+      }
+    } else if (event.key === key) {
       handled = true;
       callback(event);
     }
 
-    if (handled) {
+    if (handled && preventDefault) {
       event.preventDefault();
     }
   };
 }
 
-export function enterKeyHandler<T>(
+export function nativeKeyboardEventHandler(
+  key: string | string[],
   callback: Function,
-): React.KeyboardEventHandler<T> {
-  return keyHandler('Enter', callback);
+  preventDefault = true,
+) {
+  return (event: KeyboardEvent) => {
+    if (event.defaultPrevented) {
+      return;
+    }
+
+    let handled = false;
+
+    if (Array.isArray(key)) {
+      if (key.includes(event.key)) {
+        handled = true;
+        callback(event);
+      }
+    } else if (event.key === key) {
+      handled = true;
+      callback(event);
+    }
+
+    if (handled && preventDefault) {
+      event.preventDefault();
+    }
+  };
 }

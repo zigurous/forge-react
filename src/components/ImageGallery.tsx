@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Lightbox, { type LightboxProps } from './Lightbox';
 import { type ProgressiveImageProps } from './ProgressiveImage';
 import Thumbnail from './Thumbnail';
@@ -39,6 +39,7 @@ export default function ImageGallery({
   shadow = false,
 }: ImageGalleryProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(-1);
+  const closeLightbox = useCallback(() => setSelectedImageIndex(-1), []);
   return (
     <div
       className={classNames('image-gallery', className)}
@@ -81,7 +82,7 @@ export default function ImageGallery({
           className="image-gallery__lightbox"
           currentIndex={selectedImageIndex}
           images={images}
-          onRequestClose={() => setSelectedImageIndex(-1)}
+          onRequestClose={closeLightbox}
           onChangeImage={setSelectedImageIndex}
           open={selectedImageIndex != -1}
           rounded={rounded}

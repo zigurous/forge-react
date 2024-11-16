@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { useCallback } from 'react';
 import Input, { type InputProps } from './Input';
-import { debounce, enterKeyHandler } from '../utils';
+import { debounce, keyboardEventHandler } from '../utils';
 
 export type SearchInputProps = {
   className?: string;
@@ -38,7 +38,8 @@ export default function SearchInput({
         }
         debounced(event.target.value);
       }}
-      onKeyDown={enterKeyHandler(
+      onKeyDown={keyboardEventHandler(
+        'Enter',
         (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
           e.currentTarget.blur();
         },
