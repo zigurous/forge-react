@@ -9,3 +9,8 @@ package.json
 .vscode/
 .snapshots/
 *.min.js
+*.mdx
+*.md
+*.html
+*.css
+*.json

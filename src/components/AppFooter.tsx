@@ -25,8 +25,8 @@ export default function AppFooter({
   className,
   copyright = (
     <>
-      Copyright <span aria-hidden>©</span> {new Date().getFullYear()} All Rights
-      Reserved
+      Copyright <span aria-hidden>©</span> {new Date().getFullYear()} All
+      Rights Reserved
     </>
   ),
   hideCopyright = false,

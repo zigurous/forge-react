@@ -21,12 +21,15 @@ export function throttle(fn: Function, wait: number = 300) {
       inThrottle = true;
     } else {
       clearTimeout(lastFn);
-      lastFn = setTimeout(() => {
-        if (Date.now() - lastTime >= wait) {
-          fn.apply(context, args);
-          lastTime = Date.now();
-        }
-      }, Math.max(wait - (Date.now() - lastTime), 0));
+      lastFn = setTimeout(
+        () => {
+          if (Date.now() - lastTime >= wait) {
+            fn.apply(context, args);
+            lastTime = Date.now();
+          }
+        },
+        Math.max(wait - (Date.now() - lastTime), 0),
+      );
     }
   };
 }
