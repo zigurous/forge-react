@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import Badge from '../src/components/Badge';
-import FlexGroup from '../src/components/FlexGroup';
+import Stack from '../src/components/Stack';
 
 const meta: Meta<typeof Badge> = {
   component: Badge,
@@ -57,7 +57,7 @@ export const Number: Story = {
 export const BadgeGroup: Story = {
   render: args => {
     return (
-      <FlexGroup spacing="sm" wrap>
+      <Stack spacing="sm" wrap>
         <Badge color="primary" variant="tint">
           Badge
         </Badge>
@@ -67,7 +67,7 @@ export const BadgeGroup: Story = {
         <Badge color="primary" variant="tint">
           Badge
         </Badge>
-      </FlexGroup>
+      </Stack>
     );
   },
 };

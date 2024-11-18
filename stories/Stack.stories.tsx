@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
 import React from 'react';
-import DefaultFlexGroup, { type FlexGroupProps } from '../src/components/FlexGroup'; // prettier-ignore
+import DefaultStack, { type StackProps } from '../src/components/Stack'; // prettier-ignore
 
-const FlexGroup = (props: FlexGroupProps) => {
+const Stack = (props: StackProps) => {
   return (
-    <DefaultFlexGroup
+    <DefaultStack
       className="bg-surface-1 p-md"
       style={{ minHeight: props.align ? '6rem' : undefined }}
       {...props}
@@ -35,22 +35,22 @@ const Child = ({
   );
 };
 
-const meta: Meta<typeof DefaultFlexGroup> = {
-  component: DefaultFlexGroup,
+const meta: Meta<typeof DefaultStack> = {
+  component: DefaultStack,
   render: args => {
     return (
-      <FlexGroup spacing="md" {...args}>
+      <Stack spacing="md" {...args}>
         <Child>Item 1</Child>
         <Child>Item 2</Child>
         <Child>Item 3</Child>
-      </FlexGroup>
+      </Stack>
     );
   },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof DefaultFlexGroup>;
+type Story = StoryObj<typeof DefaultStack>;
 
 export const Default: Story = {
   args: {},
@@ -140,11 +140,11 @@ export const AlignBaseline: Story = {
   },
   render: args => {
     return (
-      <FlexGroup {...args}>
+      <Stack {...args}>
         <Child style={{ height: '2rem' }}>Item 1</Child>
         <Child style={{ height: '4rem' }}>Item 2</Child>
         <Child style={{ height: '3rem' }}>Item 3</Child>
-      </FlexGroup>
+      </Stack>
     );
   },
 };

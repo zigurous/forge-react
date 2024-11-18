@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import Button from '../src/components/Button';
-import FlexGroup from '../src/components/FlexGroup';
+import Stack from '../src/components/Stack';
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -66,11 +66,11 @@ export const IconOnly: Story = {
 export const ButtonGroup: Story = {
   render: args => {
     return (
-      <FlexGroup spacing="md" wrap>
+      <Stack spacing="md" wrap>
         <Button variant="solid">Primary</Button>
         <Button variant="outline">Secondary</Button>
         <Button variant="text">Tertiary</Button>
-      </FlexGroup>
+      </Stack>
     );
   },
 };

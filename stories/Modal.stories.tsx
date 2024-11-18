@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from '@storybook/preview-api';
 import React, { Fragment } from 'react';
 import Button from '../src/components/Button';
-import FlexGroup from '../src/components/FlexGroup';
 import Modal from '../src/components/Modal';
+import Stack from '../src/components/Stack';
 
 const Decorator = (Story: any, { args }) => {
   const [open, setOpen] = useState(false);
@@ -32,14 +32,14 @@ const DecoratorWithFooter = (Story: any, { args }) => {
           open,
           onRequestClose,
           footer: (
-            <FlexGroup spacing="md">
+            <Stack spacing="md">
               <Button variant="outline" onClick={onRequestClose}>
                 Cancel
               </Button>
               <Button variant="solid" onClick={onRequestClose}>
                 Submit
               </Button>
-            </FlexGroup>
+            </Stack>
           ),
         }}
       />

@@ -13,7 +13,6 @@ export { default as Drawer, type DrawerProps } from './Drawer'; // prettier-igno
 export { default as EmbeddedTwitch, type EmbeddedTwitchProps } from './EmbeddedTwitch'; // prettier-ignore
 export { default as EmbeddedVideo, type EmbeddedVideoProps } from './EmbeddedVideo'; // prettier-ignore
 export { default as EmbeddedYouTube, type EmbeddedYouTubeProps } from './EmbeddedYouTube'; // prettier-ignore
-export { default as FlexGroup, type FlexGroupProps } from './FlexGroup'; // prettier-ignore
 export { default as Icon, type IconProps } from './Icon'; // prettier-ignore
 export { default as ImageGallery, type ImageGalleryProps } from './ImageGallery'; // prettier-ignore
 export { default as Input, type InputProps } from './Input'; // prettier-ignore

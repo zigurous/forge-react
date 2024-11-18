@@ -4,10 +4,10 @@ import Badge from '../src/components/Badge';
 import Button from '../src/components/Button';
 import Col from '../src/components/Col';
 import Container from '../src/components/Container';
-import FlexGroup from '../src/components/FlexGroup';
 import PageBanner from '../src/components/PageBanner';
 import Row from '../src/components/Row';
 import SocialButton from '../src/components/SocialButton';
+import Stack from '../src/components/Stack';
 import Text from '../src/components/Text';
 // @ts-ignore
 import discordBanner from './assets/discord-banner.svg';
@@ -99,14 +99,14 @@ export const ProductFeature: Story = {
             <Text as="h1" marginBottom="lg" type="title-lg">
               Product
             </Text>
-            <FlexGroup spacing="sm" wrap>
+            <Stack spacing="sm" wrap>
               <Badge color="primary" variant="tint">
                 Badge
               </Badge>
               <Badge color="primary" variant="tint">
                 Badge
               </Badge>
-            </FlexGroup>
+            </Stack>
           </Col>
           <Col>
             <Text marginBottom="lg" type="body-lg">

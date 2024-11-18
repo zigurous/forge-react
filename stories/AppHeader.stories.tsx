@@ -3,10 +3,10 @@ import React from 'react';
 import AppHeader from '../src/components/AppHeader';
 import Badge from '../src/components/Badge';
 import Button from '../src/components/Button';
-import ButtonGroup from '../src/components/ButtonGroup';
 import Logo from '../src/components/Logo';
 import NavBar from '../src/components/NavBar';
 import SocialIcons from '../src/components/SocialIcons';
+import Stack from '../src/components/Stack';
 
 const meta: Meta<typeof AppHeader> = {
   component: AppHeader,
@@ -198,7 +198,7 @@ export const LogIn: Story = {
     ),
     center: <Logo variant="logomark" />,
     right: (
-      <ButtonGroup spacing="sm" nowrap>
+      <Stack spacing="sm">
         <Button size="sm" variant="text">
           Log In
         </Button>
@@ -210,7 +210,7 @@ export const LogIn: Story = {
         >
           Sign Up
         </Button>
-      </ButtonGroup>
+      </Stack>
     ),
     sizing: { left: '5', center: '2', right: '5' },
   },
@@ -246,7 +246,7 @@ export const Shopping: Story = {
       />
     ),
     right: (
-      <ButtonGroup spacing="0" nowrap>
+      <Stack>
         <Button
           icon="search"
           iconAlignment="only"
@@ -259,7 +259,7 @@ export const Shopping: Story = {
             1
           </Badge>
         </Button>
-      </ButtonGroup>
+      </Stack>
     ),
     sizing: { left: '2', center: '8', right: '2' },
   },

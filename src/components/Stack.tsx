@@ -1,46 +1,53 @@
 import classNames from 'classnames';
 import React from 'react';
+import type { SpacingToken } from '../types';
 
 export type StackProps = {
-  alignItems?: 'normal' | 'center' | 'start' | 'end' | 'stretch' | 'baseline';
-  children?: React.ReactNode;
-  direction?: 'row' | 'column';
-  justifyContent?:
-    | 'normal'
-    | 'center'
-    | 'start'
-    | 'end'
-    | 'between'
-    | 'around'
-    | 'evenly'
-    | 'stretch'
-    | 'baseline';
-  reversed?: boolean;
-  wrap?: boolean | 'reverse' | 'nowrap';
+  align?: 'start' | 'end' | 'center' | 'stretch' | 'baseline';
+  children: React.ReactNode;
+  className?: string;
+  inline?: boolean;
+  justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
+  layout?: 'horizontal' | 'vertical';
+  reverse?: boolean;
+  spacing?: SpacingToken | '0' | 0;
+  wrap?: boolean | 'reverse';
 } & React.ComponentPropsWithRef<'div'>;
 
 export default function Stack({
-  alignItems,
+  align = 'start',
   children,
-  direction = 'column',
-  justifyContent,
-  reversed = false,
+  className,
+  inline = false,
+  justify,
+  layout = 'horizontal',
+  reverse = false,
+  spacing,
+  style,
   wrap = false,
   ...rest
 }: StackProps) {
   return (
     <div
-      className={classNames('flex', {
-        'flex-row': direction === 'row' && !reversed,
-        'flex-row-reverse': direction === 'row' && reversed,
-        'flex-col': direction === 'column' && !reversed,
-        'flex-col-reverse': direction === 'column' && reversed,
-        'flex-wrap': typeof wrap === 'boolean' && wrap,
-        'flex-wrap-reverse': wrap === 'reverse',
-        'flex-nowrap': wrap === 'nowrap',
-        [`justify-${justifyContent}`]: justifyContent,
-        [`align-${alignItems}`]: alignItems,
-      })}
+      className={classNames(
+        {
+          flex: !inline,
+          'inline-flex': inline,
+          'flex-row': layout === 'horizontal' && !reverse,
+          'flex-row-reverse': layout === 'horizontal' && reverse,
+          'flex-col': layout === 'vertical' && !reverse,
+          'flex-col-reverse': layout === 'vertical' && reverse,
+          'flex-wrap': wrap === true,
+          'flex-wrap-reverse': wrap === 'reverse',
+          [`justify-${justify}`]: justify,
+          [`align-${align}`]: align,
+        },
+        className,
+      )}
+      style={{
+        gap: spacing ? `var(--spacing-${spacing})` : undefined,
+        ...style,
+      }}
       {...rest}
     >
       {children}
