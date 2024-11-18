@@ -25,7 +25,9 @@
     "@types/react-dom": "^18.1.0",
     "clipboardy": "^3.0.0",
     "cross-env": "^7.0.3",
+    "husky": "^9.1.6",
     "microbundle": "^0.15.1",
+    "prettier": "^3.3.3",
     "prop-types": "15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -39,11 +41,13 @@
     "react-dom": "^18.1.0"
   },
   "scripts": {
-    "build": "microbundle --compress --jsx React.createElement --jsxFragment React.Fragment --globals react=React,react-dom=ReactDOM",
     "start": "microbundle watch --no-compress --jsx React.createElement --jsxFragment React.Fragment --globals react=React,react-dom=ReactDOM",
-    "predeploy": "yarn build",
+    "build": "microbundle --compress --jsx React.createElement --jsxFragment React.Fragment --globals react=React,react-dom=ReactDOM",
+    "build-storybook": "storybook build",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "format": "prettier --write --ignore-unknown .",
+    "lint": "prettier --check --ignore-unknown .",
+    "prepare": "husky"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
