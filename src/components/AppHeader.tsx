@@ -16,7 +16,7 @@ export type AppHeaderProps = {
   sticky?: boolean;
   theme?: ThemeToken;
   transparent?: boolean;
-} & React.ComponentPropsWithRef<'header'>;
+} & Omit<React.ComponentPropsWithRef<'header'>, 'children'>;
 
 export default function AppHeader({
   bordered = false,
@@ -33,7 +33,6 @@ export default function AppHeader({
 }: AppHeaderProps) {
   return (
     <header
-      {...rest}
       className={classNames(
         'app-header',
         {
@@ -44,6 +43,7 @@ export default function AppHeader({
         className,
       )}
       data-theme={theme}
+      {...rest}
     >
       <Container fluid={fluid}>
         <Row className="flex-nowrap">

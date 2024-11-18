@@ -37,6 +37,7 @@ export default function Icon<T extends React.ElementType = 'i'>({
   variant = 'rounded',
   ...rest
 }: IconProps<T>) {
+  icon = icon ?? (children as string);
   const Element = as ?? 'i';
   const isTokenSize =
     typeof size === 'string' &&
@@ -52,8 +53,8 @@ export default function Icon<T extends React.ElementType = 'i'>({
     <Element
       {...rest}
       className={classNames(
+        'icon',
         {
-          icon: true,
           [`icon--${shape}`]: shape,
           [`icon--${size}`]: isTokenSize,
           [`text-${color}`]: isTokenColor,

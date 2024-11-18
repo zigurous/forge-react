@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import Icon, { type IconProps } from './Icon';
@@ -12,7 +14,7 @@ export type InputProps = {
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-} & Omit<React.ComponentPropsWithoutRef<'input'>, 'size'>;
+} & Omit<React.ComponentPropsWithoutRef<'input'>, 'size' | 'children'>;
 
 export default function Input({
   className,

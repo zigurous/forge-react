@@ -1,3 +1,5 @@
+'use client';
+
 import { useMediaQuery } from './useMediaQuery';
 import { BreakpointMinWidth, BreakpointMaxWidth } from '../enums';
 import type { BreakpointToken } from '../types';

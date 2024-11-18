@@ -1,3 +1,5 @@
+'use client';
+
 import { useCookies } from 'react-cookie';
 import classNames from 'classnames';
 import React from 'react';

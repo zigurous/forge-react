@@ -13,7 +13,7 @@ export type NavBarProps = {
   onLinkClick?: (link: LinkTypeWithIcon) => void;
   spacing?: PaddingToken;
   variant?: 'button' | 'link';
-} & React.ComponentProps<'nav'>;
+} & Omit<React.ComponentProps<'nav'>, 'children'>;
 
 export default function NavBar({
   className,

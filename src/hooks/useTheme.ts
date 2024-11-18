@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useCallback } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 import type { BaseThemeToken } from '../types';

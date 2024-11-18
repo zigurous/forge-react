@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import React, { useCallback } from 'react';
 import Input, { type InputProps } from './Input';

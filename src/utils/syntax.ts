@@ -1,3 +1,5 @@
+'use client';
+
 import * as Prism from 'prismjs';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-csharp';

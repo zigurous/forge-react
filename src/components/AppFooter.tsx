@@ -4,7 +4,7 @@ import Link from './Link';
 import Logo, { type LogoProps } from './Logo';
 import type { LinkType, ThemeToken } from '../types';
 
-export interface AppFooterProps {
+export type AppFooterProps = {
   bordered?: boolean;
   className?: string;
   copyright?: React.ReactNode;
@@ -18,7 +18,7 @@ export interface AppFooterProps {
   sticky?: boolean;
   theme?: ThemeToken;
   transparent?: boolean;
-}
+} & Omit<React.ComponentPropsWithRef<'footer'>, 'children'>;
 
 export default function AppFooter({
   bordered = false,
@@ -39,6 +39,7 @@ export default function AppFooter({
   sticky = false,
   theme,
   transparent = false,
+  ...rest
 }: AppFooterProps) {
   return (
     <footer
@@ -52,6 +53,7 @@ export default function AppFooter({
         className,
       )}
       data-theme={theme}
+      {...rest}
     >
       <div className="container">
         <div className="row align-center my-lg">

@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import React, { useCallback, useState } from 'react';
 import Lightbox, { type LightboxProps } from './Lightbox';
@@ -15,7 +17,7 @@ export interface ImageGalleryProps {
   columns?: number;
   disableLightbox?: boolean;
   fullWidthFirstItem?: boolean;
-  images?: Image[];
+  images: Image[];
   lightboxProps?: LightboxProps;
   maxWidth?: number;
   minWidth?: number;

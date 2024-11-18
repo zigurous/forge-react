@@ -1,10 +1,12 @@
+'use client';
+
 import classNames from 'classnames';
 import React from 'react';
 
 export type ContactFormProps = {
   className?: string;
   onSubmit?: React.FormEventHandler<HTMLFormElement>;
-} & React.ComponentPropsWithRef<'form'>;
+} & Omit<React.ComponentPropsWithRef<'form'>, 'children'>;
 
 export default React.forwardRef(function ContactForm(
   { className, onSubmit = () => {}, ...rest }: ContactFormProps,

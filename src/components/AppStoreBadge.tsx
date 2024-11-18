@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useLayoutEffect, useState } from 'react';
+import React from 'react';
 import type { PolymorphicProps } from '../types';
 
 export type BaseAppStoreBadgeProps = {
@@ -29,19 +29,7 @@ export default function AppStoreBadge<T extends React.ElementType = 'a'>({
   ...rest
 }: AppStoreBadgeProps<T>) {
   const Element = as ?? 'a';
-
-  let shortCode = (locale = locale.toLowerCase());
-  const expeptionLocale = ['zh-cn', 'zh-tw'];
-  if (expeptionLocale.indexOf(locale) === -1) {
-    shortCode = locale.split(/[_-]/)[0];
-  }
-
-  const [image, setImage] = useState(getImage(locale, shortCode, variant));
-
-  useLayoutEffect(() => {
-    setImage(getImage(locale, shortCode, variant));
-  }, [locale, shortCode, variant]);
-
+  const image = getImage(platform, locale, variant);
   return (
     <Element
       {...rest}
@@ -55,29 +43,42 @@ export default function AppStoreBadge<T extends React.ElementType = 'a'>({
       }}
     >
       <img
-        alt={alt || image[platform].alt}
-        src={image[platform].src}
+        alt={alt || image?.alt}
+        src={image?.src}
         style={{
           width: '100%',
           height: '100%',
-        }}
-        onError={() => {
-          setImage(getImage('en-us', shortCode, variant));
         }}
       />
     </Element>
   );
 }
 
-function getImage(locale: string, code = locale, variant = 'black') {
-  return {
-    ios: {
-      src: `https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/${variant}/${locale}`,
-      alt: 'Download on the App Store',
-    },
-    android: {
-      src: `https://raw.github.com/yjb94/google-play-badge-svg/master/img/${code}_get.svg?sanitize=true`,
-      alt: 'Get it on Google Play',
-    },
-  };
+function getImage(
+  platform: 'ios' | 'android',
+  locale: string,
+  variant = 'black',
+) {
+  switch (platform) {
+    case 'ios':
+      return {
+        src: `https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/${variant}/${locale}`,
+        alt: 'Download on the App Store',
+      };
+    case 'android':
+      const shortCode = getShortCode(locale);
+      return {
+        src: `https://raw.github.com/yjb94/google-play-badge-svg/master/img/${shortCode}_get.svg?sanitize=true`,
+        alt: 'Get it on Google Play',
+      };
+  }
+}
+
+function getShortCode(locale: string) {
+  let shortCode = locale.toLowerCase();
+  const expeptionLocale = ['zh-cn', 'zh-tw'];
+  if (expeptionLocale.indexOf(locale) === -1) {
+    shortCode = locale.split(/[_-]/)[0];
+  }
+  return shortCode;
 }

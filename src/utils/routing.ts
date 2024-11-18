@@ -1,3 +1,5 @@
+'use client';
+
 export function isPathActive(path: string, location: Location | null): boolean {
   location =
     location || (typeof window !== 'undefined' ? window.location : null);

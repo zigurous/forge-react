@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useLayoutEffect, useState } from 'react';
 import type { Size } from '../types';
 
