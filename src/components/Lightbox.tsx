@@ -34,7 +34,7 @@ export default function Lightbox({
   onChangeImage,
   onRequestClose,
   rounded,
-  scrimColor = 'auto',
+  scrim = 'auto',
   ...rest
 }: LightboxProps) {
   const currentImage =
@@ -70,7 +70,7 @@ export default function Lightbox({
       closeOnScrimClick={false}
       dialogClassName="lightbox__dialog"
       onRequestClose={onRequestClose}
-      scrimColor={scrimColor}
+      scrim={scrim}
       {...rest}
     >
       <div className="lightbox__container">

@@ -88,7 +88,7 @@ export const Rounded: Story = {
 
 export const DarkScrim: Story = {
   args: {
-    scrimColor: 'dark',
+    scrim: 'dark',
     images: [
       'https://picsum.photos/seed/10/1280/720',
       'https://picsum.photos/seed/100/1280/720',

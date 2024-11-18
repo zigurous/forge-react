@@ -17,7 +17,7 @@ export type OverlayProps = {
   open?: boolean;
   reflow?: boolean;
   rootElement?: string;
-  scrimColor?: 'auto' | 'dark' | 'light';
+  scrim?: 'auto' | 'dark' | 'light';
   theme?: ThemeToken;
 } & React.ComponentPropsWithoutRef<'div'>;
 
@@ -33,17 +33,15 @@ export default function Overlay({
   open = false,
   reflow = true,
   rootElement = 'body',
-  scrimColor = 'dark',
+  scrim = 'dark',
   theme,
   ...rest
 }: OverlayProps) {
   const scrimClassNames = classNames('overlay__scrim', {
-    'bg-white':
-      scrimColor === 'light' || (scrimColor === 'auto' && theme === 'light'),
+    'bg-white': scrim === 'light' || (scrim === 'auto' && theme === 'light'),
     'bg-black':
-      scrimColor === 'dark' ||
-      (scrimColor === 'auto' && theme !== 'light' && theme),
-    'bg-background': scrimColor === 'auto' && !theme,
+      scrim === 'dark' || (scrim === 'auto' && theme !== 'light' && theme),
+    'bg-background': scrim === 'auto' && !theme,
     hidden: hideScrim,
   });
   useBodyOverflow(open, reflow);

@@ -32,7 +32,7 @@ export const Default: Story = {
 };
 
 export const LightScrim: Story = {
-  args: { scrimColor: 'light' },
+  args: { scrim: 'light' },
   decorators: [Decorator],
 };
 
