@@ -70,4 +70,4 @@ jobs:
       - name: Sync files to S3 bucket
         run: |
           PACKAGE_VERSION=$(npm pkg get version --workspaces=false | tr -d \")
-          aws s3 sync dist s3://cdn.zigurous.com/react-components@$PACKAGE_VERSION/dist --delete
+          aws s3 sync dist s3://cdn.zigurous.com/react-components@$PACKAGE_VERSION/dist --delete --exclude "*.ts"
