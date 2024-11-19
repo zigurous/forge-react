@@ -7,6 +7,7 @@
   "main": "dist/index.min.js",
   "module": "dist/index.modern.js",
   "unpkg": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "classnames": "^2.5.1",
     "prismjs": "^1.29.0",
