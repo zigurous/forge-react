@@ -8,40 +8,33 @@ The official React implementation of the Forge design system created by [@ziguro
 
 ## Installation
 
-### NPM
-
-Set the scoped package registry in your `.npmrc` file:
-```bash
-registry=https://registry.npmjs.org/
-@zigurous:registry=https://npm.pkg.github.com
-```
-
-Run one of the following commands in a terminal:
-- Install with npm `npm install @zigurous/forge-react`
-- Install with yarn `yarn add @zigurous/forge-react`
-- Install with pnpm `pnpm add @zigurous/forge-react`
-
 ### CDN
 
-Add one of the following links to your HTML:
+Available from any of the following:
+- Install with CloudFront `https://cdn.zigurous.com/forge-react@1.0.0/dist/index.min.js`
+- Install with jsDelivr `https://cdn.jsdelivr.net/gh/zigurous/forge-react@1.0.0/dist/index.min.js`
+- Install with Statically `https://cdn.statically.io/gh/zigurous/forge-react/1.0.0/dist/index.min.js`
 
-#### CloudFront
-
+Add the script in your HTML file:
 ```html
 <script src="https://cdn.zigurous.com/forge-react@1.0.0/dist/index.min.js">
 ```
 
-#### jsDelivr
+### GitHub Packages
 
-```html
-<script src="https://cdn.jsdelivr.net/gh/zigurous/forge-react@1.0.0/dist/index.min.js">
+Generate a [personal access token](https://github.com/settings/tokens) in your GitHub account with the `read:packages` scope. GitHub requires an auth token to download packages even if they are public.
+
+Add an `.npmrc` file in the same directory as your `package.json` with the lines below. Replace `{NPM_TOKEN}` with the token you generated in the previous step.
+```
+registry=https://registry.npmjs.org/
+@zigurous:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken={NPM_TOKEN}
 ```
 
-#### Statically
-
-```html
-<script src="https://cdn.statically.io/gh/zigurous/forge-react/1.0.0/dist/index.min.js">
-```
+Install the package using your preferred package manager:
+- Install with npm `npm install @zigurous/forge-react`
+- Install with yarn `yarn add @zigurous/forge-react`
+- Install with pnpm `pnpm add @zigurous/forge-react`
 
 ## Usage
 
