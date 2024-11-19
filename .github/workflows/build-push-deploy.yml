@@ -59,7 +59,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add dist/index.min.* -f
-          git commit -m "$MSG" --no-verify --signoff
+          git diff-index --quiet HEAD || git commit -m "$MSG" --no-verify --signoff
           git push origin $BRANCH_NAME
 
   deploy:
