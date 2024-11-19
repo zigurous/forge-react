@@ -1,4 +1,4 @@
-name: Deploy to CDN
+name: Build Push Deploy
 
 on:
   push:
@@ -19,11 +19,10 @@ jobs:
           node-version: 20
           cache: yarn
 
-      - name: Increase network timeout
-        run: yarn config set network-timeout 300000
-
       - name: Install dependencies
-        run: yarn install --prefer-offline
+        run: |
+          yarn config set network-timeout 300000
+          yarn install --prefer-offline
 
       - name: Build
         continue-on-error: false
@@ -35,6 +34,33 @@ jobs:
           name: dist
           path: dist
           retention-days: 30
+
+  push:
+    name: Push
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Push distribution
+        run: |
+          MSG="$(printf "Publish distribution\n[skip ci]")"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/index.min.* -f
+          git commit -m "$MSG" --no-verify --signoff
+          git push origin $BRANCH_NAME
 
   deploy:
     name: Deploy
