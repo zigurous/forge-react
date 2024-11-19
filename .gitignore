@@ -7,7 +7,8 @@ node_modules
 coverage
 
 # production
-dist/**/*.d.ts
+build
+dist
 
 # misc
 .DS_Store
