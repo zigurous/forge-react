@@ -1,42 +1,34 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 import { bindEvent, unbindEvent } from '../utils';
 
-export function useMediaQuery(query: string, onChange?: Function): boolean {
-  const defaultMql =
-    typeof window !== 'undefined' ? window.matchMedia(query) : null;
-  const [mql, setMql] = useState(defaultMql);
-  const [matches, setMatches] = useState(Boolean(mql && mql.matches));
+export function useMediaQuery(query: string, defaultValue?: boolean): boolean {
+  const [matches, setMatches] = useState<boolean>(
+    getMatches(query, defaultValue),
+  );
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setMql(window.matchMedia(query));
-    }
-  }, [query]);
+  const handleChange = useCallback(() => {
+    setMatches(getMatches(query, defaultValue));
+  }, [query, defaultValue]);
 
-  useEffect(() => {
-    const _mql = mql;
-    let handler: EventListenerOrEventListenerObject;
-
-    if (_mql) {
-      handler = () => {
-        setMatches(_mql.matches);
-
-        if (onChange) {
-          onChange(_mql.matches);
-        }
-      };
-
-      bindEvent(_mql, 'change', handler);
-    }
-
+  useIsomorphicLayoutEffect(() => {
+    const matchMedia = window.matchMedia(query);
+    handleChange();
+    bindEvent(matchMedia, 'change', handleChange);
     return () => {
-      if (_mql && handler) {
-        unbindEvent(_mql, 'change', handler);
-      }
+      unbindEvent(matchMedia, 'change', handleChange);
     };
-  }, [mql, onChange]);
+  }, [handleChange]);
 
   return matches;
 }
+
+const getMatches = (query: string, defaultValue?: boolean): boolean => {
+  if (typeof window !== 'undefined') {
+    return window.matchMedia(query).matches;
+  } else {
+    return defaultValue || false;
+  }
+};
