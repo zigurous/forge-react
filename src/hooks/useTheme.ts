@@ -28,10 +28,8 @@ export function useTheme(
     setTheme(toggled);
   }, [theme]);
 
-  if (typeof window !== 'undefined') {
-    if (document && document.documentElement) {
-      document.documentElement.style.setProperty('color-scheme', theme);
-    }
+  if (document && document.documentElement) {
+    document.documentElement.style.setProperty('color-scheme', theme);
   }
 
   return [theme ?? defaultTheme, setTheme, toggleTheme];
