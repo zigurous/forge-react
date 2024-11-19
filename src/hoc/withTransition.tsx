@@ -2,7 +2,7 @@
 
 import classNames from 'classnames';
 import React from 'react';
-import { useMounted } from '../hooks';
+import { useIsMounted } from '../hooks';
 import type { Transition } from '../types';
 import { getDisplayName } from '../utils';
 
@@ -10,7 +10,7 @@ export function fadeIn<
   P extends object & { className?: string; style?: React.CSSProperties },
 >(WrappedComponent: React.ComponentType<P>, duration?: number) {
   const FadeInTransition = (props: P) => {
-    const mounted = useMounted();
+    const mounted = useIsMounted();
     return (
       <WrappedComponent
         {...props}
@@ -37,7 +37,7 @@ export function withTransition<
   duration?: number,
 ) {
   const Transition = (props: P) => {
-    const mounted = useMounted();
+    const mounted = useIsMounted();
     return (
       <WrappedComponent
         {...props}
