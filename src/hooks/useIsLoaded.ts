@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { bindEvent, unbindEvent } from '../utils';
 
-export function useLoaded(
+export function useIsLoaded(
   ref: React.RefObject<HTMLElement>,
   key?: string,
   onLoad?: () => void,
@@ -52,9 +52,9 @@ export function useLoaded(
   return loaded;
 }
 
-export function useLoading(
+export function useIsLoading(
   ref: React.RefObject<HTMLElement>,
   key?: string,
 ): boolean {
-  return !useLoaded(ref, key);
+  return !useIsLoaded(ref, key);
 }

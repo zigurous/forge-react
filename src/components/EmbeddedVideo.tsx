@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import React, { useRef } from 'react';
 import LoadingSpinner from './LoadingSpinner';
-import { useLoading } from '../hooks';
+import { useIsLoading } from '../hooks';
 
 const sizes = Object.freeze({
   xs: {
@@ -54,7 +54,7 @@ export default function EmbeddedVideo({
   width,
 }: EmbeddedVideoProps) {
   const ref = useRef<HTMLIFrameElement>(null);
-  const loading = useLoading(ref);
+  const loading = useIsLoading(ref);
   const offline = typeof navigator !== 'undefined' && !navigator.onLine;
   const _width = width || (size && sizes[size].width);
   const _height = height || (size && sizes[size].height);

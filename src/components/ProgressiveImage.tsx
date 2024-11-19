@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import React, { useRef } from 'react';
 import LoadingSpinner from './LoadingSpinner';
-import { useLoaded } from '../hooks';
+import { useIsLoaded } from '../hooks';
 
 export type ProgressiveImageProps = {
   alt?: string;
@@ -42,7 +42,7 @@ export default function ProgressiveImage({
   ...rest
 }: ProgressiveImageProps) {
   const imageRef = useRef<HTMLImageElement>(null);
-  const loaded = useLoaded(imageRef, undefined, onLoad);
+  const loaded = useIsLoaded(imageRef, undefined, onLoad);
   return (
     <picture
       className={classNames(
