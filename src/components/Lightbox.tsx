@@ -19,11 +19,7 @@ export type LightboxProps = {
   rounded?: boolean;
 } & Omit<
   OverlayProps,
-  | 'children'
-  | 'closeOnScrimClick'
-  | 'dialogClassName'
-  | 'dialogZIndex'
-  | 'theme'
+  'children' | 'closeOnScrimClick' | 'dialogClassName' | 'dialogZIndex'
 >;
 
 export default function Lightbox({
@@ -37,6 +33,7 @@ export default function Lightbox({
   onRequestClose,
   rounded,
   scrim = 'auto',
+  theme,
   ...rest
 }: LightboxProps) {
   const currentImage =
@@ -70,6 +67,7 @@ export default function Lightbox({
       animated={animated}
       className={classNames('lightbox', className)}
       closeOnScrimClick={false}
+      data-theme={theme}
       dialogClassName="lightbox__dialog"
       onRequestClose={onRequestClose}
       scrim={scrim}
