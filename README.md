@@ -1,5 +1,9 @@
 # Forge React
 
+<a href="https://github.com/zigurous/forge-react/actions"><img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/zigurous/forge-react/cdn-deploy.yml" /></a>
+<a href="https://github.com/zigurous/forge-react/pkgs/npm/forge-react"><img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/zigurous/forge-react" /></a>
+<a href="https://github.com/zigurous/forge-react/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/zigurous/forge-react" /></a>
+
 The official React implementation of the Forge design system created by [@zigurous](https://github.com/zigurous).
 
 ## Installation
@@ -21,7 +25,7 @@ Run one of the following commands in a terminal:
 
 Add one of the following links to your HTML:
 
-#### Cloudfront
+#### CloudFront
 
 ```html
 <script src="https://cdn.zigurous.com/forge-react@1.0.0/dist/index.min.js">
@@ -33,7 +37,7 @@ Add one of the following links to your HTML:
 <script src="https://cdn.jsdelivr.net/gh/zigurous/forge-react@1.0.0/dist/index.min.js">
 ```
 
-#### statically
+#### Statically
 
 ```html
 <script src="https://cdn.statically.io/gh/zigurous/forge-react/1.0.0/dist/index.min.js">
