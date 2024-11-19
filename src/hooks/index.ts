@@ -2,6 +2,7 @@ export * from './useBodyOverflow';
 export * from './useBreakpoint';
 export * from './useElementSize';
 export * from './useIsMounted';
+export * from './useIsomorphicLayoutEffect';
 export * from './useKeyboardEvent';
 export * from './useLoaded';
 export * from './useLocalStorage';
