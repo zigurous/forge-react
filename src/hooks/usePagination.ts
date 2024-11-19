@@ -21,13 +21,13 @@ export function usePagination<T>(
   const endIndex = startIndex + itemsPerPage;
 
   useEffect(() => {
-    if (storageKey && typeof sessionStorage !== 'undefined') {
-      const storedValue = sessionStorage.getItem(storageKey);
+    if (typeof window !== 'undefined' && window.sessionStorage && storageKey) {
+      const storedValue = window.sessionStorage.getItem(storageKey);
       const storedPageNumber = storedValue ? parseInt(storedValue, 10) : NaN;
       if (!Number.isNaN(storedPageNumber)) {
         setCurrentPage(storedPageNumber);
       }
-      sessionStorage.removeItem(storageKey);
+      window.sessionStorage.removeItem(storageKey);
     }
   }, [storageKey, items]);
 
