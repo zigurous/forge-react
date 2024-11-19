@@ -18,24 +18,16 @@ jobs:
         with:
           node-version: 20
           cache: yarn
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Increase network timeout
         run: yarn config set network-timeout 300000
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install dependencies
         run: yarn install --prefer-offline
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Build
         continue-on-error: false
         run: yarn build
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
