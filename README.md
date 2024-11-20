@@ -24,11 +24,11 @@ Add the script in your HTML file:
 
 Generate a [personal access token](https://github.com/settings/tokens) in your GitHub account with the `read:packages` scope. GitHub requires an auth token to download packages even if they are public.
 
-Add an `.npmrc` file in the same directory as your `package.json` with the lines below. Replace `{NPM_TOKEN}` with the token you generated in the previous step.
+Add an `.npmrc` file in the same directory as your `package.json` with the lines below. Replace `${NPM_TOKEN}` with the token you generated in the previous step.
 ```
 registry=https://registry.npmjs.org/
 @zigurous:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken={NPM_TOKEN}
+//npm.pkg.github.com/:_authToken=${NPM_TOKEN}
 ```
 
 Install the package using your preferred package manager:
