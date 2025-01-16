@@ -29,21 +29,18 @@ export default function Stack({
 }: StackProps) {
   return (
     <div
-      className={classNames(
-        {
-          flex: !inline,
-          'inline-flex': inline,
-          'flex-row': layout === 'horizontal' && !reverse,
-          'flex-row-reverse': layout === 'horizontal' && reverse,
-          'flex-col': layout === 'vertical' && !reverse,
-          'flex-col-reverse': layout === 'vertical' && reverse,
-          'flex-wrap': wrap === true,
-          'flex-wrap-reverse': wrap === 'reverse',
-          [`justify-${justify}`]: justify,
-          [`align-${align}`]: align,
-        },
-        className,
-      )}
+      className={classNames(className, {
+        flex: !inline,
+        'inline-flex': inline,
+        'flex-row': layout === 'horizontal' && !reverse,
+        'flex-row-reverse': layout === 'horizontal' && reverse,
+        'flex-col': layout === 'vertical' && !reverse,
+        'flex-col-reverse': layout === 'vertical' && reverse,
+        'flex-wrap': wrap === true,
+        'flex-wrap-reverse': wrap === 'reverse',
+        [`justify-${justify}`]: justify,
+        [`align-${align}`]: align,
+      })}
       style={{
         gap: spacing ? `var(--spacing-${spacing})` : undefined,
         ...style,
