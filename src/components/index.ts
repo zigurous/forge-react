@@ -26,6 +26,7 @@ export { default as NavMenu, type NavMenuProps } from './NavMenu'; // prettier-i
 export { default as Overlay, type OverlayProps } from './Overlay'; // prettier-ignore
 export { default as PageBanner, type PageBannerProps } from './PageBanner'; // prettier-ignore
 export { default as Pagination, type PaginationProps } from './Pagination'; // prettier-ignore
+export { default as PanAndZoomTransform, type PanAndZoomTransformProps } from './PanAndZoomTransform'; // prettier-ignore
 export { default as ProgressiveImage, type ProgressiveImageProps } from './ProgressiveImage'; // prettier-ignore
 export { default as ReactPortal, type ReactPortalProps } from './ReactPortal'; // prettier-ignore
 export { default as Row, type RowProps } from './Row'; // prettier-ignore

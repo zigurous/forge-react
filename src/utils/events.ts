@@ -75,3 +75,21 @@ export function nativeKeyboardEventHandler(
     }
   };
 }
+
+export function getRelativeMousePosition(
+  e: MouseEvent,
+  el: HTMLElement | null,
+): {
+  x: number;
+  y: number;
+  px: number;
+  py: number;
+} {
+  if (!el) return { x: 0, y: 0, px: 0, py: 0 };
+  const rect = el.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const px = x / rect.width;
+  const py = y / rect.height;
+  return { x, y, px, py };
+}

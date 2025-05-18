@@ -8,6 +8,7 @@ export * from './useKeyboardEvent';
 export * from './useLocalStorage';
 export * from './useMediaQuery';
 export * from './usePagination';
+export * from './usePanAndZoom';
 export * from './useSearch';
 export * from './useSmoothDamp';
 export * from './useTheme';
