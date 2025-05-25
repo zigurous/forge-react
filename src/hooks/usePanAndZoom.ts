@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { clamp, getRelativeMousePosition, getWheelDirection } from '../utils';
 
 interface PanAndZoomState {
@@ -21,16 +21,29 @@ const defaultSettings = {
   minZoom: 0.5,
   maxZoom: 2,
   zoomSpeed: 0.1,
+  touchSupport: true,
 };
 
 export function usePanAndZoom(
   container: React.RefObject<HTMLElement>,
   settings = defaultSettings,
-): [PanAndZoomState, React.RefObject<boolean>] {
+): [PanAndZoomState, React.RefObject<boolean>, () => void] {
   const [state, setState] = useState<PanAndZoomState>(defaultState);
   const mousedown = useRef<boolean>(false);
   const panning = useRef<boolean>(false);
   const timeout = useRef<NodeJS.Timeout>();
+  const touchPosition = useRef({ x: 0, y: 0 });
+
+  const resetMap = useCallback(() => {
+    if (timeout.current) {
+      clearTimeout(timeout.current);
+    }
+    timeout.current = undefined;
+    mousedown.current = false;
+    panning.current = false;
+    touchPosition.current = { x: 0, y: 0 };
+    setState(defaultState);
+  }, []);
 
   useEffect(() => {
     if (!container.current) return;
@@ -81,11 +94,9 @@ export function usePanAndZoom(
           settings.minZoom,
           settings.maxZoom,
         );
-
         const { x, y } = getRelativeMousePosition(e, container.current);
         const panX = x - (x - state.panX) * (zoom / state.zoom);
         const panY = y - (y - state.panY) * (zoom / state.zoom);
-
         return { panX, panY, zoom };
       });
     };
@@ -103,5 +114,75 @@ export function usePanAndZoom(
     };
   }, [container, settings.minZoom, settings.maxZoom, settings.zoomSpeed]);
 
-  return [state, panning];
+  // Handle touch events
+  useEffect(() => {
+    if (!container.current) return;
+    if (!settings.touchSupport) return;
+    if (typeof window === 'undefined') return;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        const touch = e.touches.item(0);
+        touchPosition.current = {
+          x: touch?.clientX ?? 0,
+          y: touch?.clientY ?? 0,
+        };
+        if (timeout.current) {
+          clearTimeout(timeout.current);
+        }
+        timeout.current = setTimeout(() => {
+          mousedown.current = true;
+        }, delay);
+      }
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (e.touches.length === 0) {
+        mousedown.current = false;
+        if (timeout.current) {
+          clearTimeout(timeout.current);
+        }
+        if (panning.current) {
+          timeout.current = setTimeout(() => {
+            panning.current = false;
+          }, delay);
+        }
+      }
+    };
+
+    const handlePan = (e: TouchEvent) => {
+      if (mousedown.current && e.changedTouches.length > 0) {
+        const touch = e.changedTouches.item(0);
+        const x = touch?.clientX ?? 0;
+        const y = touch?.clientY ?? 0;
+        const dx = x - touchPosition.current.x;
+        const dy = y - touchPosition.current.y;
+        touchPosition.current = { x, y };
+        panning.current = true;
+        setState(state => ({
+          panX: state.panX + dx,
+          panY: state.panY + dy,
+          zoom: state.zoom,
+        }));
+      }
+    };
+
+    container.current.addEventListener('touchstart', handleTouchStart);
+    document.body.addEventListener('touchend', handleTouchEnd);
+    document.body.addEventListener('touchmove', handlePan);
+
+    return () => {
+      container.current?.removeEventListener('touchstart', handleTouchStart);
+      document.body.removeEventListener('touchend', handleTouchEnd);
+      document.body.removeEventListener('touchmove', handlePan);
+    };
+  }, [
+    container,
+    settings.minZoom,
+    settings.maxZoom,
+    settings.zoomSpeed,
+    settings.touchSupport,
+  ]);
+
+  return [state, panning, resetMap];
 }
