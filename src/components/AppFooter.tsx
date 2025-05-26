@@ -23,12 +23,7 @@ export default function AppFooter({
   center,
   className,
   fluid = false,
-  left = (
-    <>
-      Copyright <span aria-hidden>©</span> {new Date().getFullYear()} All
-      Rights Reserved
-    </>
-  ),
+  left,
   right,
   sizing,
   sticky = false,
@@ -51,12 +46,12 @@ export default function AppFooter({
       {...rest}
     >
       <Container fluid={fluid}>
-        <Row className="flex-nowrap">
+        <Row>
           <Col
             className={classNames('app-footer__left', {
               'pointer-events-none': !left,
             })}
-            size={sizing?.left}
+            size={sizing?.left ?? (left ? undefined : 'none')}
           >
             {left}
           </Col>
@@ -69,7 +64,7 @@ export default function AppFooter({
             className={classNames('app-footer__right', {
               'pointer-events-none': !right,
             })}
-            size={sizing?.right}
+            size={sizing?.right ?? (right ? undefined : 'none')}
           >
             {right}
           </Col>
