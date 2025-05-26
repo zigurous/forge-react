@@ -36,3 +36,4 @@ export { default as SocialIcons, type SocialIconsProps } from './SocialIcons'; /
 export { default as Stack, type StackProps } from './Stack'; // prettier-ignore
 export { default as Text, type TextProps } from './Text'; // prettier-ignore
 export { default as Thumbnail, type ThumbnailProps } from './Thumbnail'; // prettier-ignore
+export { default as Toggle, type ToggleProps } from './Toggle'; // prettier-ignore
