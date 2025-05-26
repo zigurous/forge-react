@@ -32,6 +32,7 @@ export function usePanAndZoom(
   const mousedown = useRef<boolean>(false);
   const panning = useRef<boolean>(false);
   const timeout = useRef<NodeJS.Timeout>();
+  const touchIdentifier = useRef(-1);
   const touchPosition = useRef({ x: 0, y: 0 });
 
   const resetMap = useCallback(() => {
@@ -41,6 +42,7 @@ export function usePanAndZoom(
     timeout.current = undefined;
     mousedown.current = false;
     panning.current = false;
+    touchIdentifier.current = -1;
     touchPosition.current = { x: 0, y: 0 };
     setState(defaultState);
   }, []);
@@ -122,10 +124,11 @@ export function usePanAndZoom(
 
     const handleTouchStart = (e: TouchEvent) => {
       if (e.touches.length === 1) {
-        const touch = e.touches.item(0);
+        const touch = e.touches[0];
+        touchIdentifier.current = touch.identifier;
         touchPosition.current = {
-          x: touch?.clientX ?? 0,
-          y: touch?.clientY ?? 0,
+          x: touch.clientX,
+          y: touch.clientY,
         };
         if (timeout.current) {
           clearTimeout(timeout.current);
@@ -138,6 +141,7 @@ export function usePanAndZoom(
 
     const handleTouchEnd = (e: TouchEvent) => {
       if (e.touches.length === 0) {
+        touchIdentifier.current = -1;
         mousedown.current = false;
         if (timeout.current) {
           clearTimeout(timeout.current);
@@ -151,19 +155,21 @@ export function usePanAndZoom(
     };
 
     const handlePan = (e: TouchEvent) => {
-      if (mousedown.current && e.changedTouches.length > 0) {
-        const touch = e.changedTouches.item(0);
-        const x = touch?.clientX ?? 0;
-        const y = touch?.clientY ?? 0;
-        const dx = x - touchPosition.current.x;
-        const dy = y - touchPosition.current.y;
-        touchPosition.current = { x, y };
-        panning.current = true;
-        setState(state => ({
-          panX: state.panX + dx,
-          panY: state.panY + dy,
-          zoom: state.zoom,
-        }));
+      if (mousedown.current && e.touches.length === 1) {
+        const touch = e.touches[0];
+        if (touch.identifier === touchIdentifier.current) {
+          const x = touch.clientX;
+          const y = touch.clientY;
+          const dx = x - touchPosition.current.x;
+          const dy = y - touchPosition.current.y;
+          touchPosition.current = { x, y };
+          panning.current = true;
+          setState(state => ({
+            panX: state.panX + dx,
+            panY: state.panY + dy,
+            zoom: state.zoom,
+          }));
+        }
       }
     };
 
