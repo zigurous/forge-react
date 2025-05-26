@@ -1,3 +1,3 @@
 export function toTitleCase(title: string): string {
-  return title.replace(/(?<!')\b(?!')\w/g, l => l.toUpperCase());
+  return title.replace(/(^\w|\s\w)/g, l => l.toUpperCase());
 }
