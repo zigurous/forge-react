@@ -9,6 +9,7 @@ export type ModalProps = {
   footer?: React.ReactElement;
   footerAlignment?: 'left' | 'right';
   hideHeader?: boolean;
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'fluid';
   title?: string;
 } & Omit<OverlayProps, 'dialogClassName' | 'dialogZIndex'>;
 
@@ -19,12 +20,13 @@ export default function Modal({
   footerAlignment = 'right',
   hideHeader = false,
   onRequestClose,
+  size,
   title,
   ...rest
 }: ModalProps) {
   return (
     <Overlay
-      className={classNames('modal', className)}
+      className={classNames('modal', { [`modal--${size}`]: size }, className)}
       dialogClassName="modal__dialog"
       dialogZIndex="modal"
       onRequestClose={onRequestClose}
