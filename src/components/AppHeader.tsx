@@ -55,14 +55,11 @@ export default function AppHeader({
           >
             {left}
           </Col>
-          <Col
-            className={classNames('app-header__center', {
-              'pointer-events-none': !center,
-            })}
-            size={sizing?.center}
-          >
-            {center}
-          </Col>
+          {center && (
+            <Col className="app-header__center" size={sizing?.center}>
+              {center}
+            </Col>
+          )}
           <Col
             className={classNames('app-header__right', {
               'pointer-events-none': !right,
