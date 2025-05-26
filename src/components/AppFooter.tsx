@@ -46,7 +46,7 @@ export default function AppFooter({
       {...rest}
     >
       <Container fluid={fluid}>
-        <Row>
+        <Row className="flex-nowrap">
           <Col
             className={classNames('app-footer__left', {
               'pointer-events-none': !left,
