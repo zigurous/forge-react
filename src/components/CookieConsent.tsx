@@ -1,11 +1,11 @@
 'use client';
 
-import { useCookies } from 'react-cookie';
 import classNames from 'classnames';
 import React from 'react';
 import Button from './Button';
 import Link from './Link';
 import ReactPortal from './ReactPortal';
+import { useCookie } from '../hooks';
 import type { ThemeToken } from '../types';
 
 const COOKIE_NAME = 'cookieconsent_status';
@@ -28,8 +28,8 @@ export default function CookieConsent({
   rootElement = 'body',
   theme = 'high-contrast',
 }: CookieConsentProps) {
-  const [cookies, setCookie] = useCookies([COOKIE_NAME]);
-  if (cookies[COOKIE_NAME] === COOKIE_VALUE) return null;
+  const [cookie, setCookie] = useCookie(COOKIE_NAME);
+  if (cookie === COOKIE_VALUE) return null;
   return (
     <ReactPortal rootElement={rootElement}>
       <div
@@ -57,7 +57,7 @@ export default function CookieConsent({
             aria-label={buttonText}
             className="cookie-consent__button"
             onClick={() => {
-              setCookie(COOKIE_NAME, COOKIE_VALUE, { path: '/' });
+              setCookie(COOKIE_VALUE);
               onConsent(true);
             }}
             shape="square"
