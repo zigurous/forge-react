@@ -44,7 +44,7 @@ export type PanAndZoomProviderProps = {
 
 export default React.forwardRef(function PanAndZoomProvider(
   { children, settings = defaultSettings, ...rest }: PanAndZoomProviderProps,
-  ref: React.ForwardedRef<HTMLDivElement>,
+  forwardRef: React.ForwardedRef<HTMLDivElement>,
 ) {
   const [state, setState] = useState<PanAndZoomState>(defaultState);
   const mousedown = useRef<boolean>(false);
@@ -147,7 +147,7 @@ export default React.forwardRef(function PanAndZoomProvider(
     <PanAndZoomContext.Provider value={{ state, panning }}>
       <div
         {...rest}
-        ref={ref}
+        ref={forwardRef}
         onMouseDown={e => {
           if (e.button === 0 || e.button === 1) {
             if (timeout.current) {
@@ -175,6 +175,7 @@ export default React.forwardRef(function PanAndZoomProvider(
           }
         }}
         onWheel={e => {
+          const target = e.currentTarget;
           setState(state => {
             const zoomDirection = getWheelDirection(e.nativeEvent);
             const zoomChange = zoomDirection * settings.zoomSpeed;
@@ -183,10 +184,7 @@ export default React.forwardRef(function PanAndZoomProvider(
               settings.minZoom,
               settings.maxZoom,
             );
-            const { x, y } = getRelativeMousePosition(
-              e.nativeEvent,
-              e.currentTarget,
-            );
+            const { x, y } = getRelativeMousePosition(e.nativeEvent, target);
             const panX = x - (x - state.panX) * (zoom / state.zoom);
             const panY = y - (y - state.panY) * (zoom / state.zoom);
             return { panX, panY, zoom };
