@@ -30,6 +30,7 @@ export function smoothdamp(
   deltaTime: number,
 ): number {
   smoothTime = Math.max(0.0001, smoothTime);
+  const vel = currentVelocity.current || 0;
   const num = 2 / smoothTime;
   const num2 = num * deltaTime;
   const num3 = 1 / (1 + num2 + 0.48 * num2 * num2 + 0.235 * num2 * num2 * num2);
@@ -38,8 +39,8 @@ export function smoothdamp(
   const num6 = maxSpeed * smoothTime;
   num4 = Math.min(Math.max(num4, -num6), num6);
   target = current - num4;
-  const num7 = (currentVelocity.current + num * num4) * deltaTime;
-  currentVelocity.current = (currentVelocity.current - num * num7) * num3;
+  const num7 = (vel + num * num4) * deltaTime;
+  currentVelocity.current = (vel - num * num7) * num3;
   let num8 = target + (num4 + num7) * num3;
   if (num5 - current > 0 == num8 > num5) {
     num8 = num5;

@@ -8,7 +8,7 @@ export function debounce(fn: Function, wait: number): Function {
   };
 }
 
-export function throttle(fn: Function, wait: number = 300) {
+export function throttle(fn: Function, wait: number): Function {
   let inThrottle: boolean,
     lastFn: ReturnType<typeof setTimeout>,
     lastTime: number;

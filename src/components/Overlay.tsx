@@ -9,8 +9,6 @@ import type { ThemeToken, ZIndexToken } from '../types';
 
 export type OverlayProps = {
   animated?: boolean;
-  children?: React.ReactNode;
-  className?: string;
   closeOnScrimClick?: boolean;
   dialogClassName?: string;
   dialogZIndex?: ZIndexToken | number;

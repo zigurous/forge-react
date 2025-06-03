@@ -5,12 +5,12 @@ import { smoothdamp } from '../utils';
 
 export function useSmoothDamp(
   defaultValue: number,
-  targetValueRef: React.MutableRefObject<number>,
+  targetValueRef: React.RefObject<number>,
   smoothTime: number,
   maxSpeed: number = Infinity,
 ): number {
-  const animationHandle = useRef<number | undefined>();
-  const previousTimeRef = useRef<number | undefined>();
+  const animationHandle = useRef<number>(undefined);
+  const previousTimeRef = useRef<number>(undefined);
   const currentValueRef = useRef<number>(defaultValue);
   const velocityRef = useRef<number>(0);
   const [value, setValue] = useState(defaultValue);
@@ -21,7 +21,7 @@ export function useSmoothDamp(
         const deltaTime = time - previousTimeRef.current;
         currentValueRef.current = smoothdamp(
           currentValueRef.current,
-          targetValueRef.current,
+          targetValueRef.current || currentValueRef.current,
           velocityRef,
           smoothTime / 1000,
           maxSpeed,

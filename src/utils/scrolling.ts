@@ -17,7 +17,7 @@ export function getScrollbarWidth(): number {
     : 0;
 }
 
-export function getWheelDirection(e: WheelEvent) {
+export function getWheelDirection(e: WheelEvent): number {
   if ('deltaY' in e) {
     return clamp(e.deltaY, -1, 1) * -1;
   } else if ('wheelDeltaY' in e) {

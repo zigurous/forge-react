@@ -5,20 +5,11 @@ import React from 'react';
 
 export type ContactFormProps = {
   className?: string;
-  onSubmit?: React.FormEventHandler<HTMLFormElement>;
 } & Omit<React.ComponentPropsWithRef<'form'>, 'children'>;
 
-export default React.forwardRef(function ContactForm(
-  { className, onSubmit = () => {}, ...rest }: ContactFormProps,
-  ref: React.ForwardedRef<HTMLFormElement>,
-) {
+export default function ContactForm({ className, ...rest }: ContactFormProps) {
   return (
-    <form
-      className={classNames('contact-form', className)}
-      onSubmit={onSubmit}
-      {...rest}
-      ref={ref}
-    >
+    <form className={classNames('contact-form', className)} {...rest}>
       <input
         aria-label="Name"
         id="contactName"
@@ -45,4 +36,4 @@ export default React.forwardRef(function ContactForm(
       <input aria-label="Send" id="contactSubmit" type="submit" value="Send" />
     </form>
   );
-});
+}
