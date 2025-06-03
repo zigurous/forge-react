@@ -1,9 +1,8 @@
 'use client';
 
 import classNames from 'classnames';
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import LoadingSpinner from './LoadingSpinner';
-import { useIsLoading } from '../hooks';
 
 const sizes = Object.freeze({
   xs: {
@@ -31,10 +30,8 @@ const sizes = Object.freeze({
 export interface EmbeddedVideoProps {
   allowFullScreen?: boolean;
   className?: string;
-  frameBorder?: string;
   height?: string | number;
   id?: string;
-  scrolling?: string;
   size?: keyof typeof sizes;
   src: string;
   title?: string;
@@ -44,17 +41,14 @@ export interface EmbeddedVideoProps {
 export default function EmbeddedVideo({
   allowFullScreen = true,
   className,
-  frameBorder = '0',
   height,
   id = 'video-player',
-  scrolling = 'no',
   size,
   src,
   title = 'Video Player',
   width,
 }: EmbeddedVideoProps) {
-  const ref = useRef<HTMLIFrameElement>(null);
-  const loading = useIsLoading(ref);
+  const [loading, setLoading] = useState(true);
   const offline = typeof navigator !== 'undefined' && !navigator.onLine;
   const _width = width || (size && sizes[size].width);
   const _height = height || (size && sizes[size].height);
@@ -73,11 +67,9 @@ export default function EmbeddedVideo({
       >
         <iframe
           allowFullScreen={allowFullScreen}
-          frameBorder={frameBorder}
           height={_height || '100%'}
           id={id}
-          ref={ref}
-          scrolling={scrolling}
+          onLoad={e => setLoading(false)}
           src={src}
           title={title}
           width={_width || '100%'}
