@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import React from 'react';
 import ReactPortal from './ReactPortal';
@@ -7,7 +9,7 @@ export interface TooltipProps {
   arrow?: 'down' | 'up' | 'right' | 'left';
   children: React.ReactNode;
   className?: string;
-  element: HTMLElement;
+  element?: HTMLElement | null;
   theme?: ThemeToken;
 }
 
@@ -18,36 +20,53 @@ export default function Tooltip({
   element,
   theme = 'high-contrast',
 }: TooltipProps) {
-  const rect = element.getBoundingClientRect();
-  const position = getPosition(rect, arrow);
+  const props: React.ComponentPropsWithoutRef<'div'> & {
+    'data-theme': string;
+  } = {
+    'aria-hidden': true,
+    className: classNames(
+      'caption tooltip',
+      {
+        [`tooltip--${arrow}`]: arrow,
+      },
+      className,
+    ),
+    'data-theme': theme,
+    role: 'tooltip',
+  };
+
+  const content =
+    typeof children === 'string' && children.includes('\n')
+      ? children.split('\n').map((line, index, array) => (
+          <>
+            {line}
+            {index != array.length - 1 && <br />}
+          </>
+        ))
+      : children;
+
+  if (element) {
+    const rect = element.getBoundingClientRect();
+    const position = getPosition(rect, arrow);
+    return (
+      <ReactPortal>
+        <div
+          {...props}
+          style={{
+            top: position.top,
+            left: position.left,
+          }}
+        >
+          {content}
+        </div>
+      </ReactPortal>
+    );
+  }
+
   return (
-    <ReactPortal>
-      <div
-        aria-hidden
-        className={classNames(
-          'caption tooltip',
-          {
-            [`tooltip--${arrow}`]: arrow,
-          },
-          className,
-        )}
-        data-theme={theme}
-        role="tooltip"
-        style={{
-          top: position.top,
-          left: position.left,
-        }}
-      >
-        {typeof children === 'string' && children.includes('\n')
-          ? children.split('\n').map((line, index, array) => (
-              <>
-                {line}
-                {index != array.length - 1 && <br />}
-              </>
-            ))
-          : children}
-      </div>
-    </ReactPortal>
+    <div {...props} style={{ transform: 'none' }}>
+      {content}
+    </div>
   );
 }
 
