@@ -15,6 +15,12 @@ export const Text: Story = {
   args: {},
 };
 
+export const Label: Story = {
+  args: {
+    label: 'Name',
+  },
+};
+
 export const Password: Story = {
   args: {
     placeholder: 'Password',
