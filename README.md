@@ -11,13 +11,13 @@ The official React implementation of the Forge design system created by [@ziguro
 ### CDN
 
 Available from any of the following:
-- Install with CloudFront `https://cdn.zigurous.com/forge-react@1.1.1/dist/index.min.js`
-- Install with jsDelivr `https://cdn.jsdelivr.net/gh/zigurous/forge-react@1.1.1/dist/index.min.js`
-- Install with Statically `https://cdn.statically.io/gh/zigurous/forge-react/1.1.1/dist/index.min.js`
+- Install with CloudFront `https://cdn.zigurous.com/forge-react@1.2.0/dist/index.min.js`
+- Install with jsDelivr `https://cdn.jsdelivr.net/gh/zigurous/forge-react@1.2.0/dist/index.min.js`
+- Install with Statically `https://cdn.statically.io/gh/zigurous/forge-react/1.2.0/dist/index.min.js`
 
 Add the script in your HTML file:
 ```html
-<script src="https://cdn.zigurous.com/forge-react@1.1.1/dist/index.min.js">
+<script src="https://cdn.zigurous.com/forge-react@1.2.0/dist/index.min.js">
 ```
 
 ### GitHub Packages
