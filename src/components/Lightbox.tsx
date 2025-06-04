@@ -42,6 +42,7 @@ export default function Lightbox({
       : null;
   const imageProps =
     typeof currentImage === 'object' ? currentImage : { src: currentImage };
+
   const previousImage = useCallback(() => {
     if (onChangeImage) {
       if (loop) {
@@ -51,6 +52,7 @@ export default function Lightbox({
       }
     }
   }, [currentIndex, images, loop, onChangeImage]);
+
   const nextImage = useCallback(() => {
     if (onChangeImage) {
       if (loop) {
@@ -60,8 +62,10 @@ export default function Lightbox({
       }
     }
   }, [currentIndex, images, loop, onChangeImage]);
+
   useKeyboardEvent('ArrowLeft', previousImage);
   useKeyboardEvent('ArrowRight', nextImage);
+
   return (
     <Overlay
       animated={animated}
