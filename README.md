@@ -1,6 +1,6 @@
 # Forge React
 
-<a href="https://github.com/zigurous/forge-react/actions"><img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/zigurous/forge-react/publish-release.yml" /></a>
+<a href="https://github.com/zigurous/forge-react/actions"><img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/zigurous/forge-react/publish.yml" /></a>
 <a href="https://github.com/zigurous/forge-react/pkgs/npm/forge-react"><img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/zigurous/forge-react" /></a>
 <a href="https://github.com/zigurous/forge-react/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/zigurous/forge-react" /></a>
 
