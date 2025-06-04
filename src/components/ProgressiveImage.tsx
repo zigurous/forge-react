@@ -1,7 +1,7 @@
 'use client';
 
 import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import LoadingSpinner from './LoadingSpinner';
 
 export type ProgressiveImageProps = {
@@ -42,6 +42,12 @@ export default function ProgressiveImage({
 }: ProgressiveImageProps) {
   const [loaded, setLoaded] = useState(false);
 
+  const ref = useCallback((img: HTMLImageElement) => {
+    if (img) {
+      setLoaded(img.complete);
+    }
+  }, []);
+
   useEffect(() => {
     if (loaded && onLoad) {
       onLoad();
@@ -74,6 +80,7 @@ export default function ProgressiveImage({
         onLoad={e => setLoaded(true)}
         width={width || imageProps.width}
         height={height || imageProps.height}
+        ref={ref}
         src={src}
       />
       {placeholder && (
