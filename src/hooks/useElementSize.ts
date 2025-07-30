@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 import type { Size } from '../types';
 
 export function useElementSize(targetRef: React.RefObject<HTMLElement>): Size {
@@ -18,12 +19,13 @@ export function useElementSize(targetRef: React.RefObject<HTMLElement>): Size {
   };
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
   }, []);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     handleResize();
   }, []);
 

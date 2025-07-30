@@ -28,7 +28,7 @@ export function useTheme(
     setTheme(toggled);
   }, [theme]);
 
-  if (document && document.documentElement) {
+  if (typeof document !== 'undefined' && document.documentElement) {
     document.documentElement.style.setProperty('color-scheme', theme);
   }
 
