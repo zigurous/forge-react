@@ -11,3 +11,13 @@ export function useIsMounted() {
 
   return mounted;
 }
+
+export function useMountedEffect(effect: React.EffectCallback) {
+  const mounted = useIsMounted();
+
+  useEffect(() => {
+    if (mounted) {
+      return effect();
+    }
+  }, [mounted]);
+}
