@@ -42,8 +42,8 @@ export default function Stack({
         [`align-${align}`]: align,
       })}
       style={{
-        gap: spacing ? `var(--spacing-${spacing})` : undefined,
         ...style,
+        gap: spacing ? `var(--spacing-${spacing})` : undefined,
       }}
       {...rest}
     >
