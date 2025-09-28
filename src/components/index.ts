@@ -38,3 +38,4 @@ export { default as Text, type TextProps } from './Text'; // prettier-ignore
 export { default as Thumbnail, type ThumbnailProps } from './Thumbnail'; // prettier-ignore
 export { default as Toggle, type ToggleProps } from './Toggle'; // prettier-ignore
 export { default as Tooltip, type TooltipProps } from './Tooltip'; // prettier-ignore
+export { default as TooltipWrapper, useTooltip, type TooltipWrapperProps } from './TooltipWrapper'; // prettier-ignore
