@@ -12,11 +12,11 @@ export type BaseTextProps = {
   italic?: boolean;
   marginBottom?: Omit<MarginToken, 'auto'>;
   marginTop?: Omit<MarginToken, 'auto'>;
-  nowrap?: boolean;
   size?: FontSizeToken;
   transform?: 'none' | 'uppercase' | 'lowercase' | 'capitalize';
   type?: FontTypeToken;
   weight?: FontWeightToken;
+  wrap?: 'wrap' | 'nowrap' | 'balance' | 'stable' | 'pretty';
 };
 
 export type TextProps<T extends React.ElementType = 'p'> = PolymorphicProps<
@@ -35,11 +35,11 @@ export default function Text<T extends React.ElementType = 'p'>({
   italic,
   marginBottom,
   marginTop,
-  nowrap,
   size,
   transform,
   type,
   weight,
+  wrap,
   ...rest
 }: TextProps<T>) {
   const Element = as ?? 'p';
@@ -50,6 +50,7 @@ export default function Text<T extends React.ElementType = 'p'>({
         [`text-${size}`]: size !== undefined,
         [`text-${color}`]: color !== undefined,
         [`text-${align}`]: align !== undefined,
+        [`text-${wrap}`]: wrap !== undefined,
         [`font-${weight}`]: typeof weight !== 'undefined',
         [`mt-${marginTop}`]: marginTop,
         [`mb-${marginBottom}`]: marginBottom,
