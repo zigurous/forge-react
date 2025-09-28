@@ -10,7 +10,7 @@ export type ModalProps = {
   footerAlignment?: 'left' | 'right';
   hideHeader?: boolean;
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'fluid';
-  title?: string;
+  title?: React.ReactElement;
 } & Omit<OverlayProps, 'dialogClassName' | 'dialogZIndex'>;
 
 export default function Modal({
