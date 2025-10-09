@@ -4,7 +4,7 @@ import type { SpacingToken } from '../types';
 
 export type StackProps = {
   align?: 'start' | 'end' | 'center' | 'stretch' | 'baseline';
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   inline?: boolean;
   justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
