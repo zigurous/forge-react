@@ -38,10 +38,10 @@ export default function Tooltip({
   const content =
     typeof children === 'string' && children.includes('\n')
       ? children.split('\n').map((line, index, array) => (
-          <>
+          <React.Fragment key={`${index}:${line}`}>
             {line}
             {index != array.length - 1 && <br />}
-          </>
+          </React.Fragment>
         ))
       : children;
 
