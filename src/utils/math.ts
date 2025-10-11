@@ -1,3 +1,5 @@
+import type { Size } from '../types';
+
 export function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
 }
@@ -47,4 +49,19 @@ export function smoothdamp(
     currentVelocity.current = (num8 - num5) / deltaTime;
   }
   return num8;
+}
+
+export function aspectFit(
+  rect: Size,
+  aspectSize: Partial<Size>,
+  minScale?: number,
+  maxScale?: number,
+): number {
+  const sw = aspectSize.width !== undefined ? rect.width / aspectSize.width : 1;
+  const sh =
+    aspectSize.height !== undefined ? rect.height / aspectSize.height : 1;
+  let scale = Math.min(sw, sh);
+  if (minScale !== undefined) scale = Math.max(scale, minScale);
+  if (maxScale !== undefined) scale = Math.min(scale, maxScale);
+  return scale;
 }

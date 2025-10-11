@@ -1,4 +1,3 @@
-export * from './useAspectFitScaling';
 export * from './useBodyOverflow';
 export * from './useBreakpoint';
 export * from './useCookie';
