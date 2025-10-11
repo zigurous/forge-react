@@ -2,7 +2,7 @@ export * from './useAspectFitScaling';
 export * from './useBodyOverflow';
 export * from './useBreakpoint';
 export * from './useCookie';
-export * from './useElementRectObserver';
+export * from './useElementSizing';
 export * from './useIsMounted';
 export * from './useIsomorphicLayoutEffect';
 export * from './useKeyboardEvent';

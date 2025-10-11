@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useElementRectObserver } from './useElementRectObserver';
+import { useElementRectObserver } from './useElementSizing';
 
 export function useAspectFitScaling<T extends HTMLElement>(
   aspectWidth: number | null,
