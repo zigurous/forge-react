@@ -7,27 +7,19 @@ export function useElementRectObserver<T extends HTMLElement>(): [
   React.RefCallback<T>,
 ] {
   const [element, ref] = useMemoizedRef<T>();
-  const [observer, setObserver] = useState<ResizeObserver>();
   const [rect, setRect] = useState<DOMRect>();
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setObserver(
-        new ResizeObserver((entries: ResizeObserverEntry[]) => {
-          setRect(entries[0].contentRect);
-        }),
+    if (typeof window !== 'undefined' && element) {
+      const observer = new ResizeObserver(entries =>
+        setRect(entries[0].contentRect),
       );
-    }
-  }, []);
-
-  useEffect(() => {
-    if (element && observer) {
       observer.observe(element);
       return () => {
-        observer?.unobserve(element);
+        observer.unobserve(element);
       };
     }
-  }, [element, observer]);
+  }, [element]);
 
   return [rect, ref];
 }
