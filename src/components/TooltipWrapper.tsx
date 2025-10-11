@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import Tooltip from './Tooltip';
+import Tooltip, { type TooltipProps } from './Tooltip';
 import { useMemoizedRef } from '../hooks';
 
 export type TooltipWrapperProps = {
-  tooltip: string | React.ReactNode;
+  tooltip: React.ReactNode;
+  tooltipProps?: Omit<TooltipProps, 'children' | 'element'>;
 } & React.ComponentProps<'div'>;
 
 export default function TooltipWrapper({
   children,
   tooltip,
+  tooltipProps,
   ...rest
 }: TooltipWrapperProps) {
   const { ref, Tooltip } = useTooltip<HTMLDivElement>();
   return (
     <div {...rest} ref={ref}>
       {children}
-      <Tooltip>{tooltip}</Tooltip>
+      <Tooltip {...tooltipProps}>{tooltip}</Tooltip>
     </div>
   );
 }
 
 interface TooltipObject<T extends HTMLElement> {
   ref: React.RefCallback<T>;
-  Tooltip: React.FC<{ children: React.ReactNode }>;
+  Tooltip: React.FC<Omit<TooltipProps, 'element'>>;
 }
 
 export function useTooltip<T extends HTMLElement>(): TooltipObject<T> {
@@ -46,9 +48,13 @@ export function useTooltip<T extends HTMLElement>(): TooltipObject<T> {
 
   return {
     ref,
-    Tooltip: ({ children }) => (
+    Tooltip: ({ children, ...rest }: Omit<TooltipProps, 'element'>) => (
       <React.Fragment>
-        {hovering && <Tooltip element={element}>{children}</Tooltip>}
+        {hovering && (
+          <Tooltip {...rest} element={element}>
+            {children}
+          </Tooltip>
+        )}
       </React.Fragment>
     ),
   };
