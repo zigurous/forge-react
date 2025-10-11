@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Tooltip from './Tooltip';
+import { useMemoizedRef } from '../hooks';
 
 export type TooltipWrapperProps = {
   tooltip: string | React.ReactNode;
@@ -25,12 +26,8 @@ interface TooltipObject<T extends HTMLElement> {
 }
 
 export function useTooltip<T extends HTMLElement>(): TooltipObject<T> {
-  const [element, setElement] = useState<T | null>(null);
+  const [element, ref] = useMemoizedRef<T>();
   const [hovering, setHovering] = useState(false);
-
-  const ref = useCallback((node: T | null) => {
-    setElement(node);
-  }, []);
 
   useEffect(() => {
     if (element) {

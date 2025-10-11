@@ -7,6 +7,7 @@ export * from './useIsomorphicLayoutEffect';
 export * from './useKeyboardEvent';
 export * from './useLocalStorage';
 export * from './useMediaQuery';
+export * from './useMemoizedRef';
 export * from './usePagination';
 export * from './useSearch';
 export * from './useSmoothDamp';
