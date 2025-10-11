@@ -6,11 +6,11 @@ import Overlay, { type OverlayProps } from './Overlay';
 export type ModalProps = {
   children?: React.ReactNode;
   className?: string;
-  footer?: React.ReactElement;
+  footer?: React.ReactNode;
   footerAlignment?: 'left' | 'right';
   hideHeader?: boolean;
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'fluid';
-  title?: React.ReactElement;
+  title?: React.ReactNode;
 } & Omit<OverlayProps, 'dialogClassName' | 'dialogZIndex'>;
 
 export default function Modal({
