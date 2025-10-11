@@ -1,5 +1,3 @@
-'use client';
-
 import classNames from 'classnames';
 import React, { useCallback, useState } from 'react';
 import Lightbox, { type LightboxProps } from './Lightbox';

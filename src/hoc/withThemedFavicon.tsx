@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { useThemedFavicon } from '../hooks';
 import { getDisplayName } from '../utils';

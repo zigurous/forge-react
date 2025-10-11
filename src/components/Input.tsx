@@ -1,5 +1,3 @@
-'use client';
-
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import Icon, { type IconProps } from './Icon';

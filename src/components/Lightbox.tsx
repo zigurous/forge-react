@@ -1,5 +1,3 @@
-'use client';
-
 import classNames from 'classnames';
 import React, { useCallback } from 'react';
 import Button from './Button';

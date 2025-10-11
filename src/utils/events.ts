@@ -1,5 +1,3 @@
-'use client';
-
 export function bindEvent(
   element: EventTarget,
   eventName: string,

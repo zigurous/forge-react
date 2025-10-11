@@ -1,5 +1,3 @@
-'use client';
-
 import { clamp } from './math';
 
 export function scrollToTop(behavior: ScrollBehavior = 'smooth') {

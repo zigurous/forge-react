@@ -1,5 +1,3 @@
-'use client';
-
 import classNames from 'classnames';
 import React, { useCallback, useEffect, useState } from 'react';
 import LoadingSpinner from './LoadingSpinner';

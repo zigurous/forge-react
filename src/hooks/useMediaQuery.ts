@@ -1,5 +1,3 @@
-'use client';
-
 import { useCallback, useState } from 'react';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 import { bindEvent, unbindEvent } from '../utils';
