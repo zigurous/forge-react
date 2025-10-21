@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export function useLocalStorage<T>(
   key: string,
-  defaultValue?: T,
-): [T | null, (value: T) => void] {
-  const [value, setValue] = useState(getStorageValue(key, defaultValue));
+  defaultValue: T,
+): [T, React.Dispatch<React.SetStateAction<T>>] {
+  const getter = useCallback(
+    () => getStorageValue(key, defaultValue),
+    [key, defaultValue],
+  );
+
+  const [value, setValue] = useState(getter);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.localStorage) {
@@ -15,12 +20,12 @@ export function useLocalStorage<T>(
   return [value, setValue];
 }
 
-export function getStorageValue<T>(key: string, defaultValue?: T): T | null {
+export function getStorageValue<T>(key: string, defaultValue: T): T {
   if (typeof window !== 'undefined' && window.localStorage) {
     const item = localStorage.getItem(key);
     const value = item ? JSON.parse(item) : null;
-    return value || defaultValue || null;
+    return value || defaultValue;
   } else {
-    return defaultValue || null;
+    return defaultValue;
   }
 }
