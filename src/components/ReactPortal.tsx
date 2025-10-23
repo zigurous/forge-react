@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useIsomorphicLayoutEffect } from '../hooks';
 
 export interface ReactPortalProps {
   children: React.ReactNode;
@@ -14,7 +15,7 @@ export default function ReactPortal({
 }: ReactPortalProps) {
   const [root, setRoot] = useState<Element | null>(null);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (typeof document !== 'undefined') {
       setRoot(document.querySelector(rootElement));
     } else {
