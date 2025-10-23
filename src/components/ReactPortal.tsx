@@ -4,12 +4,14 @@ import { useIsomorphicLayoutEffect } from '../hooks';
 
 export interface ReactPortalProps {
   children: React.ReactNode;
+  deps?: React.DependencyList;
   key?: string;
   rootElement?: string;
 }
 
 export default function ReactPortal({
   children,
+  deps,
   key,
   rootElement = 'body',
 }: ReactPortalProps) {
@@ -21,7 +23,7 @@ export default function ReactPortal({
     } else {
       setRoot(null);
     }
-  }, [rootElement]);
+  }, [rootElement, ...(deps || [])]);
 
   if (!root) return null;
   return <>{createPortal(children, root, key)}</>;
